@@ -76,6 +76,7 @@ next agent more than a gap.
 |---|---|
 | Alibaba (Qwen) | `provider-alibaba` |
 | Anthropic | `provider-anthropic` |
+| BytePlus (ModelArk) | `provider-byteplus` |
 | CommandCode | `provider-commandcode` |
 | Cursor | `provider-cursor` |
 | DeepSeek | `provider-deepseek` |
