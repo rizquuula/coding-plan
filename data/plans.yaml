@@ -1725,7 +1725,7 @@
 - id: byteplus-lite
   provider: BytePlus
   plan: Lite
-  region: global
+  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1756,7 +1756,7 @@
 - id: byteplus-pro
   provider: BytePlus
   plan: Pro
-  region: global
+  region: china
   price_currency: USD
   prices:
     - period: month

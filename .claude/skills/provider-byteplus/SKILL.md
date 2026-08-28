@@ -26,8 +26,10 @@ tables.
 `price_currency` and `currency` would be `USD`. Every public figure on the
 campaign page is a dollar figure.
 
-`region` is `global`. BytePlus is ByteDance's international brand, run by
-BytePlus Pte Ltd in Singapore.
+`region` is `china`. This repository classifies a provider by its parent
+company, and ByteDance is a Chinese company. BytePlus is the international
+brand, run by BytePlus Pte Ltd in Singapore, but so is Z.ai for Zhipu, and the
+Zhipu, Alibaba, and Moonshot rows all carry `china`.
 
 BytePlus is the company. ModelArk is its model platform. The ModelArk Coding
 Plan is a subscription for AI coding tools. ArkClaw is the BytePlus AI agent
