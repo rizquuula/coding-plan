@@ -76,6 +76,7 @@ next agent more than a gap.
 |---|---|
 | Alibaba (Qwen) | `provider-alibaba` |
 | Anthropic | `provider-anthropic` |
+| CommandCode | `provider-commandcode` |
 | Cursor | `provider-cursor` |
 | DeepSeek | `provider-deepseek` |
 | Factory | `provider-factory` |
@@ -84,6 +85,7 @@ next agent more than a gap.
 | Moonshot (Kimi) | `provider-moonshot` |
 | Ollama | `provider-ollama` |
 | OpenAI | `provider-openai` |
+| OpenCode (Go) | `provider-opencode` |
 | Sakana (Fugu) | `provider-sakana` |
 | Zhipu (GLM) | `provider-zai` |
 
