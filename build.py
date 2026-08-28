@@ -19,6 +19,9 @@ TEMPLATE_DIR = ROOT / "templates"
 ASSET_DIR = ROOT / "assets"
 OUT_DIR = ROOT / "site"
 
+# Public base URL of the deployed site. Social meta tags need absolute URLs.
+SITE_URL = "https://rizquuula.github.io/coding-plan/"
+
 # Labels a link may carry. Any other label is a validation error.
 LINK_LABELS = {"pricing", "rate limit", "plans", "model card", "docs", "announcement"}
 
@@ -550,7 +553,10 @@ def render(data: dict, today: dt.date) -> None:
 
     for page in PAGES:
         html = env.get_template(page["template"]).render(
-            **shared, **pages[page["name"]]
+            **shared,
+            **pages[page["name"]],
+            site_url=SITE_URL,
+            page_href=page["href"],
         )
         (OUT_DIR / page["href"]).write_text(html, encoding="utf-8")
 
