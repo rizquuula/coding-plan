@@ -6,12 +6,25 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 
 | Page | Publishes | Tool |
 |---|---|---|
-| `https://z.ai/subscribe` | Plan prices, billing terms, discount labels | Playwright |
+| `https://z.ai/subscribe` | Plan prices, billing terms, discount labels | `scripts/read_subscribe.py` |
 | `https://docs.z.ai/devpack/overview` | Individual tier quotas, models, tool support | `WebFetch` |
 | `https://docs.z.ai/devpack/teamplan` | Team seat quotas | `WebFetch` |
 | `https://docs.z.ai/guides/overview/pricing` | API rates per token, every model | `WebFetch` |
 | `https://docs.z.ai/guides/llm/glm-5.3` | Model specification | `WebFetch` |
 | `https://docs.z.ai/devpack/usage-policy` | Concurrency ranking, no numbers | `WebFetch` |
+| `https://api.z.ai/api/biz/overseas/team/subscribe/product/public_pricing` | Team seat prices | `curl` |
+
+## The Team pricing API
+
+That last row is a public JSON endpoint. It needs no auth and returned 200 on
+2026-08-28: PRO at 88 per month and 1056 per year, MAX at 188 per month and 2256
+per year.
+
+**It publishes Team seat prices, not the Individual GLM Coding Plan.** This
+repository tracks the Individual list price, so it is the wrong source for
+`data/plans.yaml`. Never copy a Team figure into an Individual row.
+
+The base URL for every `/biz/...` path is `https://api.z.ai/api`.
 
 ## The docs index
 
@@ -36,6 +49,7 @@ Do not spend time on these. Each was tried and failed.
 | `https://docs.z.ai/api-reference/rate-limit` | 307 to `https://z.ai/manage-apikey/rate-limits` |
 | `https://docs.z.ai/api-reference/rate-limit.md` | Same 307. The `.md` twin does not help. |
 | `https://z.ai/manage-apikey/rate-limits` | Needs a login. Never cite it. |
+| `https://api.z.ai/api/biz/pay/coding-plan/batch-preview` | POST returns `{"code":1001,"msg":"Authentication parameter not received in Header..."}`. Needs a login. |
 
 The console page is the only place Z.ai publishes numeric API rate limits, and
 it is behind an account. That is why `data/rate_limits.yaml` holds no Zhipu row.

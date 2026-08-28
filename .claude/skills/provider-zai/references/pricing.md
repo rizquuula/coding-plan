@@ -2,50 +2,52 @@
 
 Read `fetching.md` first. It tells you how to get these numbers off the page.
 
-## The trap: a rate per month, not the price of the term
+## The trap: the page and the bundle print different figures
 
-Under the quarterly and yearly toggles, Z.ai still prints a **per-month**
-figure, such as `$12.6/month` with `$18/month` struck through. It never prints
-what it charges for the whole term.
+The **rendered page** prints a per-month figure under every toggle, such as
+`$12.6/month` with `$18/month` struck through. It never prints what it charges
+for the whole term.
+
+The **JavaScript bundle** holds the term total in `money`. `fetching.md` tells
+you how to read it. That is the source you use.
 
 `AGENTS.md` defines `amount` as the price charged for one seat for that whole
-term. So you must multiply:
+term. So copy `money` into `amount` with no arithmetic. Do not multiply by 3 or
+by 12. An agent that multiplies writes 129.6 where 43.2 is right.
 
-| Term | Months | What the page prints | `amount` to write |
-|---|---|---|---|
-| `month` | 1 | 18 | 18 |
-| `quarter` | 3 | 14.4 | 43.2 |
-| `year` | 12 | 12.6 | 151.2 |
+| Term | Months | Page prints | Bundle `money` | `amount` to write |
+|---|---|---|---|---|
+| `month` | 1 | 18 | 18 | 18 |
+| `quarter` | 3 | 14.4 | 43.2 | 43.2 |
+| `year` | 12 | 12.6 | 151.2 | 151.2 |
 
-The product is not a figure the page prints. Say so in `notes` on every row you
-derive:
+The term total is not a figure the page prints, so `notes` says where it comes
+from:
 
     notes: Z.ai prints a rate per month; the quarter and year totals are that
       rate times the term.
 
 `build.py` derives the monthly equivalent back from `amount` and prints it under
-the term. Check the rendered cell shows the rate you read on the page. For the
-yearly Lite row it must read `$12.60/mo · save 30%`.
-
-If Z.ai ever prints a term total, write that instead and delete the note.
+the term. Check the rendered cell shows the rate the page prints. For the yearly
+Lite row it must read `$12.60/mo · save 30%`.
 
 ## Individual plan prices
 
-Read on 2026-08-28. Rates are USD per month, as printed.
-
-| Tier | Monthly | Quarterly | Yearly |
-|---|---|---|---|
-| Lite | 18 | 14.4 | 12.6 |
-| Pro | 80 | 64 | 56 |
-| Max | 168 | 134.4 | 117.6 |
-
-Converted to term totals for `amount`:
+Read on 2026-08-28 from the bundle. USD, whole-term totals, ready for `amount`.
 
 | Tier | `month` | `quarter` | `year` |
 |---|---|---|---|
 | Lite | 18 | 43.2 | 151.2 |
 | Pro | 80 | 192 | 672 |
 | Max | 168 | 403.2 | 1411.2 |
+
+The same prices as the page prints them, per month:
+
+| Tier | Monthly | Quarterly | Yearly |
+|---|---|---|---|
+| Lite | 18 | 14.4 | 12.6 |
+| Pro | 80 | 64 | 56 |
+| Max | 168 | 134.4 | 117.6 |
 
 ## Discounts
 
@@ -69,8 +71,10 @@ Do not compute a price from the percentage. Read the price.
 The page also states that overage bills at a 10 percent discount off the model
 API list price, as a limited-time offer.
 
-No Team row exists in `data/plans.yaml`. Adding one needs a price, and no page
-an agent can reach publishes it.
+No Team row exists in `data/plans.yaml`. A price is now reachable: the public
+JSON API in `pages.md` returned PRO at 88 per month and MAX at 188 per month on
+2026-08-28. Adding a Team row is a scope decision, not a sourcing problem. Ask
+before you add one, and never mix a Team figure into an Individual row.
 
 ## API rates per token
 

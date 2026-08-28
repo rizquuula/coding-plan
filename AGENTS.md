@@ -65,6 +65,22 @@ next agent more than a gap.
 
 The other six providers have no skill yet.
 
+## Sourcing tools
+
+Do not use Playwright, Puppeteer, Selenium, or a headless browser to source a
+value. The maintainer's machine cannot run them.
+
+Try these in order:
+
+1. `WebFetch` on the page.
+2. The provider's `.md` twin, when it serves one.
+3. `curl` on the page HTML.
+4. `curl` on the JavaScript bundle, or on a public JSON endpoint the page calls.
+
+A page that only renders client-side is not a dead end. Its data usually sits in
+a bundle or in an API the page calls. The `provider-zai` skill is the worked
+example.
+
 ## Commands
 
 ```bash

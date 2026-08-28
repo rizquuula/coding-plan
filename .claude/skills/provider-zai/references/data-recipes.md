@@ -47,7 +47,8 @@ Three rows: `zhipu-glm-coding-lite`, `zhipu-glm-coding-pro`,
   last_verified: 2026-08-28
 ```
 
-`amount` is the term total, which you derive. See `pricing.md`.
+`amount` is the term total. Copy `money` from the bundle without arithmetic. See
+`pricing.md`.
 
 The Lite row carries one extra sentence in `notes` about off-peak half rate. Do
 not copy it to the other tiers.

@@ -23,31 +23,38 @@ Pro, and Max.
 
 | You need | Page | Tool |
 |---|---|---|
-| Plan prices, billing terms | `https://z.ai/subscribe` | Playwright |
+| Plan prices, billing terms | `https://z.ai/subscribe` | `scripts/read_subscribe.py` |
 | Tier quotas, models | `https://docs.z.ai/devpack/overview` | `WebFetch` |
 | API rates per token | `https://docs.z.ai/guides/overview/pricing` | `WebFetch` |
 | Model specification | `https://docs.z.ai/guides/llm/glm-5.3` | `WebFetch` |
 | Every docs URL | `https://docs.z.ai/llms.txt` | `WebFetch` |
 
-## Three things that produce a wrong number
+## Four things that produce a wrong number
 
 **1. The subscribe page defeats `WebFetch` and `--dump-dom`.** Both return a
-success code and no price. Only Playwright driving the system Chrome reads it.
-Run `scripts/read-subscribe.js`. Details in `references/fetching.md`.
+success code and no price. The prices are compiled into the page's JavaScript
+bundle, so fetch the bundle instead. Run `python3 scripts/read_subscribe.py`. It
+needs no install and no browser. Details in `references/fetching.md`.
 
-**2. Z.ai prints a rate per month, never the price of the term.** The yearly
-toggle shows `$12.6/month`, not `$151.20/year`. The schema wants the term total,
-so multiply by 3 or 12 and say so in `notes`. Table in `references/pricing.md`.
+**2. The bundle ships three generations of the plan at once.** V1, V2, and V3 sit
+side by side. V1 and V2 are dead legacy pricing. Take only the highest `version`
+string. A naive read returns nine wrong prices next to the nine right ones.
 
-**3. Z.ai publishes no numeric API rate limit.** Every path to one either 404s
+**3. `money` in the bundle is the term total. Do not multiply it.** The rendered
+page prints a rate per month, such as `$12.6/month` under the yearly toggle. The
+bundle does not: it holds `151.2` for the whole year. You read the bundle, so
+copy `money` straight into `amount`. Table in `references/pricing.md`.
+
+**4. Z.ai publishes no numeric API rate limit.** Every path to one either 404s
 or redirects behind a login. `data/rate_limits.yaml` holds zero Zhipu rows and
 that is correct. Do not add a row of nulls. Reasoning in `references/quotas.md`.
 
 ## Workflow
 
 1. Read `https://docs.z.ai/devpack/overview`. Take the quota and the model list.
-2. Run `scripts/read-subscribe.js`. Take the price under each billing term.
-3. Multiply each printed monthly rate by its term to get `amount`.
+2. Run `python3 scripts/read_subscribe.py`. Take the block for the highest
+   version only.
+3. Copy each `money` value into `amount`. It is the term total. Do not multiply.
 4. Cross-check the quotas: the subscribe page states Pro as `6x Lite` and Max as
    `14x Lite`, which must match the absolute credit numbers.
 5. Write the rows. Copy the shapes in `references/data-recipes.md`.
@@ -60,11 +67,11 @@ that is correct. Do not add a row of nulls. Reasoning in `references/quotas.md`.
 | File | Holds |
 |---|---|
 | `references/pages.md` | Every page, its status, the dead ends, the `.md` twin trick |
-| `references/fetching.md` | The Playwright recipe, failure modes, selectors, troubleshooting |
-| `references/pricing.md` | Plan prices, the term-total conversion, API token rates |
+| `references/fetching.md` | The bundle recipe, the regex, failure modes, troubleshooting |
+| `references/pricing.md` | Plan prices, the term totals, API token rates |
 | `references/quotas.md` | Credit quotas, Team seats, why rate limits are absent |
 | `references/data-recipes.md` | A worked row for each of the four datasets |
-| `scripts/read-subscribe.js` | Prints every tier under every billing term |
+| `scripts/read_subscribe.py` | Prints every tier under every billing term |
 
 ## Keep this file true
 
