@@ -26,7 +26,8 @@ two tables.
 `region` is `global`. The FAQ says the models run on US infrastructure.
 
 Command Code AI sells a CLI coding agent plus an API reseller service. Its own
-model, `taste-1`, learns the user's coding preferences. Every plan includes it.
+model, `taste-1`, learns the user's coding preferences. Every subscription tier
+lists it; the Provider card does not.
 Every other model is a third-party model resold at "API cost, zero markup".
 
 Every page is server-rendered. `WebFetch` and `curl -sL -A "Mozilla/5.0"` both

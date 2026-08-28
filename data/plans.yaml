@@ -1713,7 +1713,6 @@
     - No included credits, pay as you go
     - Top-up credits roll over and never expire
   models:
-    - taste-1
     - Open models
     - Premium models
   status: active
