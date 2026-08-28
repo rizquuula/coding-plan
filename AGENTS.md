@@ -39,7 +39,31 @@ under its own heading. No table has a provider column.
 | `build.py` | Validation and rendering |
 | `templates/index.html.j2` | Page template |
 | `assets/` | CSS and JavaScript, copied into the site |
+| `.claude/skills/provider-*/` | How to source one provider's data |
 | `.github/workflows/deploy.yml` | Build and deploy workflow |
+
+## Provider skills
+
+Each provider that is hard to source gets a skill under
+`.claude/skills/provider-<name>/`. It records which of that provider's pages an
+agent can read, which pages look right and are not, and the traps that produce a
+wrong number.
+
+    provider-<name>/
+      SKILL.md        the page map, the traps, the workflow
+      references/     the detail, read on demand
+      scripts/        anything runnable
+
+Read the skill for a provider before you touch one of its rows. Write back to it
+whenever you learn something it does not say — a page that moved, a value that is
+not where you expected, a fetch that fails. A wrong claim in a skill costs the
+next agent more than a gap.
+
+| Provider | Skill |
+|---|---|
+| Zhipu (GLM) | `provider-zai` |
+
+The other six providers have no skill yet.
 
 ## Commands
 
