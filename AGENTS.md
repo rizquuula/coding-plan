@@ -94,9 +94,8 @@ One record per plan tier.
 | `provider` | yes | string | Company name. Use the same spelling in every file. |
 | `plan` | yes | string | Tier name as the provider writes it. |
 | `region` | yes | enum | `global` or `china`. |
-| `price_amount` | yes | number | List price for one seat. Use `0` for a free tier. |
 | `price_currency` | yes | enum | `USD`, `CNY`, or `EUR`. |
-| `price_period` | yes | enum | `month` or `year`. |
+| `prices` | yes | list | One entry per billing term. See the `prices` schema below. |
 | `limits` | yes | list of strings | One quota statement per item. Keep each under 12 words. Name the model when the provider publishes a per-model quota. |
 | `models` | yes | list of strings | Model families the plan unlocks. |
 | `status` | yes | enum | `active`, `beta`, or `discontinued`. |
@@ -104,6 +103,39 @@ One record per plan tier.
 | `links` | yes | list | See the `links` schema above. |
 | `last_verified` | no | date | Date you read the page. `null` means unverified. |
 | `discontinued_on` | no | date | Set only when `status` is `discontinued`. |
+
+## Schema: `prices`
+
+A tier is often billed monthly, quarterly, and yearly, and the longer terms cost
+less. One record holds every term the provider offers. Do not split a tier into
+one record per term.
+
+```yaml
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 80
+    - period: quarter
+      amount: 192
+    - period: year
+      amount: 672
+```
+
+Rules:
+
+1. The list needs at least one entry.
+2. Each entry has exactly two keys, `period` and `amount`. No other key validates.
+3. `period` is `month`, `quarter`, or `year`. No period repeats in one record.
+4. `amount` is the price charged for one seat for that whole term. It is not the
+   monthly equivalent. Write `672` for a year billed at 56 per month.
+5. `amount` must not be negative. Use `0` for a free tier.
+
+The build script derives the monthly equivalent and the saving against the
+monthly price, then prints both. Do not write either into the data.
+
+Some providers print only a discounted monthly rate, not the term total. Copy
+the rate, multiply it by the term, and say so in `notes`. Z.ai is the worked
+example in `data/plans.yaml`.
 
 ## Schema: `data/api_pricing.yaml`
 

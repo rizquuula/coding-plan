@@ -57,7 +57,18 @@
       {% for row in rows %}
       <tr>
         <td>{{ row.plan }}</td>
-        <td class="num">{{ row.price_amount | money(row.price_currency) }}<span class="unit">/{{ row.price_period }}</span></td>
+        <td class="num">
+          <ul class="price-list">
+            {% for entry in row | price_view %}
+            <li>
+              {{ entry.amount | money(row.price_currency) }}<span class="unit">/{{ entry.period }}</span>
+              {% if entry.period != "month" %}
+              <span class="price-equiv">{{ entry.monthly | money(row.price_currency) }}/mo{% if entry.discount %} · save {{ entry.discount }}%{% endif %}</span>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </td>
         <td>
           <ul class="cell-list">
             {% for limit in row.limits %}<li>{{ limit }}</li>{% endfor %}
@@ -206,7 +217,7 @@
 
 <section id="plans-global">
   <h2>Global coding plans</h2>
-  <p class="section-note">Subscription tiers that include an AI coding tool. Prices are the list price for one seat.</p>
+  <p class="section-note">Subscription tiers that include an AI coding tool. Prices are the list price for one seat. A tier that discounts a longer billing term lists every term, with the monthly equivalent and the saving.</p>
   {{ provider_blocks("plans-global", plans_global, plan_table) }}
 </section>
 

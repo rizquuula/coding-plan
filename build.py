@@ -22,16 +22,18 @@ OUT_DIR = ROOT / "site"
 # Labels a link may carry. Any other label is a validation error.
 LINK_LABELS = {"pricing", "rate limit", "plans", "model card", "docs", "announcement"}
 
+# Billing period -> months it covers. The order sets the display order.
+PRICE_PERIODS = {"month": 1, "quarter": 3, "year": 12}
+
 # Field name -> (required, kind).
-# Kinds: str, num, bool, date, list, links, or "enum:a|b".
+# Kinds: str, num, bool, date, list, links, prices, or "enum:a|b".
 PLAN_SCHEMA = {
     "id": (True, "str"),
     "provider": (True, "str"),
     "plan": (True, "str"),
     "region": (True, "enum:global|china"),
-    "price_amount": (True, "num"),
     "price_currency": (True, "enum:USD|CNY|EUR"),
-    "price_period": (True, "enum:month|year"),
+    "prices": (True, "prices"),
     "limits": (True, "list"),
     "models": (True, "list"),
     "status": (True, "enum:active|beta|discontinued"),
@@ -132,10 +134,96 @@ def link_errors(value) -> list[str]:
     return errors
 
 
+def price_errors(value) -> list[str]:
+    """Return one message per problem found in a `prices` value."""
+    if not isinstance(value, list):
+        return ["must be a list of {period, amount} mappings"]
+    if not value:
+        return ["must hold at least one price"]
+
+    allowed = ", ".join(PRICE_PERIODS)
+    errors: list[str] = []
+    seen_periods: set[str] = set()
+    for index, item in enumerate(value, start=1):
+        position = f"price {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{position}: must be a mapping with 'period' and 'amount'")
+            continue
+        extra = sorted(set(item) - {"period", "amount"})
+        for key in extra:
+            errors.append(f"{position}: unknown key '{key}'")
+        for key in ("period", "amount"):
+            if key not in item:
+                errors.append(f"{position}: missing '{key}'")
+        period = item.get("period")
+        if "period" in item:
+            if not isinstance(period, str):
+                errors.append(f"{position}: period must be a string, got {period!r}")
+            elif period not in PRICE_PERIODS:
+                errors.append(
+                    f"{position}: period {period!r} is not one of {allowed}"
+                )
+            elif period in seen_periods:
+                errors.append(f"{position}: duplicate period {period!r}")
+            else:
+                seen_periods.add(period)
+        amount = item.get("amount")
+        if "amount" in item:
+            if not isinstance(amount, (int, float)) or isinstance(amount, bool):
+                errors.append(f"{position}: amount must be a number, got {amount!r}")
+            elif amount < 0:
+                errors.append(f"{position}: amount must not be negative")
+    return errors
+
+
+def monthly_equivalent(entry: dict) -> float:
+    """Return what one month costs under this billing term."""
+    return entry["amount"] / PRICE_PERIODS[entry["period"]]
+
+
+def price_view(record: dict) -> list[dict]:
+    """Return one display entry per billing term, cheapest term last."""
+    entries = sorted(record["prices"], key=lambda e: PRICE_PERIODS[e["period"]])
+    monthly = {e["period"]: monthly_equivalent(e) for e in entries}
+
+    if "month" in monthly:
+        baseline = monthly["month"]
+    else:
+        baseline = max(monthly.values())
+
+    view: list[dict] = []
+    for entry in entries:
+        each_month = monthly[entry["period"]]
+        discount = None
+        if baseline > 0:
+            saved = round((1 - each_month / baseline) * 100)
+            if saved > 0:
+                discount = saved
+        view.append(
+            {
+                "period": entry["period"],
+                "amount": entry["amount"],
+                "monthly": each_month,
+                "discount": discount,
+            }
+        )
+    return view
+
+
+def sort_price(record: dict) -> float:
+    """Return the monthly figure that orders a plan against its peers."""
+    monthly = {e["period"]: monthly_equivalent(e) for e in record["prices"]}
+    if "month" in monthly:
+        return monthly["month"]
+    return min(monthly.values())
+
+
 def kind_matches(value, kind: str) -> bool:
     """Report whether `value` matches the declared `kind`."""
     if kind == "links":
         return not link_errors(value)
+    if kind == "prices":
+        return not price_errors(value)
     if kind == "str":
         return isinstance(value, str)
     if kind == "num":
@@ -188,6 +276,10 @@ def validate(records: list, schema: dict, filename: str) -> list[str]:
                 continue
             if kind == "links":
                 for message in link_errors(value):
+                    errors.append(f"{label}: '{field}': {message}")
+                continue
+            if kind == "prices":
+                for message in price_errors(value):
                     errors.append(f"{label}: '{field}': {message}")
                 continue
             if not kind_matches(value, kind):
@@ -267,10 +359,11 @@ def render(data: dict, today: dt.date) -> None:
     env.filters["date"] = format_date
     env.filters["money"] = format_money
     env.filters["thousands"] = format_thousands
+    env.filters["price_view"] = price_view
 
     plans = sorted(
         data["plans"],
-        key=lambda r: (r["region"], r["provider"], r["price_amount"]),
+        key=lambda r: (r["region"], r["provider"], sort_price(r)),
     )
     api_pricing = sorted(data["api_pricing"], key=lambda r: (r["provider"], r["model"]))
     models = sorted(data["models"], key=lambda r: (r["provider"], r["name"]))

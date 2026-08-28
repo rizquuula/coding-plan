@@ -200,6 +200,22 @@ section { margin-bottom: 2.75rem; }
   font-size: 0.8em;
 }
 
+.price-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.price-list li { margin-bottom: 0.15rem; }
+
+.price-list li:last-child { margin-bottom: 0; }
+
+.price-equiv {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.78em;
+}
+
 .cell-list {
   margin: 0;
   padding-left: 1rem;

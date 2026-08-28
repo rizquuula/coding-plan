@@ -6,9 +6,12 @@
   provider: Anthropic
   plan: Claude Pro
   region: global
-  price_amount: 20
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 20
+    - period: year
+      amount: 200
   limits:
     - Weekly usage limits apply
   models:
@@ -16,7 +19,7 @@
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: Includes Claude Code. Annual billing costs 17 per month, charged as 200 up front.
+  notes: Includes Claude Code.
   links:
     - label: pricing
       url: https://claude.com/pricing
@@ -28,9 +31,10 @@
   provider: Anthropic
   plan: Claude Max 5x
   region: global
-  price_amount: 100
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 100
   limits:
     - 5x the Pro usage
     - Higher output limits for all tasks
@@ -51,9 +55,10 @@
   provider: Anthropic
   plan: Claude Max 20x
   region: global
-  price_amount: 200
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 200
   limits:
     - 20x the Pro usage
     - Higher output limits for all tasks
@@ -75,9 +80,10 @@
   provider: OpenAI
   plan: ChatGPT Go
   region: global
-  price_amount: 8
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 8
   limits:
     - Sized for lightweight coding tasks
   models:
@@ -95,9 +101,10 @@
   provider: OpenAI
   plan: ChatGPT Plus
   region: global
-  price_amount: 20
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 20
   limits:
     - Sol 10 to 100 messages per 5 hours
     - Terra 25 to 200 messages per 5 hours
@@ -117,9 +124,10 @@
   provider: OpenAI
   plan: ChatGPT Pro 5x
   region: global
-  price_amount: 100
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 100
   limits:
     - Sol 50 to 500 messages per 5 hours
     - Terra 125 to 1000 messages per 5 hours
@@ -139,9 +147,10 @@
   provider: OpenAI
   plan: ChatGPT Pro 20x
   region: global
-  price_amount: 200
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 200
   limits:
     - Sol 200 to 2000 messages per 5 hours
     - Terra 500 to 4000 messages per 5 hours
@@ -162,9 +171,10 @@
   provider: GitHub
   plan: Copilot Pro
   region: global
-  price_amount: 10
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 10
   limits:
     - 15 USD of AI credits per month
     - Unlimited code completions
@@ -185,9 +195,10 @@
   provider: GitHub
   plan: Copilot Pro+
   region: global
-  price_amount: 39
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 39
   limits:
     - 70 USD of AI credits per month
     - Unlimited code completions
@@ -208,9 +219,10 @@
   provider: GitHub
   plan: Copilot Max
   region: global
-  price_amount: 100
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 100
   limits:
     - 200 USD of AI credits per month
     - Unlimited code completions
@@ -231,9 +243,10 @@
   provider: Cursor
   plan: Pro
   region: global
-  price_amount: 20
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 20
   limits:
     - Extended agent request limits
     - On-demand billing past the included usage
@@ -255,9 +268,10 @@
   provider: Cursor
   plan: Pro+
   region: global
-  price_amount: 60
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 60
   limits:
     - 3x the Pro agent limits
   models:
@@ -278,9 +292,10 @@
   provider: Cursor
   plan: Ultra
   region: global
-  price_amount: 200
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 200
   limits:
     - 20x the Pro agent limits
   models:
@@ -301,9 +316,10 @@
   provider: Google
   plan: Google AI Ultra 5x
   region: global
-  price_amount: 100
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 100
   limits:
     - 5x the AI Pro usage limits
   models:
@@ -321,9 +337,10 @@
   provider: Google
   plan: Google AI Ultra 20x
   region: global
-  price_amount: 200
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 200
   limits:
     - 20x the AI Pro usage limits
   models:
@@ -341,19 +358,86 @@
   provider: Zhipu (GLM)
   plan: GLM Coding Plan Lite
   region: china
-  price_amount: 18
   price_currency: USD
-  price_period: month
+  prices:
+    - period: month
+      amount: 18
+    - period: quarter
+      amount: 43.2
+    - period: year
+      amount: 151.2
   limits:
     - 2000 credits per 5 hours
     - 10000 credits per week
   models:
     - GLM-5.3
-    - GLM-5-Flash
+    - GLM-5.3-Flash
   status: active
-  notes: Off-peak usage is discounted to half rate. The Pro and Max tiers exist but
-    the docs do not print their prices.
+  notes: Z.ai prints a rate per month; the quarter and year totals are that rate
+    times the term. Off-peak usage costs half rate.
   links:
+    - label: pricing
+      url: https://z.ai/subscribe
+    - label: plans
+      url: https://docs.z.ai/devpack/overview
+    - label: rate limit
+      url: https://docs.z.ai/devpack/usage-policy
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-coding-pro
+  provider: Zhipu (GLM)
+  plan: GLM Coding Plan Pro
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 80
+    - period: quarter
+      amount: 192
+    - period: year
+      amount: 672
+  limits:
+    - 12000 credits per 5 hours
+    - 60000 credits per week
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: Z.ai prints a rate per month; the quarter and year totals are that rate
+    times the term.
+  links:
+    - label: pricing
+      url: https://z.ai/subscribe
+    - label: plans
+      url: https://docs.z.ai/devpack/overview
+    - label: rate limit
+      url: https://docs.z.ai/devpack/usage-policy
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-coding-max
+  provider: Zhipu (GLM)
+  plan: GLM Coding Plan Max
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 168
+    - period: quarter
+      amount: 403.2
+    - period: year
+      amount: 1411.2
+  limits:
+    - 28000 credits per 5 hours
+    - 140000 credits per week
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: Z.ai prints a rate per month; the quarter and year totals are that rate
+    times the term.
+  links:
+    - label: pricing
+      url: https://z.ai/subscribe
     - label: plans
       url: https://docs.z.ai/devpack/overview
     - label: rate limit
