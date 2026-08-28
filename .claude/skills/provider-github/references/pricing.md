@@ -69,6 +69,17 @@ Credits pool across the billing entity. `data/plans.yaml` holds no row for
 either plan today. Adding one is a scope decision, not a sourcing problem. Ask
 before you add one.
 
+Both figures were re-read on 2026-08-28 and both held. Two sourcing notes:
+
+- `https://github.com/features/copilot/plans` prints no Business or Enterprise
+  price. Cite `get-started/plans` for the org tiers, never the marketing page.
+- `https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises`
+  confirms both credit counts and states the pooling rule: an enterprise with
+  100 Copilot Business users gets a shared pool of 190,000 AI credits.
+
+GitHub publishes the org allowance in credits only. It prints no dollar form for
+Business or Enterprise, unlike the individual tiers.
+
 ## Model availability per tier
 
 Source: `https://docs.github.com/en/copilot/get-started/plans`, section
@@ -93,6 +104,30 @@ and by priority access to a new model.
 
 Seven vendors appear in that table: Anthropic, Google, OpenAI, xAI, Moonshot AI,
 Microsoft, and GitHub. Only Raptor mini belongs to GitHub.
+
+Two rows read `octicon-x` on Copilot Pro, Pro+, and Max alike: Claude Opus 4.5
+and Claude Opus 4.6. No individual tier unlocks either. Both carry a retirement
+date of 2026-09-01 on `supported-models`.
+
+### The org table is a separate table
+
+`get-started/plans` holds a second model table under "Organization and
+enterprise plans". Read it. Do not reuse the individual table.
+
+Copilot Business and Copilot Enterprise hold identical cells on all 31 model
+rows. They differ by credits, by agents, and by customization, not by model.
+
+The org list is not the Pro+ list. Three differences, read 2026-08-28:
+
+- The org tiers unlock Claude Opus 4.5 and Claude Opus 4.6. No individual tier
+  does.
+- The org tiers unlock no GPT-5.4 nano. A footnote explains why: GPT-5.4 nano
+  runs in the Codex Visual Studio Code extension, on Copilot Pro+ only.
+- The org tiers unlock no Raptor mini.
+
+The Opus 4.5 and 4.6 disagreement between the two tables is probably a lag in
+the org table, ahead of the 2026-09-01 retirement. Do not treat it as a
+transcription error.
 
 ## Rate per 1M tokens
 

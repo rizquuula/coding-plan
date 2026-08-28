@@ -63,6 +63,22 @@ seven vendors and separates Pro from Pro+ and Max. See the model table in
 
 Widening the lists is a scope decision. Ask before you change a `models` list.
 
+One granularity trap if you do widen them. At vendor granularity all five tiers
+unlock the same seven vendors, so the tier split disappears. Split Claude into
+its four published families — Haiku, Sonnet, Opus, Fable — to carry the split.
+The OpenAI difference follows no family, because Pro unlocks GPT-5.4 and
+GPT-5.6 Terra but not GPT-5.5 or GPT-5.6 Sol. State that one in `notes`, which
+the site renders.
+
+### Copilot Free and Copilot Student
+
+Neither plan gets a row. GitHub prints no credit figure for either. The page
+says only: "Copilot Free and Copilot Student both have an allowance of AI
+credits."
+
+The one number GitHub does print for Copilot Free is a completion count, 2000
+per month. That is not a credit allowance. Do not convert one into the other.
+
 ## `data/api_pricing.yaml`
 
 **No GitHub row, on purpose.**
@@ -83,8 +99,17 @@ Two further reasons not to add a row:
    input, while OpenAI's own rate in this repository is 4.00.
 
 Raptor mini is the one GitHub model with a published rate: 0.25 input, 0.025
-cached input, 2.00 output, per 1M tokens. Adding it is a scope decision. It is
-still not an API. Ask first.
+cached input, 2.00 output, per 1M tokens. It carries no cache-write rate, no
+promotion footnote, and no long-context tier, so those three figures are the
+whole story. Adding it is a scope decision. It is still not an API. Ask first.
+
+Weigh the retirement date first. GitHub retires Raptor mini on 2026-09-01, so a
+row added in late August goes stale within days.
+
+To answer the question directly, because it comes up: `models-and-pricing`
+states real prices in USD per 1M tokens, not credit multipliers. The page says
+"All prices are **per 1 million tokens**". A rate list is therefore available.
+The reason to skip it is scope, not sourcing.
 
 ## `data/rate_limits.yaml`
 
@@ -109,8 +134,27 @@ GitHub publishes one model of its own, Raptor mini.
 describes it as a fine-tuned GPT-5 mini and prints no specification. No
 parameter count and no context window appear on any GitHub page.
 
+**The blocking reason is `vision`.** That field is a required boolean and takes
+no `null`. GitHub publishes no vision statement for Raptor mini on any page.
+Every value you could write is a guess, and rule 3 forbids a guess. This blocks
+the row on its own, before any date matters.
+
+A row would also hold `null` in `total_params`, `active_params`,
+`context_window`, `max_output`, and `open_weights`. It would state a name and a
+provider, and nothing else.
+
 That page also states a retirement date for Raptor mini of 2026-09-01, with
 MAI-Code-1-Flash as the replacement. Check that date before you invest in a row.
+
+**The replacement retires too.** The retirement table lists MAI-Code-1-Flash
+with a retirement date of 2026-09-10 and MAI-Code-1.1-Flash as its alternative.
+A row that follows the chain needs two edits inside two weeks.
+
+Two naming notes. `supported-models` writes Raptor mini's `Provider` cell as
+`Fine-tuned GPT-5 mini`, which is a description, not a vendor name.
+`models-and-pricing` files its rate under the heading `### Fine-tuned (GitHub)`.
+Neither string is a vendor, so neither belongs in a `provider` field. Write
+`GitHub`.
 
 The same page prints no context window for any model. It describes a 1 million
 token context window as an optional extended capability on selected models, and
@@ -126,7 +170,13 @@ Only these fit a GitHub row. The label describes what the page is.
 | `plans` | `https://github.com/features/copilot/plans` |
 | `pricing` | `https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing` |
 | `rate limit` | `https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals` |
+| `rate limit` | `https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises` |
 | `docs` | `https://docs.github.com/en/copilot/get-started/plans` |
+| `model card` | `https://docs.github.com/en/copilot/reference/ai-models/supported-models` |
+
+Use the org billing page on a Business or Enterprise row. Use the individual
+billing page on a Pro, Pro+, or Max row. `get-started/plans` also fits the
+`plans` label, because it compares tiers. Pick one label per entry.
 
 Never link a page under `copilot-billing/request-based-billing-legacy/`. Those
 pages describe a billing model GitHub retired on 2026-06-01.

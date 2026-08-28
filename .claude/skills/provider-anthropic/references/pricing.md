@@ -69,6 +69,26 @@ problem. Ask before you add one.
 
 Never mix a seat price into an individual Pro or Max row.
 
+The Team card prints only a monthly rate for the annual term, exactly like the
+Pro card. It never prints a term total. `AGENTS.md` lets you multiply the rate by
+the term and say so in `notes`, so a Team standard seat is `month: 25` and
+`year: 240`, and a premium seat is `month: 125` and `year: 1200`.
+
+Two FAQ answers license those totals. Read them before you write a Team row:
+
+    Annual subscriptions are available for Pro and Team plans. Enterprise plans
+    are only available as annual subscriptions. When you choose to pay annually,
+    you're billed once up front for the year.
+
+    [Enterprise] Pricing is $20 per seat per month plus usage billed at API
+    rates, so cost scales with the models and tasks your team runs. Enterprise
+    is billed annually...
+
+So an Enterprise row carries one `prices` entry, `year: 240`. It carries no
+`month` entry, because Anthropic does not sell Enterprise monthly. The card
+itself prints only `$20/seat` with no period; the period is in the FAQ. The Team
+card also states the seat range, "For teams of 2 to 150".
+
 ## API rates per token
 
 From `https://platform.claude.com/docs/en/about-claude/pricing`, USD per 1M
@@ -122,6 +142,43 @@ The same page prints all three. None belongs in `input` or `output`.
 Partner platforms have their own prices. Amazon Bedrock and Google Cloud add a
 10 percent premium on regional endpoints. Those are pages Anthropic does not own,
 so rule 4 in `AGENTS.md` forbids citing them.
+
+### Speed: Anthropic publishes no tokens-per-second figure
+
+Checked on 2026-08-28 across the pricing page, the models overview, the
+rate-limit page, the fast-mode page, and the Opus 4.8 and Sonnet 4.6 pages. No
+Anthropic page states an absolute generation speed for any model. Never write
+one into a row.
+
+Anthropic publishes two relative statements instead. Both are ratios, and
+neither converts to a rate.
+
+1. **A latency ranking**, on `docs/en/models/overview`. The `Comparative latency`
+   row reads `Slower` for Fable 5, `Moderate` for Opus 5, `Fast` for Sonnet 5,
+   and `Fastest` for Haiku 4.5. The page adds: "Relative to the current lineup.
+   Actual latency depends on prompt length, output length, and thinking effort."
+2. **A fast-mode multiplier**, on `docs/en/build-with-claude/fast-mode`: "Fast
+   mode delivers up to 2.5x higher output tokens per second from Claude Opus 5
+   and Claude Opus 4.8 at premium pricing." The page notes the gain is in output
+   tokens per second, not time to first token.
+
+The 2.5x is measured against a baseline Anthropic never states, so you cannot
+derive a figure from it. Fast mode's premium price is a price, not a speed.
+
+### Concurrency: Anthropic publishes no concurrent-request limit
+
+The rate-limit page caps throughput per minute, never concurrency. The closest
+sentence grants parallelism rather than capping it: "Rate limits are applied
+separately for each model; therefore you can use different models up to their
+respective limits simultaneously."
+
+Two nearby limits are not concurrency limits. Do not record either as one.
+
+- The Message Batches API caps "batch requests in processing queue" at 200,000
+  on Start, 300,000 on Build, and 500,000 on Scale. That is a queue depth.
+- Fast mode has its own limits, and the page publishes no number for them. It
+  names response headers only, such as `anthropic-fast-output-tokens-limit`. A
+  reader must call the API to see a value, so no row can cite a page.
 
 ### Long context
 

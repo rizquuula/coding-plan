@@ -73,7 +73,8 @@ curl -sA "$UA" -L https://claude.com/pricing -o /tmp/claude_pricing.html
 grep -o 'data-plan="[a-z0-9_]*"' /tmp/claude_pricing.html | sort -u
 ```
 
-On 2026-08-28 that printed nine plan keys:
+On 2026-08-28 that printed eight named keys, plus one empty `data-plan=""` on a
+seat header:
 
     free
     pro_annual
@@ -85,6 +86,12 @@ On 2026-08-28 that printed nine plan keys:
     team_premium_monthly_per_seat
 
 Note what is absent. There is no `max_20x` key of any kind.
+
+The Pro annual key appears twice, under two different `data-plan-field` values.
+Take `amount_total`, never `amount_per_month`:
+
+    data-plan="pro_annual" data-plan-field="amount_per_month" ...>$17
+    data-plan="pro_annual" data-plan-field="amount_total">$200
 
 To read a price, print the text around a key:
 

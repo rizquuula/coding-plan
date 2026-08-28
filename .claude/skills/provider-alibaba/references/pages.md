@@ -18,7 +18,35 @@ the twin is the source you use.
 | `text-generation-model` | Context window and tool support per model | 31 KB | `scripts/read_tables.py` |
 | `coding-plan` | Coding Plan price, quota, model list | 9.5 KB | `scripts/read_tables.py` |
 | `token-plan-overview` | Token Plan prices and Credit quotas | 7.8 KB | `scripts/read_tables.py` |
+| `token-plan-personal-overview` | Personal tier prices, quotas, model list with a capability column | 12 KB | `scripts/read_tables.py` |
+| `token-plan-team-overview` | Team seat prices, quotas, model list with a capability column | 13 KB | `scripts/read_tables.py` |
+| `vision-model` | Maximum output length, input modality, video limits | 10 KB | `scripts/read_tables.py` |
 | `context-cache` | Cache billing rules and supported models | 60 KB | `WebFetch` |
+
+Sizes above were measured on 2026-08-28.
+
+## The three pages that answer `vision` and `max_output`
+
+`text-generation-model` publishes neither field. Three other pages do.
+
+1. `vision-model` holds a per-model table with an `Input` column and a
+   `Max output` column. On 2026-08-28 it stated `qwen3.7-plus` as
+   `Text, images, video` input and `64k` max output. It is the **only** page read
+   so far that publishes a maximum output length. It covers the Qwen3.5, Qwen3.6,
+   Qwen3.7, Qwen3-VL, Qwen-Omni, Qwen-OCR, and QVQ families. It does not cover
+   `qwen-max`, `qwen3-max`, `qwen3.8-max`, or any `qwen3-coder` model.
+
+2. `token-plan-personal-overview` and `token-plan-team-overview` each hold a
+   supported-model table with a `Capability` column. That column names visual
+   understanding per model. On 2026-08-28 it read `Reasoning, visual
+   understanding, text generation` for `qwen3.8-max` and `qwen3.7-plus`, and
+   `Reasoning, text generation` for `qwen3.7-max`. This is the cleanest source
+   for `vision` on the Max family.
+
+3. `vision` (177 KB) is the visual-understanding how-to guide. It is code
+   samples, not a table, so it publishes no value you can copy. It is still
+   evidence of scope: on 2026-08-28 every sample used `qwen3.8-max`, and the
+   strings `qwen-max` and `qwen3-coder-plus` appeared zero times on the page.
 
 ## The two sites
 
@@ -58,6 +86,7 @@ URL in `links` looks healthy until you check it with `curl`.
 | `.../model-studio/billing-for-model-studio.md` | `.../model-studio/model-pricing.md` |
 | `.../help/en/document_detail/2862577.html` | `.../model-studio/context-cache` |
 | `.../help/en/document_detail/3026903.html` | `.../model-studio/text-generation-model/` |
+| `.../help/en/document_detail/3046858.html` | `.../model-studio/token-plan-personal-overview` |
 
 `data/api_pricing.yaml` still cites `billing-for-model-studio`. It resolves, so
 it is not broken. Replace it with `model-pricing` the next time you touch that

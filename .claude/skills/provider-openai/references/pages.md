@@ -13,6 +13,10 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 | `https://developers.openai.com/api/docs/models/gpt-5.6-terra` | Terra specification, rates, rate limits | `WebFetch` | 200 |
 | `https://developers.openai.com/api/docs/models/gpt-5.6-luna` | Luna specification, rates, rate limits | `WebFetch` | 200 |
 | `https://developers.openai.com/api/docs/guides/rate-limits` | Usage tier thresholds, response headers, no per-model number | `WebFetch` | 200 |
+| `https://developers.openai.com/api/docs/models/gpt-oss-120b` | Open-weight specification, parameter counts, an all-zero rate-limit table | `WebFetch` | 200 |
+| `https://developers.openai.com/api/docs/models/gpt-5.3-codex` | Codex specification and rates; deprecated in Codex, still served by the API | `WebFetch` | 200 |
+| `https://learn.chatgpt.com/docs/models` | Which surface each model runs on, Codex deprecations, speed as icons | `WebFetch` | 200 |
+| `https://learn.chatgpt.com/docs/agent-configuration/speed` | Fast mode multiplier and credit multiplier | `WebFetch` | 200 |
 
 ## The `.md` twin
 
@@ -104,9 +108,14 @@ stale on the page itself. Do not copy one into `links`.
   RPM or TPM. It publishes the spend that promotes an account between usage
   tiers. Read the model page for the numbers.
 - The GPT-5.6 model pages publish no parameter count. Leave `total_params` and
-  `active_params` as `null`.
+  `active_params` as `null`. They also state nothing about the weights, so
+  `open_weights` is `null`, not `false`.
+- No OpenAI page publishes a generation speed in tokens per second. No OpenAI
+  page publishes a concurrent-request limit. Both were searched on 2026-08-28.
 - `learn.chatgpt.com/docs/pricing` publishes a monthly price for each individual
-  plan tier and no yearly price. Write one `month` entry per plan record.
+  plan tier and no yearly price. Write one `month` entry per individual plan
+  record. Business is the exception: it prints both a monthly and an annual seat
+  rate.
 - Long-context rate limits are separate from the published table. The rate-limit
   guide states that you view them in the developer console, which needs a login.
 

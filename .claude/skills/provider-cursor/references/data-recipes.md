@@ -69,6 +69,11 @@ Every monthly price matches the provider page. No row carries the yearly term
 yet, and every row still cites the redirect path
 `https://cursor.com/docs/account/pricing`. Fix both on the next refresh.
 
+A full refresh proposal was drafted on 2026-08-28. It adds the yearly term to
+all three rows, repoints `pricing` to `https://cursor.com/docs/models-and-pricing`,
+adds `Grok`, `Kimi`, and `GLM` to `models`, and adds two Teams rows. It was
+validated in a sandbox: `ok: 138 records passed validation`. It was not applied.
+
 ## `data/api_pricing.yaml`
 
 **No Cursor row, on purpose.**
@@ -95,8 +100,14 @@ is a per-model limit. Do not add a row of nulls.
 
 **No Cursor row, on purpose.**
 
-The schema needs a `vision` boolean and an `open_weights` boolean. No Cursor
-page states either for Composer or Grok. Do not guess them.
+The schema needs a `vision` boolean. No Cursor page states it for Composer or
+Grok. Do not guess it.
+
+`open_weights` no longer blocks a row. It is nullable now, and `null` is the
+correct value for all three Cursor models. Do not read the Composer 2.5 blog
+sentence "built on the same open-source checkpoint as Composer 2, Moonshot's
+Kimi K2.5" as an open-weights claim. It describes the base checkpoint. Cursor
+publishes no Composer weights.
 
 The model card does publish a context window and a model ID. Read the HTML, not
 the `.md` twin, which drops the card. See `pages.md`. If a page ever states the

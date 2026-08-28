@@ -39,9 +39,16 @@ Three facts the page prints alongside the table:
 3. A cloud chat runs on GPT-5.6 Sol and may use more allowance than a local
    message.
 
-The table publishes no row for the Go tier. `data/plans.yaml` records Go as
-`Sized for lightweight coding tasks`, which paraphrases the Go card subtitle,
-"Use Codex for lightweight coding tasks". Do not invent a number for Go.
+The table publishes no row for the Go tier and no row for the Free tier. Both
+columns are missing, not empty. `data/plans.yaml` records Go as `Sized for
+lightweight coding tasks`, which paraphrases the Go card subtitle, "Use Codex
+for lightweight coding tasks". The Free card subtitle reads "Explore Codex
+capabilities on quick coding tasks". Paraphrase a subtitle. Never invent a
+number for Free or Go.
+
+Business shares the Plus numbers exactly. The page also states two Business
+facts that Plus does not get: about 45 minutes of ChatGPT Voice, and about 6
+credits per minute of Desktop voice on a credit-based workspace.
 
 Pro 20x also gets unlimited ChatGPT Voice. The page states that a task started
 through Voice still draws on the Codex usage budget.
@@ -134,6 +141,16 @@ limit, and that you view it in the developer console. The console needs a login,
 so no agent can read it and no reader can check it.
 
 Write only the published table. Do not add a long-context row.
+
+## Trap: OpenAI publishes no concurrency limit
+
+The rate-limit guide names six metrics: RPM, RPD, TPM, TPD, IPM, and audio
+minutes per minute. None of them is a concurrency metric. The word "concurrent"
+appears on no page in `pages.md`. Every model page prints three columns: RPM,
+TPM, and a batch queue limit.
+
+If this repository ever adds a `concurrent_requests` field for another provider,
+every OpenAI row keeps it `null`. That is a correct result, not a gap.
 
 ## Trap: shared limits
 

@@ -65,14 +65,22 @@ fields, read from the Composer page on 2026-08-28:
 | Speed | Fast |
 | Cost | Low |
 
-Two more cards, read the same way:
+Three more cards, read the same way:
 
-| Model | Context window | Max context | Model ID |
-|---|---|---|---|
-| Grok 4.6 | 256k | - | grok-4.6 |
-| Claude Opus 5 | 300k | 1M | claude-opus-5 |
+| Model | Context window | Max context | Model ID | Speed | Cost |
+|---|---|---|---|---|---|
+| Grok 4.6 | 256k | - | grok-4.6 | Medium | Medium |
+| Grok 4.5 | 256k | - | grok-4.5 | Medium | Medium |
+| Claude Opus 5 | 300k | 1M | claude-opus-5 | - | - |
 
 The card states no parameter count, no maximum output, and no vision flag.
+
+`Speed` is a label, not a rate. It reads `Fast` or `Medium`. No Cursor page
+states a figure in tokens per second. Searched 2026-08-28 across every page in
+this table, the three spec cards as raw HTML including script tags, and the
+Composer 2.5 blog post. Zero matches for `tokens per second`, `tokens/s`,
+`tokens/sec`, and `tok/s`. Report "none published" and do not convert a
+marketing comparative into a number.
 
 ## Redirects
 

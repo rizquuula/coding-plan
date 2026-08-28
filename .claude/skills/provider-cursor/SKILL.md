@@ -39,11 +39,15 @@ three of the four datasets hold zero Cursor rows. See "Datasets with zero rows".
 
 ## Six things that produce a wrong number
 
-**1. The pricing page hides every tier except the selected one.** `WebFetch` on
+**1. The pricing page ships one price per picker, not one tier.** `WebFetch` on
 `https://cursor.com/pricing` returned "Not specified" for Pro+ and Ultra, and it
 read the Teams Premium price as `$40`. The real Premium price is `$120`. Take
 plan prices from `help/account-and-billing/pricing.md` instead. Detail in
 `references/pages.md`.
+
+Only the **price** is toggle-gated. `curl` on the same page returns the feature
+lines for all three individual tiers and both Teams seats, in picker order.
+Confirmed 2026-08-28. Use `curl` for `limits` text; never for a price.
 
 **2. The yearly price is not in the HTML.** The page carries a monthly/yearly
 toggle, and the server sends the monthly figures only. The yearly figures sit in
@@ -69,6 +73,17 @@ on `https://cursor.com/docs/api` cover the Admin, Analytics, Bugbot, and Cloud
 Agents REST APIs. `data/rate_limits.yaml` needs a per-model limit, so it holds
 zero Cursor rows. Reasoning in `references/quotas.md`.
 
+**7. "Hidden by default" is a picker state, not an entitlement.** The model
+table notes that Kimi, GLM, and most Claude models are "Hidden by default". They
+are still included. `help/models-and-usage/available-models.md` states: "Hobby
+users have access to a smaller set, while paid plans unlock all models." List a
+hidden model in `models` on a paid tier. Detail in `references/quotas.md`.
+
+**8. Composer's base checkpoint is open, Composer is not.** The Composer 2.5
+blog says it "is built on the same open-source checkpoint as Composer 2,
+Moonshot's Kimi K2.5". That describes the base model. Cursor publishes no
+Composer weights, so `open_weights` is `null`, never `true`.
+
 ## Datasets with zero rows
 
 Three datasets hold no Cursor row, and each zero is correct.
@@ -78,9 +93,11 @@ Three datasets hold no Cursor row, and each zero is correct.
   models. Only Grok 4.6, Grok 4.5, and Composer 2.5 are Cursor's own. Adding
   those three is a scope decision, not a sourcing problem. Ask first.
 - `data/rate_limits.yaml` — Cursor publishes no per-model limit. See trap 6.
-- `data/models.yaml` — Cursor publishes a context window and a model ID for
-  Composer, and nothing else. The schema needs a `vision` boolean, which no
-  Cursor page states. Do not guess it.
+- `data/models.yaml` — blocked on `vision` alone. `open_weights` became
+  nullable, so it no longer blocks a row. `vision` is still required and
+  non-nullable in `build.py`, and no Cursor page states it for Composer or
+  Grok. Checked 2026-08-28 across both spec cards, both help pages, the docs
+  twins, and the Composer blog. Do not guess it.
 
 Do not add a row of nulls to record any of these absences.
 

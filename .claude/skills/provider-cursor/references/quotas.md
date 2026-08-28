@@ -41,6 +41,21 @@ Two more strings sit in the same page markup and are not shown by default:
 `3x usage on frontier models` for Pro+ and `20x usage on frontier models` for
 Ultra.
 
+`curl` on `https://cursor.com/pricing` returns every one of these strings, for
+all five paid tiers, even though the page prices one tier at a time. Read the
+feature lines from there. Confirmed 2026-08-28. Each tier also prints
+`Generous limits for Grok`, and Pro+ and Ultra print a Grok Bot line.
+
+## Which models a paid tier unlocks
+
+`help/models-and-usage/available-models.md` settles this in one sentence:
+"Hobby users have access to a smaller set, while paid plans unlock all models."
+
+So a model marked "Hidden by default" in the pricing table is still included.
+That note describes the model picker, not entitlement. Claude 4.5 Sonnet and
+Claude 4.6 Opus carry it too. Kimi and GLM belong in `models` on every paid
+individual tier and both Teams seats.
+
 Write a multiplier as `limits` text, under 12 words:
 
 ```yaml

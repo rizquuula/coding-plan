@@ -80,6 +80,22 @@ Miss is the uncached rate, so it goes in `input`. Cache Hit goes in
 
 **Moonshot publishes no cache-write rate.** Leave `cache_write` as `null`.
 
+## The high-speed variant is a speed as well as a price
+
+`docs/pricing/chat-k27-code` states the number outright, and
+`docs/guide/kimi-k2-7-code-quickstart` and `docs/models` repeat it word for word:
+
+> Kimi K2.7 Code HighSpeed is the high-speed version of Kimi K2.7 Code, the same
+> model as Kimi K2.7 Code, but with an output speed of approximately 180
+> Tokens/s and up to 260 Tokens/s in short context scenarios.
+
+So the two rows on that pricing page differ in price and in output speed, not in
+capability. `docs/api/models-overview` confirms it: "the two are the same model
+with identical parameter constraints ... and differ only in output speed."
+
+Record both facts in the `notes` of the `kimi-k2.7-code` row. An earlier version
+of this skill said the variant was a price and not a speed. That was wrong.
+
 `llms.txt` also lists pricing pages for `kimi-k2.6`, `kimi-k2.5`, the
 `moonshot-v1` series, BatchJob, and WebSearch. Add a model only when it belongs
 in a coding-plan tracker. `kimi-k2.5` and the `moonshot-v1` series reach full

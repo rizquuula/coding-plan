@@ -17,7 +17,8 @@ rows by that exact string, so any other spelling splits the provider into two
 tables. `region` is `global`. Prices and rates are USD.
 
 OpenAI sells the subscription as **ChatGPT**, in four paid individual tiers: Go,
-Plus, Pro 5x, and Pro 20x. It sells the API per token.
+Plus, Pro 5x, and Pro 20x. It sells one organization tier, Business, at a seat
+price. It sells the API per token.
 
 ## Where each value lives
 
@@ -29,13 +30,15 @@ Plus, Pro 5x, and Pro 20x. It sells the API per token.
 | Model specification | `https://developers.openai.com/api/docs/models/<model-id>.md` | `WebFetch` |
 | Usage tier thresholds | `https://developers.openai.com/api/docs/guides/rate-limits.md` | `WebFetch` |
 | Every model page URL | `https://developers.openai.com/api/docs/models.md` | `WebFetch` |
+| Which surface each model runs on, Codex deprecations | `https://learn.chatgpt.com/docs/models.md` | `WebFetch` |
+| Fast mode, the only speed statement OpenAI publishes | `https://learn.chatgpt.com/docs/agent-configuration/speed.md` | `WebFetch` |
 | Every docs URL | `https://developers.openai.com/llms.txt` | `WebFetch` |
 
 `WebFetch` reads every page in this table. You need no script and no browser.
 Append `.md` to any docs path to get clean markdown. Details in
 `references/pages.md`.
 
-## Seven things that produce a wrong number
+## Ten things that produce a wrong number
 
 **1. `openai.com`, `chatgpt.com`, and `help.openai.com` all return 403.** A
 Cloudflare challenge blocks them. `curl` and `WebFetch` both fail, under every
@@ -70,6 +73,26 @@ Credits are a consumption unit, not USD. Never copy a credit figure into
 **7. The rate-limit guide publishes no per-model number.** It states the spend
 that promotes an account between usage tiers, and nothing else. Every RPM and
 TPM figure sits on the model page. Reasoning in `references/quotas.md`.
+
+**8. OpenAI publishes no generation speed and no concurrency limit.** Checked
+again on 2026-08-28. The word "speed" appears twice, and neither use is a
+number. `learn.chatgpt.com/docs/agent-configuration/speed` gives a ratio, "Fast
+mode increases supported model speed by 1.5x". `learn.chatgpt.com/docs/models`
+gives an icon count, 2 flashes for Sol and 4 for Luna, with no unit. Never
+derive a tokens-per-second figure from either. The rate-limit guide names six
+metrics and no concurrency metric, so leave any concurrency field `null`.
+
+**9. The Free and Go cards state no models and no message limits.** Both cards
+are self-closing, so they carry no feature bullets. The message-limit table
+starts at Plus. The feature matrix lists Plus, Pro, Business, Enterprise, and
+API Key. So no page ties a model list to the Free or Go tier. The `models` list
+on `openai-chatgpt-go` in `data/plans.yaml` is therefore unsourced today. Do not
+copy that pattern into a new record without flagging it.
+
+**10. The GPT-5.6 context window is 1,050,000, not 1,000,000.** Writing `1M`
+understates it by 50,000 tokens. Write `1.05M`. Check the sibling rows before
+you change the convention, because `data/api_pricing.yaml` and
+`data/models.yaml` must agree.
 
 ## Workflow
 

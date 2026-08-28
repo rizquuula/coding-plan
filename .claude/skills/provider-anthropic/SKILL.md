@@ -31,14 +31,16 @@ The two live on different hosts and read with different tools. Keep them apart.
 | API rates per token | `https://platform.claude.com/docs/en/about-claude/pricing.md` | `WebFetch` |
 | API rate limits per model and tier | `https://platform.claude.com/docs/en/api/rate-limits.md` | `WebFetch` |
 | Context window, max output, vision | `https://platform.claude.com/docs/en/models/overview.md` | `WebFetch` |
+| The same, for one legacy model | `https://platform.claude.com/docs/en/models/<model>/overview.md` | `WebFetch` |
 | Pro price, Max 5x price, plan features | `https://claude.com/pricing` | `curl`, then grep `data-plan` |
+| Team and Enterprise seat prices | `https://claude.com/pricing` | `curl`, then grep `data-plan` |
 | Max 20x price | `https://support.claude.com/en/articles/11049741-what-is-the-max-plan` | `WebFetch` |
 | Every docs URL | `https://platform.claude.com/llms.txt` | `curl` |
 
 Every page under `platform.claude.com/docs/` serves a markdown twin. Append `.md`
 to the path. The twin returns clean markdown and reads faster than the HTML.
 
-## Six things that produce a wrong number
+## Eight things that produce a wrong number
 
 **1. `claude.com/pricing` publishes no Max 20x price.** The Max card prints
 `From $100` and nothing else. The page names the 20x tier in its feature table
@@ -68,7 +70,18 @@ charges 10.00 input and 50.00 output on Claude Opus 5. The Batch API charges hal
 the base rate. Neither belongs in `input` or `output`. Copy the `Base Input
 Tokens` and `Output Tokens` columns only.
 
-**6. The rate-limit tables name model classes, not models.** One row reads
+**6. Anthropic states no speed and no concurrency limit.** No page prints a
+tokens-per-second figure for any model. The models overview ranks latency as
+`Slower`, `Moderate`, `Fast`, and `Fastest`, and fast mode claims "up to 2.5x
+higher output tokens per second". Both are ratios against an unstated baseline.
+No page states a concurrent-request cap either. Details in `references/pricing.md`.
+
+**7. The Fable rule on `claude.com/pricing` is a table cell, not a sentence.**
+The "Models and usage" table gives Max 5x and Max 20x `50% of weekly limits*`
+and gives Pro `Usage credits`. Do not search the prose for it; earlier notes
+quoted a sentence that the page does not carry. See `references/quotas.md`.
+
+**8. The rate-limit tables name model classes, not models.** One row reads
 `Claude Opus 4.x`, and a footnote states that Anthropic pools Opus 4.8, 4.7, 4.6,
 and 4.5 into one limit. A second row reads `Claude Sonnet 4.x` and pools Sonnet
 4.6 and 4.5. Claude Opus 5 and Claude Sonnet 5 each hold a separate bucket. Write

@@ -78,7 +78,12 @@ set of limits for every account.
 
 ## `data/models.yaml`
 
-**No DeepSeek row exists yet.** To add one, read
+**No DeepSeek row exists yet.** Two rows were drafted and validated on
+2026-08-28, and the maintainer had not applied them at that date. The row below
+passes `python3 build.py --check`. The V4-Flash row takes `total_params: 284B`
+and `active_params: 13B`, and is otherwise identical.
+
+To add one, read
 `https://www.deepseek.com/en/news/v4-preview/` and use `model card` as the link
 label. That page states the parameter counts. The Chinese twin does not.
 

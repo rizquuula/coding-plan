@@ -11,11 +11,31 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 | `https://www.deepseek.com/en/news/v4-preview/` | Parameter counts, open weights, 1M context | `WebFetch` |
 | `https://api-docs.deepseek.com/news/news260813` | V4-Pro launch, the peak and off-peak pricing change | `WebFetch` |
 | `https://api-docs.deepseek.com/news/news260821` | V4-Flash-Vision-Exp launch, image token billing | `WebFetch` |
+| `https://api-docs.deepseek.com/updates` | The change log, newest entry first | `curl -sL` |
 | `https://api-docs.deepseek.com/sitemap.xml` | Every docs URL | `curl` |
 
 `WebFetch` returned the real content for each page above. `curl` on the HTML
 also works, because the site renders server side. The pricing numbers sit in the
 HTML source, so you do not need a JavaScript bundle.
+
+`curl` needs `-L` and a user agent on both hosts. Use
+`curl -sL -A "Mozilla/5.0"`. A bare `curl -s` on `api-docs.deepseek.com` returns
+a 432-byte `302 Moved Temporarily` stub.
+
+## Start at the change log
+
+`https://api-docs.deepseek.com/updates` holds every API change by date, newest
+first. Read its top entry before you re-read a price. When that date is older
+than the `last_verified` on the rows, nothing changed and the refresh only
+confirms the values.
+
+The three newest entries on 2026-08-28:
+
+| Date | Entry |
+|---|---|
+| 2026-08-21 | DeepSeek-V4-Flash-Vision-Exp release |
+| 2026-08-13 | DeepSeek-V4-Pro GA, Responses API, peak and off-peak pricing |
+| 2026-07-31 | DeepSeek-V4-Flash public beta |
 
 ## The soft 404
 
@@ -41,8 +61,55 @@ Two consequences:
 2. The `.md` twin trick that works on `docs.z.ai` does not work here. Do not
    spend time on it.
 
+Byte length tells a real page from the home page. Measured on 2026-08-28 with
+`curl -sL -A "Mozilla/5.0"`:
+
+| Page | Bytes |
+|---|---|
+| The soft-404 home page | 46100 |
+| `quick_start/pricing` | 23168 |
+| `quick_start/rate_limit` | 35206 |
+| `updates` | 48149 |
+| `news/news260813` | 23050 |
+| `news/news260821` | 25008 |
+
+Note that `updates` is larger than the home page. Do not treat "bigger than
+46100" as the test. Check the `<title>` instead, or search the body for a string
+only the real page holds.
+
 Use `https://api-docs.deepseek.com/sitemap.xml` to find a page. It lists every
-real URL and it returns `application/xml`.
+real URL and it returns `application/xml`. It held 73 URLs on 2026-08-28, in
+these groups:
+
+| Prefix | Count | Holds |
+|---|---|---|
+| `/quick_start/` | 4 | Pricing, rate limit, token usage, error codes |
+| `/quick_start/agent_integrations/` | 18 | One page per coding agent, including Claude Code and Codex |
+| `/guides/` | 12 | Vision, thinking mode, KV cache, tool calls |
+| `/api/` | 11 | Endpoint reference |
+| `/api_samples/` | 8 | Code samples |
+| `/news/` | 17 | One page per release |
+| Top level | 3 | `/`, `/updates`, `/prompt-library`, `/faq` |
+
+## Reading a page as text
+
+A wide-context `grep -oE` hangs on these files. The HTML holds about 25 very
+long lines, so `.{0,150}foo.{0,150}` backtracks for minutes. Strip the tags
+first:
+
+```python
+import re, html
+s = open('/tmp/page.html', encoding='utf-8', errors='replace').read()
+t = re.sub(r'<script.*?</script>', '', s, flags=re.S)
+t = re.sub(r'<[^>]+>', ' ', t)
+t = html.unescape(t)
+t = re.sub(r'\s+', ' ', t)
+for m in re.finditer(r'YOUR_PATTERN', t, re.I):
+    print(t[max(0, m.start() - 200): m.end() + 200])
+```
+
+Replace `<[^>]+>` with `'\n'` instead of `' '` when you want the pricing table
+row by row.
 
 ## Language paths
 
@@ -80,6 +147,12 @@ cite it. `AGENTS.md` rule 4 needs a page a reader can open.
   no price and no quota.
 - `https://www.deepseek.com/news/v4-preview/`, the Chinese one, prints no
   parameter count.
+- No DeepSeek page prints a generation speed in tokens per second. Seven pages
+  were searched on 2026-08-28. The launch page says "faster response times" for
+  V4-Flash and attaches no number.
+- `https://www.deepseek.com/en/` prints no plan. Its footer links "API Pricing"
+  to the per-token docs page, and "Service Status" to
+  `https://status.deepseek.com/`.
 
 ## Citation rule
 

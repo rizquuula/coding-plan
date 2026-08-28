@@ -46,8 +46,11 @@ Four rows today: `openai-chatgpt-go`, `openai-chatgpt-plus`,
 
 Notes on this dataset:
 
-- One `month` entry per record. `learn.chatgpt.com/docs/pricing` publishes no
-  yearly price for an individual plan tier. Do not derive one.
+- One `month` entry per individual record. `learn.chatgpt.com/docs/pricing`
+  publishes no yearly price for Go, Plus, or Pro. Do not derive one.
+- Business is the exception. Its card prints 20 per seat billed annually and 25
+  per seat billed monthly, so the record carries `month: 25` and `year: 240`.
+  See `pricing.md` for the footnote and the multiplication rule.
 - Pro is two records, not one. The page names the tiers `Pro 5x` and `Pro 20x`
   and prices them at 100 and 200. See `pricing.md`.
 - Write the message limits as plain integers with no comma. The page prints
@@ -64,7 +67,7 @@ Three rows today: `openai-gpt-5-6-sol`, `openai-gpt-5-6-terra`,
   provider: OpenAI
   model: GPT-5.6 Sol
   model_id: gpt-5.6-sol
-  context_window: 1M
+  context_window: 1.05M
   currency: USD
   input: 4.00
   cached_input: 0.40
@@ -85,7 +88,8 @@ Notes on this dataset:
 - `cache_write` is a real number for a GPT-5.6 model. The pricing page prints
   it, and each model page states the 1.25x rule that produces it.
 - `context_window` comes from the model page, not the pricing page. All three
-  GPT-5.6 models state a 1,050,000 context window.
+  GPT-5.6 models state a 1,050,000 context window. Write `1.05M`. `1M`
+  understates the window by 50,000 tokens.
 - Use `model card` as the label for a model page. Use `pricing` for the pricing
   page. Use `rate limit` only for a page that states a quota.
 
@@ -131,17 +135,31 @@ the same specification:
 
 | Field | Value | Source line on the page |
 |---|---|---|
-| `context_window` | `1M` | `1,050,000 context window` |
+| `context_window` | `1.05M` | `1,050,000 context window` |
 | `max_output` | `128K` | `128,000 max output tokens` |
 | `vision` | `true` | `Input modalities: text, image` |
-| `open_weights` | `false` | No download link, no licence statement |
+| `open_weights` | `null` | No download link, no licence statement |
 | `total_params` | `null` | The page prints no parameter count |
 | `active_params` | `null` | The page prints no parameter count |
 
-Set `open_weights` from what the page states, not from reputation. Two OpenAI
-models are open weights and say so. `gpt-oss-120b` states "117B parameters with
-5.1B active parameters" and links a HuggingFace download. `gpt-oss-20b` has its
-own page. Every GPT-5.6 page states neither.
+Set `open_weights` from what the page states, not from reputation. `AGENTS.md`
+makes the field nullable, and `null` means unstated. A GPT-5.6 page says nothing
+about its weights, so it gets `null`. Writing `false` there is an unsourced
+claim, which breaks rule 3.
+
+`gpt-oss-120b` is the opposite case, and every value is on its page:
+
+| Field | Value | Source line on the page |
+|---|---|---|
+| `total_params` | `117B` | `(117B parameters with 5.1B active parameters)` |
+| `active_params` | `5.1B` | the same line |
+| `context_window` | `131K` | `131,072 context window` |
+| `max_output` | `131K` | `131,072 max output tokens` |
+| `vision` | `false` | `Input modalities: text` |
+| `open_weights` | `true` | `Download gpt-oss-120b on HuggingFace`, `Permissive Apache 2.0 license` |
+
+`vision: false` is safe here only because the page lists the input modalities and
+omits image. `gpt-oss-20b` has its own page with its own numbers.
 
 Each model page also prints a knowledge cutoff, `Feb 16, 2026` for the GPT-5.6
 family. This repository has no field for it. Do not force it into `notes`
@@ -175,6 +193,13 @@ in `AGENTS.md`, not from this file.
 | `data/api_pricing.yaml` | `context_window` is `null` on all three rows. Every model page states 1,050,000. |
 | `data/api_pricing.yaml` | The `rate limit` link points at `guides/rate-limits`, which publishes no per-model number. The model page does. |
 | `data/models.yaml` | No OpenAI row exists. Three model pages publish a full specification. |
+| `data/plans.yaml` | No Business row exists. The pricing page publishes a seat price for it. |
+| `data/plans.yaml` | The `models` list on `openai-chatgpt-go` is unsourced. No page ties a model to the Go tier. |
+
+A drafted, schema-valid replacement for every row above lives in the refresh
+proposal written on 2026-08-28. It passed `python3 build.py --check` against a
+scratch copy of the datasets. Re-verify the values before you paste them, since
+a price can move after the draft.
 
 ## After any change
 

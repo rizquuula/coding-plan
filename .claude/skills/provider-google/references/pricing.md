@@ -36,6 +36,10 @@ and the launch date.
 `data/plans.yaml` carried 100 and 200 on 2026-08-28. Those came from the blog.
 Correct them to 99.99 and 199.99 the next time you refresh the rows.
 
+The blog also says the AI Ultra 20x tier `Adds Gemini Omni`. The subscriptions
+page contradicts that. It lists Gemini Omni Flash under Google AI Plus and under
+Google AI Pro as well. Do not write Gemini Omni as an Ultra-only feature.
+
 ## Two coding surfaces sit inside the plans
 
 The subscriptions page names both under Google AI Pro and Google AI Ultra:
@@ -58,11 +62,58 @@ From `https://ai.google.dev/gemini-api/docs/pricing`, USD per 1M tokens, read
 | Gemini 3.7 Flash | `gemini-3.7-flash` | 0.75 | 0.075 | 3.75 |
 | Gemini 3.6 Flash | `gemini-3.6-flash` | 0.75 | 0.075 | 3.75 |
 | Gemini 3.5 Flash | `gemini-3.5-flash` | 1.50 | 0.15 | 9.00 |
-| Gemini 3.5 Flash-Lite | `gemini-3.5-flash-lite` | 0.30 | — | 2.50 |
-| Gemini 2.5 Flash | `gemini-2.5-flash` | 0.30 | — | 2.50 |
-| Gemini 2.5 Flash-Lite | `gemini-2.5-flash-lite` | 0.10 | — | 0.40 |
+| Gemini 3.5 Flash-Lite | `gemini-3.5-flash-lite` | 0.30 | 0.03 | 2.50 |
+| Gemini 3.1 Flash-Lite | `gemini-3.1-flash-lite` | 0.25 | 0.025 | 1.50 |
+| Gemini 3.1 Pro Preview | `gemini-3.1-pro-preview` | 2.00 | 0.20 | 12.00 |
+| Gemini 3 Flash Preview | `gemini-3-flash-preview` | 0.50 | 0.05 | 3.00 |
+| Gemini 2.5 Pro | `gemini-2.5-pro` | 1.25 | 0.125 | 10.00 |
+| Gemini 2.5 Flash | `gemini-2.5-flash` | 0.30 | 0.03 | 2.50 |
+| Gemini 2.5 Flash-Lite | `gemini-2.5-flash-lite` | 0.10 | 0.01 | 0.40 |
 
 `data/api_pricing.yaml` carries the first and the third rows.
+
+An earlier version of this file printed `—` for the Flash-Lite cached rate. That
+was wrong. Google rates context caching on every model above.
+
+## The trap: audio input costs more
+
+Four models charge a second, higher input rate for audio. `data/api_pricing.yaml`
+holds one `input` field, so write the text rate and state the audio rate in
+`notes`.
+
+| Model | Text, image, video input | Audio input | Audio cached input |
+|---|---|---|---|
+| Gemini 3.1 Flash-Lite | 0.25 | 0.50 | 0.05 |
+| Gemini 3 Flash Preview | 0.50 | 1.00 | 0.10 |
+| Gemini 2.5 Flash | 0.30 | 1.00 | 0.10 |
+| Gemini 2.5 Flash-Lite | 0.10 | 0.30 | 0.03 |
+
+## Gemini Code Assist per-seat prices
+
+Read 2026-08-28 from `https://cloud.google.com/products/gemini/pricing` and
+confirmed on `https://codeassist.google/products/business`. USD per seat.
+
+| Edition | Monthly commitment | 12-month commitment |
+|---|---|---|
+| Gemini Code Assist Standard | 22.80 per month | 19.00 per month |
+| Gemini Code Assist Enterprise | 54.00 per month | 45.00 per month |
+
+Google prints a discounted monthly rate for the 12-month term, not a term total.
+`AGENTS.md` requires a term total in `amount`. Multiply by 12, then say so in
+`notes`:
+
+```yaml
+  prices:
+    - period: month
+      amount: 22.80
+    - period: year
+      amount: 228.00
+  notes: Google prints 19.00 per seat per month on a 12-month commitment, so the
+    year amount is that rate times 12.
+```
+
+`WebFetch` truncates both price pages before the table. Use `curl`. See
+`pages.md`.
 
 The page also lists audio, image, text-to-speech, video, music, embedding, and
 robotics models. This repository does not track those.
@@ -101,10 +152,17 @@ The storage rate does not fit any schema field. Put it in `notes`:
 
 | Model | Cached input | Storage per 1M tokens per hour |
 |---|---|---|
-| Gemini 3.7 Flash | 0.075 | 0.50 |
-| Gemini 3.6 Flash | 0.075 | 0.50 |
+| Gemini 3.7 Flash | 0.075 | 0.50, then 1.00 from 2027-01-01 |
+| Gemini 3.6 Flash | 0.075 | 0.50, then 1.00 from 2027-01-01 |
 | Gemini 3.5 Flash | 0.15 | 1.00 |
+| Gemini 3.5 Flash-Lite | 0.03 | 1.00 |
+| Gemini 3.1 Flash-Lite | 0.025 | 1.00 |
 | Gemini 3.1 Pro Preview | 0.20 | 4.50 |
+| Gemini 3 Flash Preview | 0.05 | 1.00 |
+| Gemini 2.5 Pro | 0.125 | 4.50 |
+
+The storage rate expires with the token rate on the two promotional models. The
+cached input rate on those two also doubles, from 0.075 to 0.15.
 
 ## Models that charge two input rates
 

@@ -13,6 +13,8 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 | `https://platform.kimi.ai/docs/pricing/chat` | Billing concepts, no number | `WebFetch` |
 | `https://platform.kimi.ai/docs/models` | Model list, context windows, parameter count | `WebFetch` |
 | `https://platform.kimi.ai/docs/guide/kimi-k3-quickstart` | K3 parameters, open weights, architecture | `WebFetch` |
+| `https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart` | K2.7 Code context, vision, high-speed output rate | `WebFetch` |
+| `https://platform.kimi.ai/docs/api/models-overview` | Per-model request parameters and context windows | `curl` |
 | `https://platform.kimi.ai/docs/guide/product-plans` | How the API, the membership, and Kimi Code differ | `curl` |
 | `https://www.kimi.com/code/docs/en/` | Kimi Code overview, concurrency wording | `curl` |
 | `https://www.kimi.com/code/docs/en/kimi-code/models.html` | Which tier unlocks which model | `curl` |
@@ -83,6 +85,8 @@ RPC. See `fetching.md`.
   the per-model page instead.
 - `platform.kimi.ai/docs/models` prints context windows and no maximum output.
   No page found on 2026-08-28 prints a maximum output for any Kimi model.
+  `docs/api/models-overview` compares every request parameter per model and
+  states no output cap either. Check that page before you claim the gap again.
 - `platform.kimi.ai/docs/pricing/limits` publishes a concurrency limit per tier.
   `data/rate_limits.yaml` has no field for it. Put it in `notes` or drop it.
 - `kimi-code/membership.html` explains the weekly quota and the 5-hour window in

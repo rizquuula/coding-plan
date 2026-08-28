@@ -50,6 +50,35 @@ scope decision, not a sourcing problem. Ask before you add one.
 
 Never mix a Business seat price into an individual plan record.
 
+## Business: two rates in one card
+
+The Business card prints the annual rate in the headline and the monthly rate in
+the footnote. Read on 2026-08-28:
+
+    <PricingCard
+      name="Business"
+      price="$20"
+      interval="/ user / month*"
+      footnoteLabel="*2+ users, billed annually. $25 per user per month when billed monthly."
+    />
+
+Two consequences for `data/plans.yaml`:
+
+1. The `month` amount is 25, not 20. 20 is the annual rate.
+2. The page prints no annual term total. Multiply 20 by 12 and write `year: 240`.
+   `AGENTS.md` requires you to say so in `notes`.
+
+Free is easier. The card prints `price="$0"`, so `month: 0` is exact.
+
+## Trap: the Free and Go cards carry no bullets
+
+Both cards are self-closing tags. Neither lists a model. The message-limit table
+starts at Plus, and the feature matrix starts at Plus. So no page on this host
+ties a model list to the Free tier or the Go tier.
+
+`openai-chatgpt-go` in `data/plans.yaml` lists three GPT-5.6 models anyway. That
+claim is unsourced. Flag it rather than copying it into a new Free record.
+
 ## API rates: the four service tiers
 
 `https://developers.openai.com/api/docs/pricing` prints four tables, one per
@@ -105,6 +134,35 @@ The pricing page also lists GPT-5.5, GPT-5.4, GPT-5.2, GPT-5.1, GPT-5, GPT-4.1,
 GPT-4o, the o-series, and the legacy models. It lists image, video, audio,
 realtime, transcription, embedding, and tool pricing, which this repository does
 not track. Add a model row only when the model belongs in a coding-plan tracker.
+
+## The Codex row sits in a different table
+
+`gpt-5.3-codex` is the only Codex-branded model with a published API rate. It is
+not in the Standard table at the top of the page. It sits far down, in a
+four-column grouped table under a `Specialized models` group:
+
+    | Category | Model | Input | Cached input | Output |
+    | Codex | gpt-5.3-codex | $1.75 | $0.175 | $14.00 |
+
+That table has no cache-write column, so `cache_write` is `null`. The Fast mode
+copy of the same table prints double: $3.50, $0.35, $28.00.
+
+Before you add the row, read the deprecation note on
+`https://learn.chatgpt.com/docs/models`:
+
+    The `gpt-5.2` and `gpt-5.3-codex` models are already deprecated in Codex when
+    you sign in with ChatGPT.
+
+The API still serves and prices the model. Codex users cannot select it. Adding
+it is a scope decision. Ask before you add it.
+
+## gpt-oss models carry no rate at all
+
+`gpt-oss-120b` and `gpt-oss-20b` appear on no pricing table. `gpt-oss-120b`
+publishes a rate-limit table whose every cell reads 0, across all five tiers.
+OpenAI does not serve these models through its own API. They fit
+`data/models.yaml` only. Never write an `data/api_pricing.yaml` row or a
+`data/rate_limits.yaml` row for one.
 
 ## OpenAI does publish a cache-write rate
 

@@ -16,6 +16,15 @@ Three different things live here. Keep them apart.
 | Coding Plan | `coding-plan` | requests | not stated |
 | Token Plan | `token-plan-overview` | Credits | Singapore only |
 
+Token Plan has two more pages, and they hold more than the overview does:
+
+| Slug | Adds |
+|---|---|
+| `token-plan-personal-overview` | Per-tier benefits, and a model table with a `Capability` column |
+| `token-plan-team-overview` | Seat definition, and a model table with a `Capability` column |
+
+Read the edition page, not the overview, when you write a Token Plan row.
+
 They are separate products with separate prices. Never mix a figure from one
 into a row for the other. Name the product in the `plan` field.
 
@@ -36,7 +45,20 @@ Models the plan unlocks, as the page lists them:
     More:        qwen3.5-plus, qwen3-max-2026-01-23, qwen3-coder-next,
                  qwen3-coder-plus, glm-4.7
 
-The page states that models outside that list are not supported.
+The page states that models outside that list are not supported. The page marks
+three of them `(vision)`: `qwen3.7-plus`, `qwen3.6-plus`, and `qwen3.5-plus`. It
+marks `kimi-k2.5` too. It does not mark `qwen3-max-2026-01-23`,
+`qwen3-coder-next`, or `qwen3-coder-plus`.
+
+### Coding Plan Pro sells out
+
+The page states: "Slots are limited and available on a first-come, first-served
+basis. New slots are restocked daily at 00:00:00 (UTC+08:00)."
+
+The Token Plan FAQ says the same thing more bluntly: "Coding Plan Pro was a
+limited-quantity offering and is no longer available once sold out."
+
+Keep `status: active`. The tier is still sold, just rationed. Say so in `notes`.
 
 ### The Lite tier is discontinued
 
@@ -81,10 +103,27 @@ Team Edition:
 
 | Tier | List price | Limited-time price | Monthly quota |
 |---|---|---|---|
-| Standard seat | $30 per seat per month | $20 | 25,000 Credits per seat |
-| Pro seat | $100 per seat per month | $75 | 100,000 Credits per seat |
-| Max seat | $200 per seat per month | — | 250,000 Credits per seat |
-| Shared quota pack | $700 per pack per month | — | 625,000 Credits per pack |
+| Standard | $30 per seat per month | $20 | 25,000 Credits per seat |
+| Advanced | $100 per seat per month | $75 | 100,000 Credits per seat |
+| Premium | $200 per seat per month | — | 250,000 Credits per seat |
+| Shared Usage Pack | $700 per pack per month | — | 625,000 Credits per pack |
+
+### Trap: the two Token Plan pages name the Team tiers differently
+
+The prices agree. The tier names do not.
+
+| Page | Tier names |
+|---|---|
+| `token-plan-overview` | `Standard seat`, `Pro seat`, `Max seat`, `Shared quota pack` |
+| `token-plan-team-overview` | `Standard`, `Advanced`, `Premium`, `Shared Usage Pack` |
+
+`AGENTS.md` wants the tier name as the provider writes it, and the provider
+writes it twice. Use `token-plan-team-overview`, which is the dedicated page, and
+say in `notes` or in your report which page you used.
+
+`token-plan-team-overview` also states the term: "Subscription periods include
+monthly and auto-renewing monthly options." So Team rows get one `prices` entry
+with `period: month`, the same as every other Alibaba plan row.
 
 Copy the list price into `amount`, the same rule as `pricing.md` states for API
 rates. Say in `notes` that a limited-time price applies.
@@ -92,6 +131,29 @@ rates. Say in `notes` that a limited-time price applies.
 **No Alibaba row exists in `data/plans.yaml` today.** Adding one is a scope
 decision, not a sourcing problem. Ask before you add a Team row or an Extra
 Bundle row, and never mix a Team seat figure into a Personal row.
+
+The Extra Bundle and the Shared Usage Pack are add-ons, not tiers. `AGENTS.md`
+says one record per plan tier, so neither one earns a row by default. Ask first.
+
+`region` has two values, `global` and `china`. Token Plan runs in Singapore only.
+Write `region: global` and state the Singapore restriction in `notes`.
+
+The `Capability` column on both edition pages is the cleanest source for the
+`vision` field in `data/models.yaml`. Read 2026-08-28:
+
+| Model ID | Capability as the page states it | `vision` |
+|---|---|---|
+| `qwen3.8-max` | Reasoning, visual understanding, text generation | `true` |
+| `qwen3.7-max` | Reasoning, text generation | `false` |
+| `qwen3.7-plus` | Reasoning, visual understanding, text generation | `true` |
+| `qwen3.6-plus` | Reasoning, vision understanding, text generation | `true` |
+| `qwen3.6-flash` | Reasoning, vision understanding, text generation | `true` |
+
+The Personal page writes "visual understanding" and the Team page writes "vision
+understanding". They mean the same thing.
+
+Note the `qwen3.7-max` row. It is the one Max model with no vision, and two
+separate pages agree on that. Do not assume the Max family is uniform.
 
 ## API rate limits
 
@@ -158,3 +220,55 @@ model ID character for character.
 
 `AGENTS.md` requires plain integers. The page prints `1,000,000`. Write
 `1000000`.
+
+### The page publishes RPM and TPM, and nothing else
+
+Every text-generation table on `rate-limit` has exactly two numeric columns:
+
+    Requests per minute (RPM) | Tokens per minute (TPM) Includes input and output tokens.
+
+There is **no concurrency column** on any Qwen text-generation table. A
+concurrency column does exist on that page, but only in the image-generation and
+video-generation sections, which use an asynchronous task API:
+
+    Task submission API call limit | Number of concurrent tasks (concurrency)
+
+Do not carry that column into a text-model row.
+
+The Token Plan Personal page publishes `Concurrent Agents` as `1-2`, `3-4`, and
+`6-8`. That is a plan allowance, not an API rate limit. It belongs in `limits` in
+`data/plans.yaml`, never in `data/rate_limits.yaml`.
+
+### Alibaba publishes no generation speed
+
+No page read so far states a speed in tokens per second. `rate-limit` answers
+three FAQ questions about response speed and gives no number. It says only that
+lightweight models are faster than large ones, that longer output takes longer,
+and that peak load makes speed fluctuate.
+
+The string "tokens per second" does appear on that page. It means the rate-limit
+ceiling `TPS = TPM / 60`, not a generation speed. Never report it as one.
+
+### Rate limits read 2026-08-28, for the models this repository prices
+
+| Model | Singapore | US (Virginia) | China (Beijing) |
+|---|---|---|---|
+| `qwen-max` | 600 / 1,000,000 | not listed | 1,200 / 1,000,000 |
+| `qwen3-max` | 600 / 1,000,000 | 600 / 1,000,000 | 30,000 / 5,000,000 |
+| `qwen3.7-max` | 600 / 1,000,000 | 30,000 / 5,000,000 | 30,000 / 5,000,000 |
+| `qwen3.8-max` | 15,000 / 2,000,000 | 30,000 / 5,000,000 | 30,000 / 5,000,000 |
+| `qwen3.7-plus` | 15,000 / 5,000,000 | 30,000 / 5,000,000 | 30,000 / 5,000,000 |
+| `qwen3-coder-plus` | 2,400 / 2,000,000 | 2,400 / 2,000,000 | 5,000 / 5,000,000 |
+| `qwen3-coder-flash` | 600 / 5,000,000 | 1,200 / 1,000,000 | 5,000 / 5,000,000 |
+| `qwen3-coder-next` | 600 / 1,000,000 | not listed | 600 / 1,000,000 |
+
+Each cell is RPM / TPM. The coder models sit in a different section from the
+language models, so you must read two sections per region. `qwen3-coder-next`
+sits in a third section, `Text generation - Qwen - Open source`.
+
+### Trap: a US-suffixed model ID is a different model
+
+The US (Virginia) table lists both `qwen3.7-max` and `qwen3.7-max-us`, with very
+different limits: 30,000 RPM for the first and 600 RPM for the second. The same
+holds for `qwen3.7-plus` and `qwen3.7-plus-us`. Match the ID character for
+character.

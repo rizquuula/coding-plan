@@ -93,15 +93,25 @@ Notes on this dataset:
 The models overview compares four current models only: Fable 5, Opus 5, Sonnet 5,
 and Haiku 4.5. Claude Opus 4.8 and Claude Sonnet 4.6 are not in that table.
 
-The pricing page states one rule instead: models from Claude 4.6 on include the
-full 1M token context window. That sentence is the source for the `1M` on those
-two rows. It is a rule, not a printed cell, so re-read it every refresh.
+The pricing page states one rule: "Claude 4.6 and later models and Claude Mythos
+Preview include the full 1M token context window at standard pricing." That rule
+agrees, but do not stop there.
 
-Each legacy model also has its own page, at
-`https://platform.claude.com/docs/en/models/opus-4-8/overview` and
-`https://platform.claude.com/docs/en/models/sonnet-4-6/overview`. Nobody probed
-those pages on 2026-08-28. Read one before you trust a per-model figure for a
-legacy model.
+Each legacy model has its own page, and each page prints the figure in a
+capabilities table. Both were probed on 2026-08-28 and both returned 200:
+
+| Page | Prints |
+|---|---|
+| `https://platform.claude.com/docs/en/models/opus-4-8/overview` | Model ID `claude-opus-4-8`, context 1M, max output 128K, $5 / $25 |
+| `https://platform.claude.com/docs/en/models/sonnet-4-6/overview` | Model ID `claude-sonnet-4-6`, context 1M, max output 128K, $3 / $15 |
+
+Prefer the per-model page. It prints a cell, where the pricing page states a
+rule you must apply yourself. Cite the model page as a `model card` link on the
+Opus 4.8 and Sonnet 4.6 rows, so the next agent reads the cell.
+
+Both pages also print `Input → output | Text and images → text`, which sets
+`vision: true`, and `Status | Active (legacy)`. Append `.md` to either path for
+the markdown twin.
 
 ## `data/rate_limits.yaml`
 

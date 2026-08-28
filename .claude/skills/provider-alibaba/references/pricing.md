@@ -73,6 +73,32 @@ Write the lowest range and name that range in `notes`:
 
 `qwen-max` prints `No tiered pricing`, so its row needs no such note.
 
+## Trap: two output columns under one output header
+
+The Qwen-Plus and Qwen-Max tables split the output price. The first header row
+reads `Output price (per 1 million tokens)`. The row below it splits that header
+into `Non-Thinking mode` and `Thinking mode`. `scripts/read_tables.py` prints the
+second header row as its own line, so watch for it.
+
+`data/api_pricing.yaml` holds one `output` number. Read both columns before you
+copy one.
+
+Qwen-Plus, Singapore, read 2026-08-28, tier 0 < T ≤ 256K:
+
+| Model ID | Input | Output, non-thinking | Output, thinking |
+|---|---|---|---|
+| `qwen3.7-plus` | 0.4 | 1.6 | 1.6 |
+| `qwen3.6-plus` | 0.5 | 3 | 3 |
+| `qwen3.5-plus` | 0.4 | 2.4 | 2.4 |
+| `qwen-plus` | 0.4 | **1.2** | **4** |
+
+The two columns agree on every Qwen 3.5 model and later. They disagree on the
+legacy `qwen-plus`, where thinking output costs 3.3 times the non-thinking rate.
+So the trap only bites on the legacy models, and it bites hard.
+
+When the two columns differ, write the non-thinking rate and name the split in
+`notes`.
+
 ## Trap: the page prints two prices in one cell
 
 A discounted cell reads:
@@ -110,10 +136,12 @@ Two rules follow for `data/api_pricing.yaml`.
 1. A model that the cache page does not list gets `cached_input: null` and
    `cache_write: null`. `qwen-max` is not in the Singapore list, so its nulls
    are correct.
-2. `qwen3.8-max` and `qwen3.8-2.4t-a95b` are an explicit exception. The page
-   says their cache-hit price is **not** 10%, and it names the console as the
-   only place that publishes the real figure. The console needs a login, so
-   leave both fields `null` for those two models.
+2. `qwen3.8-max` and `qwen3.8-2.4t-a95b` are a **partial** exception. The page
+   says their cache-hit price is **not** 10%, for both the explicit and the
+   implicit cache, and it names the console as the only place that publishes the
+   real figure. Read the rest of that sentence: "(The cache creation price
+   remains 125% of the standard price.)" So `cached_input` is `null` for those
+   two models, and `cache_write` is still computable at 125%.
 
 For any other listed model you may compute the two rates from the percentages
 and the standard input rate. If you do, say so in `notes`. The page publishes
@@ -163,6 +191,22 @@ Read 2026-08-28:
 That page lists `qwen-max` under a heading called `Legacy models`. It recommends
 `qwen3.7-plus` and `qwen3.8-max` for coding tools.
 
-**No page read in this session publishes a maximum output length.** Leave
-`max_output` as `null` in `data/models.yaml` until you find a page that states
-it. The same holds for parameter counts of the closed models.
+## Maximum output length
+
+`vision-model` publishes a `Max output` column. It is the only page found so far
+that states one. It covers the models that accept image input, and nothing else.
+
+Read 2026-08-28:
+
+| Model ID | Context | Max output |
+|---|---|---|
+| `qwen3.7-plus` | 1M | 64k |
+| `qwen3.7-flash` | 1M | 64k |
+| `qwen3.6-plus` | 1M | 64k |
+| `qwen3.6-flash` | 1M | 64k |
+| `qwen3.5-plus` | 1M | 64k |
+| `qwen3.5-flash` | 1M | 64k |
+
+That page does **not** list `qwen-max`, `qwen3-max`, `qwen3.8-max`, or any
+`qwen3-coder` model. Leave `max_output` as `null` for those. The same holds for
+parameter counts of the closed models.

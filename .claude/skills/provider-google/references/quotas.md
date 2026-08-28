@@ -58,14 +58,31 @@ Say so in `notes` before you put 300 on one Ultra row and not the other.
 `https://docs.cloud.google.com/gemini/docs/quotas` covers the Google Cloud
 product, not the consumer plan. Read 2026-08-28.
 
-| Edition | Maximum requests per user per day |
+The 1,500 and 2,000 figures cover agent mode and the Gemini CLI only.
+
+| Edition | Maximum requests per user per day, agent mode and CLI |
 |---|---|
 | Standard | 1,500 |
 | Enterprise | 2,000 |
 
+The same page publishes three quotas that do not vary by edition. They apply per
+user, per Google Cloud project.
+
+| Quota | Value |
+|---|---|
+| Requests per second | 2 |
+| Requests per day, code generation and completion | 6,000 |
+| Requests per day, chat and Cloud Assist panel | 960 |
+| Local codebase awareness | 1,000,000 token context window |
+| Code customization repositories | 20,000 |
+
+**The 2 requests per second figure is a Google Cloud quota.** It covers Gemini
+Code Assist and the Gemini CLI. It does not cover `ai.google.dev`. Never write it
+into a Gemini API row.
+
 The page warns that `one prompt might result in multiple model requests` in agent
 mode, and that the daily limit aggregates across every model. It publishes no
-price. `data/plans.yaml` has no Code Assist row today.
+price. Read `pricing.md` for the per-seat price, which sits on a different page.
 
 Reaching this page needs one redirect hop.
 `https://developers.google.com/gemini-code-assist/resources/quotas` returns a 301
@@ -129,6 +146,24 @@ Never write it into `tokens_per_minute`.
 The page also states two figures that fit no field: `Concurrent batch requests:
 100`, and priority inference at `0.3x the standard rate limit for each model and
 tier`.
+
+## Speed: Google publishes none
+
+No Google page states a generation speed in tokens per second. Ten pages were
+searched on 2026-08-28: the pricing page, the rate-limits page, the model list,
+seven per-model pages, the subscriptions page, the Code Assist quota page, and
+the Code Assist price page. The string appears zero times on every one.
+
+Google writes `low-latency`, `high-throughput`, and `fastest`. It prints no
+number beside any of those words. Never turn an adjective into a figure.
+
+## Concurrency: three figures, three pages
+
+| Figure | Page | Fits a field? |
+|---|---|---|
+| `Concurrent batch requests: 100` | Gemini API rate limits | No. It is a batch queue depth. |
+| 3, 15, and 60 concurrent tasks | Jules usage limits | Yes, as a `limits` item on a plan row. |
+| `Requests per second: 2` | Gemini Code Assist quotas | Yes, as a `limits` item on a Code Assist row. |
 
 ## Compare with the other providers
 

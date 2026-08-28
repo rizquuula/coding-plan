@@ -72,6 +72,17 @@ What the pages do state, in words:
 - The overview page states "approximately 300–1,200 requests per 5-hour window,
   with up to 30 concurrent requests". That range spans every paid tier. It is
   not a per-tier figure.
+- The same overview page states "Ultra-fast response : Output speed up to 100
+  Tokens/s". That figure describes the membership product and names no model.
+  The API platform states 180 Tokens/s for the high-speed variant. The two are
+  separate claims about separate products. Never average them.
+
+## Trap: 8,700 tokens/s is not a Kimi model speed
+
+`https://www.kimi.ai/blog/kimi-k3` describes a chip that K3 designed, and states
+the chip "sustains over 8,700 tokens/s decode throughput in simulation". That is
+simulated hardware, not a Kimi endpoint. The sentence sits near real K3
+specifications, so it reads like one. Never copy it into the data.
 
 `AGENTS.md` requires each `limits` item to be one quota statement under 12
 words. Write the rules above, not a number you split out of the range.

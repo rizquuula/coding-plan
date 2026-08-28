@@ -132,8 +132,31 @@ statement is a multiple or a window. Read on 2026-08-28 from
 - "Pro gives you at least 5x more usage per 5-hour session than Free"
 - "Max gives you 5x or 20x more usage per 5-hour session than Pro"
 - "Higher output limits for all tasks", on the Max card
-- "Claude Fable 5 is included on Max plans at 50% of your weekly usage limit.
-  Pro users can access Fable via usage credits."
+
+### Trap: the Fable rule is a table row, not a sentence
+
+An earlier version of this file quoted a sentence: "Claude Fable 5 is included on
+Max plans at 50% of your weekly usage limit." That sentence is not on the page.
+A fetch on 2026-08-28 found no such prose anywhere in the HTML.
+
+Anthropic states the rule in the "Models and usage" comparison table instead.
+Read the cells, not the prose:
+
+| Plan | The `Fable` row prints |
+|---|---|
+| Free | nothing |
+| Pro | `Usage credits` |
+| Max 5x | `50% of weekly limits*` |
+| Max 20x | `50% of weekly limits*` |
+
+So Max unlocks Fable as part of the subscription, at half the weekly limit. Pro
+does not. A Pro user reaches Fable only by turning on usage credits, which the
+FAQ prices "at standard API rates". Put Fable in `models` on the two Max rows.
+Keep it out of `models` on the Pro row.
+
+The same table prints a `Context window` row: 200k on Free, Pro, Max 5x, and
+Max 20x. The Team table prints 200k for Team and "500k on default model" for
+both Enterprise tiers.
 
 So a `limits` item is a sentence, not a number:
 

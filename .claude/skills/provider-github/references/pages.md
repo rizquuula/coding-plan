@@ -78,6 +78,27 @@ on `supported-models`. That report is correct: the per-tier table sits on
 `get-started/plans`, not on `supported-models`. Read the `.md` twin yourself
 when you need a full table.
 
+## Values no GitHub page publishes
+
+Searched on 2026-08-28 across five pages: `get-started/plans.md`,
+`models-and-pricing.md`, `supported-models.md`, `usage-limits.md`, and the raw
+HTML of `github.com/features/copilot/plans` (1.26 MB).
+
+| Term searched | Matches |
+|---|---|
+| `tokens per second`, `tokens/second`, `tok/s`, `per second` | 0 |
+| `latency`, `throughput` | 0 |
+| `requests per minute`, `requests per hour`, `requests per day` | 0 |
+| `parameter` (on `supported-models.md`) | 0 |
+
+Do not repeat this search. GitHub grades model speed by word, not by number.
+`models-and-pricing` sorts every model into a `Category` of `Lightweight`,
+`Versatile`, or `Powerful`. Raptor mini sits in `Versatile`.
+
+`supported-models` publishes no vision column and no context window column. It
+describes a 1 million token context window as an optional extended capability on
+selected models, and Raptor mini is not one of them.
+
 ## Citation rule
 
 `AGENTS.md` requires a page the provider owns. `github.com` and

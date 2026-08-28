@@ -37,9 +37,12 @@ Google AI Ultra is one plan name with two price points. Google prints them as
 | Usage tiers, batch enqueued tokens | `https://ai.google.dev/gemini-api/docs/rate-limits` | `WebFetch` |
 | Jules task limits per plan | `https://jules.google/docs/usage-limits` | `WebFetch` |
 | Gemini Code Assist request quota | `https://docs.cloud.google.com/gemini/docs/quotas` | `WebFetch` |
+| Gemini Code Assist per-seat price | `https://codeassist.google/products/business` | `curl` |
 
-`WebFetch` reads every page in this table. Google needs no bundle trick and no
-script. Use `curl` only when you must confirm exact markup.
+`WebFetch` reads every page in this table except the last one. Google needs no
+bundle trick and no script. Use `curl` only when you must confirm exact markup,
+or on the Code Assist price page. `WebFetch` truncates that page before the
+price table. See `references/fetching.md`.
 
 ## Six things that produce a wrong number
 
@@ -69,6 +72,19 @@ January 1, 2027.` Copy the current rate. Record the future rate in `notes`.
 four usage tiers and then sends you to AI Studio, which needs a login.
 `data/rate_limits.yaml` holds zero Google rows and that is correct. Do not add a
 row of nulls. Reasoning in `references/quotas.md`.
+
+**7. A preview model's page URL keeps the `-preview` suffix.** Drop it and you
+get a 404, not a redirect. `.../models/gemini-3.1-pro` and
+`.../models/gemini-3-flash` both 404. Use the full model id from the model list.
+
+**8. Google states no generation speed in tokens per second, anywhere.** Ten
+pages were searched on 2026-08-28 and none holds the string. Google writes
+`low-latency` and `high-throughput` and prints no number beside either word.
+Never convert an adjective into a figure.
+
+**9. The 2 requests per second quota is a Google Cloud quota.** It applies to
+Gemini Code Assist and the Gemini CLI. It does not apply to `ai.google.dev`.
+Never write it into a Gemini API row.
 
 ## Workflow
 

@@ -43,6 +43,7 @@ coding client inside that membership. It is not a separate subscription.
 | RPM, TPM, TPD per tier | `https://platform.kimi.ai/docs/pricing/limits` | `WebFetch` |
 | Model list, context windows | `https://platform.kimi.ai/docs/models` | `WebFetch` |
 | K3 parameters, open weights | `https://platform.kimi.ai/docs/guide/kimi-k3-quickstart` | `WebFetch` |
+| K2.7 Code specs, vision, output speed | `https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart` | `WebFetch` |
 | Every docs URL | `https://platform.kimi.ai/docs/llms.txt` | `curl` |
 
 Every page under `platform.kimi.ai/docs/` serves a markdown twin. Append `.md`

@@ -10,6 +10,11 @@ specific to DeepSeek, so you do not repeat work that already failed.
 
 Everything here was checked on 2026-08-28. Re-check a status before you trust it.
 
+**Start at the change log.** `https://api-docs.deepseek.com/updates` lists every
+API change by date. Read its newest entry first. If the date is older than the
+`last_verified` on the rows, nothing changed and the refresh is a confirmation.
+The newest entry on 2026-08-28 was dated 2026-08-21.
+
 ## Constants
 
 Write the provider as `DeepSeek` in all four data files. The build script groups
@@ -35,13 +40,18 @@ DeepSeek serves three models today: `deepseek-v4-pro`, `deepseek-v4-flash`, and
 | Context length, max output, model version | `https://api-docs.deepseek.com/quick_start/pricing` | `WebFetch` |
 | Concurrency limit per model | `https://api-docs.deepseek.com/quick_start/rate_limit` | `WebFetch` |
 | Parameter counts, open weights | `https://www.deepseek.com/en/news/v4-preview/` | `WebFetch` |
+| What changed and when | `https://api-docs.deepseek.com/updates` | `curl -sL` |
 | Every docs URL | `https://api-docs.deepseek.com/sitemap.xml` | `curl` |
 
 `WebFetch` reads every page in that table. DeepSeek renders the docs server
 side, so no bundle recipe and no script are needed. This skill ships no
 `scripts/` directory.
 
-## Eight things that produce a wrong number
+`curl` needs two flags on this host. Use `curl -sL -A "Mozilla/5.0"`. A bare
+`curl -s` on `api-docs.deepseek.com` returns a 432-byte `302 Moved Temporarily`
+stub, not the page. See trap 9.
+
+## Eleven things that produce a wrong number
 
 **1. `api-docs.deepseek.com` answers an unknown path with 200 and the wrong
 page.** It serves the "Your First API Call" home page, 46100 bytes, for any path
@@ -53,8 +63,13 @@ content. There is no `.md` twin and no `llms.txt` on this site. Read
 **2. The `zh-cn` page prices in CNY, the default page prices in USD.** The two
 pages hold different numbers, not a converted pair. `deepseek-v4-pro` cache-miss
 peak is `$1.32` on the default page and `9.0元` on the Chinese twin.
-`https://www.deepseek.com/` links to the Chinese docs by default, so it is easy
-to land on the wrong one. Always read the path without a language prefix.
+Always read the path without a language prefix.
+
+The footer link follows the language of the page you stand on. On
+`https://www.deepseek.com/en/` and every `/en/` page, the footer "API Pricing"
+link points at the English docs page, which is the one you want. On the Chinese
+pages it points at the `zh-cn` twin. Check the URL before you follow it, on
+either page.
 
 **3. The pricing table stacks off-peak above peak in every row.** Each rate
 appears twice. `data/api_pricing.yaml` records the peak rate, which is the
@@ -85,20 +100,38 @@ either. Treat the names as search terms only.
 for Claude Code. The pricing page states the API model string, which is
 `deepseek-v4-pro`. Copy the pricing page value.
 
+**9. Bare `curl -s` returns a 302 stub on the docs host.** The body is 432 bytes
+and its title is `302 Moved Temporarily`. It holds no data, and it is short
+enough to look like a failed fetch rather than a redirect. Use
+`curl -sL -A "Mozilla/5.0"`. `www.deepseek.com` needs the same flags:
+`https://www.deepseek.com/harness/` redirects to `/harness/en/`.
+
+**10. DeepSeek publishes no generation speed.** No page states tokens per
+second. Checked on 2026-08-28 across the pricing page, the rate-limit page,
+`/updates`, `news260813`, `news260821`, `news260424`, and the English launch
+page. A search for `tps` matches the `tps` inside `https` and looks like a hit.
+Read the match before you trust it. Never write a speed for DeepSeek.
+
+**11. A wide-context `grep -oE` hangs on these pages.** The docs HTML holds
+about 25 very long lines, so a pattern such as `.{0,150}foo.{0,150}` backtracks
+for minutes. Strip the tags in Python first, then search the text. The recipe is
+in `references/pages.md`.
+
 ## Workflow
 
-1. Read `https://api-docs.deepseek.com/quick_start/pricing`.
-2. Take the peak rate from each pricing row. Ignore the off-peak rate.
-3. Take `CONTEXT LENGTH` and `MAX OUTPUT` from the same page.
-4. Read `https://api-docs.deepseek.com/quick_start/rate_limit`.
-5. Copy the concurrency limit into `notes`. Leave every numeric field `null`.
-6. Read `https://www.deepseek.com/en/news/v4-preview/` for parameter counts.
-7. Cross-check: the concurrency table appears on both docs pages. The two must
+1. Read `https://api-docs.deepseek.com/updates`. Check the newest entry date.
+2. Read `https://api-docs.deepseek.com/quick_start/pricing`.
+3. Take the peak rate from each pricing row. Ignore the off-peak rate.
+4. Take `CONTEXT LENGTH` and `MAX OUTPUT` from the same page.
+5. Read `https://api-docs.deepseek.com/quick_start/rate_limit`.
+6. Copy the concurrency limit into `notes`. Leave every numeric field `null`.
+7. Read `https://www.deepseek.com/en/news/v4-preview/` for parameter counts.
+8. Cross-check: the concurrency table appears on both docs pages. The two must
    agree. Report a mismatch rather than picking a side.
-8. Write the rows. Copy the shapes in `references/data-recipes.md`.
-9. Add no row to `data/plans.yaml`.
-10. Set `last_verified` to the date you read the pages.
-11. Run `python3 build.py --check`.
+9. Write the rows. Copy the shapes in `references/data-recipes.md`.
+10. Add no row to `data/plans.yaml`.
+11. Set `last_verified` to the date you read the pages.
+12. Run `python3 build.py --check`.
 
 ## References
 

@@ -23,6 +23,11 @@ repository tracks the subscription only.
 Three paid individual tiers exist: **Copilot Pro**, **Copilot Pro+**, and
 **Copilot Max**. `data/plans.yaml` carries one row for each.
 
+Two paid org tiers also exist: **Copilot Business** at 19 USD per granted seat
+per month, and **Copilot Enterprise** at 39 USD. `data/plans.yaml` carries no
+row for either today. Both prices are sourceable on `get-started/plans`, so
+adding a row is a scope decision, not a sourcing problem. Ask first.
+
 GitHub bills Copilot usage in **GitHub AI Credits**. One credit costs 0.01 USD.
 
 ## Where each value lives
@@ -76,6 +81,15 @@ output, which is a 50 percent promotion that ends on 2026-09-03. OpenAI's own
 rate for the same model, already in `data/api_pricing.yaml`, is 4.00 and 20.00.
 Never copy a Copilot rate into another provider's row.
 
+**7. GitHub publishes no generation speed and no parameter count.** No page
+states a figure in tokens per second. `models-and-pricing` grades each model by
+word instead, as `Lightweight`, `Versatile`, or `Powerful`. A word is not a
+rate. Detail in `references/pages.md`.
+
+**8. GitHub publishes no vision statement for its own model.** `vision` is a
+required boolean in `data/models.yaml`, and no page states one for Raptor mini.
+That blocks a `models.yaml` row on its own. See `references/data-recipes.md`.
+
 ## Workflow
 
 1. Read `https://github.com/features/copilot/plans`. Take the price and the
@@ -85,7 +99,9 @@ Never copy a Copilot rate into another provider's row.
 3. Cross-check the two: 15 USD must equal 1,500 credits, 70 must equal 7,000,
    and 200 must equal 20,000. Report a disagreement rather than picking a side.
 4. Read `https://docs.github.com/en/copilot/get-started/plans` for the model
-   list per tier. Pro unlocks fewer models than Pro+ and Max.
+   list per tier. Pro unlocks fewer models than Pro+ and Max. That page also
+   holds the only Business and Enterprise prices. The marketing page prints
+   neither.
 5. Write one `month` entry per tier in `prices`. Add no other billing term.
 6. Add no row to `data/api_pricing.yaml`, `data/rate_limits.yaml`, or
    `data/models.yaml`. See below.

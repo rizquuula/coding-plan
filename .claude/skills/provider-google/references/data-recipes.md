@@ -57,6 +57,29 @@ post, which rounds. `https://gemini.google/us/subscriptions/` states $99.99 and
 $199.99. Correct the two rows on your next refresh, and switch the `pricing` link
 from the blog to the subscriptions page.
 
+**Status:** a refresh proposal dated 2026-08-28 corrects both amounts and both
+link sets. The proposal is not applied. Re-check `data/plans.yaml` before you
+repeat this work.
+
+## The rest of the consumer lineup
+
+`https://gemini.google/us/subscriptions/` prints four paid cards and one free
+card. Read 2026-08-28.
+
+| Card | Price per month | Usage line | Context window |
+|---|---|---|---|
+| Free | 0 | Standard limits | 32k |
+| Google AI Plus | 4.99 | 2x higher than standard | 128k |
+| Google AI Pro | 19.99 | 4x higher than standard | 1M |
+| Google AI Ultra 5x | 99.99 | 5x the AI Pro limits | 1M |
+| Google AI Ultra 20x | 199.99 | 20x the AI Pro limits | 1M |
+
+No provider in `data/plans.yaml` carries a free row today. Ask before you add
+one.
+
+The AI Plus card names no Jules access and no Google Antigravity access. Only AI
+Pro and AI Ultra name both.
+
 ## `data/api_pricing.yaml`
 
 Two rows today: `google-gemini-3-7-flash` and `google-gemini-3-5-flash`.
@@ -105,12 +128,18 @@ the link label.
 | `context_window` | `1M` | Input token limit, 1,048,576 |
 | `max_output` | `64K` | Output token limit, 65,536 |
 | `vision` | `true` | Supported inputs list Image and Video |
-| `open_weights` | `false` | Gemini models are closed. Gemma is not. |
+| `open_weights` | see below | No per-model page states it |
 | `total_params` | `null` | No Google page publishes one |
 | `active_params` | `null` | No Google page publishes one |
 
 Set `open_weights` from what the page states, not from reputation. Gemma 4
 appears on the pricing page as free, and it is a different family from Gemini.
+
+**`open_weights` is unresolved.** No Gemini model page states whether Google
+publishes the weights. `build.py` made the field nullable and says a guessed
+`false` is a claim we cannot source, so `null` means unstated. Every existing row
+in `data/models.yaml` still writes `false`. The 2026-08-28 proposal writes `null`
+and flags the conflict. Ask the maintainer before you settle it.
 
 ## `data/rate_limits.yaml`
 

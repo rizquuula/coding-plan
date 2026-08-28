@@ -43,13 +43,15 @@ the source you read. See trap 2.
 | Context window per model | `text-generation-model` | `scripts/read_tables.py` |
 | Coding Plan price and quota | `coding-plan` | `scripts/read_tables.py` |
 | Token Plan prices and quotas | `token-plan-overview` | `scripts/read_tables.py` |
+| Token Plan model list and vision support | `token-plan-personal-overview`, `token-plan-team-overview` | `scripts/read_tables.py` |
+| Maximum output length, image and video input | `vision-model` | `scripts/read_tables.py` |
 | Cache billing rules | `context-cache` | `WebFetch` |
 
 Full URL form:
 
     https://www.alibabacloud.com/help/en/model-studio/<slug>.md
 
-## Six things that produce a wrong number
+## Eight things that produce a wrong number
 
 **1. `qwen-max` is not the newest Qwen Max model. It is the legacy one.** The
 `Qwen-Max` section of `model-pricing` opens with a big table of `qwen3.8-max`,
@@ -86,6 +88,18 @@ and did **not** appear under US (Virginia). Reasoning in `references/quotas.md`.
 bills a fixed monthly fee and counts Credits. They have different pages,
 different prices, and different quota units. Never mix a figure from one into a
 row for the other. Both are in `references/quotas.md`.
+
+**7. The Qwen-Plus and Qwen-Max tables carry two output columns.** The header
+cell reads `Output price (per 1 million tokens)`, and the row below it splits
+into `Non-Thinking mode` and `Thinking mode`. `data/api_pricing.yaml` holds one
+`output` number. On 2026-08-28 `qwen-plus` charged $1.2 non-thinking and $4
+thinking, while `qwen3.7-plus` charged $1.6 for both. Read the second header row
+before you copy an output rate. Details in `references/pricing.md`.
+
+**8. Two Alibaba pages name the Token Plan Team tiers differently.**
+`token-plan-overview` writes `Standard seat`, `Pro seat`, and `Max seat`.
+`token-plan-team-overview` writes `Standard`, `Advanced`, and `Premium`. The
+prices match. Use the dedicated Team page and say which page you used.
 
 ## Workflow
 

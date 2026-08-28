@@ -1,7 +1,12 @@
 # DeepSeek prices and model specifications
 
 Read from `https://api-docs.deepseek.com/quick_start/pricing` on 2026-08-28.
-Rates are USD per 1M tokens.
+Rates are USD per 1M tokens. Every rate below was re-read from the raw HTML on
+2026-08-28 and matched the table.
+
+The table columns run `deepseek-v4-flash`, `deepseek-v4-pro`,
+`deepseek-v4-flash-vision-exp`, in that order. V4-Flash sits first, not V4-Pro.
+Count the columns before you copy a number.
 
 ## The full rate table
 

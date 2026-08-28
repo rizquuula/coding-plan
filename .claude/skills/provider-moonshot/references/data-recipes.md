@@ -146,12 +146,23 @@ Two gaps you cannot fill from any page found on 2026-08-28:
   `null`.
 - No page prints active parameters per token. Leave `active_params` as `null`.
 
+### K2.7 Code vision: resolved on 2026-08-28, set `vision: true`
+
 `https://platform.kimi.ai/docs/models` lists `kimi-k2.7-code` under the heading
 "Multi-modal Model" and states a 256K context. Its description names no image
-input. `https://www.kimi.com/code/docs/en/kimi-code/models.html` states that the
-same model takes image and video input. Neither page states `vision` outright.
-Read both before you set `vision` on a K2.7 Code row, and record what you
-decide.
+input, so that page alone leaves `vision` open.
+
+`https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart` settles it. The
+page states "The following example demonstrates K2.7 Code's visual understanding
++ tool calling capabilities", then lists the accepted formats: png, jpeg, webp,
+and gif for images, and mp4, mov, webm, and more for video.
+`https://www.kimi.com/code/docs/en/kimi-code/models.html` agrees, with
+"Multimodal input: Image, video" for the same model.
+
+Two Moonshot pages state it. Set `vision: true`.
+
+`open_weights` for K2.7 Code stays `null`. No page states a weights release for
+that model, and `null` means unstated.
 
 ## Link labels
 
