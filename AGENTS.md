@@ -83,6 +83,7 @@ next agent more than a gap.
 | Google | `provider-google` |
 | Moonshot (Kimi) | `provider-moonshot` |
 | OpenAI | `provider-openai` |
+| Sakana (Fugu) | `provider-sakana` |
 | Zhipu (GLM) | `provider-zai` |
 
 Every provider in the data has a skill. When you add a new provider, add a
