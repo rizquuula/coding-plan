@@ -1783,3 +1783,84 @@
     - label: docs
       url: https://docs.byteplus.com/en/docs/ModelArk/1925114
   last_verified: 2026-08-28
+
+- id: minimax-plus
+  provider: MiniMax
+  plan: Plus
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 22
+  limits:
+    - Usage-based quota in 5-hour rolling and weekly windows
+    - Agent usage of 3-4 agents
+    - Unused included quota does not carry over
+    - No MiniMax H3, voice design, or rapid voice cloning
+  models:
+    - MiniMax M3
+    - MiniMax M2.7
+    - Image models
+    - Speech models
+  status: active
+  notes: A yearly term with 2 months free shows only after login.
+  links:
+    - label: pricing
+      url: https://platform.minimax.io/docs/guides/pricing-token-plan
+    - label: plans
+      url: https://platform.minimax.io/subscribe/token-plan
+  last_verified: 2026-08-28
+
+- id: minimax-max
+  provider: MiniMax
+  plan: Max
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 55
+  limits:
+    - Usage-based quota in 5-hour rolling and weekly windows
+    - Agent usage of 4-5 agents
+    - Unused included quota does not carry over
+    - No MiniMax H3, voice design, or rapid voice cloning
+  models:
+    - MiniMax M3
+    - MiniMax M2.7
+    - Image models
+    - Speech models
+  status: active
+  notes: A yearly term with 2 months free shows only after login.
+  links:
+    - label: pricing
+      url: https://platform.minimax.io/docs/guides/pricing-token-plan
+    - label: plans
+      url: https://platform.minimax.io/subscribe/token-plan
+  last_verified: 2026-08-28
+
+- id: minimax-ultra
+  provider: MiniMax
+  plan: Ultra
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 132
+  limits:
+    - Usage-based quota in 5-hour rolling and weekly windows
+    - Agent usage of 6-7 agents
+    - Unused included quota does not carry over
+    - No MiniMax H3, voice design, or rapid voice cloning
+  models:
+    - MiniMax M3
+    - MiniMax M2.7
+    - Image models
+    - Speech models
+  status: active
+  notes: A yearly term with 2 months free shows only after login.
+  links:
+    - label: pricing
+      url: https://platform.minimax.io/docs/guides/pricing-token-plan
+    - label: plans
+      url: https://platform.minimax.io/subscribe/token-plan
+  last_verified: 2026-08-28

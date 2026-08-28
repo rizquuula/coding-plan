@@ -83,6 +83,7 @@ next agent more than a gap.
 | Factory | `provider-factory` |
 | GitHub | `provider-github` |
 | Google | `provider-google` |
+| MiniMax | `provider-minimax` |
 | Moonshot (Kimi) | `provider-moonshot` |
 | Ollama | `provider-ollama` |
 | OpenAI | `provider-openai` |
