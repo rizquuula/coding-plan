@@ -39,6 +39,7 @@ tools through an `sk-cp` Subscription Key.
 | You need | Page | Tool |
 |---|---|---|
 | Tier prices, agent usage, quota windows, model coverage | `https://platform.minimax.io/docs/guides/pricing-token-plan.md` | `curl` or `WebFetch` |
+| Comparison table: per-model call estimates, agent concurrency, video quotas | `GET https://api.minimax.io/setting/get_app_settings?fe_setting_key=code_plan_landing` | `curl` |
 | Team seat rules | `https://platform.minimax.io/docs/guides/pricing-token-plan-team.md` | `curl` |
 | Per-model API rate limits | `https://platform.minimax.io/docs/guides/rate-limits.md` | `curl` |
 | Every docs page URL | `https://platform.minimax.io/docs/llms.txt` | `curl` |
@@ -47,7 +48,7 @@ tools through an `sk-cp` Subscription Key.
 
 Probe results for every URL sit in `references/pages.md`.
 
-## Nine things that produce a wrong number
+## Eleven things that produce a wrong number
 
 **1. The subscribe page is a Next.js shell.** `WebFetch` on
 `https://platform.minimax.io/subscribe/token-plan` returns only the page title.
@@ -97,6 +98,23 @@ CodePlanStarter (24), Plus (25), Max (26), TrialCodePlan (28), and four High
 Speed variants (101001-101004). Only Plus, Max, and Ultra are publicly sold —
 the FAQ says so. Do not add rows for enum-only tiers.
 
+**10. The landing config endpoint is the anonymous source for the comparison
+table.** `GET https://api.minimax.io/setting/get_app_settings?fe_setting_key=code_plan_landing`
+answers anonymous calls with ~72 KB of JSON. `data.en.comparison.rows` holds
+the "Which plan fits you?" table: M3 monthly call estimates, M2.7 and
+M2.7-highspeed calls per 5-hour window, OpenClaw Agent concurrency, and video
+generations per day. `data.en.serviceNotice` holds service notices, and
+`data.en.apiPricing` holds the pay-as-you-go teaser rates. The call estimates
+carry a stated assumption — about 50K tokens per M3 call — so copy the
+assumption together with the number.
+
+**11. Two MiniMax pages disagree on the tier prices.** The landing config's
+comparison section states $20, $50, and $120 per month. The docs pricing page
+states $22, $55, and $132. The tier-card purchase API needs a login, so an
+anonymous agent cannot see the charged amount. This repository keeps the docs
+prices. Re-check both sources on every refresh, and update this trap when they
+converge.
+
 ## Workflow
 
 `data/plans.yaml` holds a `minimax-plus`, a `minimax-max`, and a
@@ -107,10 +125,13 @@ them.
 2. Copy each monthly price into `prices` as the `month` amount.
 3. Copy the agent-usage and quota-window statements into `limits`.
 4. Copy the model coverage and the exclusions from the note under the table.
-5. For rate-limit rows, fetch `rate-limits.md` and copy the RPM and TPM
+5. Fetch the landing config endpoint (trap 10) and copy the comparison rows
+   into `limits`: M3 calls per month, M2.7 calls per window, agent
+   concurrency, and video generations per day.
+6. For rate-limit rows, fetch `rate-limits.md` and copy the RPM and TPM
    columns as plain integers.
-6. Set `last_verified` to the date you read the pages, on every row you touch.
-7. Run `python build.py --check` and fix every error it prints.
+7. Set `last_verified` to the date you read the pages, on every row you touch.
+8. Run `python build.py --check` and fix every error it prints.
 
 ## References
 

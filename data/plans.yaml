@@ -1794,7 +1794,11 @@
       amount: 22
   limits:
     - Usage-based quota in 5-hour rolling and weekly windows
-    - Agent usage of 3-4 agents
+    - About 34000 M3 calls per month at 50K tokens each
+    - About 4500 M2.7 calls per 5-hour window
+    - About 2250 M2.7-highspeed calls per 5-hour window
+    - OpenClaw Agent concurrency of 3-4
+    - No video generation
     - Unused included quota does not carry over
     - No MiniMax H3, voice design, or rapid voice cloning
   models:
@@ -1803,7 +1807,7 @@
     - Image models
     - Speech models
   status: active
-  notes: A yearly term with 2 months free shows only after login.
+  notes: Positioned for bringing M3 into a daily workflow; yearly billing gives 2 months free.
   links:
     - label: pricing
       url: https://platform.minimax.io/docs/guides/pricing-token-plan
@@ -1821,7 +1825,11 @@
       amount: 55
   limits:
     - Usage-based quota in 5-hour rolling and weekly windows
-    - Agent usage of 4-5 agents
+    - About 102000 M3 calls per month at 50K tokens each
+    - About 15000 M2.7 calls per 5-hour window
+    - About 7500 M2.7-highspeed calls per 5-hour window
+    - OpenClaw Agent concurrency of 4-5
+    - Up to 3 video generations per day
     - Unused included quota does not carry over
     - No MiniMax H3, voice design, or rapid voice cloning
   models:
@@ -1830,7 +1838,7 @@
     - Image models
     - Speech models
   status: active
-  notes: A yearly term with 2 months free shows only after login.
+  notes: Positioned as best value for daily professional work; yearly billing gives 2 months free.
   links:
     - label: pricing
       url: https://platform.minimax.io/docs/guides/pricing-token-plan
@@ -1848,7 +1856,11 @@
       amount: 132
   limits:
     - Usage-based quota in 5-hour rolling and weekly windows
-    - Agent usage of 6-7 agents
+    - About 250000 M3 calls per month at 50K tokens each
+    - About 29077 M2.7 calls per 5-hour window
+    - About 14538 M2.7-highspeed calls per 5-hour window
+    - OpenClaw Agent concurrency of 6-7
+    - Up to 5 video generations per day
     - Unused included quota does not carry over
     - No MiniMax H3, voice design, or rapid voice cloning
   models:
@@ -1857,7 +1869,7 @@
     - Image models
     - Speech models
   status: active
-  notes: A yearly term with 2 months free shows only after login.
+  notes: Positioned for heavy daily use and team workloads; yearly billing gives 2 months free.
   links:
     - label: pricing
       url: https://platform.minimax.io/docs/guides/pricing-token-plan
