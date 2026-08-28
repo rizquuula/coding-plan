@@ -32,7 +32,10 @@ The Token Plan is MiniMax's coding subscription. The route
 `/subscribe/coding-plan` redirects to `/subscribe/token-plan` — they are one
 product. The public tiers are Plus, Max, and Ultra. MiniMax Code is the official
 agent; the plan also works in Claude Code, Cline, and other OpenAI-compatible
-tools through an `sk-cp` Subscription Key.
+tools through an `sk-cp` Subscription Key. Legacy tiers Starter ($10) and
+Plus-hs ($40) remain for existing subscribers only, and Max-hs ($80) and
+Ultra-hs ($150) are retired — see the migration doc before you touch a legacy
+row.
 
 ## Where each value lives
 
@@ -41,6 +44,7 @@ tools through an `sk-cp` Subscription Key.
 | Tier prices, agent usage, quota windows, model coverage | `https://platform.minimax.io/docs/guides/pricing-token-plan.md` | `curl` or `WebFetch` |
 | Comparison table: per-model call estimates, agent concurrency, video quotas | `GET https://api.minimax.io/setting/get_app_settings?fe_setting_key=code_plan_landing` | `curl` |
 | Team seat rules | `https://platform.minimax.io/docs/guides/pricing-token-plan-team.md` | `curl` |
+| Migration rules, legacy tier prices, Ultra monthly capacity | `https://platform.minimax.io/docs/token-plan/migration.md` | `curl` |
 | Per-model API rate limits | `https://platform.minimax.io/docs/guides/rate-limits.md` | `curl` |
 | Every docs page URL | `https://platform.minimax.io/docs/llms.txt` | `curl` |
 | Tier cards as a human sees them | `https://platform.minimax.io/subscribe/token-plan` | browser only — see trap 1 |
@@ -57,10 +61,13 @@ from an API that needs a login. The docs pricing page is the anonymous source.
 Keep the `plans` link pointing at the subscribe page anyway, because a human
 reader's browser renders it.
 
-**2. Yearly billing exists, but no yearly amount is public.** The page i18n
-says "Save 2 months with yearly plan" and "2 months free". No anonymous page
-states the yearly amount. Record `month` prices only, and state the yearly term
-in `notes`. Never write a computed yearly total.
+**2. No page prints the yearly total — derive it and state the derivation.**
+The cycle toggle publishes the discount ("Save 2 months with yearly plan"),
+and the docs pricing page publishes the monthly rate. Write the yearly
+`amount` as the monthly rate times 10, and say so in `notes`, per the
+AGENTS.md rule on discounted rates. The migration doc quotes annual plans at
+a monthly rate ("Ultra-hs $150/month annual plan"), which confirms MiniMax
+prices yearly terms this way.
 
 **3. The public products API never returns the Token Plan.**
 `GET https://api.minimax.io/public/api/openplatform/charge/combo/products`
@@ -112,8 +119,10 @@ assumption together with the number.
 comparison section states $20, $50, and $120 per month. The docs pricing page
 states $22, $55, and $132. The tier-card purchase API needs a login, so an
 anonymous agent cannot see the charged amount. This repository keeps the docs
-prices. Re-check both sources on every refresh, and update this trap when they
-converge.
+prices. The migration doc repeats $20, $50, and $120 as contracted prices for
+existing subscribers, and each docs-page figure is exactly 10% higher. The
+docs pricing page stays the source for new-subscriber rows. Re-check both
+sources on every refresh, and update this trap when they converge.
 
 ## Workflow
 

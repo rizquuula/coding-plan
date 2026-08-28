@@ -11,6 +11,10 @@
 | `https://platform.minimax.io/docs/guides/pricing-token-plan.md` | 200, ~2.7 KB Markdown twin — the price source |
 | `https://platform.minimax.io/docs/guides/pricing-token-plan-team.md` | 200, ~1.5 KB; team seat rules, no seat price |
 | `https://platform.minimax.io/docs/guides/rate-limits.md` | 200; per-model RPM and TPM tables |
+| `https://platform.minimax.io/docs/token-plan/intro.md` | 200, ~6.5 KB; Token Plan overview; the `/docs/token-plan/` tree also holds per-tool setup guides (Claude Code, Cursor, OpenClaw, Codex, TRAE) |
+| `https://platform.minimax.io/docs/token-plan/migration.md` | 200; M3-era migration: current, legacy, and retired tier prices, Ultra capacity, annual-plan rules |
+| `https://platform.minimax.io/docs/token-plan/faq.md` | 200, ~168 lines; same 22 FAQ answers as the subscribe page SSP JSON |
+| `https://platform.minimax.io/docs/token-plan/promotion.md` | 200; referral program terms |
 | `https://platform.minimax.io/docs/llms.txt` | 200, ~180 lines; full docs index with `.md` links |
 | `GET https://api.minimax.io/setting/get_app_settings?fe_setting_key=code_plan_landing` | 200 anonymous, ~72 KB; `data.en` holds `comparison`, `serviceNotice`, `apiPricing`, `subscribeTags`, `comboTypeTipsMap`, `content` |
 | `https://platform.minimax.io/guides/pricing-token-plan` | 404 — the docs prefix is `/docs/guides/`, not `/guides/` |
@@ -78,3 +82,21 @@ Pay-as-you-go teaser (`apiPricing.m3`, per 1M tokens, "Permanent 50% off"):
 context ≤ 512K — input $0.3, output $1.2, cache read $0.06 (original $0.6 /
 $2.4 / $0.12); context 512K-1M — doubled. Full rates:
 `https://platform.minimax.io/docs/guides/pricing-paygo`.
+
+## Verified migration-doc values (2026-08-28)
+
+| Tier | Status | Monthly price |
+|---|---|---|
+| Plus | current, price unchanged for existing subscribers | $20 |
+| Max | current, price unchanged for existing subscribers | $50 |
+| Ultra | new heavy-use tier | $120 |
+| Starter | legacy, existing subscribers only | $10 |
+| Plus-hs | legacy, existing subscribers only | $40 |
+| Max-hs | retired, migrates to Max | $80 |
+| Ultra-hs | retired, migrates to Ultra | $150 |
+
+Retired-tier subscribers get ~$60 of credits per month to cover the
+difference. Ultra provides roughly 12.5B tokens of monthly capacity and 5
+video generations per day. Annual plans are quoted at a monthly rate, keep
+already-paid entitlements, and renew with the annual discount. Credits are
+1,000 = $1 at pay-as-you-go parity; H3 capabilities are excluded.
