@@ -115,9 +115,17 @@ curl -s https://api.z.ai/api/biz/overseas/team/subscribe/product/public_pricing
 On 2026-08-28 it returned PRO at 88 per month and 1056 per year, MAX at 188 per
 month and 2256 per year.
 
-**Those are Team seat prices.** This repository tracks the Individual list price,
-so this endpoint is the wrong source for `data/plans.yaml`. Never copy a Team
-figure into an Individual row.
+**Those are Team seat prices.** They belong in the two Team rows in
+`data/plans.yaml` and nowhere else. Never copy a Team figure into an Individual
+row, or an Individual figure into a Team row.
+
+The endpoint also returns four entries that are `purchasable: false`. Filter
+them out first. The trap and the full table sit in `pricing.md`.
+
+The bundle maps the API tier strings to display names. `LEVEL_RIGHTS` holds
+`pro:{productName:"Standard Seat"...}` and `max:{productName:"Premium Seat"...}`.
+`PLAN_ITEMS` maps each tier and period to the same `productId` values the API
+returns, which is what ties the two together.
 
 The base URL for every `/biz/...` path is `https://api.z.ai/api`. It appears in
 the page bundle as `baseURL:"https://api.z.ai/api"`.

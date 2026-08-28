@@ -59,9 +59,69 @@ pattern is a transcription error. Confirm it before you write it.
 
 Do not compute a price from the percentage. Read the price.
 
-## Team plans
+## Team seat prices
 
-`https://docs.z.ai/devpack/teamplan` describes two seat types and no price:
+`data/plans.yaml` carries two Team rows: `Standard Seat` and `Premium Seat`.
+Their prices come from the public JSON endpoint in `pages.md`, not from a
+rendered page.
+
+```bash
+curl -s https://api.z.ai/api/biz/overseas/team/subscribe/product/public_pricing
+```
+
+### Trap: the endpoint serves products nobody can buy
+
+`data.productList` holds ten entries. **Four are `purchasable: false`.** Treat
+this with the same weight as the V1/V2/V3 trap on the subscribe bundle.
+
+| `tier` | `subscribeMode` | `subscribePeriod` | `payAmount` | `purchasable` |
+|---|---|---|---|---|
+| PRO | CONTINUOUS | MONTHLY | 88 | true |
+| PRO | CONTINUOUS | YEARLY | 1056 | true |
+| PRO | ONE_TIME | MONTHLY | 88 | true |
+| PRO | ONE_TIME | QUARTERLY | 264 | **false** |
+| PRO | ONE_TIME | YEARLY | 1056 | **false** |
+| MAX | CONTINUOUS | MONTHLY | 188 | true |
+| MAX | CONTINUOUS | YEARLY | 2256 | true |
+| MAX | ONE_TIME | MONTHLY | 188 | true |
+| MAX | ONE_TIME | QUARTERLY | 564 | **false** |
+| MAX | ONE_TIME | YEARLY | 2256 | **false** |
+
+**Filter on `purchasable: true` before you copy any amount.**
+
+**Z.ai does not sell a quarterly Team seat.** Both quarterly entries are
+`purchasable: false`. A first pass wrote 264 and 564 into `data/plans.yaml` and
+they were removed. The Team rows carry a `month` and a `year` term only.
+
+The yearly term survives only because its `CONTINUOUS` variant is purchasable at
+the same price. The `ONE_TIME` yearly entry is not purchasable. Never conclude
+that a period is on sale from one entry alone. Check every entry for that
+period.
+
+### `payAmount` against `renewAmount`
+
+`payAmount` is what a new subscriber pays. Write it into `amount`.
+
+`renewAmount` is lower on both yearly entries: 950.40 for PRO and 2030.40 for
+MAX. That is a 10 percent renewal discount. It is not a first-term price, so it
+does not belong in `amount`. Put it in `notes`.
+
+### Tier names
+
+The API returns `PRO` and `MAX`. The subscribe page bundle maps them to display
+names in a `LEVEL_RIGHTS` constant: `pro:{productName:"Standard Seat"...}` and
+`max:{productName:"Premium Seat"...}`.
+
+A `PLAN_ITEMS` list in the same module maps each tier and period to the same
+`productId` values the API returns. That mapping is what ties the API tier to
+the display name. Write the display name into `plan`.
+
+Do not write `PRO` or `MAX` into `plan`. A reader never sees those strings.
+
+### Team seat quotas
+
+From `https://docs.z.ai/devpack/teamplan`. The page publishes quotas and no
+price.
 
 | Seat | Credits per 5 hours | Credits per week |
 |---|---|---|
@@ -71,36 +131,41 @@ Do not compute a price from the percentage. Read the price.
 The page also states that overage bills at a 10 percent discount off the model
 API list price, as a limited-time offer.
 
-No Team row exists in `data/plans.yaml`. A price is now reachable: the public
-JSON API in `pages.md` returned PRO at 88 per month and MAX at 188 per month on
-2026-08-28. Adding a Team row is a scope decision, not a sourcing problem. Ask
-before you add one, and never mix a Team figure into an Individual row.
+Never mix a Team figure into an Individual row, or an Individual figure into a
+Team row.
 
 ## API rates per token
 
-From `https://docs.z.ai/guides/overview/pricing`, USD per 1M tokens, read
-2026-08-28. `data/api_pricing.yaml` carries the first two.
+`https://docs.z.ai/guides/overview/pricing` publishes every rate, in USD per 1M
+tokens. `data/api_pricing.yaml` carries 22 Zhipu rows read from it on
+2026-08-28.
 
-| Model | Input | Cached input | Output |
-|---|---|---|---|
-| GLM-5.3 | 1.4 | 0.26 | 4.4 |
-| GLM-5.3-Flash | 0.075 | 0.015 | 0.25 |
-| GLM-5.2 | 1.4 | 0.26 | 4.4 |
-| GLM-5.1 | 1.4 | 0.26 | 4.4 |
-| GLM-5 | 1.0 | 0.2 | 3.2 |
-| GLM-5-Turbo | 1.2 | 0.24 | 4.0 |
-| GLM-4.7 | 0.6 | 0.11 | 2.2 |
-| GLM-4.7-FlashX | 0.07 | 0.01 | 0.4 |
-| GLM-4.6 | 0.6 | 0.11 | 2.2 |
-| GLM-4.5 | 0.6 | 0.11 | 2.2 |
-| GLM-4.5-X | 2.2 | 0.45 | 8.9 |
-| GLM-4.5-Air | 0.2 | 0.03 | 1.1 |
-| GLM-4.5-AirX | 1.1 | 0.22 | 4.5 |
+**The data file is the current record. Read it rather than a copy here.** A
+table in this file would duplicate 22 rows and go stale first.
 
-`GLM-4.7-Flash` and `GLM-4.5-Flash` are free. The page also lists vision, image,
-video, audio, and agent pricing, which this repository does not track.
+What the page does and does not give you:
 
-Z.ai publishes no cache-write rate. Leave `cache_write` as `null`.
+- Z.ai publishes no cache-write rate. Leave `cache_write` as `null` on every
+  row.
+- Z.ai publishes a cached-read rate for most models. It is roughly a fifth of
+  the input rate, but read it. Do not derive it.
+- `GLM-4.7-Flash`, `GLM-4.5-Flash`, and `GLM-4.6V-Flash` are free. Write `0`,
+  not `null`, and say "Free tier." in `notes`.
+- The page publishes no context window and no maximum output. Read `models.md`
+  for where those live.
+- The page also lists image, video, audio, and agent pricing. This repository
+  does not track those.
 
-This page publishes no context window and no maximum output. Read
-`https://docs.z.ai/guides/llm/glm-5.3` for those.
+### Trap: GLM-5.3-Flash is on a promotion that expires
+
+GLM-5.3-Flash bills at 50 percent off: 0.075 input, 0.015 cached input, and 0.25
+output. Its list prices are 0.15, 0.03, and 0.50.
+
+**The promotion ends at 24:00 on September 9, 2026, Singapore time (UTC+8).**
+
+After that date the rates in `data/api_pricing.yaml` are stale. Re-read the
+pricing page and write the list prices in. The row already names the date and
+the list prices in `notes`, so update `notes` in the same edit.
+
+This is the only Zhipu row with a known expiry date. Check it first on any
+refresh.
