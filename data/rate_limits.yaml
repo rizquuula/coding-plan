@@ -18,11 +18,203 @@
       url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
   last_verified: 2026-08-28
 
-- id: alibaba-qwen-max-us-virginia
+- id: alibaba-qwen3-max-singapore
   provider: Alibaba (Qwen)
-  model: Qwen-Max
+  model: Qwen3-Max
+  tier: Singapore
+  requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-max-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen3.7-Max
+  tier: Singapore
+  requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-8-max-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen3.8-Max
+  tier: Singapore
+  requests_per_minute: 15000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-plus-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen3.7-Plus
+  tier: Singapore
+  requests_per_minute: 15000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-plus-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Plus
+  tier: Singapore
+  requests_per_minute: 2400
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-flash-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Flash
+  tier: Singapore
+  requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-next-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Next
+  tier: Singapore
+  requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-max-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen3-Max
   tier: US (Virginia)
   requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-max-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen3.7-Max
+  tier: US (Virginia)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-8-max-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen3.8-Max
+  tier: US (Virginia)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-plus-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen3.7-Plus
+  tier: US (Virginia)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-plus-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Plus
+  tier: US (Virginia)
+  requests_per_minute: 2400
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-flash-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Flash
+  tier: US (Virginia)
+  requests_per_minute: 1200
   input_tokens_per_minute: null
   output_tokens_per_minute: null
   tokens_per_minute: 1000000
@@ -39,6 +231,118 @@
   model: Qwen-Max
   tier: China (Beijing)
   requests_per_minute: 1200
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-max-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3-Max
+  tier: China (Beijing)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-max-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3.7-Max
+  tier: China (Beijing)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-8-max-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3.8-Max
+  tier: China (Beijing)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-plus-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3.7-Plus
+  tier: China (Beijing)
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-plus-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Plus
+  tier: China (Beijing)
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-flash-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Flash
+  tier: China (Beijing)
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-next-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen3-Coder-Next
+  tier: China (Beijing)
+  requests_per_minute: 600
   input_tokens_per_minute: null
   output_tokens_per_minute: null
   tokens_per_minute: 1000000
@@ -224,7 +528,7 @@
   output_tokens_per_minute: 2000000
   tokens_per_minute: null
   requests_per_day: null
-  notes: null
+  notes: Claude Opus 5 has its own limit and is not in the Opus 4.x bucket.
   links:
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
@@ -314,7 +618,7 @@
   output_tokens_per_minute: 2000000
   tokens_per_minute: null
   requests_per_day: null
-  notes: null
+  notes: Claude Sonnet 5 has its own limit and is not in the Sonnet 4.x bucket.
   links:
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
@@ -329,8 +633,8 @@
   output_tokens_per_minute: null
   tokens_per_minute: null
   requests_per_day: null
-  notes: DeepSeek publishes a concurrency limit of 2500 for this model, not a
-    per-minute rate limit.
+  concurrent_requests: 2500
+  notes: DeepSeek publishes a concurrency limit, not a per-minute rate limit.
   links:
     - label: rate limit
       url: https://api-docs.deepseek.com/quick_start/rate_limit
@@ -345,8 +649,8 @@
   output_tokens_per_minute: null
   tokens_per_minute: null
   requests_per_day: null
-  notes: DeepSeek publishes a concurrency limit of 500 for this model, not a
-    per-minute rate limit.
+  concurrent_requests: 500
+  notes: DeepSeek publishes a concurrency limit, not a per-minute rate limit.
   links:
     - label: rate limit
       url: https://api-docs.deepseek.com/quick_start/rate_limit
@@ -361,6 +665,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 500000
   requests_per_day: null
+  concurrent_requests: 1
   notes: Kimi applies this limit account-wide, not per model, and caps Tier0 at
     1500000 tokens per day.
   links:
@@ -377,6 +682,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 2000000
   requests_per_day: null
+  concurrent_requests: 50
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -392,6 +698,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 3000000
   requests_per_day: null
+  concurrent_requests: 100
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -407,6 +714,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 3000000
   requests_per_day: null
+  concurrent_requests: 200
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -422,6 +730,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 4000000
   requests_per_day: null
+  concurrent_requests: 400
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -437,6 +746,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 5000000
   requests_per_day: null
+  concurrent_requests: 1000
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -452,6 +762,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 500000
   requests_per_day: null
+  concurrent_requests: 1
   notes: Kimi applies this limit account-wide, not per model, and caps Tier0 at
     1500000 tokens per day.
   links:
@@ -468,6 +779,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 2000000
   requests_per_day: null
+  concurrent_requests: 50
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -483,6 +795,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 3000000
   requests_per_day: null
+  concurrent_requests: 100
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -498,6 +811,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 3000000
   requests_per_day: null
+  concurrent_requests: 200
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -513,6 +827,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 4000000
   requests_per_day: null
+  concurrent_requests: 400
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit
@@ -528,6 +843,7 @@
   output_tokens_per_minute: null
   tokens_per_minute: 5000000
   requests_per_day: null
+  concurrent_requests: 1000
   notes: Kimi applies this limit account-wide, not per model.
   links:
     - label: rate limit

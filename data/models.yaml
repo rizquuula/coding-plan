@@ -1,6 +1,150 @@
 # Model specifications.
 # Schema: see AGENTS.md. Use null when a value is not published.
 
+- id: alibaba-qwen-max
+  name: Qwen-Max
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: null
+  vision: null
+  open_weights: false
+  notes: Alibaba lists this model under Legacy Qwen and publishes no parameter
+    count for it.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: pricing
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-max
+  name: Qwen3-Max
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 256K
+  max_output: null
+  vision: null
+  open_weights: false
+  notes: Alibaba publishes no parameter count and no maximum output length for
+    this model.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: pricing
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-max
+  name: Qwen3.7-Max
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: false
+  open_weights: false
+  notes: The Token Plan model table states the capability of this model as
+    reasoning and text generation, with no visual understanding.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-8-max
+  name: Qwen3.8-Max
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: true
+  open_weights: false
+  notes: The Token Plan model table states the capability of this model as
+    reasoning, visual understanding, and text generation.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-7-plus
+  name: Qwen3.7-Plus
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: false
+  notes: The vision model page states that this model takes text, images, and
+    video as input.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/vision-model
+    - label: pricing
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-plus
+  name: Qwen3-Coder-Plus
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: false
+  notes: The Coding Plan page marks its vision models with a vision tag and does
+    not mark this one.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: pricing
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-flash
+  name: Qwen3-Coder-Flash
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: false
+  notes: The vision model page does not list this model, and Alibaba publishes no
+    parameter count for it.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: pricing
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen3-coder-next
+  name: Qwen3-Coder-Next
+  provider: Alibaba (Qwen)
+  total_params: null
+  active_params: null
+  context_window: 256K
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: Alibaba prices and rate-limits this model in its open-source Qwen
+    section, but publishes no parameter count for it.
+  links:
+    - label: docs
+      url: https://www.alibabacloud.com/help/en/model-studio/text-generation-model
+    - label: pricing
+      url: https://www.alibabacloud.com/help/en/model-studio/model-pricing
+  last_verified: 2026-08-28
+
 - id: claude-fable-5
   name: Claude Fable 5
   provider: Anthropic
@@ -13,7 +157,7 @@
   notes: Anthropic does not publish parameter counts.
   links:
     - label: model card
-      url: https://platform.claude.com/docs/en/about-claude/models/overview
+      url: https://platform.claude.com/docs/en/models/overview
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
   last_verified: 2026-08-28
@@ -30,7 +174,7 @@
   notes: Anthropic does not publish parameter counts.
   links:
     - label: model card
-      url: https://platform.claude.com/docs/en/about-claude/models/overview
+      url: https://platform.claude.com/docs/en/models/overview
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
   last_verified: 2026-08-28
@@ -47,7 +191,7 @@
   notes: Anthropic does not publish parameter counts.
   links:
     - label: model card
-      url: https://platform.claude.com/docs/en/about-claude/models/overview
+      url: https://platform.claude.com/docs/en/models/overview
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
   last_verified: 2026-08-28
@@ -64,9 +208,288 @@
   notes: Anthropic does not publish parameter counts.
   links:
     - label: model card
-      url: https://platform.claude.com/docs/en/about-claude/models/overview
+      url: https://platform.claude.com/docs/en/models/overview
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: claude-opus-4-8
+  name: Claude Opus 4.8
+  provider: Anthropic
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: true
+  open_weights: false
+  notes: Anthropic labels this model active and legacy, and publishes no parameter
+    count.
+  links:
+    - label: model card
+      url: https://platform.claude.com/docs/en/models/opus-4-8/overview
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: claude-sonnet-4-6
+  name: Claude Sonnet 4.6
+  provider: Anthropic
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: true
+  open_weights: false
+  notes: Anthropic labels this model active and legacy, and publishes no parameter
+    count.
+  links:
+    - label: model card
+      url: https://platform.claude.com/docs/en/models/sonnet-4-6/overview
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-sol
+  name: GPT-5.6 Sol
+  provider: OpenAI
+  total_params: null
+  active_params: null
+  context_window: 1.05M
+  max_output: 128K
+  vision: true
+  open_weights: null
+  notes: OpenAI publishes no parameter count and no weight licence for this model.
+  links:
+    - label: model card
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-terra
+  name: GPT-5.6 Terra
+  provider: OpenAI
+  total_params: null
+  active_params: null
+  context_window: 1.05M
+  max_output: 128K
+  vision: true
+  open_weights: null
+  notes: OpenAI publishes no parameter count and no weight licence for this model.
+  links:
+    - label: model card
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-luna
+  name: GPT-5.6 Luna
+  provider: OpenAI
+  total_params: null
+  active_params: null
+  context_window: 1.05M
+  max_output: 128K
+  vision: true
+  open_weights: null
+  notes: OpenAI publishes no parameter count and no weight licence for this model.
+  links:
+    - label: model card
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  last_verified: 2026-08-28
+
+- id: openai-gpt-oss-120b
+  name: gpt-oss-120b
+  provider: OpenAI
+  total_params: 117B
+  active_params: 5.1B
+  context_window: 131K
+  max_output: 131K
+  vision: false
+  open_weights: true
+  notes: Apache 2.0 weights on HuggingFace; the OpenAI pricing page lists no rate.
+  links:
+    - label: model card
+      url: https://developers.openai.com/api/docs/models/gpt-oss-120b
+  last_verified: 2026-08-28
+
+- id: deepseek-v4-pro
+  name: DeepSeek-V4-Pro
+  provider: DeepSeek
+  total_params: 1.6T
+  active_params: 49B
+  context_window: 1M
+  max_output: 384K
+  vision: false
+  open_weights: true
+  notes: DeepSeek open-sourced the V4 weights at launch.
+  links:
+    - label: model card
+      url: https://www.deepseek.com/en/news/v4-preview/
+    - label: pricing
+      url: https://api-docs.deepseek.com/quick_start/pricing
+  last_verified: 2026-08-28
+
+- id: deepseek-v4-flash
+  name: DeepSeek-V4-Flash
+  provider: DeepSeek
+  total_params: 284B
+  active_params: 13B
+  context_window: 1M
+  max_output: 384K
+  vision: false
+  open_weights: true
+  notes: DeepSeek open-sourced the V4 weights at launch.
+  links:
+    - label: model card
+      url: https://www.deepseek.com/en/news/v4-preview/
+    - label: pricing
+      url: https://api-docs.deepseek.com/quick_start/pricing
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3
+  name: Kimi K3
+  provider: Moonshot (Kimi)
+  total_params: 2.8T
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: true
+  open_weights: null
+  notes: Moonshot announced a weights release for 2026-07-27, and no page found
+    today confirms the weights shipped.
+  links:
+    - label: model card
+      url: https://platform.kimi.ai/docs/guide/kimi-k3-quickstart
+    - label: docs
+      url: https://platform.kimi.ai/docs/models
+    - label: announcement
+      url: https://www.kimi.ai/blog/kimi-k3
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code
+  name: Kimi K2.7 Code
+  provider: Moonshot (Kimi)
+  total_params: null
+  active_params: null
+  context_window: 256K
+  max_output: null
+  vision: true
+  open_weights: null
+  notes: Kimi publishes no parameter count and no weights release for this model.
+  links:
+    - label: model card
+      url: https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart
+    - label: docs
+      url: https://platform.kimi.ai/docs/models
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-1-pro-preview
+  name: Gemini 3.1 Pro Preview
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-7-flash
+  name: Gemini 3.7 Flash
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-6-flash
+  name: Gemini 3.6 Flash
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-5-flash
+  name: Gemini 3.5 Flash
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-5-flash-lite
+  name: Gemini 3.5 Flash-Lite
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-1-flash-lite
+  name: Gemini 3.1 Flash-Lite
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite
+  last_verified: 2026-08-28
+
+- id: google-gemini-3-flash-preview
+  name: Gemini 3 Flash Preview
+  provider: Google
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Google publishes no parameter count and does not state whether the
+    weights are open.
+  links:
+    - label: model card
+      url: https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview
   last_verified: 2026-08-28
 
 - id: zhipu-glm-5-3

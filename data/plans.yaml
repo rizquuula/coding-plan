@@ -2,6 +2,202 @@
 # Every row was read from the provider's own pricing page on `last_verified`.
 # Schema: see AGENTS.md.
 
+- id: alibaba-coding-plan-pro
+  provider: Alibaba (Qwen)
+  plan: Coding Plan Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 50
+  limits:
+    - Up to 6000 requests per 5 hours
+    - Up to 45000 requests per week
+    - Up to 90000 requests per month
+  models:
+    - qwen3.7-plus
+    - qwen3.6-plus
+    - qwen3.5-plus
+    - qwen3-max-2026-01-23
+    - qwen3-coder-next
+    - qwen3-coder-plus
+    - kimi-k2.5
+    - glm-5
+    - glm-4.7
+    - MiniMax-M2.5
+  status: active
+  notes: Alibaba publishes a monthly price only, and sells a limited number of
+    slots that it restocks daily.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/coding-plan
+  last_verified: 2026-08-28
+
+- id: alibaba-token-plan-personal-lite
+  provider: Alibaba (Qwen)
+  plan: Token Plan Personal Lite
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 8
+  limits:
+    - 2500 Credits per 7-day window
+    - 1 to 2 concurrent agents
+  models:
+    - qwen3.8-max
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.6-flash
+    - deepseek-v4-pro
+    - glm-5.2
+  status: active
+  notes: The page states a limited-time price of $6 per month and sells the plan
+    in the Singapore region only.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-token-plan-personal-standard
+  provider: Alibaba (Qwen)
+  plan: Token Plan Personal Standard
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 25
+  limits:
+    - 10000 Credits per 7-day window
+    - 3 to 4 concurrent agents
+  models:
+    - qwen3.8-max
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.6-flash
+    - deepseek-v4-pro
+    - glm-5.2
+  status: active
+  notes: The page states a limited-time price of $18 per month and sells the plan
+    in the Singapore region only.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-token-plan-personal-pro
+  provider: Alibaba (Qwen)
+  plan: Token Plan Personal Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 80
+  limits:
+    - 40000 Credits per 7-day window
+    - 6 to 8 concurrent agents
+  models:
+    - qwen3.8-max
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.6-flash
+    - deepseek-v4-pro
+    - glm-5.2
+  status: active
+  notes: The page states a limited-time price of $68 per month and sells the plan
+    in the Singapore region only.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-token-plan-team-standard
+  provider: Alibaba (Qwen)
+  plan: Token Plan Team Standard
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 30
+  limits:
+    - 25000 Credits per seat per month
+    - No 7-day window limit
+  models:
+    - qwen3.8-max
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.6-plus
+    - qwen3.6-flash
+    - deepseek-v4-pro
+    - kimi-k2.7-code
+    - glm-5.2
+    - MiniMax-M2.5
+  status: active
+  notes: The amount is one seat per month, and the page states a limited-time
+    price of $20 per seat per month.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-token-plan-team-advanced
+  provider: Alibaba (Qwen)
+  plan: Token Plan Team Advanced
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 100
+  limits:
+    - 100000 Credits per seat per month
+    - No 7-day window limit
+  models:
+    - qwen3.8-max
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.6-plus
+    - qwen3.6-flash
+    - deepseek-v4-pro
+    - kimi-k2.7-code
+    - glm-5.2
+    - MiniMax-M2.5
+  status: active
+  notes: The amount is one seat per month, and the page states a limited-time
+    price of $75 per seat per month.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-overview
+  last_verified: 2026-08-28
+
+- id: alibaba-token-plan-team-premium
+  provider: Alibaba (Qwen)
+  plan: Token Plan Team Premium
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 200
+  limits:
+    - 250000 Credits per seat per month
+    - No 7-day window limit
+  models:
+    - qwen3.8-max
+    - qwen3.7-max
+    - qwen3.7-plus
+    - qwen3.6-plus
+    - qwen3.6-flash
+    - deepseek-v4-pro
+    - kimi-k2.7-code
+    - glm-5.2
+    - MiniMax-M2.5
+  status: active
+  notes: The amount is one seat per month, and the page states no limited-time
+    price for this tier.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/token-plan-team-overview
+  last_verified: 2026-08-28
+
 - id: anthropic-claude-pro
   provider: Anthropic
   plan: Claude Pro
@@ -13,13 +209,14 @@
     - period: year
       amount: 200
   limits:
-    - Weekly usage limits apply
+    - At least 5x the Free usage per 5-hour session
+    - Weekly usage limits apply on top
   models:
     - Claude Opus 5
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: Includes Claude Code.
+  notes: Includes Claude Code, and Claude Fable 5 only through usage credits.
   links:
     - label: pricing
       url: https://claude.com/pricing
@@ -36,17 +233,22 @@
     - period: month
       amount: 100
   limits:
-    - 5x the Pro usage
+    - 5x the Pro usage per 5-hour session
     - Higher output limits for all tasks
+    - Weekly usage limits apply across all models
+    - Claude Fable 5 at 50% of the weekly limit
   models:
+    - Claude Fable 5
     - Claude Opus 5
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: The pricing page lists the Max tier as starting at 100 per month.
+  notes: Anthropic bills Max monthly only.
   links:
     - label: pricing
       url: https://claude.com/pricing
+    - label: pricing
+      url: https://support.claude.com/en/articles/11049741-what-is-the-max-plan
     - label: rate limit
       url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
   last_verified: 2026-08-28
@@ -60,15 +262,104 @@
     - period: month
       amount: 200
   limits:
-    - 20x the Pro usage
+    - 20x the Pro usage per 5-hour session
     - Higher output limits for all tasks
+    - Weekly usage limits apply across all models
+    - Claude Fable 5 at 50% of the weekly limit
   models:
+    - Claude Fable 5
     - Claude Opus 5
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: The pricing page names the 20x tier but prints only "from 100" for Max,
-    so confirm the exact price in the plan picker.
+  notes: Anthropic bills Max monthly only, and the support article states the 200
+    price.
+  links:
+    - label: pricing
+      url: https://claude.com/pricing
+    - label: pricing
+      url: https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+    - label: rate limit
+      url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-team-standard
+  provider: Anthropic
+  plan: Claude Team Standard seat
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 25
+    - period: year
+      amount: 240
+  limits:
+    - More usage per seat than Pro
+    - Weekly usage limits apply
+    - 200K context window
+  models:
+    - Claude Fable 5
+    - Claude Opus 5
+    - Claude Sonnet 5
+    - Claude Haiku 4.5
+  status: active
+  notes: The page prints 20 per seat per month billed annually, so the year total
+    is 240.
+  links:
+    - label: pricing
+      url: https://claude.com/pricing
+    - label: rate limit
+      url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-team-premium
+  provider: Anthropic
+  plan: Claude Team Premium seat
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 125
+    - period: year
+      amount: 1200
+  limits:
+    - 5x the Standard seat usage
+    - Weekly usage limits apply
+    - 200K context window
+  models:
+    - Claude Fable 5
+    - Claude Opus 5
+    - Claude Sonnet 5
+    - Claude Haiku 4.5
+  status: active
+  notes: The page prints 100 per seat per month billed annually, so the year total
+    is 1200.
+  links:
+    - label: pricing
+      url: https://claude.com/pricing
+    - label: rate limit
+      url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-enterprise
+  provider: Anthropic
+  plan: Claude Enterprise
+  region: global
+  price_currency: USD
+  prices:
+    - period: year
+      amount: 240
+  limits:
+    - Seat price plus usage billed at API rates
+    - 500K context window on the default model
+  models:
+    - Claude Fable 5
+    - Claude Opus 5
+    - Claude Sonnet 5
+    - Claude Haiku 4.5
+  status: active
+  notes: Anthropic sells Enterprise annually only, at 20 per seat per month, so
+    the year total is 240.
   links:
     - label: pricing
       url: https://claude.com/pricing
@@ -167,6 +458,33 @@
       url: https://learn.chatgpt.com/docs/pricing
   last_verified: 2026-08-28
 
+- id: openai-chatgpt-business
+  provider: OpenAI
+  plan: ChatGPT Business
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 25
+    - period: year
+      amount: 240
+  limits:
+    - Sol 10 to 100 messages per 5 hours
+    - Terra 25 to 200 messages per 5 hours
+    - Luna 250 to 2000 messages per 5 hours
+    - About 45 minutes of ChatGPT Voice
+  models:
+    - GPT-5.6 Sol
+    - GPT-5.6 Terra
+    - GPT-5.6 Luna
+  status: active
+  notes: Price is per seat and needs 2 seats; the yearly amount is 20 per month
+    times 12.
+  links:
+    - label: pricing
+      url: https://learn.chatgpt.com/docs/pricing
+  last_verified: 2026-08-28
+
 - id: github-copilot-pro
   provider: GitHub
   plan: Copilot Pro
@@ -179,16 +497,24 @@
     - 15 USD of AI credits per month
     - Unlimited code completions
   models:
-    - Claude
-    - GPT
+    - Claude Haiku
+    - Claude Sonnet
     - Gemini
+    - GPT
+    - Grok
+    - Kimi
+    - MAI-Code
+    - Raptor mini
   status: active
-  notes: GitHub bills AI usage in credits. One credit costs 0.01 USD.
+  notes: Copilot Pro unlocks no Opus, no Fable 5, no GPT-5.4 nano, no GPT-5.5,
+    and no GPT-5.6 Sol.
   links:
     - label: plans
       url: https://github.com/features/copilot/plans
     - label: rate limit
       url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals
+    - label: docs
+      url: https://docs.github.com/en/copilot/get-started/plans
   last_verified: 2026-08-28
 
 - id: github-copilot-pro-plus
@@ -203,16 +529,25 @@
     - 70 USD of AI credits per month
     - Unlimited code completions
   models:
-    - Claude
-    - GPT
+    - Claude Haiku
+    - Claude Sonnet
+    - Claude Opus
+    - Claude Fable
     - Gemini
+    - GPT
+    - Grok
+    - Kimi
+    - MAI-Code
+    - Raptor mini
   status: active
-  notes: null
+  notes: Copilot Pro+ and Copilot Max unlock the same model list.
   links:
     - label: plans
       url: https://github.com/features/copilot/plans
     - label: rate limit
       url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals
+    - label: docs
+      url: https://docs.github.com/en/copilot/get-started/plans
   last_verified: 2026-08-28
 
 - id: github-copilot-max
@@ -227,16 +562,90 @@
     - 200 USD of AI credits per month
     - Unlimited code completions
   models:
-    - Claude
-    - GPT
+    - Claude Haiku
+    - Claude Sonnet
+    - Claude Opus
+    - Claude Fable
     - Gemini
+    - GPT
+    - Grok
+    - Kimi
+    - MAI-Code
+    - Raptor mini
   status: active
-  notes: null
+  notes: Copilot Max matches Copilot Pro+ on models and adds priority access to
+    premium models.
   links:
     - label: plans
       url: https://github.com/features/copilot/plans
     - label: rate limit
       url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals
+    - label: docs
+      url: https://docs.github.com/en/copilot/get-started/plans
+  last_verified: 2026-08-28
+
+- id: github-copilot-business
+  provider: GitHub
+  plan: Copilot Business
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 19
+  limits:
+    - 1900 AI credits per user per month
+    - Credits pool across the billing entity
+    - Unlimited code completions
+  models:
+    - Claude Haiku
+    - Claude Sonnet
+    - Claude Opus
+    - Claude Fable
+    - Gemini
+    - GPT
+    - Grok
+    - Kimi
+    - MAI-Code
+  status: active
+  notes: GitHub prices this plan per granted seat and excludes Raptor mini and
+    GPT-5.4 nano.
+  links:
+    - label: plans
+      url: https://docs.github.com/en/copilot/get-started/plans
+    - label: rate limit
+      url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises
+  last_verified: 2026-08-28
+
+- id: github-copilot-enterprise
+  provider: GitHub
+  plan: Copilot Enterprise
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 39
+  limits:
+    - 3900 AI credits per user per month
+    - Credits pool across the billing entity
+    - Unlimited code completions
+  models:
+    - Claude Haiku
+    - Claude Sonnet
+    - Claude Opus
+    - Claude Fable
+    - Gemini
+    - GPT
+    - Grok
+    - Kimi
+    - MAI-Code
+  status: active
+  notes: GitHub prices this plan per granted seat and adds priority access to
+    premium models.
+  links:
+    - label: plans
+      url: https://docs.github.com/en/copilot/get-started/plans
+    - label: rate limit
+      url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises
   last_verified: 2026-08-28
 
 - id: cursor-pro
@@ -247,19 +656,27 @@
   prices:
     - period: month
       amount: 20
+    - period: year
+      amount: 192
   limits:
-    - Extended agent request limits
+    - Extended limits on Agent
+    - Generous limits for Grok
     - On-demand billing past the included usage
   models:
     - Claude
     - GPT
     - Gemini
+    - Grok
     - Composer
+    - Kimi
+    - GLM
   status: active
-  notes: null
+  notes: Cursor prints a rate per month; the year total is that rate times 12.
   links:
     - label: pricing
-      url: https://cursor.com/docs/account/pricing
+      url: https://cursor.com/docs/models-and-pricing
+    - label: plans
+      url: https://cursor.com/pricing
     - label: rate limit
       url: https://cursor.com/help/models-and-usage/usage-limits
   last_verified: 2026-08-28
@@ -272,18 +689,28 @@
   prices:
     - period: month
       amount: 60
+    - period: year
+      amount: 576
   limits:
-    - 3x the Pro agent limits
+    - 3x Pro limits on Agent
+    - Generous limits for Grok
+    - Higher Grok Bot usage limits
+    - On-demand billing past the included usage
   models:
     - Claude
     - GPT
     - Gemini
+    - Grok
     - Composer
+    - Kimi
+    - GLM
   status: active
-  notes: null
+  notes: Cursor prints a rate per month; the year total is that rate times 12.
   links:
     - label: pricing
-      url: https://cursor.com/docs/account/pricing
+      url: https://cursor.com/docs/models-and-pricing
+    - label: plans
+      url: https://cursor.com/pricing
     - label: rate limit
       url: https://cursor.com/help/models-and-usage/usage-limits
   last_verified: 2026-08-28
@@ -296,20 +723,145 @@
   prices:
     - period: month
       amount: 200
+    - period: year
+      amount: 1920
   limits:
-    - 20x the Pro agent limits
+    - 20x Pro limits on Agent
+    - Generous limits for Grok
+    - Highest Grok Bot usage limits
+    - On-demand billing past the included usage
+    - Priority access to new features
   models:
     - Claude
     - GPT
     - Gemini
+    - Grok
     - Composer
+    - Kimi
+    - GLM
   status: active
-  notes: null
+  notes: Cursor prints a rate per month; the year total is that rate times 12.
   links:
     - label: pricing
-      url: https://cursor.com/docs/account/pricing
+      url: https://cursor.com/docs/models-and-pricing
+    - label: plans
+      url: https://cursor.com/pricing
     - label: rate limit
       url: https://cursor.com/help/models-and-usage/usage-limits
+  last_verified: 2026-08-28
+
+- id: cursor-teams-standard
+  provider: Cursor
+  plan: Teams Standard
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 40
+    - period: year
+      amount: 384
+  limits:
+    - Standard Teams usage allowance per seat
+    - On-demand billing enabled by default
+    - Third-party models add $0.25 per 1M tokens
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - Composer
+    - Kimi
+    - GLM
+  status: active
+  notes: Price is per seat; the year total is the yearly rate times 12.
+  links:
+    - label: pricing
+      url: https://cursor.com/docs/account/teams/pricing
+    - label: plans
+      url: https://cursor.com/pricing
+    - label: rate limit
+      url: https://cursor.com/help/models-and-usage/usage-limits
+  last_verified: 2026-08-28
+
+- id: cursor-teams-premium
+  provider: Cursor
+  plan: Teams Premium
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 120
+    - period: year
+      amount: 1152
+  limits:
+    - 5x Standard limits on Agent
+    - On-demand billing enabled by default
+    - Third-party models add $0.25 per 1M tokens
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - Composer
+    - Kimi
+    - GLM
+  status: active
+  notes: Price is per seat; the year total is the yearly rate times 12.
+  links:
+    - label: pricing
+      url: https://cursor.com/docs/account/teams/pricing
+    - label: plans
+      url: https://cursor.com/pricing
+    - label: rate limit
+      url: https://cursor.com/help/models-and-usage/usage-limits
+  last_verified: 2026-08-28
+
+- id: google-ai-plus
+  provider: Google
+  plan: Google AI Plus
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 4.99
+  limits:
+    - 2x higher than standard usage limits
+    - 128k token context window
+  models:
+    - Gemini
+  status: active
+  notes: The plan card names no Jules access and no Google Antigravity access.
+  links:
+    - label: pricing
+      url: https://gemini.google/us/subscriptions/
+    - label: rate limit
+      url: https://support.google.com/gemini/answer/16275805?hl=en
+  last_verified: 2026-08-28
+
+- id: google-ai-pro
+  provider: Google
+  plan: Google AI Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 19.99
+  limits:
+    - 4x higher than standard usage limits
+    - 1M token context window
+    - "Jules: 100 tasks per day, 15 concurrent"
+  models:
+    - Gemini
+  status: active
+  notes: The plan card grants entry rate limits to the Google Antigravity agent
+    model.
+  links:
+    - label: pricing
+      url: https://gemini.google/us/subscriptions/
+    - label: rate limit
+      url: https://support.google.com/gemini/answer/16275805?hl=en
+    - label: rate limit
+      url: https://jules.google/docs/usage-limits
   last_verified: 2026-08-28
 
 - id: google-ai-ultra-5x
@@ -319,18 +871,24 @@
   price_currency: USD
   prices:
     - period: month
-      amount: 100
+      amount: 99.99
   limits:
     - 5x the AI Pro usage limits
+    - 1M token context window
+    - "Jules: 300 tasks per day, 60 concurrent"
   models:
     - Gemini
   status: active
-  notes: Usage limits weigh prompt complexity rather than counting requests.
+  notes: Google publishes one Jules limit for both Ultra price points.
   links:
-    - label: announcement
-      url: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+    - label: pricing
+      url: https://gemini.google/us/subscriptions/
     - label: rate limit
       url: https://support.google.com/gemini/answer/16275805?hl=en
+    - label: rate limit
+      url: https://jules.google/docs/usage-limits
+    - label: announcement
+      url: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
   last_verified: 2026-08-28
 
 - id: google-ai-ultra-20x
@@ -340,18 +898,211 @@
   price_currency: USD
   prices:
     - period: month
-      amount: 200
+      amount: 199.99
   limits:
     - 20x the AI Pro usage limits
+    - 1M token context window
+    - "Jules: 300 tasks per day, 60 concurrent"
   models:
     - Gemini
   status: active
-  notes: Adds Gemini Omni, Project Genie, and Gemini Spark.
+  notes: Google publishes one Jules limit for both Ultra price points.
   links:
-    - label: announcement
-      url: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+    - label: pricing
+      url: https://gemini.google/us/subscriptions/
     - label: rate limit
       url: https://support.google.com/gemini/answer/16275805?hl=en
+    - label: rate limit
+      url: https://jules.google/docs/usage-limits
+    - label: announcement
+      url: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+  last_verified: 2026-08-28
+
+- id: google-code-assist-standard
+  provider: Google
+  plan: Gemini Code Assist Standard
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 22.80
+    - period: year
+      amount: 228.00
+  limits:
+    - Agent mode and Gemini CLI, 1500 requests per user daily
+    - Code generation and completion, 6000 requests per user daily
+    - 2 requests per second per user
+    - 1M token local codebase context window
+  models:
+    - Gemini
+  status: active
+  notes: Google prints 19.00 per seat per month on a 12-month commitment, so the
+    year amount is that rate times 12.
+  links:
+    - label: pricing
+      url: https://cloud.google.com/products/gemini/pricing
+    - label: rate limit
+      url: https://docs.cloud.google.com/gemini/docs/quotas
+  last_verified: 2026-08-28
+
+- id: google-code-assist-enterprise
+  provider: Google
+  plan: Gemini Code Assist Enterprise
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 54.00
+    - period: year
+      amount: 540.00
+  limits:
+    - Agent mode and Gemini CLI, 2000 requests per user daily
+    - Code generation and completion, 6000 requests per user daily
+    - 2 requests per second per user
+    - 1M token local codebase context window
+    - 20000 code customization repositories
+  models:
+    - Gemini
+  status: active
+  notes: Google prints 45.00 per seat per month on a 12-month commitment, so the
+    year amount is that rate times 12.
+  links:
+    - label: pricing
+      url: https://cloud.google.com/products/gemini/pricing
+    - label: rate limit
+      url: https://docs.cloud.google.com/gemini/docs/quotas
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-moderato
+  provider: Moonshot (Kimi)
+  plan: Moderato
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 19
+    - period: year
+      amount: 180
+  limits:
+    - Quota refreshes every 7 days, no rollover
+    - Rolling 5-hour window caps the request rate
+    - About 300 to 1200 requests per 5-hour window
+    - Up to 30 concurrent requests
+    - Kimi K3 context caps at 256K on this tier
+    - No HighSpeed variant on this tier
+    - Devices and API keys share one account quota
+  models:
+    - Kimi K3
+    - Kimi K2.7 Code
+  status: active
+  notes: Kimi Code is the coding client inside this membership, and these prices
+    come from the public order API the pricing page calls.
+  links:
+    - label: plans
+      url: https://www.kimi.com/membership/pricing
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/membership.html
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/models.html
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-allegretto
+  provider: Moonshot (Kimi)
+  plan: Allegretto
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 39
+    - period: year
+      amount: 372
+  limits:
+    - Quota refreshes every 7 days, no rollover
+    - Rolling 5-hour window caps the request rate
+    - About 300 to 1200 requests per 5-hour window
+    - Up to 30 concurrent requests
+    - Kimi K3 runs at up to 1M context
+    - Kimi K2.7 Code HighSpeed unlocked on this tier
+    - Devices and API keys share one account quota
+  models:
+    - Kimi K3
+    - Kimi K2.7 Code
+  status: active
+  notes: Kimi Code is the coding client inside this membership, and these prices
+    come from the public order API the pricing page calls.
+  links:
+    - label: plans
+      url: https://www.kimi.com/membership/pricing
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/membership.html
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/models.html
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-allegro
+  provider: Moonshot (Kimi)
+  plan: Allegro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 99
+    - period: year
+      amount: 948
+  limits:
+    - Quota refreshes every 7 days, no rollover
+    - Rolling 5-hour window caps the request rate
+    - About 300 to 1200 requests per 5-hour window
+    - Up to 30 concurrent requests
+    - Kimi K3 runs at up to 1M context
+    - Kimi K2.7 Code HighSpeed unlocked on this tier
+    - Devices and API keys share one account quota
+  models:
+    - Kimi K3
+    - Kimi K2.7 Code
+  status: active
+  notes: Kimi Code is the coding client inside this membership, and these prices
+    come from the public order API the pricing page calls.
+  links:
+    - label: plans
+      url: https://www.kimi.com/membership/pricing
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/membership.html
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/models.html
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-vivace
+  provider: Moonshot (Kimi)
+  plan: Vivace
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 199
+    - period: year
+      amount: 1908
+  limits:
+    - Quota refreshes every 7 days, no rollover
+    - Rolling 5-hour window caps the request rate
+    - About 300 to 1200 requests per 5-hour window
+    - Up to 30 concurrent requests
+    - Kimi K3 runs at up to 1M context
+    - Kimi K2.7 Code HighSpeed unlocked on this tier
+    - Devices and API keys share one account quota
+  models:
+    - Kimi K3
+    - Kimi K2.7 Code
+  status: active
+  notes: Kimi Code is the coding client inside this membership, and these prices
+    come from the public order API the pricing page calls.
+  links:
+    - label: plans
+      url: https://www.kimi.com/membership/pricing
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/membership.html
+    - label: docs
+      url: https://www.kimi.com/code/docs/en/kimi-code/models.html
   last_verified: 2026-08-28
 
 - id: zhipu-glm-coding-lite
