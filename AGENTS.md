@@ -100,13 +100,15 @@ One record per model.
 | `source` | yes | string | URL of the model page. |
 | `last_verified` | no | date | Date you read the source. |
 
-## How the site marks freshness
+## Fields the site does not render
 
-The build script reads `last_verified` and tags each row:
+The tables show `source` but not `status` or `last_verified`. Both fields stay in
+the data as provenance for you, the agent. Two consequences:
 
-- `fresh` — verified within the last 90 days.
-- `stale` — verified more than 90 days ago.
-- `unverified` — `last_verified` is `null`.
+- A reader cannot see that a plan is discontinued. When you set
+  `status: discontinued`, also say so in `notes`, which does render.
+- A reader cannot see how old a row is. Keep `last_verified` accurate anyway —
+  it tells the next agent which rows to re-check first.
 
 ## Task: add a plan
 

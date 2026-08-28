@@ -17,8 +17,8 @@ reshaped into sortable tables.
 | API pricing | `data/api_pricing.yaml` | Input, cached input, cache write, and output rates per 1M tokens |
 | Model specs | `data/models.yaml` | Parameter counts, context window, vision, open weights |
 
-Every row carries a `source` URL and a `last_verified` date. The site marks each
-row `fresh`, `stale`, or `unverified` so you can see what needs a check.
+Every row links to the page its values came from. The data files also record a
+`last_verified` date for each row, which the tables do not display.
 
 ## Build it locally
 
@@ -47,5 +47,5 @@ picks up the instructions automatically.
 
 ## Accuracy
 
-Seed rows marked `unverified` were entered without checking the provider page.
-Confirm a price at its source before you act on it.
+Providers change prices without notice. Confirm a figure at its `source` link
+before you act on it.

@@ -164,16 +164,6 @@ def format_money(value, currency: str) -> str:
     return f"{symbol}{value:,.2f}"
 
 
-def staleness(value, today: dt.date) -> str:
-    """Classify a row by how long ago somebody verified it."""
-    if not isinstance(value, dt.date):
-        return "unverified"
-    age = (today - value).days
-    if age > 90:
-        return "stale"
-    return "fresh"
-
-
 def render(data: dict, today: dt.date) -> None:
     """Write the rendered site into OUT_DIR."""
     env = Environment(
@@ -193,9 +183,6 @@ def render(data: dict, today: dt.date) -> None:
     api_pricing = sorted(data["api_pricing"], key=lambda r: (r["provider"], r["model"]))
     models = sorted(data["models"], key=lambda r: (r["provider"], r["name"]))
 
-    for row in plans + api_pricing + models:
-        row["freshness"] = staleness(row.get("last_verified"), today)
-
     context = {
         "plans_global": [r for r in plans if r["region"] == "global"],
         "plans_china": [r for r in plans if r["region"] == "china"],
@@ -206,9 +193,6 @@ def render(data: dict, today: dt.date) -> None:
             "plans": len(plans),
             "api_pricing": len(api_pricing),
             "models": len(models),
-            "unverified": sum(
-                1 for r in plans + api_pricing + models if r["freshness"] != "fresh"
-            ),
         },
     }
 

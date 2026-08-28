@@ -20,7 +20,6 @@
     <li><strong>{{ counts.plans }}</strong> plans</li>
     <li><strong>{{ counts.api_pricing }}</strong> API rates</li>
     <li><strong>{{ counts.models }}</strong> models</li>
-    <li><strong>{{ counts.unverified }}</strong> rows need a check</li>
   </ul>
   <nav class="toc">
     <a href="#plans-global">Global plans</a>
@@ -34,16 +33,6 @@
   </p>
 </header>
 
-{% macro badge(row) -%}
-{% if row.freshness == 'fresh' %}
-<span class="badge badge-fresh" title="Verified on {{ row.last_verified | date }}">{{ row.last_verified | date }}</span>
-{% elif row.freshness == 'stale' %}
-<span class="badge badge-stale" title="Verified on {{ row.last_verified | date }}, over 90 days ago">{{ row.last_verified | date }}</span>
-{% else %}
-<span class="badge badge-unverified" title="Nobody has verified this row yet">unverified</span>
-{% endif %}
-{%- endmacro %}
-
 {% macro plan_table(rows) -%}
 <div class="table-wrap">
   <table class="data-table">
@@ -54,8 +43,6 @@
         <th class="num">Price</th>
         <th>Limits</th>
         <th>Models</th>
-        <th>Status</th>
-        <th>Verified</th>
         <th>Source</th>
       </tr>
     </thead>
@@ -75,13 +62,11 @@
             {% for model in row.models %}<li>{{ model }}</li>{% endfor %}
           </ul>
         </td>
-        <td><span class="status status-{{ row.status }}">{{ row.status }}</span></td>
-        <td>{{ badge(row) }}</td>
         <td><a href="{{ row.source }}" rel="noopener">link</a></td>
       </tr>
       {% if row.notes %}
       <tr class="note-row">
-        <td colspan="8"><span class="note-label">Note</span> {{ row.notes }}</td>
+        <td colspan="6"><span class="note-label">Note</span> {{ row.notes }}</td>
       </tr>
       {% endif %}
       {% endfor %}
@@ -118,7 +103,6 @@
           <th class="num">Cached input</th>
           <th class="num">Cache write</th>
           <th class="num">Output</th>
-          <th>Verified</th>
           <th>Source</th>
         </tr>
       </thead>
@@ -132,12 +116,11 @@
           <td class="num">{{ row.cached_input | money(row.currency) }}</td>
           <td class="num">{{ row.cache_write | money(row.currency) }}</td>
           <td class="num">{{ row.output | money(row.currency) }}</td>
-          <td>{{ badge(row) }}</td>
           <td><a href="{{ row.source }}" rel="noopener">link</a></td>
         </tr>
         {% if row.notes %}
         <tr class="note-row">
-          <td colspan="9"><span class="note-label">Note</span> {{ row.notes }}</td>
+          <td colspan="8"><span class="note-label">Note</span> {{ row.notes }}</td>
         </tr>
         {% endif %}
         {% endfor %}
@@ -161,7 +144,6 @@
           <th>Max output</th>
           <th>Vision</th>
           <th>Open weights</th>
-          <th>Verified</th>
           <th>Source</th>
         </tr>
       </thead>
@@ -176,7 +158,6 @@
           <td>{{ row.max_output or "—" }}</td>
           <td>{{ "yes" if row.vision else "no" }}</td>
           <td>{{ "yes" if row.open_weights else "no" }}</td>
-          <td>{{ badge(row) }}</td>
           <td><a href="{{ row.source }}" rel="noopener">link</a></td>
         </tr>
         {% endfor %}
@@ -189,8 +170,8 @@
 
 <footer class="page-footer">
   <p>
-    Rows marked <span class="badge badge-unverified">unverified</span> carry seed values that nobody
-    has checked against the source yet. Always confirm a price on the provider page before you buy.
+    Every row links to the page its values came from. Providers change prices without notice, so
+    confirm a figure at its source before you act on it.
   </p>
   <p>Structure inspired by <a href="https://jia.je/kb/en/software/coding_plan.html" rel="noopener">jia.je/kb — coding plan</a>.</p>
 </footer>
