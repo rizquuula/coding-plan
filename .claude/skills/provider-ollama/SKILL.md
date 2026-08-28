@@ -16,8 +16,8 @@ Write the provider as `Ollama` in all four data files. The build script groups
 rows by that exact string, so any other spelling splits the provider into two
 tables. `region` is `global`. `price_currency` is `USD`.
 
-Ollama sells six tiers: Free, Pro, Max, Team, and Enterprise, plus a paused-but-
-active Max sign-up state. `data/plans.yaml` holds Free, Pro, Max, and Team
+Ollama sells five tiers: Free, Pro, Max, Team, and Enterprise. Max is active
+but closed to new sign-ups. `data/plans.yaml` holds Free, Pro, Max, and Team
 today. Enterprise carries no published price, so it gets no row. See trap 9.
 
 Ollama Cloud resells other providers' open models. It publishes no per-token
