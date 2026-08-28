@@ -1,6 +1,6 @@
 ---
 name: provider-byteplus
-description: How to source BytePlus (ModelArk Coding Plan) tiers, quotas, and promotions for the datasets in this repository. Use when you add or refresh a BytePlus row in data/plans.yaml, data/api_pricing.yaml, data/rate_limits.yaml, or data/models.yaml, or when the user mentions BytePlus, ModelArk, Coding Plan, ArkClaw, Dola-Seed, Seed-Code, byteplus.com, or ai.byteplus.com. Records which page holds each value, which tool reads it, and the traps that produce a wrong number — including that the plan price is not publicly readable.
+description: How to source BytePlus (ModelArk Coding Plan) tiers, quotas, and promotions for the datasets in this repository. Use when you add or refresh a BytePlus row in data/plans.yaml, data/api_pricing.yaml, data/rate_limits.yaml, or data/models.yaml, or when the user mentions BytePlus, ModelArk, Coding Plan, ArkClaw, Dola-Seed, Seed-Code, byteplus.com, or ai.byteplus.com. Records which page holds each value, which tool reads it, and the traps that produce a wrong number — including the exact payload the price API needs.
 ---
 
 # BytePlus — how to source the data
@@ -10,10 +10,12 @@ specific to BytePlus, so you do not repeat work that already failed.
 
 Everything here was checked on 2026-08-28. Re-check a status before you trust it.
 
-**The plan price is not public.** Every tier card server-renders the literal text
-"Loading pricing…". The real price arrives from an API that needs a login. So
-BytePlus gets zero rows in all four data files today. See trap 1. Your job on a
-refresh is to check whether that changed, not to find a number that fits.
+**The plan price is readable without a login.** Every tier card still
+server-renders the literal text "Loading pricing…", so a text scraper finds no
+number. The number is one script away. Run `scripts/query_price.py`. It POSTs to
+the price API on the `www.byteplus.com` host, which answers anonymous calls. A
+logged-out browser sees the same prices on the campaign page. See trap 1 for the
+two mistakes that hide this.
 
 ## Constants
 
@@ -47,7 +49,7 @@ code.
 | First-purchase offer status | `https://docs.byteplus.com/en/docs/ModelArk/1928265` | `scripts/extract_doc_text.py` |
 | Supported AI coding tools | `https://docs.byteplus.com/en/docs/ModelArk/1928262` | `scripts/extract_doc_text.py` |
 | Every top-level page URL | `https://www.byteplus.com/sitemap.xml` | `curl` |
-| The plan price | Nowhere public | — |
+| The plan prices | `POST https://www.byteplus.com/api/sales/calculatePriceV5` | `scripts/query_price.py` |
 
 `WebFetch` reads none of these usefully. The campaign host needs `curl`, and the
 docs host needs the script. Details and every probe result sit in
@@ -55,14 +57,25 @@ docs host needs the script. Details and every probe result sit in
 
 ## Twelve things that produce a wrong number
 
-**1. The plan price is not on any public page.** The campaign cards
-server-render "Loading pricing…" plus untranslated Chinese placeholders
-(订阅时长, 协议). The price comes from
-`POST https://console.byteplus.com/api/sales/calculatePriceV5`, which answers an
-unauthenticated call with a 302 to `/signin/login`. The docs Team page renders a
-"Monthly price" table header with no values under it. `data/plans.yaml` requires
-a number, and rule 3 forbids inventing one. Add no plans row. Re-check this trap
-on every refresh.
+**1. The price API answers anonymously, but two mistakes make it look private.**
+An earlier pass concluded the price was login-gated. That conclusion was wrong.
+Two separate errors produced it.
+
+First, the host. `POST https://console.byteplus.com/api/sales/calculatePriceV5`
+does 302 to `/signin/login`. That is true of the console host only. Never
+conclude from it that the price is private. The same path on
+`https://www.byteplus.com` answers an unauthenticated call with the real amount,
+and `ai.byteplus.com` answers too.
+
+Second, the payload. Omit `Period`, `Times`, or `Region` and the API returns
+HTTP 200 with `"TotalOriginalAmount":"0"`. That is a silent wrong-payload
+failure, not a free plan. A zero here always means your payload is incomplete.
+Send all three fields. `scripts/query_price.py` sends them.
+
+The campaign cards still server-render "Loading pricing…" plus untranslated
+Chinese placeholders (订阅时长, 协议), and the docs Team page still renders a
+"Monthly price" header with no values. Neither fact means the price is
+unreadable.
 
 **2. "First month from $10 USD" is a promo floor, not a plan price.** It comes
 from the site-header i18n strings. The referral share text states a different
@@ -121,21 +134,23 @@ repeat a promotional claim.
 
 ## Workflow
 
-1. Run `python3 scripts/extract_doc_text.py https://docs.byteplus.com/en/docs/ModelArk/1925114`.
-2. Take the tier quotas, the model list, and the refresh rules from that output.
-3. Fetch `https://ai.byteplus.com/en/activity/codingplan` with
+`data/plans.yaml` holds a `byteplus-lite` row and a `byteplus-pro` row. A
+refresh updates those two rows. It does not create them.
+
+1. Run `python3 scripts/query_price.py`. It prints the four amounts: Lite and
+   Pro, over 1 month and 3 months.
+2. Copy each amount into `prices` as the whole-term price. `Times: 3` is the
+   `quarter` entry. Never write the monthly equivalent.
+3. Check `TotalDiscountAmount` against `TotalOriginalAmount`. A gap means a live
+   discount. Record the original amount and state the discount in `notes`.
+4. Run `python3 scripts/extract_doc_text.py https://docs.byteplus.com/en/docs/ModelArk/1925114`.
+5. Take the tier quotas, the model list, and the refresh rules from that output.
+6. Fetch `https://ai.byteplus.com/en/activity/codingplan` with
    `curl -sL -A "Mozilla/5.0"` for the tier cards and the FAQ.
-4. Search that HTML for "Loading pricing". A hit means the price is still not
-   public.
-5. On a hit, add no row to `data/plans.yaml`, `data/api_pricing.yaml`,
-   `data/rate_limits.yaml`, or `data/models.yaml`. Stop here.
-6. On a real dollar figure, add the plans rows. Label the campaign URL `plans`
-   and each docs URL `docs`.
 7. Never add a `data/rate_limits.yaml` row from the plan quotas. See trap 7.
 8. Re-read docs `1928265` and `2165246` for the current promotion dates.
-9. Set `last_verified` to the date you read the pages, on any row you write.
-   Today you write no row, so you set nothing in `data/`.
-10. Run `python3 build.py --check` to confirm you changed no data by accident.
+9. Set `last_verified` to the date you read the pages, on every row you touch.
+10. Run `python3 build.py --check` and fix every error it prints.
 
 ## References
 

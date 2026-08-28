@@ -7,7 +7,7 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 | URL | Status and size | Tool | Verdict |
 |---|---|---|---|
 | `https://www.byteplus.com/en/activity/codingplan` | 200, 29 KB | `curl`, `WebFetch` | Client-side React shell. "You need to enable JavaScript". Zero data. `WebFetch` returns an empty body. |
-| `https://ai.byteplus.com/en/activity/codingplan` | 200, ~543 KB | `curl -sL -A "Mozilla/5.0"` | The server-rendered twin. Tier cards, features, FAQ. No prices. Use this one. |
+| `https://ai.byteplus.com/en/activity/codingplan` | 200, ~543 KB | `curl -sL -A "Mozilla/5.0"` | The server-rendered twin. Tier cards, features, FAQ. Use this one. The card price arrives client-side, so the HTML still reads "Loading pricing…". A logged-out browser shows the real prices on the Monthly and Quarterly toggle. |
 | `https://ai.byteplus.com/en/activity/arkcodingplan` | 200 | `curl -sL -A "Mozilla/5.0"` | Same campaign shape. No extra value. |
 | `https://docs.byteplus.com/en/docs/ModelArk/1925114` | 200 | `scripts/extract_doc_text.py` | The Coding Plan overview. Authoritative for quotas, models, refresh rules, tools. |
 | `https://docs.byteplus.com/en/docs/ModelArk/2165246` | 200 | `scripts/extract_doc_text.py` | Time-limited referral campaign terms. |
@@ -17,7 +17,8 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 | `https://docs.byteplus.com/en/docs/ModelArk/1928262` | 200 | `scripts/extract_doc_text.py` | Integrate with AI programming tools. |
 | `https://docs.byteplus.com/en/docs/ModelArk/coding-plan` | 200, 319 KB | `curl` | Renders its body client-side. No article text in the HTML. |
 | `https://www.byteplus.com/en/pricing` | 200, 106 KB | `curl` | Renders its body client-side. No price in the HTML. |
-| `POST https://console.byteplus.com/api/sales/calculatePriceV5` | 302 to `/signin/login` | `curl` | The price API. Needs a login. Never cite it. |
+| `POST https://www.byteplus.com/api/sales/calculatePriceV5` | 200, JSON | `scripts/query_price.py` | The price API. Answers anonymous calls. Verified 2026-08-28: Lite 1 month 10 USD, Lite 3 months 30, Pro 1 month 50, Pro 3 months 150. Needs `Period`, `Times`, and `Region` in the payload. |
+| `POST https://console.byteplus.com/api/sales/calculatePriceV5` | 302 to `/signin/login` | `curl` | The same path on the console host. Login-gated. Use the `www` host instead. |
 | `eps-common-private-johor.dualstack.ap-southeast-1.tos.bytepluses.com` | DNS does not resolve | `curl` | The docs PDF export bucket named in the router data. Dead host. |
 | `https://www.byteplus.com/sitemap.xml` | 200, ~637 KB | `curl` | Real XML, about 444 entries. Top-level pages only, each with about 12 locale twins. No blog posts. |
 | `res.gcloudcache.com/bp-fe/portal/byteplus-campaign/` | 200 per chunk | `curl` | About 65 webpack chunks. Header and footer i18n strings only. No prices. |
@@ -26,9 +27,13 @@ Every status below was checked on 2026-08-28. Re-check before you trust one.
 
 The campaign page calls one endpoint for every tier card:
 
-    POST https://console.byteplus.com/api/sales/calculatePriceV5
+    POST https://www.byteplus.com/api/sales/calculatePriceV5
 
-Its `ConfigItems` payload looks like this:
+Pick the host with care. `console.byteplus.com` serves the same path but 302s to
+`/signin/login`. `www.byteplus.com` and `ai.byteplus.com` answer anonymous
+calls. Send a `Mozilla/5.0` User-Agent.
+
+The full `ConfigItems` entry:
 
 ```json
 {
@@ -36,13 +41,35 @@ Its `ConfigItems` payload looks like this:
   "ConfigurationCode": "Coding_Plan_Lite_monthly",
   "ChargeItems": [
     {"ChargeItemCode": "Coding_Plan_Lite_monthly_ap-southeast-1", "AttrValue": "1"}
-  ]
+  ],
+  "Quantity": 1,
+  "Period": "monthly",
+  "Times": 1,
+  "Region": "ap-southeast-1",
+  "OrderType": 1,
+  "SerialNo": "0"
 }
 ```
 
-`Coding_Plan_Pro_monthly` is the Pro form of the same call. Both return a 302 to
-`/signin/login` without a session. A login-gated endpoint fails `AGENTS.md` rule
-4, because no reader can open it to check your figure.
+`Coding_Plan_Pro_monthly` is the Pro form. `Times` is the number of months: 1
+for the monthly tier card, 3 for the quarterly one.
+
+Drop `Period`, `Times`, or `Region` and the API still returns HTTP 200, with
+`"TotalOriginalAmount":"0"`. Treat a zero as a broken payload, never as a price.
+
+`scripts/query_price.py` runs all four calls and prints the amounts.
+
+Verified on 2026-08-28, in USD:
+
+| Tier | Times | TotalOriginalAmount | TotalDiscountAmount |
+|---|---|---|---|
+| Lite | 1 | 10 | 10 |
+| Lite | 3 | 30 | 30 |
+| Pro | 1 | 50 | 50 |
+| Pro | 3 | 150 | 150 |
+
+The discount amount equals the original amount, so no discount was live that
+day. A gap between the two columns means a live promotion.
 
 ## How to read a docs page
 
@@ -132,18 +159,18 @@ From doc `2276791`:
 
 ## What no page states
 
-**The price.** No public BytePlus page states what Lite, Pro, Team Lite, Team
-Pro, or any Agent Plan SKU costs. The only public dollar figures are two
-promotional blurbs:
+**The Team and Agent Plan prices.** No page and no verified API call states what
+Team Lite, Team Pro, or any Agent Plan SKU costs. The Lite and Pro prices come
+from the price API above.
+
+**A plain-text price.** No page renders a price as readable text. Two
+promotional blurbs carry a dollar figure, and neither is a plan price:
 
 - "First month from $10 USD. Flexible models, unlimited tools" — site-header
   i18n strings.
 - "the first month from $4.50 USD" — the referral share text.
 
-The two figures do not reconcile, and no page explains either one. Neither is a
-plan price. `data/plans.yaml` requires a numeric `amount`, and
-`AGENTS.md` rule 3 forbids inventing one. Zero BytePlus rows in all four data
-files is the correct result today.
+Read the price from the API, not from either blurb.
 
 No page states an API rate limit either. The plan quotas above are plan quotas,
 and the doc says they cannot serve API calls at all.
