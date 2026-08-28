@@ -1,5 +1,7 @@
 # Coding Plan Tracker
 
+**Live site: <https://rizquuula.github.io/coding-plan/>**
+
 Tables of AI coding subscription plans, API rates, and model specifications.
 The data lives in YAML. A Python script renders it into a static site that
 GitHub Actions deploys to GitHub Pages on every push to `main`.
