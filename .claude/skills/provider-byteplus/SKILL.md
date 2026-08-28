@@ -77,17 +77,24 @@ Chinese placeholders (订阅时长, 协议), and the docs Team page still render
 "Monthly price" header with no values. Neither fact means the price is
 unreadable.
 
-**2. "First month from $10 USD" is a promo floor, not a plan price.** It comes
-from the site-header i18n strings. The referral share text states a different
-floor, "the first month from $4.50 USD". The two figures do not reconcile, and
-no page explains either one. Neither states what a tier costs. Never copy either
-into `prices`.
+**2. "First month from $10 USD" names no tier, even though the figure is
+right.** It comes from the site-header i18n strings. It matches the verified
+Lite monthly price, so it is consistent marketing rather than a separate floor.
+It still names no tier, so you cannot tell from it which plan costs 10 USD.
+Never source a price from it. Run `scripts/query_price.py` instead.
+
+The referral share text states a second figure, "the first month from $4.50
+USD". No page explains that one. Never copy it into `prices`, into `notes`, or
+anywhere else.
 
 **3. `www.byteplus.com/en/activity/codingplan` is an empty JavaScript shell.**
 It is 29 KB and says "You need to enable JavaScript". `WebFetch` returns an
 empty body. Read `https://ai.byteplus.com/en/activity/codingplan` instead. The
 `ai.` host server-renders the same campaign at about 543 KB. The
-`/activity/arkcodingplan` sibling has the same shape.
+`/activity/arkcodingplan` sibling has the same shape. The `plans` link on both
+`data/plans.yaml` rows points at the `www` URL on purpose, because a human
+reader's browser renders it. Keep that link as it is, and read the `ai.` twin
+yourself.
 
 **4. Docs articles hide inside `window._ROUTER_DATA` as Quill JSON.** Stripping
 the HTML tags yields only the nav, so the page looks like a client-side dead

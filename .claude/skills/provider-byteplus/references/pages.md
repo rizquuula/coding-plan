@@ -163,14 +163,17 @@ From doc `2276791`:
 Team Lite, Team Pro, or any Agent Plan SKU costs. The Lite and Pro prices come
 from the price API above.
 
-**A plain-text price.** No page renders a price as readable text. Two
-promotional blurbs carry a dollar figure, and neither is a plan price:
+**A plain-text price against a tier name.** No page renders a price as readable
+text next to the tier it belongs to. Two promotional blurbs carry a dollar
+figure, and neither names a tier:
 
 - "First month from $10 USD. Flexible models, unlimited tools" — site-header
-  i18n strings.
-- "the first month from $4.50 USD" — the referral share text.
+  i18n strings. The figure matches the verified Lite monthly price, so it is
+  consistent marketing. It still names no tier.
+- "the first month from $4.50 USD" — the referral share text. No page explains
+  this figure. Never copy it anywhere.
 
-Read the price from the API, not from either blurb.
+Read every price from the API, not from either blurb.
 
 No page states an API rate limit either. The plan quotas above are plan quotas,
 and the doc says they cannot serve API calls at all.
