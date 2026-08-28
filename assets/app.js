@@ -17,19 +17,43 @@
     return groups;
   }
 
+  // The provider name is a heading now, so read it from the enclosing block.
+  function providerName(table) {
+    var block = table.closest(".provider-block");
+    var heading = block && block.querySelector(".provider-name");
+    return heading ? heading.textContent.toLowerCase() : "";
+  }
+
   function filterTables(query) {
     var needle = query.trim().toLowerCase();
+    var sections = [];
+
     tables.forEach(function (table) {
+      var provider = providerName(table);
       var visible = 0;
       rowGroups(table).forEach(function (group) {
-        var match = !needle || group[0].textContent.toLowerCase().indexOf(needle) !== -1;
+        var haystack = group[0].textContent.toLowerCase() + " " + provider;
+        var match = !needle || haystack.indexOf(needle) !== -1;
         group.forEach(function (row) {
           row.hidden = !match;
         });
         if (match) visible += 1;
       });
+
+      var block = table.closest(".provider-block");
+      if (block) block.hidden = visible === 0;
+
       var section = table.closest("section");
-      if (section) section.hidden = visible === 0;
+      if (section) {
+        if (sections.indexOf(section) === -1) sections.push(section);
+        if (visible > 0) section.dataset.visibleTables = "1";
+      }
+    });
+
+    // A section stays visible while at least one provider block still matches.
+    sections.forEach(function (section) {
+      section.hidden = section.dataset.visibleTables !== "1";
+      delete section.dataset.visibleTables;
     });
   }
 

@@ -64,6 +64,12 @@ h2 {
   letter-spacing: -0.01em;
 }
 
+h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  letter-spacing: -0.005em;
+}
+
 a { color: var(--accent); }
 
 .lede,
@@ -129,6 +135,16 @@ a { color: var(--accent); }
 
 section { margin-bottom: 2.75rem; }
 
+.provider-block { margin-bottom: 1.5rem; }
+
+.provider-block:last-child { margin-bottom: 0; }
+
+.provider-name {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--border);
@@ -190,6 +206,20 @@ section { margin-bottom: 2.75rem; }
 }
 
 .cell-list li { margin-bottom: 0.1rem; }
+
+.link-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  white-space: nowrap;
+}
+
+.link-list li { margin-bottom: 0.05rem; }
+
+.link-list a {
+  color: var(--accent);
+  font-size: 0.87rem;
+}
 
 code {
   font-family: var(--mono);

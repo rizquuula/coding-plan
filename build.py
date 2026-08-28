@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -18,7 +19,11 @@ TEMPLATE_DIR = ROOT / "templates"
 ASSET_DIR = ROOT / "assets"
 OUT_DIR = ROOT / "site"
 
-# Field name -> (required, kind). Kinds: str, num, bool, date, list, or "enum:a|b".
+# Labels a link may carry. Any other label is a validation error.
+LINK_LABELS = {"pricing", "rate limit", "plans", "model card", "docs", "announcement"}
+
+# Field name -> (required, kind).
+# Kinds: str, num, bool, date, list, links, or "enum:a|b".
 PLAN_SCHEMA = {
     "id": (True, "str"),
     "provider": (True, "str"),
@@ -31,7 +36,7 @@ PLAN_SCHEMA = {
     "models": (True, "list"),
     "status": (True, "enum:active|beta|discontinued"),
     "notes": (False, "str"),
-    "source": (True, "str"),
+    "links": (True, "links"),
     "last_verified": (False, "date"),
     "discontinued_on": (False, "date"),
 }
@@ -48,7 +53,7 @@ API_SCHEMA = {
     "cache_write": (False, "num"),
     "output": (True, "num"),
     "notes": (False, "str"),
-    "source": (True, "str"),
+    "links": (True, "links"),
     "last_verified": (False, "date"),
 }
 
@@ -63,7 +68,22 @@ MODEL_SCHEMA = {
     "vision": (True, "bool"),
     "open_weights": (True, "bool"),
     "notes": (False, "str"),
-    "source": (True, "str"),
+    "links": (True, "links"),
+    "last_verified": (False, "date"),
+}
+
+RATE_LIMIT_SCHEMA = {
+    "id": (True, "str"),
+    "provider": (True, "str"),
+    "model": (True, "str"),
+    "tier": (True, "str"),
+    "requests_per_minute": (False, "num"),
+    "input_tokens_per_minute": (False, "num"),
+    "output_tokens_per_minute": (False, "num"),
+    "tokens_per_minute": (False, "num"),
+    "requests_per_day": (False, "num"),
+    "notes": (False, "str"),
+    "links": (True, "links"),
     "last_verified": (False, "date"),
 }
 
@@ -71,11 +91,51 @@ DATASETS = [
     ("plans.yaml", PLAN_SCHEMA),
     ("api_pricing.yaml", API_SCHEMA),
     ("models.yaml", MODEL_SCHEMA),
+    ("rate_limits.yaml", RATE_LIMIT_SCHEMA),
 ]
+
+
+def link_errors(value) -> list[str]:
+    """Return one message per problem found in a `links` value."""
+    if not isinstance(value, list):
+        return ["must be a list of {label, url} mappings"]
+    if not value:
+        return ["must hold at least one link"]
+
+    allowed = ", ".join(sorted(LINK_LABELS))
+    errors: list[str] = []
+    for index, item in enumerate(value, start=1):
+        position = f"link {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{position}: must be a mapping with 'label' and 'url'")
+            continue
+        extra = sorted(set(item) - {"label", "url"})
+        for key in extra:
+            errors.append(f"{position}: unknown key '{key}'")
+        for key in ("label", "url"):
+            if key not in item:
+                errors.append(f"{position}: missing '{key}'")
+        label = item.get("label")
+        if "label" in item:
+            if not isinstance(label, str):
+                errors.append(f"{position}: label must be a string, got {label!r}")
+            elif label not in LINK_LABELS:
+                errors.append(
+                    f"{position}: label {label!r} is not one of {allowed}"
+                )
+        url = item.get("url")
+        if "url" in item:
+            if not isinstance(url, str):
+                errors.append(f"{position}: url must be a string, got {url!r}")
+            elif not url.startswith("https://"):
+                errors.append(f"{position}: url must start with https://")
+    return errors
 
 
 def kind_matches(value, kind: str) -> bool:
     """Report whether `value` matches the declared `kind`."""
+    if kind == "links":
+        return not link_errors(value)
     if kind == "str":
         return isinstance(value, str)
     if kind == "num":
@@ -126,6 +186,10 @@ def validate(records: list, schema: dict, filename: str) -> list[str]:
                 if required:
                     errors.append(f"{label}: '{field}' is required and cannot be null")
                 continue
+            if kind == "links":
+                for message in link_errors(value):
+                    errors.append(f"{label}: '{field}': {message}")
+                continue
             if not kind_matches(value, kind):
                 errors.append(f"{label}: '{field}' must be {kind}, got {value!r}")
 
@@ -139,7 +203,11 @@ def load_data() -> dict:
 
     for filename, schema in DATASETS:
         path = DATA_DIR / filename
-        records = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+        if path.exists():
+            records = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+        else:
+            # A dataset file that does not exist yet loads as an empty list.
+            records = []
         errors.extend(validate(records, schema, filename))
         data[path.stem] = records
 
@@ -164,6 +232,29 @@ def format_money(value, currency: str) -> str:
     return f"{symbol}{value:,.2f}"
 
 
+def format_thousands(value) -> str:
+    """Render a whole number with thousands separators, or an em dash."""
+    if value is None:
+        return "—"
+    return f"{value:,.0f}"
+
+
+def slugify(name: str) -> str:
+    """Turn a provider name into an id-safe slug."""
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+def group_by_provider(rows: list) -> list[dict]:
+    """Group already-sorted rows into one entry per provider."""
+    groups: dict[str, list] = {}
+    for row in rows:
+        groups.setdefault(row["provider"], []).append(row)
+    return [
+        {"provider": provider, "slug": slugify(provider), "rows": groups[provider]}
+        for provider in sorted(groups)
+    ]
+
+
 def render(data: dict, today: dt.date) -> None:
     """Write the rendered site into OUT_DIR."""
     env = Environment(
@@ -175,6 +266,7 @@ def render(data: dict, today: dt.date) -> None:
     )
     env.filters["date"] = format_date
     env.filters["money"] = format_money
+    env.filters["thousands"] = format_thousands
 
     plans = sorted(
         data["plans"],
@@ -182,17 +274,24 @@ def render(data: dict, today: dt.date) -> None:
     )
     api_pricing = sorted(data["api_pricing"], key=lambda r: (r["provider"], r["model"]))
     models = sorted(data["models"], key=lambda r: (r["provider"], r["name"]))
+    rate_limits = sorted(
+        data["rate_limits"], key=lambda r: (r["provider"], r["model"], r["tier"])
+    )
 
     context = {
-        "plans_global": [r for r in plans if r["region"] == "global"],
-        "plans_china": [r for r in plans if r["region"] == "china"],
-        "api_pricing": api_pricing,
-        "models": models,
+        "plans_global": group_by_provider(
+            [r for r in plans if r["region"] == "global"]
+        ),
+        "plans_china": group_by_provider([r for r in plans if r["region"] == "china"]),
+        "api_pricing": group_by_provider(api_pricing),
+        "models": group_by_provider(models),
+        "rate_limits": group_by_provider(rate_limits),
         "built_at": today.isoformat(),
         "counts": {
             "plans": len(plans),
             "api_pricing": len(api_pricing),
             "models": len(models),
+            "rate_limits": len(rate_limits),
         },
     }
 

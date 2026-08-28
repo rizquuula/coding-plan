@@ -1,0 +1,760 @@
+# Published API rate limits. One record per provider, model, and usage tier.
+# Every row was read from the provider's own page on `last_verified`.
+# Schema: see AGENTS.md.
+
+- id: alibaba-qwen-max-singapore
+  provider: Alibaba (Qwen)
+  model: Qwen-Max
+  tier: Singapore
+  requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen-max-us-virginia
+  provider: Alibaba (Qwen)
+  model: Qwen-Max
+  tier: US (Virginia)
+  requests_per_minute: 600
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: alibaba-qwen-max-china-beijing
+  provider: Alibaba (Qwen)
+  model: Qwen-Max
+  tier: China (Beijing)
+  requests_per_minute: 1200
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: Alibaba publishes limits per region, not per usage tier. TPM counts input
+    plus output tokens.
+  links:
+    - label: rate limit
+      url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-fable-5-start
+  provider: Anthropic
+  model: Claude Fable 5
+  tier: Start
+  requests_per_minute: 1000
+  input_tokens_per_minute: 500000
+  output_tokens_per_minute: 100000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Cached read tokens do not count toward this input limit.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-fable-5-build
+  provider: Anthropic
+  model: Claude Fable 5
+  tier: Build
+  requests_per_minute: 2000
+  input_tokens_per_minute: 1500000
+  output_tokens_per_minute: 300000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-fable-5-scale
+  provider: Anthropic
+  model: Claude Fable 5
+  tier: Scale
+  requests_per_minute: 4000
+  input_tokens_per_minute: 4000000
+  output_tokens_per_minute: 800000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-haiku-4-5-start
+  provider: Anthropic
+  model: Claude Haiku 4.5
+  tier: Start
+  requests_per_minute: 1000
+  input_tokens_per_minute: 2000000
+  output_tokens_per_minute: 400000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Cached read tokens do not count toward this input limit.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-haiku-4-5-build
+  provider: Anthropic
+  model: Claude Haiku 4.5
+  tier: Build
+  requests_per_minute: 5000
+  input_tokens_per_minute: 5000000
+  output_tokens_per_minute: 1000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-haiku-4-5-scale
+  provider: Anthropic
+  model: Claude Haiku 4.5
+  tier: Scale
+  requests_per_minute: 10000
+  input_tokens_per_minute: 10000000
+  output_tokens_per_minute: 2000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-opus-4-8-start
+  provider: Anthropic
+  model: Claude Opus 4.8
+  tier: Start
+  requests_per_minute: 1000
+  input_tokens_per_minute: 2000000
+  output_tokens_per_minute: 400000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Anthropic shares this limit across Claude Opus 4.8, 4.7, 4.6, and 4.5.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-opus-4-8-build
+  provider: Anthropic
+  model: Claude Opus 4.8
+  tier: Build
+  requests_per_minute: 5000
+  input_tokens_per_minute: 5000000
+  output_tokens_per_minute: 1000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Anthropic shares this limit across Claude Opus 4.8, 4.7, 4.6, and 4.5.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-opus-4-8-scale
+  provider: Anthropic
+  model: Claude Opus 4.8
+  tier: Scale
+  requests_per_minute: 10000
+  input_tokens_per_minute: 10000000
+  output_tokens_per_minute: 2000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Anthropic shares this limit across Claude Opus 4.8, 4.7, 4.6, and 4.5.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-opus-5-start
+  provider: Anthropic
+  model: Claude Opus 5
+  tier: Start
+  requests_per_minute: 1000
+  input_tokens_per_minute: 2000000
+  output_tokens_per_minute: 400000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Cached read tokens do not count toward this input limit.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-opus-5-build
+  provider: Anthropic
+  model: Claude Opus 5
+  tier: Build
+  requests_per_minute: 5000
+  input_tokens_per_minute: 5000000
+  output_tokens_per_minute: 1000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Claude Opus 5 has its own limit and is not in the Opus 4.x bucket.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-opus-5-scale
+  provider: Anthropic
+  model: Claude Opus 5
+  tier: Scale
+  requests_per_minute: 10000
+  input_tokens_per_minute: 10000000
+  output_tokens_per_minute: 2000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-sonnet-4-6-start
+  provider: Anthropic
+  model: Claude Sonnet 4.6
+  tier: Start
+  requests_per_minute: 1000
+  input_tokens_per_minute: 2000000
+  output_tokens_per_minute: 400000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Anthropic shares this limit across Claude Sonnet 4.6 and Sonnet 4.5.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-sonnet-4-6-build
+  provider: Anthropic
+  model: Claude Sonnet 4.6
+  tier: Build
+  requests_per_minute: 5000
+  input_tokens_per_minute: 5000000
+  output_tokens_per_minute: 1000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Anthropic shares this limit across Claude Sonnet 4.6 and Sonnet 4.5.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-sonnet-4-6-scale
+  provider: Anthropic
+  model: Claude Sonnet 4.6
+  tier: Scale
+  requests_per_minute: 10000
+  input_tokens_per_minute: 10000000
+  output_tokens_per_minute: 2000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Anthropic shares this limit across Claude Sonnet 4.6 and Sonnet 4.5.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-sonnet-5-start
+  provider: Anthropic
+  model: Claude Sonnet 5
+  tier: Start
+  requests_per_minute: 1000
+  input_tokens_per_minute: 2000000
+  output_tokens_per_minute: 400000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Cached read tokens do not count toward this input limit.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-sonnet-5-build
+  provider: Anthropic
+  model: Claude Sonnet 5
+  tier: Build
+  requests_per_minute: 5000
+  input_tokens_per_minute: 5000000
+  output_tokens_per_minute: 1000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: Claude Sonnet 5 has its own limit and is not in the Sonnet 4.x bucket.
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: anthropic-claude-sonnet-5-scale
+  provider: Anthropic
+  model: Claude Sonnet 5
+  tier: Scale
+  requests_per_minute: 10000
+  input_tokens_per_minute: 10000000
+  output_tokens_per_minute: 2000000
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://platform.claude.com/docs/en/api/rate-limits
+  last_verified: 2026-08-28
+
+- id: deepseek-v4-flash-default
+  provider: DeepSeek
+  model: DeepSeek-V4-Flash
+  tier: Default
+  requests_per_minute: null
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: DeepSeek publishes a concurrency limit of 2500 for this model, not a
+    per-minute rate limit.
+  links:
+    - label: rate limit
+      url: https://api-docs.deepseek.com/quick_start/rate_limit
+  last_verified: 2026-08-28
+
+- id: deepseek-v4-pro-default
+  provider: DeepSeek
+  model: DeepSeek-V4-Pro
+  tier: Default
+  requests_per_minute: null
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: null
+  requests_per_day: null
+  notes: DeepSeek publishes a concurrency limit of 500 for this model, not a
+    per-minute rate limit.
+  links:
+    - label: rate limit
+      url: https://api-docs.deepseek.com/quick_start/rate_limit
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code-tier0
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7 Code
+  tier: Tier0
+  requests_per_minute: 3
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 500000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model, and caps Tier0 at
+    1500000 tokens per day.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code-tier1
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7 Code
+  tier: Tier1
+  requests_per_minute: 200
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code-tier2
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7 Code
+  tier: Tier2
+  requests_per_minute: 500
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 3000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code-tier3
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7 Code
+  tier: Tier3
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 3000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code-tier4
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7 Code
+  tier: Tier4
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 4000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k2-7-code-tier5
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7 Code
+  tier: Tier5
+  requests_per_minute: 10000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3-tier0
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  tier: Tier0
+  requests_per_minute: 3
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 500000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model, and caps Tier0 at
+    1500000 tokens per day.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3-tier1
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  tier: Tier1
+  requests_per_minute: 200
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3-tier2
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  tier: Tier2
+  requests_per_minute: 500
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 3000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3-tier3
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  tier: Tier3
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 3000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3-tier4
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  tier: Tier4
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 4000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: moonshot-kimi-k3-tier5
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  tier: Tier5
+  requests_per_minute: 10000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 5000000
+  requests_per_day: null
+  notes: Kimi applies this limit account-wide, not per model.
+  links:
+    - label: rate limit
+      url: https://platform.kimi.ai/docs/pricing/limits
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-luna-tier-1
+  provider: OpenAI
+  model: GPT-5.6 Luna
+  tier: Tier 1
+  requests_per_minute: 500
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 500000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-luna-tier-2
+  provider: OpenAI
+  model: GPT-5.6 Luna
+  tier: Tier 2
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-luna-tier-3
+  provider: OpenAI
+  model: GPT-5.6 Luna
+  tier: Tier 3
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 4000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-luna-tier-4
+  provider: OpenAI
+  model: GPT-5.6 Luna
+  tier: Tier 4
+  requests_per_minute: 10000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 10000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-luna-tier-5
+  provider: OpenAI
+  model: GPT-5.6 Luna
+  tier: Tier 5
+  requests_per_minute: 30000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 180000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-luna
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-sol-tier-1
+  provider: OpenAI
+  model: GPT-5.6 Sol
+  tier: Tier 1
+  requests_per_minute: 500
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 500000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-sol-tier-2
+  provider: OpenAI
+  model: GPT-5.6 Sol
+  tier: Tier 2
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-sol-tier-3
+  provider: OpenAI
+  model: GPT-5.6 Sol
+  tier: Tier 3
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-sol-tier-4
+  provider: OpenAI
+  model: GPT-5.6 Sol
+  tier: Tier 4
+  requests_per_minute: 10000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 4000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-sol-tier-5
+  provider: OpenAI
+  model: GPT-5.6 Sol
+  tier: Tier 5
+  requests_per_minute: 15000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 40000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-sol
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-terra-tier-1
+  provider: OpenAI
+  model: GPT-5.6 Terra
+  tier: Tier 1
+  requests_per_minute: 500
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 500000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-terra-tier-2
+  provider: OpenAI
+  model: GPT-5.6 Terra
+  tier: Tier 2
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 1000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-terra-tier-3
+  provider: OpenAI
+  model: GPT-5.6 Terra
+  tier: Tier 3
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-terra-tier-4
+  provider: OpenAI
+  model: GPT-5.6 Terra
+  tier: Tier 4
+  requests_per_minute: 10000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 4000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+  last_verified: 2026-08-28
+
+- id: openai-gpt-5-6-terra-tier-5
+  provider: OpenAI
+  model: GPT-5.6 Terra
+  tier: Tier 5
+  requests_per_minute: 15000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 40000000
+  requests_per_day: null
+  notes: null
+  links:
+    - label: rate limit
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
+  last_verified: 2026-08-28

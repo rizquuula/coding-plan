@@ -17,7 +17,11 @@
     - Claude Haiku 4.5
   status: active
   notes: Includes Claude Code. Annual billing costs 17 per month, charged as 200 up front.
-  source: https://claude.com/pricing
+  links:
+    - label: pricing
+      url: https://claude.com/pricing
+    - label: rate limit
+      url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
   last_verified: 2026-08-28
 
 - id: anthropic-claude-max-5x
@@ -36,7 +40,11 @@
     - Claude Haiku 4.5
   status: active
   notes: The pricing page lists the Max tier as starting at 100 per month.
-  source: https://claude.com/pricing
+  links:
+    - label: pricing
+      url: https://claude.com/pricing
+    - label: rate limit
+      url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
   last_verified: 2026-08-28
 
 - id: anthropic-claude-max-20x
@@ -56,7 +64,11 @@
   status: active
   notes: The pricing page names the 20x tier but prints only "from 100" for Max,
     so confirm the exact price in the plan picker.
-  source: https://claude.com/pricing
+  links:
+    - label: pricing
+      url: https://claude.com/pricing
+    - label: rate limit
+      url: https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
   last_verified: 2026-08-28
 
 - id: openai-chatgpt-go
@@ -74,7 +86,9 @@
     - GPT-5.6 Luna
   status: active
   notes: Codex is included in every paid ChatGPT tier.
-  source: https://learn.chatgpt.com/docs/pricing
+  links:
+    - label: pricing
+      url: https://learn.chatgpt.com/docs/pricing
   last_verified: 2026-08-28
 
 - id: openai-chatgpt-plus
@@ -94,7 +108,9 @@
     - GPT-5.6 Luna
   status: active
   notes: null
-  source: https://learn.chatgpt.com/docs/pricing
+  links:
+    - label: pricing
+      url: https://learn.chatgpt.com/docs/pricing
   last_verified: 2026-08-28
 
 - id: openai-chatgpt-pro-5x
@@ -105,14 +121,18 @@
   price_currency: USD
   price_period: month
   limits:
-    - 5x the Plus limits on every model
+    - Sol 50 to 500 messages per 5 hours
+    - Terra 125 to 1000 messages per 5 hours
+    - Luna 1250 to 10000 messages per 5 hours
   models:
     - GPT-5.6 Sol
     - GPT-5.6 Terra
     - GPT-5.6 Luna
   status: active
   notes: null
-  source: https://learn.chatgpt.com/docs/pricing
+  links:
+    - label: pricing
+      url: https://learn.chatgpt.com/docs/pricing
   last_verified: 2026-08-28
 
 - id: openai-chatgpt-pro-20x
@@ -123,7 +143,9 @@
   price_currency: USD
   price_period: month
   limits:
-    - 20x the Plus limits on every model
+    - Sol 200 to 2000 messages per 5 hours
+    - Terra 500 to 4000 messages per 5 hours
+    - Luna 5000 to 40000 messages per 5 hours
     - Unlimited ChatGPT Voice
   models:
     - GPT-5.6 Sol
@@ -131,7 +153,9 @@
     - GPT-5.6 Luna
   status: active
   notes: Codex tasks still draw on the Codex budget.
-  source: https://learn.chatgpt.com/docs/pricing
+  links:
+    - label: pricing
+      url: https://learn.chatgpt.com/docs/pricing
   last_verified: 2026-08-28
 
 - id: github-copilot-pro
@@ -150,7 +174,11 @@
     - Gemini
   status: active
   notes: GitHub bills AI usage in credits. One credit costs 0.01 USD.
-  source: https://github.com/features/copilot/plans
+  links:
+    - label: plans
+      url: https://github.com/features/copilot/plans
+    - label: rate limit
+      url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals
   last_verified: 2026-08-28
 
 - id: github-copilot-pro-plus
@@ -169,7 +197,11 @@
     - Gemini
   status: active
   notes: null
-  source: https://github.com/features/copilot/plans
+  links:
+    - label: plans
+      url: https://github.com/features/copilot/plans
+    - label: rate limit
+      url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals
   last_verified: 2026-08-28
 
 - id: github-copilot-max
@@ -188,7 +220,11 @@
     - Gemini
   status: active
   notes: null
-  source: https://github.com/features/copilot/plans
+  links:
+    - label: plans
+      url: https://github.com/features/copilot/plans
+    - label: rate limit
+      url: https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals
   last_verified: 2026-08-28
 
 - id: cursor-pro
@@ -208,7 +244,11 @@
     - Composer
   status: active
   notes: null
-  source: https://cursor.com/docs/account/pricing
+  links:
+    - label: pricing
+      url: https://cursor.com/docs/account/pricing
+    - label: rate limit
+      url: https://cursor.com/help/models-and-usage/usage-limits
   last_verified: 2026-08-28
 
 - id: cursor-pro-plus
@@ -227,7 +267,11 @@
     - Composer
   status: active
   notes: null
-  source: https://cursor.com/docs/account/pricing
+  links:
+    - label: pricing
+      url: https://cursor.com/docs/account/pricing
+    - label: rate limit
+      url: https://cursor.com/help/models-and-usage/usage-limits
   last_verified: 2026-08-28
 
 - id: cursor-ultra
@@ -246,7 +290,11 @@
     - Composer
   status: active
   notes: null
-  source: https://cursor.com/docs/account/pricing
+  links:
+    - label: pricing
+      url: https://cursor.com/docs/account/pricing
+    - label: rate limit
+      url: https://cursor.com/help/models-and-usage/usage-limits
   last_verified: 2026-08-28
 
 - id: google-ai-ultra-5x
@@ -262,7 +310,11 @@
     - Gemini
   status: active
   notes: Usage limits weigh prompt complexity rather than counting requests.
-  source: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+  links:
+    - label: announcement
+      url: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+    - label: rate limit
+      url: https://support.google.com/gemini/answer/16275805?hl=en
   last_verified: 2026-08-28
 
 - id: google-ai-ultra-20x
@@ -278,7 +330,11 @@
     - Gemini
   status: active
   notes: Adds Gemini Omni, Project Genie, and Gemini Spark.
-  source: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+  links:
+    - label: announcement
+      url: https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/
+    - label: rate limit
+      url: https://support.google.com/gemini/answer/16275805?hl=en
   last_verified: 2026-08-28
 
 - id: zhipu-glm-coding-lite
@@ -297,5 +353,9 @@
   status: active
   notes: Off-peak usage is discounted to half rate. The Pro and Max tiers exist but
     the docs do not print their prices.
-  source: https://docs.z.ai/devpack/overview
+  links:
+    - label: plans
+      url: https://docs.z.ai/devpack/overview
+    - label: rate limit
+      url: https://docs.z.ai/devpack/usage-policy
   last_verified: 2026-08-28
