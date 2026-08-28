@@ -82,6 +82,7 @@ next agent more than a gap.
 | GitHub | `provider-github` |
 | Google | `provider-google` |
 | Moonshot (Kimi) | `provider-moonshot` |
+| Ollama | `provider-ollama` |
 | OpenAI | `provider-openai` |
 | Sakana (Fugu) | `provider-sakana` |
 | Zhipu (GLM) | `provider-zai` |

@@ -1329,3 +1329,160 @@
     - label: plans
       url: https://factory.ai/pricing
   last_verified: 2026-08-28
+
+- id: ollama-free
+  provider: Ollama
+  plan: Free
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 0
+  limits:
+    - 1 cloud model at a time
+    - Light cloud usage
+    - Session limits reset every 5 hours, weekly every 7 days
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+    - gemma4
+    - glm-5.1
+    - glm-5.2
+    - glm-5.3-flash
+    - gpt-oss
+    - kimi-k2.6
+    - kimi-k2.7-code
+    - kimi-k3
+    - minimax-m2.7
+    - minimax-m3
+    - mistral-large-3
+    - nemotron-3-nano
+    - nemotron-3-super
+    - nemotron-3-ultra
+    - qwen3.5
+  status: active
+  notes: Local models on own hardware stay unlimited; cloud usage is level-weighted with no published token quota.
+  links:
+    - label: plans
+      url: https://ollama.com/pricing
+    - label: docs
+      url: https://docs.ollama.com/cloud
+  last_verified: 2026-08-28
+
+- id: ollama-pro
+  provider: Ollama
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 20
+    - period: year
+      amount: 200
+  limits:
+    - 3 cloud models at a time
+    - 50x more cloud usage than Free
+    - Session limits reset every 5 hours, weekly every 7 days
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+    - gemma4
+    - glm-5.1
+    - glm-5.2
+    - glm-5.3-flash
+    - gpt-oss
+    - kimi-k2.6
+    - kimi-k2.7-code
+    - kimi-k3
+    - minimax-m2.7
+    - minimax-m3
+    - mistral-large-3
+    - nemotron-3-nano
+    - nemotron-3-super
+    - nemotron-3-ultra
+    - qwen3.5
+  status: active
+  notes: Pro can add prepaid extra usage beyond the included limits.
+  links:
+    - label: plans
+      url: https://ollama.com/pricing
+    - label: docs
+      url: https://docs.ollama.com/cloud
+  last_verified: 2026-08-28
+
+- id: ollama-max
+  provider: Ollama
+  plan: Max
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 100
+  limits:
+    - 10 cloud models at a time
+    - 5x more usage than Pro
+    - Session limits reset every 5 hours, weekly every 7 days
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+    - gemma4
+    - glm-5.1
+    - glm-5.2
+    - glm-5.3-flash
+    - gpt-oss
+    - kimi-k2.6
+    - kimi-k2.7-code
+    - kimi-k3
+    - minimax-m2.7
+    - minimax-m3
+    - mistral-large-3
+    - nemotron-3-nano
+    - nemotron-3-super
+    - nemotron-3-ultra
+    - qwen3.5
+  status: active
+  notes: New Max sign-ups are paused while Ollama adds capacity; existing subscribers keep their plan, limits, and pricing.
+  links:
+    - label: plans
+      url: https://ollama.com/pricing
+    - label: docs
+      url: https://docs.ollama.com/cloud
+  last_verified: 2026-08-28
+
+- id: ollama-team
+  provider: Ollama
+  plan: Team
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 25
+  limits:
+    - Usage included per seat
+    - Shared extra usage balance, billed as you go
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-pro
+    - gemma4
+    - glm-5.1
+    - glm-5.2
+    - glm-5.3-flash
+    - gpt-oss
+    - kimi-k2.6
+    - kimi-k2.7-code
+    - kimi-k3
+    - minimax-m2.7
+    - minimax-m3
+    - mistral-large-3
+    - nemotron-3-nano
+    - nemotron-3-super
+    - nemotron-3-ultra
+    - qwen3.5
+  status: active
+  notes: Team requires a 5-seat minimum, so the minimum charge is 125 USD per month.
+  links:
+    - label: plans
+      url: https://ollama.com/pricing
+    - label: docs
+      url: https://docs.ollama.com/cloud
+  last_verified: 2026-08-28
