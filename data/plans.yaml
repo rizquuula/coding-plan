@@ -443,3 +443,57 @@
     - label: rate limit
       url: https://docs.z.ai/devpack/usage-policy
   last_verified: 2026-08-28
+
+- id: zhipu-glm-coding-team-standard-seat
+  provider: Zhipu (GLM)
+  plan: Standard Seat
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 88
+    - period: year
+      amount: 1056
+  limits:
+    - 15000 credits per 5 hours
+    - 66000 credits per week
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: Team plan seat; every price is per seat. Z.ai sells a monthly and a
+    yearly term only. A yearly renewal costs 10 percent less than the first year.
+  links:
+    - label: plans
+      url: https://docs.z.ai/devpack/teamplan
+    - label: pricing
+      url: https://z.ai/subscribe
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-coding-team-premium-seat
+  provider: Zhipu (GLM)
+  plan: Premium Seat
+  region: china
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 188
+    - period: year
+      amount: 2256
+  limits:
+    - 35000 credits per 5 hours
+    - 155000 credits per week
+    - Early access to the latest models
+    - Priority resource allocation during peak hours
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: Team plan seat; every price is per seat. Z.ai sells a monthly and a
+    yearly term only. A yearly renewal costs 10 percent less than the first year.
+  links:
+    - label: plans
+      url: https://docs.z.ai/devpack/teamplan
+    - label: pricing
+      url: https://z.ai/subscribe
+  last_verified: 2026-08-28

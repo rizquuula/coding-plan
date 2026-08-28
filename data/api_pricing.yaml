@@ -276,11 +276,30 @@
       url: https://platform.kimi.ai/docs/pricing/limits
   last_verified: 2026-08-28
 
+- id: zhipu-glm-5-3-flash
+  provider: Zhipu (GLM)
+  model: GLM-5.3-Flash
+  model_id: glm-5.3-flash
+  context_window: 1M
+  currency: USD
+  input: 0.075
+  cached_input: 0.015
+  cache_write: null
+  output: 0.25
+  notes: A 50 percent promotion runs until 2026-09-09; the list prices are 0.15
+    input, 0.03 cached input, and 0.50 output.
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-5.3-flash
+  last_verified: 2026-08-28
+
 - id: zhipu-glm-5-3
   provider: Zhipu (GLM)
   model: GLM-5.3
   model_id: glm-5.3
-  context_window: null
+  context_window: 1M
   currency: USD
   input: 1.40
   cached_input: 0.26
@@ -290,22 +309,369 @@
   links:
     - label: pricing
       url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5.3
   last_verified: 2026-08-28
 
-- id: zhipu-glm-5-3-flash
+- id: zhipu-glm-5-2
   provider: Zhipu (GLM)
-  model: GLM-5.3-Flash
-  model_id: glm-5.3-flash
-  context_window: null
+  model: GLM-5.2
+  model_id: glm-5.2
+  context_window: 1M
   currency: USD
-  input: 0.075
-  cached_input: 0.015
+  input: 1.40
+  cached_input: 0.26
   cache_write: null
-  output: 0.25
+  output: 4.40
   notes: null
   links:
     - label: pricing
       url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5.2
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5-1
+  provider: Zhipu (GLM)
+  model: GLM-5.1
+  model_id: glm-5.1
+  context_window: 200K
+  currency: USD
+  input: 1.40
+  cached_input: 0.26
+  cache_write: null
+  output: 4.40
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5.1
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5
+  provider: Zhipu (GLM)
+  model: GLM-5
+  model_id: glm-5
+  context_window: 200K
+  currency: USD
+  input: 1.00
+  cached_input: 0.20
+  cache_write: null
+  output: 3.20
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5-turbo
+  provider: Zhipu (GLM)
+  model: GLM-5-Turbo
+  model_id: glm-5-turbo
+  context_window: 200K
+  currency: USD
+  input: 1.20
+  cached_input: 0.24
+  cache_write: null
+  output: 4.00
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5-turbo
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-7
+  provider: Zhipu (GLM)
+  model: GLM-4.7
+  model_id: glm-4.7
+  context_window: 200K
+  currency: USD
+  input: 0.60
+  cached_input: 0.11
+  cache_write: null
+  output: 2.20
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.7
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-7-flashx
+  provider: Zhipu (GLM)
+  model: GLM-4.7-FlashX
+  model_id: glm-4.7-flashx
+  context_window: 200K
+  currency: USD
+  input: 0.07
+  cached_input: 0.01
+  cache_write: null
+  output: 0.40
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.7
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6
+  provider: Zhipu (GLM)
+  model: GLM-4.6
+  model_id: glm-4.6
+  context_window: 200K
+  currency: USD
+  input: 0.60
+  cached_input: 0.11
+  cache_write: null
+  output: 2.20
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.6
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5
+  provider: Zhipu (GLM)
+  model: GLM-4.5
+  model_id: glm-4.5
+  context_window: 128K
+  currency: USD
+  input: 0.60
+  cached_input: 0.11
+  cache_write: null
+  output: 2.20
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-x
+  provider: Zhipu (GLM)
+  model: GLM-4.5-X
+  model_id: glm-4.5-x
+  context_window: 128K
+  currency: USD
+  input: 2.20
+  cached_input: 0.45
+  cache_write: null
+  output: 8.90
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-air
+  provider: Zhipu (GLM)
+  model: GLM-4.5-Air
+  model_id: glm-4.5-air
+  context_window: 128K
+  currency: USD
+  input: 0.20
+  cached_input: 0.03
+  cache_write: null
+  output: 1.10
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-airx
+  provider: Zhipu (GLM)
+  model: GLM-4.5-AirX
+  model_id: glm-4.5-airx
+  context_window: 128K
+  currency: USD
+  input: 1.10
+  cached_input: 0.22
+  cache_write: null
+  output: 4.50
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-32b-0414-128k
+  provider: Zhipu (GLM)
+  model: GLM-4-32B-0414-128K
+  model_id: glm-4-32b-0414-128k
+  context_window: 128K
+  currency: USD
+  input: 0.10
+  cached_input: null
+  cache_write: null
+  output: 0.10
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4-32b-0414-128k
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-7-flash
+  provider: Zhipu (GLM)
+  model: GLM-4.7-Flash
+  model_id: glm-4.7-flash
+  context_window: 200K
+  currency: USD
+  input: 0
+  cached_input: 0
+  cache_write: null
+  output: 0
+  notes: Free tier.
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.7
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-flash
+  provider: Zhipu (GLM)
+  model: GLM-4.5-Flash
+  model_id: glm-4.5-flash
+  context_window: 200K
+  currency: USD
+  input: 0
+  cached_input: 0
+  cache_write: null
+  output: 0
+  notes: Free tier.
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5v-turbo
+  provider: Zhipu (GLM)
+  model: GLM-5V-Turbo
+  model_id: glm-5v-turbo
+  context_window: 200K
+  currency: USD
+  input: 1.20
+  cached_input: 0.24
+  cache_write: null
+  output: 4.00
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-5v-turbo
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6v
+  provider: Zhipu (GLM)
+  model: GLM-4.6V
+  model_id: glm-4.6v
+  context_window: 128K
+  currency: USD
+  input: 0.30
+  cached_input: 0.05
+  cache_write: null
+  output: 0.90
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.6v
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-ocr
+  provider: Zhipu (GLM)
+  model: GLM-OCR
+  model_id: null
+  context_window: null
+  currency: USD
+  input: 0.03
+  cached_input: null
+  cache_write: null
+  output: 0.03
+  notes: The chat completion endpoint does not list this model; it runs on the
+    layout parsing endpoint.
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-ocr
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6v-flashx
+  provider: Zhipu (GLM)
+  model: GLM-4.6V-FlashX
+  model_id: glm-4.6v-flashx
+  context_window: 128K
+  currency: USD
+  input: 0.04
+  cached_input: 0.004
+  cache_write: null
+  output: 0.40
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.6v
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5v
+  provider: Zhipu (GLM)
+  model: GLM-4.5V
+  model_id: glm-4.5v
+  context_window: 64K
+  currency: USD
+  input: 0.60
+  cached_input: 0.11
+  cache_write: null
+  output: 1.80
+  notes: null
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.5v
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6v-flash
+  provider: Zhipu (GLM)
+  model: GLM-4.6V-Flash
+  model_id: glm-4.6v-flash
+  context_window: 128K
+  currency: USD
+  input: 0
+  cached_input: 0
+  cache_write: null
+  output: 0
+  notes: Free tier.
+  links:
+    - label: pricing
+      url: https://docs.z.ai/guides/overview/pricing
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.6v
   last_verified: 2026-08-28
 
 - id: alibaba-qwen-max

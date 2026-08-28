@@ -68,7 +68,9 @@ MODEL_SCHEMA = {
     "context_window": (False, "str"),
     "max_output": (False, "str"),
     "vision": (True, "bool"),
-    "open_weights": (True, "bool"),
+    # Nullable: some providers never state whether they publish the weights.
+    # A guessed false is a claim we cannot source, so null means "unstated".
+    "open_weights": (False, "bool"),
     "notes": (False, "str"),
     "links": (True, "links"),
     "last_verified": (False, "date"),

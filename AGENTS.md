@@ -247,10 +247,23 @@ One record per model.
 | `context_window` | no | string | Short form. |
 | `max_output` | no | string | Short form. |
 | `vision` | yes | boolean | `true` or `false`. |
-| `open_weights` | yes | boolean | `true` or `false`. |
+| `open_weights` | no | boolean | `true`, `false`, or `null`. See the rule below. |
 | `notes` | no | string | One sentence. |
 | `links` | yes | list | See the `links` schema above. |
 | `last_verified` | no | date | Date you read the page. |
+
+### The `open_weights` rule
+
+Set `true` only when a page in `links` says that model is open-source or
+open-weight, or links its weights. Set `false` only when a page says the weights
+are closed. Otherwise set `null`.
+
+A ranking claim is not a membership claim. "SOTA among open-source models"
+compares the model to a group. It does not say the model belongs to that group.
+Treat it as unstated and write `null`.
+
+Never write `false` because you found nothing. `false` is a claim, and an
+unsourced claim breaks rule 3. The site renders `null` as an em dash.
 
 ## Fields the site does not render
 

@@ -68,3 +68,360 @@
     - label: rate limit
       url: https://platform.claude.com/docs/en/api/rate-limits
   last_verified: 2026-08-28
+
+- id: zhipu-glm-5-3
+  name: GLM-5.3
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: Text-only flagship; Z.ai only ranks it among open-source models.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5.3
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5-3-flash
+  name: GLM-5.3-Flash
+  provider: Zhipu (GLM)
+  total_params: 320B
+  active_params: 18B
+  context_window: 1M
+  max_output: 128K
+  vision: true
+  open_weights: true
+  notes: Natively multimodal model with a hybrid sparse and linear attention architecture.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-5.3-flash
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5-2
+  name: GLM-5.2
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: false
+  open_weights: true
+  notes: Text-only model; Z.ai publishes no parameter count for it.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5.2
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5-1
+  name: GLM-5.1
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: The guide page states no parameter count and no weights status.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5.1
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5
+  name: GLM-5
+  provider: Zhipu (GLM)
+  total_params: 744B
+  active_params: 40B
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: Z.ai ranks it among open-weight models but never calls its own weights public.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5-turbo
+  name: GLM-5-Turbo
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: The guide page states no parameter count and no weights status.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-5-turbo
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-7
+  name: GLM-4.7
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: Z.ai only ranks it first among open-source models on benchmarks.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.7
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-7-flashx
+  name: GLM-4.7-FlashX
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: Lightweight GLM-4.7 variant; it shares the GLM-4.7 guide page.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.7
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-7-flash
+  name: GLM-4.7-Flash
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: Free lightweight GLM-4.7 variant; it shares the GLM-4.7 guide page.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.7
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6
+  name: GLM-4.6
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: false
+  open_weights: null
+  notes: The page links a benchmark dataset on HuggingFace, not model weights.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.6
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5
+  name: GLM-4.5
+  provider: Zhipu (GLM)
+  total_params: 355B
+  active_params: 32B
+  context_window: 128K
+  max_output: 96K
+  vision: false
+  open_weights: true
+  notes: Text-only flagship of the GLM-4.5 series.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-x
+  name: GLM-4.5-X
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: 96K
+  vision: false
+  open_weights: null
+  notes: The GLM-4.5 page names only GLM-4.5 and GLM-4.5-Air in its specifications.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-air
+  name: GLM-4.5-Air
+  provider: Zhipu (GLM)
+  total_params: 106B
+  active_params: 12B
+  context_window: 128K
+  max_output: 96K
+  vision: false
+  open_weights: null
+  notes: The GLM-4.5 page gives its parameter count but not its weights status.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-airx
+  name: GLM-4.5-AirX
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: 96K
+  vision: false
+  open_weights: null
+  notes: The GLM-4.5 page names only GLM-4.5 and GLM-4.5-Air in its specifications.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5-flash
+  name: GLM-4.5-Flash
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 96K
+  vision: false
+  open_weights: null
+  notes: Free lightweight GLM-4.5 variant; the matrix gives it a 200K context.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4.5
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-32b-0414-128k
+  name: GLM-4-32B-0414-128K
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: 16K
+  vision: false
+  open_weights: null
+  notes: The guide page states no parameter count and no weights status.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/llm/glm-4-32b-0414-128k
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-5v-turbo
+  name: GLM-5V-Turbo
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: true
+  open_weights: null
+  notes: The guide page states no parameter count and no weights status.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-5v-turbo
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6v
+  name: GLM-4.6V
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: 32K
+  vision: true
+  open_weights: null
+  notes: Z.ai only ranks it among open-source models of comparable scale.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.6v
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6v-flashx
+  name: GLM-4.6V-FlashX
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: 32K
+  vision: true
+  open_weights: null
+  notes: Lightweight GLM-4.6V variant; it shares the GLM-4.6V guide page.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.6v
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-6v-flash
+  name: GLM-4.6V-Flash
+  provider: Zhipu (GLM)
+  total_params: null
+  active_params: null
+  context_window: 128K
+  max_output: 32K
+  vision: true
+  open_weights: null
+  notes: Free GLM-4.6V variant; it shares the GLM-4.6V guide page.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.6v
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28
+
+- id: zhipu-glm-4-5v
+  name: GLM-4.5V
+  provider: Zhipu (GLM)
+  total_params: 106B
+  active_params: 12B
+  context_window: 64K
+  max_output: 16K
+  vision: true
+  open_weights: null
+  notes: Z.ai only ranks it among open-source VLMs of the same level.
+  links:
+    - label: model card
+      url: https://docs.z.ai/guides/vlm/glm-4.5v
+    - label: docs
+      url: https://docs.z.ai/guides/overview/overview
+  last_verified: 2026-08-28

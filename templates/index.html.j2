@@ -190,7 +190,7 @@
         <td>{{ row.context_window or "—" }}</td>
         <td>{{ row.max_output or "—" }}</td>
         <td>{{ "yes" if row.vision else "no" }}</td>
-        <td>{{ "yes" if row.open_weights else "no" }}</td>
+        <td>{% if row.open_weights is none %}—{% else %}{{ "yes" if row.open_weights else "no" }}{% endif %}</td>
         <td>{{ links_cell(row.links) }}</td>
       </tr>
       {% if row.notes %}
