@@ -1,31 +1,49 @@
-# Coding Plan Tracker
+# ⚡ Coding Plan Tracker
 
-**Live site: <https://rizquuula.github.io/coding-plan/>**
+[![Deploy](https://github.com/rizquuula/coding-plan/actions/workflows/deploy.yml/badge.svg)](https://github.com/rizquuula/coding-plan/actions/workflows/deploy.yml)
 
-Tables of AI coding subscription plans, API rates, rate limits, and model
-specifications. The data lives in YAML. A Python script renders it into a static
-site that GitHub Actions deploys to GitHub Pages on every push to `main`.
+**Every AI coding plan. Every API rate. Every rate limit. One site, every number sourced.**
 
-Each provider gets its own table. Every row links to the provider pages its
-values came from, labelled by what each page is — `pricing`, `rate limit`,
-`model card`.
+### 👉 **[rizquuula.github.io/coding-plan](https://rizquuula.github.io/coding-plan/)** 👈
 
-Inspired by [jia.je/kb — coding plan](https://jia.je/kb/en/software/coding_plan.html),
-reshaped into sortable tables.
+Stop tab-hopping between 13 pricing pages to figure out whether Claude Max
+beats Cursor Ultra, or what GLM Coding Pro actually costs per year. This
+tracker puts **227 rows of plans, per-token rates, rate limits, and model
+specs** side by side — and every single value links straight to the provider
+page it came from.
 
-## What it tracks
+## 🔥 Why it's different
+
+- **🧾 Receipts on every row.** No number lives here without a link to the
+  provider's own page — labelled `pricing`, `rate limit`, `model card`. No
+  blogs, no aggregators, no vibes.
+- **🌏 Global *and* China regions.** Qwen, Kimi, GLM, DeepSeek tracked
+  alongside Anthropic, OpenAI, Google, Cursor, GitHub, and more.
+- **💰 Real math, done for you.** Yearly billing? The site derives the monthly
+  equivalent and the % saved against monthly — you just read the table.
+- **🔍 Sortable, themeable, fast.** Static HTML, zero backend, dark mode.
+  Click a header, sort a column, done.
+- **🤖 Built to be maintained by agents.** Strict YAML schemas, a validating
+  build, and per-provider sourcing skills mean updates are verifiable, not
+  hand-wavy.
+
+## 📊 What it tracks
 
 | Dataset | File | Contents |
 |---|---|---|
-| Plans | `data/plans.yaml` | Subscription tiers, prices, quotas, models |
-| API pricing | `data/api_pricing.yaml` | Input, cached input, cache write, and output rates per 1M tokens |
-| Rate limits | `data/rate_limits.yaml` | Published requests and tokens per minute, per model and usage tier |
-| Model specs | `data/models.yaml` | Parameter counts, context window, vision, open weights |
+| 💳 Plans | `data/plans.yaml` | Subscription tiers, prices, quotas, models |
+| 🪙 API pricing | `data/api_pricing.yaml` | Input, cached input, cache write, and output rates per 1M tokens |
+| 🚦 Rate limits | `data/rate_limits.yaml` | Requests and tokens per minute, per model and usage tier |
+| 🧠 Model specs | `data/models.yaml` | Parameter counts, context window, vision, open weights |
 
-The data files also record a `last_verified` date for each row, which the tables
-do not display.
+Every row also carries a `last_verified` date, so staleness is tracked — not
+hidden.
 
-## Build it locally
+## ⚙️ How it works
+
+YAML in, website out. A Python script validates the four datasets, renders
+Jinja templates into static HTML, and GitHub Actions ships it to GitHub Pages
+on every push to `main`. No database, no server, no build farm.
 
 ```bash
 pip install -r requirements.txt
@@ -34,23 +52,31 @@ python build.py           # write site/
 python -m http.server -d site 8000
 ```
 
-Open <http://localhost:8000>.
+Open <http://localhost:8000>. That's the whole stack.
 
-## Deploy
+## 🚀 Deploy your own
 
-Push to `main`. The workflow in `.github/workflows/deploy.yml` validates the
-data, builds the site, and publishes it to GitHub Pages.
-
-Enable Pages once, before the first deploy:
+Push to `main`. The workflow in `.github/workflows/deploy.yml` validates,
+builds, and publishes. Enable Pages once, before the first deploy:
 **Settings → Pages → Build and deployment → Source → GitHub Actions**.
 
-## Update the data
+## ✍️ Update the data
 
-Read `AGENTS.md`. It holds the schema for each file and the steps for adding a
-plan or refreshing prices. `CLAUDE.md` points at the same file, so Claude Code
-picks up the instructions automatically.
+Read `AGENTS.md` — it holds the schema for each file, the sourcing rules, and
+the step-by-step tasks. `CLAUDE.md` points at the same file, so Claude Code
+picks up the rules automatically and can refresh the data for you.
 
-## Accuracy
+## 🤝 Contributing
 
-Providers change prices without notice. Confirm a figure at its source link
-before you act on it.
+Spotted a stale price? PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+Licensed under [MIT](LICENSE).
+
+## ⚠️ Accuracy
+
+Providers change prices without notice. Every row links to its source —
+confirm a figure there before you act on it.
+
+---
+
+Inspired by [jia.je/kb — coding plan](https://jia.je/kb/en/software/coding_plan.html),
+reshaped into sortable, sourced tables.
