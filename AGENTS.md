@@ -78,6 +78,7 @@ next agent more than a gap.
 | Anthropic | `provider-anthropic` |
 | Cursor | `provider-cursor` |
 | DeepSeek | `provider-deepseek` |
+| Factory | `provider-factory` |
 | GitHub | `provider-github` |
 | Google | `provider-google` |
 | Moonshot (Kimi) | `provider-moonshot` |

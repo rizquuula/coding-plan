@@ -1248,3 +1248,84 @@
     - label: pricing
       url: https://z.ai/subscribe
   last_verified: 2026-08-28
+
+- id: factory-pro
+  provider: Factory
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 20
+  limits:
+    - Rolling rate-limit windows of 5 hours, 7 days, 30 days
+    - Free Droid Core pool after Standard Usage runs out
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - Droid Core open models
+  status: active
+  notes: Factory publishes no numeric quota and sells prepaid Extra Usage at a
+    10 USD minimum.
+  links:
+    - label: plans
+      url: https://docs.factory.ai/pricing/individuals
+    - label: plans
+      url: https://factory.ai/pricing
+  last_verified: 2026-08-28
+
+- id: factory-plus
+  provider: Factory
+  plan: Plus
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 100
+  limits:
+    - ~5x Pro usage
+    - Rolling rate-limit windows of 5 hours, 7 days, 30 days
+    - Free Droid Core pool after Standard Usage runs out
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - Droid Core open models
+  status: active
+  notes: The Plus tier adds managed Droid Computers for remote runs.
+  links:
+    - label: plans
+      url: https://docs.factory.ai/pricing/individuals
+    - label: plans
+      url: https://factory.ai/pricing
+  last_verified: 2026-08-28
+
+- id: factory-max
+  provider: Factory
+  plan: Max
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 200
+  limits:
+    - ~10x Pro usage
+    - Rolling rate-limit windows of 5 hours, 7 days, 30 days
+    - Free Droid Core pool after Standard Usage runs out
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - Droid Core open models
+  status: active
+  notes: The Max tier adds early feature access for high-volume work.
+  links:
+    - label: plans
+      url: https://docs.factory.ai/pricing/individuals
+    - label: plans
+      url: https://factory.ai/pricing
+  last_verified: 2026-08-28
