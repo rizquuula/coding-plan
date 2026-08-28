@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %} — Coding Plan Tracker</title>
+<meta name="description" content="{% block description %}{% endblock %}">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+// Apply the stored theme before first paint so the page never flashes.
+(function () {
+  try {
+    var choice = localStorage.getItem("theme");
+    if (choice === "light" || choice === "dark") {
+      document.documentElement.setAttribute("data-theme", choice);
+    }
+  } catch (error) {
+    /* Storage is blocked. Fall back to the system theme. */
+  }
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="shell">
+
+  <header class="sidebar">
+    <div class="sidebar-bar">
+      <a class="site-title" href="index.html">Coding Plan Tracker</a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-panel">
+        Menu
+      </button>
+    </div>
+
+    <div id="sidebar-panel" class="sidebar-panel">
+      <nav class="nav-block" aria-label="Pages">
+        <p class="nav-heading">Pages</p>
+        <ul class="nav-list">
+          {% for page in nav.pages %}
+          <li>
+            <a href="{{ page.href }}"{% if page.active %} aria-current="page"{% endif %}>{{ page.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {% if nav.anchors %}
+      <nav class="nav-block" aria-labelledby="on-this-page">
+        <p class="nav-heading" id="on-this-page">On this page</p>
+        <ul class="nav-list nav-list-anchors">
+          {% for anchor in nav.anchors %}
+          <li><a href="{{ anchor.href }}">{{ anchor.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+
+      <div class="nav-block theme-block">
+        <p class="nav-heading" id="theme-label">Theme</p>
+        <div class="theme-switch" role="group" aria-labelledby="theme-label">
+          <button type="button" class="theme-button" data-theme-choice="auto" aria-pressed="true">Auto</button>
+          <button type="button" class="theme-button" data-theme-choice="light" aria-pressed="false">Light</button>
+          <button type="button" class="theme-button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="content">
+
+    <div class="page-header">
+      <h1>{% block heading %}{% endblock %}</h1>
+      <p class="lede">{% block lede %}{% endblock %}</p>
+      <ul class="stats">
+        {% block stats %}{% endblock %}
+      </ul>
+      <p class="filter-row">
+        <label for="filter">Filter this page</label>
+        <input id="filter" type="search" placeholder="Type a provider, plan, or model…" autocomplete="off">
+      </p>
+    </div>
+
+    {% block sections %}{% endblock %}
+
+    <footer class="page-footer">
+      <p>
+        Every row links to the page its values came from. Providers change prices without notice, so
+        confirm a figure at its source before you act on it.
+      </p>
+      <p>
+        Built {{ built_at }} from
+        <a href="https://github.com/rizquuula/coding-plan" rel="noopener">the data files in this repository</a>.
+        Structure inspired by <a href="https://jia.je/kb/en/software/coding_plan.html" rel="noopener">jia.je/kb — coding plan</a>.
+      </p>
+    </footer>
+
+  </main>
+
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

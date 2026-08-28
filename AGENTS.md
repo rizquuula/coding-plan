@@ -5,11 +5,20 @@ Instructions for any agent that updates this repository.
 ## What this repository is
 
 A tracker for AI coding plans. It holds four datasets in YAML, a Python build
-script, and a Jinja template. GitHub Actions renders the datasets into static
-HTML tables and deploys them to GitHub Pages on every push to `main`.
+script, and a set of Jinja templates. GitHub Actions renders the datasets into
+static HTML tables and deploys them to GitHub Pages on every push to `main`.
 
-The page groups every dataset by provider. Each provider gets its own table
-under its own heading. No table has a provider column.
+The build script writes three pages. `index.html` holds the plans,
+`api-pricing.html` holds the API rates merged with the model specifications, and
+`rate-limits.html` holds the rate limits. Every page groups its dataset by
+provider. Each provider gets its own table under its own heading. No table has a
+provider column.
+
+`api-pricing.html` left-joins `data/api_pricing.yaml` onto `data/models.yaml` on
+the provider and the model name. A model with no rate row still gets a row, and
+a rate row with no model record still gets a row. Keep the model name in
+`data/api_pricing.yaml` equal to the `name` in `data/models.yaml`, or the two
+records render as two rows.
 
 ## Rules
 
@@ -37,7 +46,11 @@ under its own heading. No table has a provider column.
 | `data/rate_limits.yaml` | Published API rate limits |
 | `data/models.yaml` | Model specifications |
 | `build.py` | Validation and rendering |
-| `templates/index.html.j2` | Page template |
+| `templates/base.html.j2` | Page skeleton: head, sidebar, main, footer |
+| `templates/macros.html.j2` | Shared table macros |
+| `templates/index.html.j2` | The plans page |
+| `templates/api_pricing.html.j2` | The API pricing and models page |
+| `templates/rate_limits.html.j2` | The rate limits page |
 | `assets/` | CSS and JavaScript, copied into the site |
 | `.claude/skills/provider-*/` | How to source one provider's data |
 | `.github/workflows/deploy.yml` | Build and deploy workflow |
@@ -312,12 +325,21 @@ correct result. Do not fill the gap with a number from a third party.
 
 ## Task: change the page layout
 
-Edit `templates/index.html.j2` and `assets/style.css`. Run `python build.py` and
-open `site/index.html`. Keep every wide table inside its `.table-wrap` container
-so the page never scrolls sideways.
+Edit the templates and `assets/style.css`. Run `python build.py` and open the
+page you changed. Keep every wide table inside its `.table-wrap` container so
+the page never scrolls sideways.
+
+The templates split three ways. `templates/base.html.j2` holds the skeleton, the
+sidebar, and the theme switcher. `templates/macros.html.j2` holds every table
+macro. Each page template extends the base and fills its blocks.
 
 Each section renders one `.provider-block` per provider. When you add a column,
 update the `colspan` on that table's note row to match the new column count.
+
+`build.py` passes a `nav` value to every page. It carries the three page links
+and one anchor per provider block on the current page. Add a section to a page
+and you must extend the `provider_anchors` call for that page, or the sidebar
+misses it.
 
 ## Style
 

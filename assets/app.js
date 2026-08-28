@@ -1,3 +1,81 @@
+// Theme switcher. Auto follows the system, Light and Dark override it.
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "theme";
+  var buttons = Array.prototype.slice.call(
+    document.querySelectorAll("[data-theme-choice]")
+  );
+  if (!buttons.length) return;
+
+  function readChoice() {
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      return stored === "light" || stored === "dark" ? stored : "auto";
+    } catch (error) {
+      return "auto";
+    }
+  }
+
+  function writeChoice(choice) {
+    try {
+      if (choice === "auto") {
+        localStorage.removeItem(STORAGE_KEY);
+      } else {
+        localStorage.setItem(STORAGE_KEY, choice);
+      }
+    } catch (error) {
+      /* Storage is blocked. The choice still applies to this page. */
+    }
+  }
+
+  function apply(choice) {
+    if (choice === "auto") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", choice);
+    }
+    buttons.forEach(function (button) {
+      var pressed = button.getAttribute("data-theme-choice") === choice;
+      button.setAttribute("aria-pressed", pressed ? "true" : "false");
+    });
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var choice = button.getAttribute("data-theme-choice");
+      writeChoice(choice);
+      apply(choice);
+    });
+  });
+
+  apply(readChoice());
+})();
+
+// Sidebar disclosure. Only the narrow layout collapses the panel.
+(function () {
+  "use strict";
+
+  var sidebar = document.querySelector(".sidebar");
+  var toggle = document.getElementById("nav-toggle");
+  if (!sidebar || !toggle) return;
+
+  sidebar.setAttribute("data-nav", "js");
+
+  toggle.addEventListener("click", function () {
+    var open = sidebar.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  // A jump to a provider block closes the panel again.
+  sidebar.addEventListener("click", function (event) {
+    var link = event.target.closest("a");
+    if (!link || !sidebar.classList.contains("is-open")) return;
+    sidebar.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  });
+})();
+
 // Client-side filter and column sort. The tables render fully without this file.
 (function () {
   "use strict";

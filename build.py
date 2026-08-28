@@ -101,6 +101,28 @@ DATASETS = [
     ("rate_limits.yaml", RATE_LIMIT_SCHEMA),
 ]
 
+# One entry per rendered page. `name` also names the page in the sidebar state.
+PAGES = [
+    {
+        "name": "index",
+        "href": "index.html",
+        "label": "Coding Plans",
+        "template": "index.html.j2",
+    },
+    {
+        "name": "api-pricing",
+        "href": "api-pricing.html",
+        "label": "API Pricing & Models",
+        "template": "api_pricing.html.j2",
+    },
+    {
+        "name": "rate-limits",
+        "href": "rate-limits.html",
+        "label": "Rate Limits",
+        "template": "rate_limits.html.j2",
+    },
+]
+
 
 def link_errors(value) -> list[str]:
     """Return one message per problem found in a `links` value."""
@@ -352,6 +374,112 @@ def group_by_provider(rows: list) -> list[dict]:
     ]
 
 
+def dedupe_links(links: list) -> list:
+    """Return the links in order, with a repeated (label, url) pair dropped."""
+    seen: set[tuple[str, str]] = set()
+    kept: list = []
+    for link in links:
+        key = (link["label"], link["url"])
+        if key in seen:
+            continue
+        seen.add(key)
+        kept.append(link)
+    return kept
+
+
+def join_notes(*notes) -> str | None:
+    """Join the notes that exist into one sentence run, or return None."""
+    present = [note for note in notes if note]
+    return " ".join(present) if present else None
+
+
+def priced_row(api: dict, model: dict | None) -> dict:
+    """Return one merged row built on an api_pricing record."""
+    spec = model or {}
+    return {
+        "provider": api["provider"],
+        "model": api["model"],
+        "model_id": api.get("model_id"),
+        # The api record wins. The model record only fills a gap.
+        "context_window": api.get("context_window") or spec.get("context_window"),
+        "currency": api["currency"],
+        "input": api["input"],
+        "cached_input": api.get("cached_input"),
+        "cache_write": api.get("cache_write"),
+        "output": api["output"],
+        "total_params": spec.get("total_params"),
+        "active_params": spec.get("active_params"),
+        "max_output": spec.get("max_output"),
+        "vision": spec.get("vision"),
+        "open_weights": spec.get("open_weights"),
+        "notes": join_notes(api.get("notes"), spec.get("notes")),
+        "links": dedupe_links(api["links"] + spec.get("links", [])),
+    }
+
+
+def unpriced_row(model: dict) -> dict:
+    """Return one row for a model that no api_pricing record covers."""
+    return {
+        "provider": model["provider"],
+        "model": model["name"],
+        "model_id": None,
+        "context_window": model.get("context_window"),
+        # No api record means no currency and no rates. Every rate cell is a dash.
+        "currency": None,
+        "input": None,
+        "cached_input": None,
+        "cache_write": None,
+        "output": None,
+        "total_params": model.get("total_params"),
+        "active_params": model.get("active_params"),
+        "max_output": model.get("max_output"),
+        "vision": model.get("vision"),
+        "open_weights": model.get("open_weights"),
+        "notes": model.get("notes"),
+        "links": dedupe_links(model["links"]),
+    }
+
+
+def merge_api_and_models(api_rows: list, model_rows: list) -> list[dict]:
+    """Left-join api_pricing onto models, then keep the unmatched models too."""
+    by_key = {(r["provider"], r["name"]): r for r in model_rows}
+    matched: set[tuple[str, str]] = set()
+
+    merged: list[dict] = []
+    for api in api_rows:
+        key = (api["provider"], api["model"])
+        model = by_key.get(key)
+        if model is not None:
+            matched.add(key)
+        merged.append(priced_row(api, model))
+
+    for model in model_rows:
+        key = (model["provider"], model["name"])
+        if key not in matched:
+            merged.append(unpriced_row(model))
+
+    merged.sort(key=lambda r: (r["provider"], r["model"]))
+    return merged
+
+
+def provider_anchors(sections: list[tuple[str, list]]) -> list[dict]:
+    """Return one sidebar anchor per provider block on the page."""
+    return [
+        {"href": f"#{section_id}-{group['slug']}", "label": group["provider"]}
+        for section_id, groups in sections
+        for group in groups
+    ]
+
+
+def build_nav(current: str, anchors: list[dict]) -> dict:
+    """Return the page links and the in-page anchors for one page."""
+    pages = [
+        {"href": page["href"], "label": page["label"], "active": page["name"] == current}
+        for page in PAGES
+    ]
+    return {"pages": pages, "anchors": anchors}
+
+
 def render(data: dict, today: dt.date) -> None:
     """Write the rendered site into OUT_DIR."""
     env = Environment(
@@ -376,14 +504,12 @@ def render(data: dict, today: dt.date) -> None:
         data["rate_limits"], key=lambda r: (r["provider"], r["model"], r["tier"])
     )
 
-    context = {
-        "plans_global": group_by_provider(
-            [r for r in plans if r["region"] == "global"]
-        ),
-        "plans_china": group_by_provider([r for r in plans if r["region"] == "china"]),
-        "api_pricing": group_by_provider(api_pricing),
-        "models": group_by_provider(models),
-        "rate_limits": group_by_provider(rate_limits),
+    plans_global = group_by_provider([r for r in plans if r["region"] == "global"])
+    plans_china = group_by_provider([r for r in plans if r["region"] == "china"])
+    api_models = group_by_provider(merge_api_and_models(api_pricing, models))
+    rate_limit_groups = group_by_provider(rate_limits)
+
+    shared = {
         "built_at": today.isoformat(),
         "counts": {
             "plans": len(plans),
@@ -393,13 +519,41 @@ def render(data: dict, today: dt.date) -> None:
         },
     }
 
+    pages = {
+        "index": {
+            "plans_global": plans_global,
+            "plans_china": plans_china,
+            "nav": build_nav(
+                "index",
+                provider_anchors(
+                    [("plans-global", plans_global), ("plans-china", plans_china)]
+                ),
+            ),
+        },
+        "api-pricing": {
+            "api_models": api_models,
+            "nav": build_nav(
+                "api-pricing", provider_anchors([("api-pricing", api_models)])
+            ),
+        },
+        "rate-limits": {
+            "rate_limits": rate_limit_groups,
+            "nav": build_nav(
+                "rate-limits", provider_anchors([("rate-limits", rate_limit_groups)])
+            ),
+        },
+    }
+
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir(parents=True)
 
-    (OUT_DIR / "index.html").write_text(
-        env.get_template("index.html.j2").render(**context), encoding="utf-8"
-    )
+    for page in PAGES:
+        html = env.get_template(page["template"]).render(
+            **shared, **pages[page["name"]]
+        )
+        (OUT_DIR / page["href"]).write_text(html, encoding="utf-8")
+
     shutil.copytree(ASSET_DIR, OUT_DIR / "assets")
     (OUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
 

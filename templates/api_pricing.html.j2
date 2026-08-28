@@ -1,0 +1,20 @@
+{% extends "base.html.j2" %}
+{% from "macros.html.j2" import api_model_table, provider_blocks %}
+
+{% block title %}API Pricing &amp; Models{% endblock %}
+{% block description %}Per-token API rates and published model specifications, one table per provider.{% endblock %}
+{% block heading %}API Pricing &amp; Models{% endblock %}
+{% block lede %}Per-token API rates next to the model specification each provider publishes. One table per provider.{% endblock %}
+
+{% block stats %}
+<li><strong>{{ counts.api_pricing }}</strong> API rates</li>
+<li><strong>{{ counts.models }}</strong> models</li>
+{% endblock %}
+
+{% block sections %}
+<section id="api-pricing">
+  <h2>API pricing and model specifications</h2>
+  <p class="section-note">Each row shows the rates per 1M tokens and the model's published specification. Cache write is the 5-minute TTL rate. A dash means the provider does not publish that value.</p>
+  {{ provider_blocks("api-pricing", api_models, api_model_table) }}
+</section>
+{% endblock %}

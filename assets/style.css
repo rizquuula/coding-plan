@@ -6,8 +6,10 @@
   --text-muted: #63605a;
   --border: #dedad2;
   --accent: #9a4a1e;
+  --accent-soft: #f0e3da;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --sidebar-width: 15rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +21,7 @@
     --text-muted: #a5a29c;
     --border: #35343c;
     --accent: #e8a06a;
+    --accent-soft: #3a2c22;
   }
 }
 
@@ -30,13 +33,14 @@
   --text-muted: #a5a29c;
   --border: #35343c;
   --accent: #e8a06a;
+  --accent-soft: #3a2c22;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 2rem 1.25rem 4rem;
+  padding: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
@@ -45,11 +49,188 @@ body {
   overflow-x: hidden;
 }
 
-.page-header,
-main,
-.page-footer {
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 40;
+  padding: 0.5rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+.content {
   max-width: 78rem;
   margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+/* --- Sidebar ------------------------------------------------------------ */
+
+.sidebar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 1.25rem;
+}
+
+.site-title {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: none;
+  min-height: 44px;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.sidebar-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0 1.25rem 1rem;
+}
+
+.nav-block { margin: 0; }
+
+.nav-heading {
+  margin: 0 0 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.nav-list a:hover { background: var(--surface-alt); }
+
+.nav-list a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-list-anchors a {
+  padding-left: 0.6rem;
+  border-left: 2px solid var(--border);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.nav-list-anchors a:hover { color: var(--text); }
+
+.theme-switch {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+}
+
+.theme-button {
+  flex: 1 1 auto;
+  min-height: 32px;
+  padding: 0.3rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.theme-button:hover { color: var(--text); }
+
+.theme-button[aria-pressed="true"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (max-width: 959px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+
+  /* The script marks the sidebar once it can collapse it. Without the script
+     the panel stays open, so every link is still reachable. */
+  .sidebar[data-nav="js"] .nav-toggle { display: inline-flex; }
+  .sidebar[data-nav="js"] .sidebar-panel { display: none; }
+  .sidebar[data-nav="js"].is-open .sidebar-panel { display: flex; }
+}
+
+@media (min-width: 960px) {
+  .shell { padding-left: var(--sidebar-width); }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebar-width);
+    padding-top: 1.5rem;
+    overflow-y: auto;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar-bar { padding: 0 1.25rem 1rem; }
+
+  .sidebar-panel { flex: 1 1 auto; }
+
+  .theme-block { margin-top: auto; }
 }
 
 h1 {
@@ -92,22 +273,6 @@ a { color: var(--accent); }
 
 .stats strong { color: var(--text); }
 
-.toc {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.toc a {
-  padding: 0.25rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  text-decoration: none;
-  font-size: 0.85rem;
-}
-
 .filter-row {
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +300,11 @@ a { color: var(--accent); }
 
 section { margin-bottom: 2.75rem; }
 
-.provider-block { margin-bottom: 1.5rem; }
+.provider-block {
+  margin-bottom: 1.5rem;
+  /* Keep the heading clear of the sticky top bar when an anchor jumps here. */
+  scroll-margin-top: 4rem;
+}
 
 .provider-block:last-child { margin-bottom: 0; }
 

@@ -1,0 +1,19 @@
+{% extends "base.html.j2" %}
+{% from "macros.html.j2" import rate_limit_table, provider_blocks %}
+
+{% block title %}Rate Limits{% endblock %}
+{% block description %}Published API rate limits per provider, model, and usage tier.{% endblock %}
+{% block heading %}Rate Limits{% endblock %}
+{% block lede %}Published API rate limits per model and usage tier. One table per provider.{% endblock %}
+
+{% block stats %}
+<li><strong>{{ counts.rate_limits }}</strong> rate limits</li>
+{% endblock %}
+
+{% block sections %}
+<section id="rate-limits">
+  <h2>Rate limits</h2>
+  <p class="section-note">Published API rate limits per usage tier. RPM is requests per minute, TPM is tokens per minute, RPD is requests per day. A dash means the provider does not publish that number.</p>
+  {{ provider_blocks("rate-limits", rate_limits, rate_limit_table) }}
+</section>
+{% endblock %}
