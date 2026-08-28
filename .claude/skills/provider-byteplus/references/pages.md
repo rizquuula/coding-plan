@@ -138,10 +138,10 @@ promotional blurbs:
 
 - "First month from $10 USD. Flexible models, unlimited tools" — site-header
   i18n strings.
-- "the first month from $4.50 USD" — the referral share text, which is $10 after
-  the 10% referee discount.
+- "the first month from $4.50 USD" — the referral share text.
 
-Neither is a plan price. `data/plans.yaml` requires a numeric `amount`, and
+The two figures do not reconcile, and no page explains either one. Neither is a
+plan price. `data/plans.yaml` requires a numeric `amount`, and
 `AGENTS.md` rule 3 forbids inventing one. Zero BytePlus rows in all four data
 files is the correct result today.
 

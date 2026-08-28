@@ -65,9 +65,10 @@ a number, and rule 3 forbids inventing one. Add no plans row. Re-check this trap
 on every refresh.
 
 **2. "First month from $10 USD" is a promo floor, not a plan price.** It comes
-from the site-header i18n strings. So does the referral share text, "the first
-month from $4.50 USD", which is the $10 figure after a 10% referee discount.
-Neither states what a tier costs. Never copy either into `prices`.
+from the site-header i18n strings. The referral share text states a different
+floor, "the first month from $4.50 USD". The two figures do not reconcile, and
+no page explains either one. Neither states what a tier costs. Never copy either
+into `prices`.
 
 **3. `www.byteplus.com/en/activity/codingplan` is an empty JavaScript shell.**
 It is 29 KB and says "You need to enable JavaScript". `WebFetch` returns an
