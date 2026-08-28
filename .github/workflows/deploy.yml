@@ -34,6 +34,9 @@ jobs:
         run: python build.py
 
       - uses: actions/configure-pages@v5
+        with:
+          # Turn Pages on if the repository has not enabled it yet.
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
