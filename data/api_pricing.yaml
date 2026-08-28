@@ -1,0 +1,142 @@
+# Per-model API rates. All rates are per 1M tokens in `currency`.
+# Schema: see AGENTS.md.
+
+- id: anthropic-claude-fable-5
+  provider: Anthropic
+  model: Claude Fable 5
+  model_id: claude-fable-5
+  context_window: 1M
+  currency: USD
+  input: 10.00
+  cached_input: 1.00
+  cache_write: 12.50
+  output: 50.00
+  notes: Cache read is 0.1x input. Cache write is 1.25x input for the 5-minute TTL.
+  source: https://platform.claude.com/docs/en/pricing
+  last_verified: 2026-06-24
+
+- id: anthropic-claude-opus-5
+  provider: Anthropic
+  model: Claude Opus 5
+  model_id: claude-opus-5
+  context_window: 1M
+  currency: USD
+  input: 5.00
+  cached_input: 0.50
+  cache_write: 6.25
+  output: 25.00
+  notes: Fast mode is priced at 10.00 input and 50.00 output.
+  source: https://platform.claude.com/docs/en/pricing
+  last_verified: 2026-06-24
+
+- id: anthropic-claude-opus-4-8
+  provider: Anthropic
+  model: Claude Opus 4.8
+  model_id: claude-opus-4-8
+  context_window: 1M
+  currency: USD
+  input: 5.00
+  cached_input: 0.50
+  cache_write: 6.25
+  output: 25.00
+  notes: null
+  source: https://platform.claude.com/docs/en/pricing
+  last_verified: 2026-06-24
+
+- id: anthropic-claude-sonnet-5
+  provider: Anthropic
+  model: Claude Sonnet 5
+  model_id: claude-sonnet-5
+  context_window: 1M
+  currency: USD
+  input: 3.00
+  cached_input: 0.30
+  cache_write: 3.75
+  output: 15.00
+  notes: Introductory rate of 2.00 input and 10.00 output runs through 2026-08-31.
+  source: https://platform.claude.com/docs/en/pricing
+  last_verified: 2026-06-24
+
+- id: anthropic-claude-sonnet-4-6
+  provider: Anthropic
+  model: Claude Sonnet 4.6
+  model_id: claude-sonnet-4-6
+  context_window: 1M
+  currency: USD
+  input: 3.00
+  cached_input: 0.30
+  cache_write: 3.75
+  output: 15.00
+  notes: null
+  source: https://platform.claude.com/docs/en/pricing
+  last_verified: 2026-06-24
+
+- id: anthropic-claude-haiku-4-5
+  provider: Anthropic
+  model: Claude Haiku 4.5
+  model_id: claude-haiku-4-5
+  context_window: 200K
+  currency: USD
+  input: 1.00
+  cached_input: 0.10
+  cache_write: 1.25
+  output: 5.00
+  notes: null
+  source: https://platform.claude.com/docs/en/pricing
+  last_verified: 2026-06-24
+
+- id: moonshot-kimi-k3
+  provider: Moonshot (Kimi)
+  model: Kimi K3
+  model_id: kimi-k3
+  context_window: null
+  currency: CNY
+  input: 20.00
+  cached_input: 2.00
+  cache_write: null
+  output: 100.00
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: moonshot-kimi-k2-7-code
+  provider: Moonshot (Kimi)
+  model: Kimi K2.7-Code
+  model_id: kimi-k2.7-code
+  context_window: 256K
+  currency: CNY
+  input: 6.50
+  cached_input: 1.30
+  cache_write: null
+  output: 27.00
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: zhipu-glm-5-3
+  provider: Zhipu (GLM)
+  model: GLM-5.3
+  model_id: glm-5.3
+  context_window: null
+  currency: CNY
+  input: 6.90
+  cached_input: 1.70
+  cache_write: null
+  output: 24.00
+  notes: The reference page lists these as consumption coefficients.
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: zhipu-glm-5-3-flash
+  provider: Zhipu (GLM)
+  model: GLM-5.3-Flash
+  model_id: glm-5.3-flash
+  context_window: null
+  currency: CNY
+  input: 2.30
+  cached_input: 0.56
+  cache_write: null
+  output: 8.00
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coding Plan Tracker</title>
+<meta name="description" content="Tables of AI coding subscription plans, API rates, and model specifications.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Coding Plan Tracker</h1>
+  <p class="lede">
+    Subscription plans, API rates, and model specifications for AI coding tools.
+    Built {{ built_at }} from
+    <a href="https://github.com/rizquuula/coding-plan">the data files in this repository</a>.
+  </p>
+  <ul class="stats">
+    <li><strong>{{ counts.plans }}</strong> plans</li>
+    <li><strong>{{ counts.api_pricing }}</strong> API rates</li>
+    <li><strong>{{ counts.models }}</strong> models</li>
+    <li><strong>{{ counts.unverified }}</strong> rows need a check</li>
+  </ul>
+  <nav class="toc">
+    <a href="#plans-global">Global plans</a>
+    <a href="#plans-china">China plans</a>
+    <a href="#api-pricing">API pricing</a>
+    <a href="#models">Model specs</a>
+  </nav>
+  <p class="filter-row">
+    <label for="filter">Filter all tables</label>
+    <input id="filter" type="search" placeholder="Type a provider, plan, or model…" autocomplete="off">
+  </p>
+</header>
+
+{% macro badge(row) -%}
+{% if row.freshness == 'fresh' %}
+<span class="badge badge-fresh" title="Verified on {{ row.last_verified | date }}">{{ row.last_verified | date }}</span>
+{% elif row.freshness == 'stale' %}
+<span class="badge badge-stale" title="Verified on {{ row.last_verified | date }}, over 90 days ago">{{ row.last_verified | date }}</span>
+{% else %}
+<span class="badge badge-unverified" title="Nobody has verified this row yet">unverified</span>
+{% endif %}
+{%- endmacro %}
+
+{% macro plan_table(rows) -%}
+<div class="table-wrap">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th>Plan</th>
+        <th class="num">Price</th>
+        <th>Limits</th>
+        <th>Models</th>
+        <th>Status</th>
+        <th>Verified</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.provider }}</td>
+        <td>{{ row.plan }}</td>
+        <td class="num">{{ row.price_amount | money(row.price_currency) }}<span class="unit">/{{ row.price_period }}</span></td>
+        <td>
+          <ul class="cell-list">
+            {% for limit in row.limits %}<li>{{ limit }}</li>{% endfor %}
+          </ul>
+        </td>
+        <td>
+          <ul class="cell-list">
+            {% for model in row.models %}<li>{{ model }}</li>{% endfor %}
+          </ul>
+        </td>
+        <td><span class="status status-{{ row.status }}">{{ row.status }}</span></td>
+        <td>{{ badge(row) }}</td>
+        <td><a href="{{ row.source }}" rel="noopener">link</a></td>
+      </tr>
+      {% if row.notes %}
+      <tr class="note-row">
+        <td colspan="8"><span class="note-label">Note</span> {{ row.notes }}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%- endmacro %}
+
+<main>
+
+<section id="plans-global">
+  <h2>Global coding plans</h2>
+  <p class="section-note">Subscription tiers that include an AI coding tool. Prices are the list price for one seat.</p>
+  {{ plan_table(plans_global) }}
+</section>
+
+<section id="plans-china">
+  <h2>China provider plans</h2>
+  <p class="section-note">Plans sold in CNY by Chinese model providers and cloud resellers.</p>
+  {{ plan_table(plans_china) }}
+</section>
+
+<section id="api-pricing">
+  <h2>API pricing</h2>
+  <p class="section-note">Rates per 1M tokens. A dash means the provider does not publish a separate rate.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Model</th>
+          <th>Context</th>
+          <th class="num">Input</th>
+          <th class="num">Cached input</th>
+          <th class="num">Cache write</th>
+          <th class="num">Output</th>
+          <th>Verified</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in api_pricing %}
+        <tr>
+          <td>{{ row.provider }}</td>
+          <td>{{ row.model }}{% if row.model_id %}<br><code>{{ row.model_id }}</code>{% endif %}</td>
+          <td>{{ row.context_window or "—" }}</td>
+          <td class="num">{{ row.input | money(row.currency) }}</td>
+          <td class="num">{{ row.cached_input | money(row.currency) }}</td>
+          <td class="num">{{ row.cache_write | money(row.currency) }}</td>
+          <td class="num">{{ row.output | money(row.currency) }}</td>
+          <td>{{ badge(row) }}</td>
+          <td><a href="{{ row.source }}" rel="noopener">link</a></td>
+        </tr>
+        {% if row.notes %}
+        <tr class="note-row">
+          <td colspan="9"><span class="note-label">Note</span> {{ row.notes }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="models">
+  <h2>Model specifications</h2>
+  <p class="section-note">Closed-weight models do not publish parameter counts, so those cells hold a dash.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Provider</th>
+          <th class="num">Total params</th>
+          <th class="num">Active params</th>
+          <th>Context</th>
+          <th>Max output</th>
+          <th>Vision</th>
+          <th>Open weights</th>
+          <th>Verified</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in models %}
+        <tr>
+          <td>{{ row.name }}</td>
+          <td>{{ row.provider }}</td>
+          <td class="num">{{ row.total_params or "—" }}</td>
+          <td class="num">{{ row.active_params or "—" }}</td>
+          <td>{{ row.context_window or "—" }}</td>
+          <td>{{ row.max_output or "—" }}</td>
+          <td>{{ "yes" if row.vision else "no" }}</td>
+          <td>{{ "yes" if row.open_weights else "no" }}</td>
+          <td>{{ badge(row) }}</td>
+          <td><a href="{{ row.source }}" rel="noopener">link</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  <p>
+    Rows marked <span class="badge badge-unverified">unverified</span> carry seed values that nobody
+    has checked against the source yet. Always confirm a price on the provider page before you buy.
+  </p>
+  <p>Structure inspired by <a href="https://jia.je/kb/en/software/coding_plan.html" rel="noopener">jia.je/kb — coding plan</a>.</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

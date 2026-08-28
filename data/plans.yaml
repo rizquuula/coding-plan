@@ -1,0 +1,452 @@
+# Coding-plan subscriptions.
+# Schema: see AGENTS.md. Every field is required unless marked optional there.
+# `last_verified: null` means nobody checked the row against the source yet.
+
+- id: anthropic-claude-pro
+  provider: Anthropic
+  plan: Claude Pro
+  region: global
+  price_amount: 20
+  price_currency: USD
+  price_period: month
+  limits:
+    - Rolling 5-hour session limit
+    - Weekly limit on Claude Code usage
+  models:
+    - Claude Opus 5
+    - Claude Sonnet 5
+    - Claude Haiku 4.5
+  status: active
+  notes: Includes Claude Code in the terminal and the IDE extensions.
+  source: https://www.anthropic.com/pricing
+  last_verified: null
+
+- id: anthropic-claude-max-5x
+  provider: Anthropic
+  plan: Claude Max 5x
+  region: global
+  price_amount: 100
+  price_currency: USD
+  price_period: month
+  limits:
+    - About 5x the Pro usage per 5-hour session
+    - Weekly limit on Claude Code usage
+  models:
+    - Claude Opus 5
+    - Claude Sonnet 5
+    - Claude Haiku 4.5
+  status: active
+  notes: null
+  source: https://www.anthropic.com/pricing
+  last_verified: null
+
+- id: anthropic-claude-max-20x
+  provider: Anthropic
+  plan: Claude Max 20x
+  region: global
+  price_amount: 200
+  price_currency: USD
+  price_period: month
+  limits:
+    - About 20x the Pro usage per 5-hour session
+    - Weekly limit on Claude Code usage
+  models:
+    - Claude Opus 5
+    - Claude Sonnet 5
+    - Claude Haiku 4.5
+  status: active
+  notes: null
+  source: https://www.anthropic.com/pricing
+  last_verified: null
+
+- id: openai-chatgpt-plus
+  provider: OpenAI
+  plan: ChatGPT Plus
+  region: global
+  price_amount: 20
+  price_currency: USD
+  price_period: month
+  limits:
+    - Message limits per 3-hour window
+    - Codex usage limits per 5 hours and per week
+  models:
+    - GPT-5.x
+    - Codex
+  status: active
+  notes: Codex CLI and the Codex IDE extension use the same quota.
+  source: https://openai.com/chatgpt/pricing/
+  last_verified: null
+
+- id: openai-chatgpt-pro
+  provider: OpenAI
+  plan: ChatGPT Pro
+  region: global
+  price_amount: 200
+  price_currency: USD
+  price_period: month
+  limits:
+    - Near-unlimited chat usage
+    - Highest Codex quota
+  models:
+    - GPT-5.x
+    - Codex
+  status: active
+  notes: null
+  source: https://openai.com/chatgpt/pricing/
+  last_verified: null
+
+- id: github-copilot-pro
+  provider: GitHub
+  plan: Copilot Pro
+  region: global
+  price_amount: 10
+  price_currency: USD
+  price_period: month
+  limits:
+    - Monthly premium-request allowance
+    - Unlimited completions with the base model
+  models:
+    - Claude
+    - GPT
+    - Gemini
+  status: active
+  notes: Premium requests beyond the allowance are billed per request.
+  source: https://github.com/features/copilot/plans
+  last_verified: null
+
+- id: github-copilot-pro-plus
+  provider: GitHub
+  plan: Copilot Pro+
+  region: global
+  price_amount: 39
+  price_currency: USD
+  price_period: month
+  limits:
+    - Larger monthly premium-request allowance
+    - Access to every model in the catalog
+  models:
+    - Claude
+    - GPT
+    - Gemini
+  status: active
+  notes: null
+  source: https://github.com/features/copilot/plans
+  last_verified: null
+
+- id: cursor-pro
+  provider: Cursor
+  plan: Pro
+  region: global
+  price_amount: 20
+  price_currency: USD
+  price_period: month
+  limits:
+    - Monthly compute allowance, then usage-based billing
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Composer
+  status: active
+  notes: null
+  source: https://cursor.com/pricing
+  last_verified: null
+
+- id: cursor-ultra
+  provider: Cursor
+  plan: Ultra
+  region: global
+  price_amount: 200
+  price_currency: USD
+  price_period: month
+  limits:
+    - About 20x the Pro compute allowance
+  models:
+    - Claude
+    - GPT
+    - Gemini
+    - Composer
+  status: active
+  notes: null
+  source: https://cursor.com/pricing
+  last_verified: null
+
+- id: google-ai-pro
+  provider: Google
+  plan: Google AI Pro
+  region: global
+  price_amount: 19.99
+  price_currency: USD
+  price_period: month
+  limits:
+    - Daily Gemini CLI request limit
+    - Daily Gemini Code Assist request limit
+  models:
+    - Gemini
+  status: active
+  notes: Gemini CLI also has a free tier that needs no paid plan.
+  source: https://one.google.com/about/google-ai-plans/
+  last_verified: null
+
+- id: google-ai-ultra
+  provider: Google
+  plan: Google AI Ultra
+  region: global
+  price_amount: 249.99
+  price_currency: USD
+  price_period: month
+  limits:
+    - Highest Gemini CLI and Code Assist limits
+  models:
+    - Gemini
+  status: active
+  notes: null
+  source: https://one.google.com/about/google-ai-plans/
+  last_verified: null
+
+- id: moonshot-kimi-andante
+  provider: Moonshot (Kimi)
+  plan: Andante
+  region: china
+  price_amount: 49
+  price_currency: CNY
+  price_period: month
+  limits:
+    - Entry tier quota
+  models:
+    - Kimi K3
+    - Kimi K2.7-Code
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: moonshot-kimi-moderato
+  provider: Moonshot (Kimi)
+  plan: Moderato
+  region: china
+  price_amount: 99
+  price_currency: CNY
+  price_period: month
+  limits:
+    - Mid tier quota
+  models:
+    - Kimi K3
+    - Kimi K2.7-Code
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: moonshot-kimi-allegretto
+  provider: Moonshot (Kimi)
+  plan: Allegretto
+  region: china
+  price_amount: 199
+  price_currency: CNY
+  price_period: month
+  limits:
+    - High tier quota
+  models:
+    - Kimi K3
+    - Kimi K2.7-Code
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: moonshot-kimi-allegro
+  provider: Moonshot (Kimi)
+  plan: Allegro
+  region: china
+  price_amount: 699
+  price_currency: CNY
+  price_period: month
+  limits:
+    - Top tier quota
+  models:
+    - Kimi K3
+    - Kimi K2.7-Code
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: zhipu-glm-lite
+  provider: Zhipu (GLM)
+  plan: Coding Plan Lite
+  region: china
+  price_amount: 118
+  price_currency: CNY
+  price_period: month
+  limits:
+    - 2000 points per 5 hours
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: Points convert to tokens through a per-model coefficient.
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: zhipu-glm-pro
+  provider: Zhipu (GLM)
+  plan: Coding Plan Pro
+  region: china
+  price_amount: 538
+  price_currency: CNY
+  price_period: month
+  limits:
+    - 12000 points per 5 hours
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: zhipu-glm-max
+  provider: Zhipu (GLM)
+  plan: Coding Plan Max
+  region: china
+  price_amount: 1078
+  price_currency: CNY
+  price_period: month
+  limits:
+    - 28000 points per 5 hours
+  models:
+    - GLM-5.3
+    - GLM-5.3-Flash
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: minimax-plus
+  provider: MiniMax
+  plan: Plus
+  region: china
+  price_amount: 49
+  price_currency: CNY
+  price_period: month
+  limits:
+    - About 600M M3 tokens per month
+  models:
+    - MiniMax-M3
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: minimax-max
+  provider: MiniMax
+  plan: Max
+  region: china
+  price_amount: 119
+  price_currency: CNY
+  price_period: month
+  limits:
+    - About 1.8B M3 tokens per month
+  models:
+    - MiniMax-M3
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: minimax-ultra
+  provider: MiniMax
+  plan: Ultra
+  region: china
+  price_amount: 469
+  price_currency: CNY
+  price_period: month
+  limits:
+    - About 7.1B M3 tokens per month
+  models:
+    - MiniMax-M3
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: volcano-lite
+  provider: Volcano Engine
+  plan: Lite
+  region: china
+  price_amount: 40
+  price_currency: CNY
+  price_period: month
+  limits:
+    - See the provider page for the token quota
+  models:
+    - Doubao
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: volcano-pro
+  provider: Volcano Engine
+  plan: Pro
+  region: china
+  price_amount: 200
+  price_currency: CNY
+  price_period: month
+  limits:
+    - See the provider page for the token quota
+  models:
+    - Doubao
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: bailian-lite
+  provider: Alibaba Bailian
+  plan: Lite
+  region: china
+  price_amount: 60
+  price_currency: CNY
+  price_period: month
+  limits:
+    - See the provider page for the token quota
+  models:
+    - Qwen3
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: bailian-standard
+  provider: Alibaba Bailian
+  plan: Standard
+  region: china
+  price_amount: 180
+  price_currency: CNY
+  price_period: month
+  limits:
+    - See the provider page for the token quota
+  models:
+    - Qwen3
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: bailian-pro
+  provider: Alibaba Bailian
+  plan: Pro
+  region: china
+  price_amount: 600
+  price_currency: CNY
+  price_period: month
+  limits:
+    - See the provider page for the token quota
+  models:
+    - Qwen3
+  status: active
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null

@@ -1,0 +1,132 @@
+# Model specifications.
+# Schema: see AGENTS.md. Use null when a value is not published.
+
+- id: claude-fable-5
+  name: Claude Fable 5
+  provider: Anthropic
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: true
+  open_weights: false
+  notes: Parameter counts are not published.
+  source: https://platform.claude.com/docs/en/about-claude/models/overview
+  last_verified: 2026-06-24
+
+- id: claude-opus-5
+  name: Claude Opus 5
+  provider: Anthropic
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: true
+  open_weights: false
+  notes: Parameter counts are not published.
+  source: https://platform.claude.com/docs/en/about-claude/models/overview
+  last_verified: 2026-06-24
+
+- id: claude-sonnet-5
+  name: Claude Sonnet 5
+  provider: Anthropic
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 128K
+  vision: true
+  open_weights: false
+  notes: Parameter counts are not published.
+  source: https://platform.claude.com/docs/en/about-claude/models/overview
+  last_verified: 2026-06-24
+
+- id: claude-haiku-4-5
+  name: Claude Haiku 4.5
+  provider: Anthropic
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 64K
+  vision: true
+  open_weights: false
+  notes: Parameter counts are not published.
+  source: https://platform.claude.com/docs/en/about-claude/models/overview
+  last_verified: 2026-06-24
+
+- id: deepseek-v4-pro-0813
+  name: DeepSeek-V4-Pro-0813
+  provider: DeepSeek
+  total_params: 1.6T
+  active_params: 49B
+  context_window: null
+  max_output: null
+  vision: false
+  open_weights: true
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: deepseek-v4-flash-0731
+  name: DeepSeek-V4-Flash-0731
+  provider: DeepSeek
+  total_params: 284B
+  active_params: 13B
+  context_window: null
+  max_output: null
+  vision: false
+  open_weights: true
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: glm-5-3-flash
+  name: GLM-5.3-Flash
+  provider: Zhipu (GLM)
+  total_params: 320B
+  active_params: 18B
+  context_window: null
+  max_output: null
+  vision: true
+  open_weights: true
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: kimi-k3
+  name: Kimi-K3
+  provider: Moonshot (Kimi)
+  total_params: 2.8T
+  active_params: 104B
+  context_window: null
+  max_output: null
+  vision: true
+  open_weights: true
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: minimax-m3
+  name: MiniMax-M3
+  provider: MiniMax
+  total_params: 428B
+  active_params: 23B
+  context_window: null
+  max_output: null
+  vision: true
+  open_weights: true
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
+
+- id: qwen3-8-2-4t-a95b
+  name: Qwen3.8-2.4T-A95B
+  provider: Alibaba (Qwen)
+  total_params: 2.4T
+  active_params: 95B
+  context_window: null
+  max_output: null
+  vision: true
+  open_weights: true
+  notes: null
+  source: https://jia.je/kb/en/software/coding_plan.html
+  last_verified: null
