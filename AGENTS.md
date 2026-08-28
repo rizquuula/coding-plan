@@ -61,9 +61,18 @@ next agent more than a gap.
 
 | Provider | Skill |
 |---|---|
+| Alibaba (Qwen) | `provider-alibaba` |
+| Anthropic | `provider-anthropic` |
+| Cursor | `provider-cursor` |
+| DeepSeek | `provider-deepseek` |
+| GitHub | `provider-github` |
+| Google | `provider-google` |
+| Moonshot (Kimi) | `provider-moonshot` |
+| OpenAI | `provider-openai` |
 | Zhipu (GLM) | `provider-zai` |
 
-The other six providers have no skill yet.
+Every provider in the data has a skill. When you add a new provider, add a
+skill for it and extend this table.
 
 ## Sourcing tools
 
