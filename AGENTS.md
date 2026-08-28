@@ -14,10 +14,13 @@ HTML tables and deploys them to GitHub Pages on every push to `main`.
 2. Never edit `site/`. The build script deletes and rewrites that directory.
 3. Never invent a price, a quota, or a parameter count. Copy the value from the
    `source` URL. If you cannot reach the source, leave the row unchanged.
-4. Set `last_verified` to the date you read the source page. Use `YYYY-MM-DD`.
-5. Set `last_verified: null` only for a new row you could not verify.
-6. Run `python build.py --check` before you finish. Fix every error it prints.
-7. Keep one record per plan tier. Do not merge two tiers into one row.
+4. `source` must be a page the provider owns. Do not cite a blog, a comparison
+   site, or an aggregator. Delete a row before you cite a third party for it.
+5. Read the source page yourself before you add or change a value. A search
+   result summary is not a source.
+6. Set `last_verified` to the date you read the source page. Use `YYYY-MM-DD`.
+7. Run `python build.py --check` before you finish. Fix every error it prints.
+8. Keep one record per plan tier. Do not merge two tiers into one row.
 
 ## Layout
 
