@@ -222,6 +222,7 @@ tiers for one model gets three records. Do not average two tiers into one row.
 | `output_tokens_per_minute` | no | number | `null` when unpublished. |
 | `tokens_per_minute` | no | number | Combined input and output limit. `null` when the provider publishes a split instead. |
 | `requests_per_day` | no | number | `null` when unpublished. |
+| `concurrent_requests` | no | number | `null` when unpublished. Concurrent connections, counted as the provider defines them. |
 | `notes` | no | string | One sentence. |
 | `links` | yes | list | See the `links` schema above. Include a `rate limit` entry. |
 | `last_verified` | no | date | Date you read the page. |
@@ -246,17 +247,24 @@ One record per model.
 | `active_params` | no | string | Active parameters per token. `null` when unpublished. |
 | `context_window` | no | string | Short form. |
 | `max_output` | no | string | Short form. |
-| `vision` | yes | boolean | `true` or `false`. |
+| `vision` | no | boolean | `true`, `false`, or `null`. See the rule below. |
 | `open_weights` | no | boolean | `true`, `false`, or `null`. See the rule below. |
 | `notes` | no | string | One sentence. |
 | `links` | yes | list | See the `links` schema above. |
 | `last_verified` | no | date | Date you read the page. |
 
-### The `open_weights` rule
+### The `open_weights` and `vision` rule
 
-Set `true` only when a page in `links` says that model is open-source or
-open-weight, or links its weights. Set `false` only when a page says the weights
-are closed. Otherwise set `null`.
+Both fields carry the same three states. A page in `links` must state the
+capability before you write `true`. A page must state its absence before you
+write `false`. Silence means `null`.
+
+For `open_weights`, set `true` only when a page says that model is open-source
+or open-weight, or links its weights. Set `false` only when a page says the
+weights are closed. Otherwise set `null`.
+
+For `vision`, set `true` only when a page says that model reads images. Set
+`false` only when a page says it takes text only. Otherwise set `null`.
 
 A ranking claim is not a membership claim. "SOTA among open-source models"
 compares the model to a group. It does not say the model belongs to that group.

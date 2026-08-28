@@ -67,7 +67,9 @@ MODEL_SCHEMA = {
     "active_params": (False, "str"),
     "context_window": (False, "str"),
     "max_output": (False, "str"),
-    "vision": (True, "bool"),
+    # Nullable for the same reason as open_weights: a page that never mentions
+    # image input does not say the model lacks it, so null means "unstated".
+    "vision": (False, "bool"),
     # Nullable: some providers never state whether they publish the weights.
     # A guessed false is a claim we cannot source, so null means "unstated".
     "open_weights": (False, "bool"),
@@ -86,6 +88,7 @@ RATE_LIMIT_SCHEMA = {
     "output_tokens_per_minute": (False, "num"),
     "tokens_per_minute": (False, "num"),
     "requests_per_day": (False, "num"),
+    "concurrent_requests": (False, "num"),
     "notes": (False, "str"),
     "links": (True, "links"),
     "last_verified": (False, "date"),

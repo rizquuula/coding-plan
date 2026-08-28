@@ -140,6 +140,7 @@
         <th class="num">Output TPM</th>
         <th class="num">Total TPM</th>
         <th class="num">RPD</th>
+        <th class="num">Concurrent requests</th>
         <th>Sources</th>
       </tr>
     </thead>
@@ -153,11 +154,12 @@
         <td class="num">{{ row.output_tokens_per_minute | thousands }}</td>
         <td class="num">{{ row.tokens_per_minute | thousands }}</td>
         <td class="num">{{ row.requests_per_day | thousands }}</td>
+        <td class="num">{{ row.get("concurrent_requests") | thousands }}</td>
         <td>{{ links_cell(row.links) }}</td>
       </tr>
       {% if row.notes %}
       <tr class="note-row">
-        <td colspan="8"><span class="note-label">Note</span> {{ row.notes }}</td>
+        <td colspan="9"><span class="note-label">Note</span> {{ row.notes }}</td>
       </tr>
       {% endif %}
       {% endfor %}
@@ -189,7 +191,7 @@
         <td class="num">{{ row.active_params or "—" }}</td>
         <td>{{ row.context_window or "—" }}</td>
         <td>{{ row.max_output or "—" }}</td>
-        <td>{{ "yes" if row.vision else "no" }}</td>
+        <td>{% if row.vision is none %}—{% else %}{{ "yes" if row.vision else "no" }}{% endif %}</td>
         <td>{% if row.open_weights is none %}—{% else %}{{ "yes" if row.open_weights else "no" }}{% endif %}</td>
         <td>{{ links_cell(row.links) }}</td>
       </tr>
