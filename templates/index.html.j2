@@ -12,13 +12,11 @@
 
 {% block sections %}
 <section id="plans-global">
-  <h2>Global coding plans</h2>
   <p class="section-note">Subscription tiers that include an AI coding tool. Prices are the list price for one seat. A tier that discounts a longer billing term lists every term, with the monthly equivalent and the saving.</p>
   {{ provider_blocks("plans-global", plans_global, plan_table) }}
 </section>
 
 <section id="plans-china">
-  <h2>China provider plans</h2>
   <p class="section-note">Plans from Chinese model providers. Prices are the ones the provider lists on its international site.</p>
   {{ provider_blocks("plans-china", plans_china, plan_table) }}
 </section>
