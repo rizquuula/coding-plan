@@ -52,12 +52,33 @@ publishes no quarterly and no yearly term.
 | Enterprise | Custom | — | — | Contact sales. No number |
 
 GOAT per-model allowances named on the pricing page: $70 on GPT-5.6 Sol, $70 on
-GLM-5.2, $70 on Hy3. The GOAT docs page holds the full list.
+GLM-5.2, $70 on Tencent Hy3, $70 on Qwen 3.8 27B, $60 on DeepSeek V4 Flash, and
+"+ 27 more models". The GOAT docs page holds the full list.
 
 Provider plan top-ups roll over and never expire.
 
 Every plan includes taste-1 access, an "Up to 1M" context claim, credits that
 roll over indefinitely, and auto top-up at API cost.
+
+Read on 2026-08-28: the Provider card lists API endpoints, "Open-source +
+premium models", per-request analytics, and Discord support. It does not print
+"taste-1 model access", unlike the Go, GOAT, Max, and Teams cards. Treat the
+"every plan includes taste-1" claim as unverified for Provider.
+
+The comparison table covers five columns only: Go, GOAT, Pro, Max 10×, and
+Max 20×. Teams and Provider have a card each and no column. The model rows
+resolve as follows.
+
+| Row | Go | GOAT | Pro | Max 10× | Max 20× |
+|---|---|---|---|---|---|
+| Open models | yes | yes | yes | yes | yes |
+| Select premium models (GPT-5.6 Luna, Grok 4.5, Qwen Max and Plus) | yes | yes | yes | yes | yes |
+| All other premium models (Claude, GPT, Gemini) | no | no | yes | yes | yes |
+| Claude Opus 4.8 | no | no | no | yes | yes |
+| taste-1 | yes | yes | yes | yes | yes |
+
+The check mark is an inline `<svg>`. The absent mark is a `<span>` with
+`aria-label="Not included"`. Search for that label to read a row.
 
 ## Dated deals on the pricing page
 

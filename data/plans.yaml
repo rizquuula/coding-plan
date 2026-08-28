@@ -1486,3 +1486,239 @@
     - label: docs
       url: https://docs.ollama.com/cloud
   last_verified: 2026-08-28
+
+- id: opencode-go
+  provider: OpenCode
+  plan: Go
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 10
+  limits:
+    - "Grok 4.6: 169 requests per 5 hours"
+    - "GPT 5.6 Luna: 2050 requests per 5 hours"
+    - "GLM-5.3-Flash: 1580 requests per 5 hours"
+    - "GLM-5.3: 220 requests per 5 hours"
+    - "GLM-5.2: 880 requests per 5 hours"
+    - "GLM-5.1: 880 requests per 5 hours"
+    - "Kimi K3: 110 requests per 5 hours"
+    - "Kimi K2.7 Code: 1350 requests per 5 hours"
+    - "Kimi K2.6: 1150 requests per 5 hours"
+    - "LongCat-2.0: 11400 requests per 5 hours"
+    - "MiMo-V2.5: 30100 requests per 5 hours"
+    - "MiMo-V2.5-Pro: 3250 requests per 5 hours"
+    - "MiniMax M3: 3200 requests per 5 hours"
+    - "MiniMax M2.7: 3400 requests per 5 hours"
+    - "Muse Spark 1.2 Contributor: 45300 requests per 5 hours"
+    - "Qwen3.8 Max: 160 requests per 5 hours"
+    - "Qwen3.8 Flash: 5400 requests per 5 hours"
+    - "Qwen3.7 Max: 340 requests per 5 hours"
+    - "Qwen3.7 Plus: 4300 requests per 5 hours"
+    - "Qwen3.6 Plus: 3300 requests per 5 hours"
+    - "DeepSeek V4 Pro: 1050 requests per 5 hours"
+    - "DeepSeek V4 Flash: 7600 requests per 5 hours"
+    - "DeepSeek V4 Flash Vision Exp: 3800 requests per 5 hours"
+    - "Hy3: 4300 requests per 5 hours"
+  models:
+    - Grok
+    - GPT
+    - GLM
+    - Kimi
+    - LongCat
+    - MiMo
+    - MiniMax
+    - Muse Spark
+    - Qwen
+    - DeepSeek
+    - Hy3
+  status: active
+  notes: Top-up credit on the Zen balance can extend usage past these limits.
+  links:
+    - label: plans
+      url: https://opencode.ai/go
+    - label: docs
+      url: https://opencode.ai/docs/go/
+  last_verified: 2026-08-28
+
+- id: commandcode-go
+  provider: CommandCode
+  plan: Go
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 1
+  limits:
+    - 10 USD in credits included per month
+    - ~15K requests, estimated
+  models:
+    - taste-1
+    - Open models
+    - GPT-5.6 Luna
+    - Grok 4.5
+    - Qwen Max
+    - Qwen Plus
+  status: active
+  notes: The page prices Go at 1 USD per month plus a processing fee it never states.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+  last_verified: 2026-08-28
+
+- id: commandcode-goat
+  provider: CommandCode
+  plan: GOAT
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 10
+  limits:
+    - 70 USD in credits included per month
+    - ~75K requests, estimated
+  models:
+    - taste-1
+    - Open models
+    - GPT-5.6 Luna
+    - Grok 4.5
+    - Qwen Max
+    - Qwen Plus
+  status: active
+  notes: The page prices GOAT at 10 USD per month plus a processing fee it never states.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+    - label: docs
+      url: https://commandcode.ai/docs/plans/goat
+  last_verified: 2026-08-28
+
+- id: commandcode-pro
+  provider: CommandCode
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 20
+  limits:
+    - 80 USD in credits included per month
+    - ~100K requests, estimated
+  models:
+    - taste-1
+    - Open models
+    - GPT-5.6 Luna
+    - Grok 4.5
+    - Qwen Max
+    - Qwen Plus
+    - Claude
+    - GPT
+    - Gemini
+  status: active
+  notes: The page prices Pro at 20 USD per month plus a processing fee it never states.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+  last_verified: 2026-08-28
+
+- id: commandcode-max-10x
+  provider: CommandCode
+  plan: Max 10×
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 100
+  limits:
+    - 150 USD in credits included per month
+    - ~219K requests, estimated
+  models:
+    - taste-1
+    - Open models
+    - GPT-5.6 Luna
+    - Grok 4.5
+    - Qwen Max
+    - Qwen Plus
+    - Claude
+    - GPT
+    - Gemini
+    - Claude Opus 4.8
+  status: active
+  notes: The page prices Max 10× at 100 USD per month plus a processing fee it never states.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+  last_verified: 2026-08-28
+
+- id: commandcode-max-20x
+  provider: CommandCode
+  plan: Max 20×
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 200
+  limits:
+    - 300 USD in credits included per month
+    - ~437K requests, estimated
+  models:
+    - taste-1
+    - Open models
+    - GPT-5.6 Luna
+    - Grok 4.5
+    - Qwen Max
+    - Qwen Plus
+    - Claude
+    - GPT
+    - Gemini
+    - Claude Opus 4.8
+  status: active
+  notes: The page prices Max 20× at 200 USD per month plus a processing fee it never states.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+  last_verified: 2026-08-28
+
+- id: commandcode-teams
+  provider: CommandCode
+  plan: Teams
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 40
+  limits:
+    - One pooled credit bucket for every member
+    - ~35K requests, estimated
+  models:
+    - taste-1
+    - Open models
+    - Premium models
+  status: active
+  notes: The page prices Teams at 40 USD per month plus a processing fee, and never says per seat or per team.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+  last_verified: 2026-08-28
+
+- id: commandcode-provider
+  provider: CommandCode
+  plan: Provider
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 15
+  limits:
+    - No included credits, pay as you go
+    - Top-up credits roll over and never expire
+  models:
+    - taste-1
+    - Open models
+    - Premium models
+  status: active
+  notes: The page prices Provider at 15 USD per month plus a processing fee, then charges each request at model cost with no markup.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+  last_verified: 2026-08-28
