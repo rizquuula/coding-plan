@@ -11,9 +11,10 @@
   cached_input: 1.00
   cache_write: 12.50
   output: 50.00
-  notes: Cache read is 0.1x input. Cache write is 1.25x input for the 5-minute TTL.
-  source: https://platform.claude.com/docs/en/pricing
-  last_verified: 2026-06-24
+  notes: The 1-hour cache write costs 20.00. Anthropic prices cache reads at 0.1x
+    input, the 5-minute cache write at 1.25x, and the 1-hour write at 2x.
+  source: https://platform.claude.com/docs/en/about-claude/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-opus-5
   provider: Anthropic
@@ -26,8 +27,8 @@
   cache_write: 6.25
   output: 25.00
   notes: Fast mode is priced at 10.00 input and 50.00 output.
-  source: https://platform.claude.com/docs/en/pricing
-  last_verified: 2026-06-24
+  source: https://platform.claude.com/docs/en/about-claude/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-opus-4-8
   provider: Anthropic
@@ -40,8 +41,8 @@
   cache_write: 6.25
   output: 25.00
   notes: null
-  source: https://platform.claude.com/docs/en/pricing
-  last_verified: 2026-06-24
+  source: https://platform.claude.com/docs/en/about-claude/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-sonnet-5
   provider: Anthropic
@@ -49,13 +50,14 @@
   model_id: claude-sonnet-5
   context_window: 1M
   currency: USD
-  input: 3.00
-  cached_input: 0.30
-  cache_write: 3.75
-  output: 15.00
-  notes: Introductory rate of 2.00 input and 10.00 output runs through 2026-08-31.
-  source: https://platform.claude.com/docs/en/pricing
-  last_verified: 2026-06-24
+  input: 2.00
+  cached_input: 0.20
+  cache_write: 2.50
+  output: 10.00
+  notes: The launch introductory rate is now the standard price. The increase to
+    3.00 and 15.00 that was scheduled for 2026-09-01 will not happen.
+  source: https://platform.claude.com/docs/en/about-claude/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-sonnet-4-6
   provider: Anthropic
@@ -68,8 +70,8 @@
   cache_write: 3.75
   output: 15.00
   notes: null
-  source: https://platform.claude.com/docs/en/pricing
-  last_verified: 2026-06-24
+  source: https://platform.claude.com/docs/en/about-claude/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-haiku-4-5
   provider: Anthropic
@@ -82,8 +84,8 @@
   cache_write: 1.25
   output: 5.00
   notes: null
-  source: https://platform.claude.com/docs/en/pricing
-  last_verified: 2026-06-24
+  source: https://platform.claude.com/docs/en/about-claude/pricing
+  last_verified: 2026-08-28
 
 - id: moonshot-kimi-k3
   provider: Moonshot (Kimi)

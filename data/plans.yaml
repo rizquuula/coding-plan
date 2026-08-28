@@ -17,9 +17,9 @@
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: Includes Claude Code in the terminal and the IDE extensions.
-  source: https://www.anthropic.com/pricing
-  last_verified: null
+  notes: Includes Claude Code. Annual billing costs 17 per month, charged as 200 up front.
+  source: https://claude.com/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-max-5x
   provider: Anthropic
@@ -29,16 +29,16 @@
   price_currency: USD
   price_period: month
   limits:
-    - About 5x the Pro usage per 5-hour session
-    - Weekly limit on Claude Code usage
+    - 5x the Pro usage
+    - Higher output limits for all tasks
   models:
     - Claude Opus 5
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: null
-  source: https://www.anthropic.com/pricing
-  last_verified: null
+  notes: The pricing page lists the Max tier as starting at 100 per month.
+  source: https://claude.com/pricing
+  last_verified: 2026-08-28
 
 - id: anthropic-claude-max-20x
   provider: Anthropic
@@ -48,16 +48,17 @@
   price_currency: USD
   price_period: month
   limits:
-    - About 20x the Pro usage per 5-hour session
-    - Weekly limit on Claude Code usage
+    - 20x the Pro usage
+    - Higher output limits for all tasks
   models:
     - Claude Opus 5
     - Claude Sonnet 5
     - Claude Haiku 4.5
   status: active
-  notes: null
-  source: https://www.anthropic.com/pricing
-  last_verified: null
+  notes: The pricing page names the 20x tier but shows only "from 100" for Max,
+    so confirm the exact price in the plan picker.
+  source: https://claude.com/pricing
+  last_verified: 2026-08-28
 
 - id: openai-chatgpt-plus
   provider: OpenAI
@@ -103,16 +104,16 @@
   price_currency: USD
   price_period: month
   limits:
-    - Monthly premium-request allowance
-    - Unlimited completions with the base model
+    - 15 USD of AI credits per month
+    - Unlimited code completions
   models:
     - Claude
     - GPT
     - Gemini
   status: active
-  notes: Premium requests beyond the allowance are billed per request.
+  notes: GitHub bills AI usage in credits. One credit costs 0.01 USD.
   source: https://github.com/features/copilot/plans
-  last_verified: null
+  last_verified: 2026-08-28
 
 - id: github-copilot-pro-plus
   provider: GitHub
@@ -122,8 +123,8 @@
   price_currency: USD
   price_period: month
   limits:
-    - Larger monthly premium-request allowance
-    - Access to every model in the catalog
+    - 70 USD of AI credits per month
+    - Unlimited code completions
   models:
     - Claude
     - GPT
@@ -131,7 +132,26 @@
   status: active
   notes: null
   source: https://github.com/features/copilot/plans
-  last_verified: null
+  last_verified: 2026-08-28
+
+- id: github-copilot-max
+  provider: GitHub
+  plan: Copilot Max
+  region: global
+  price_amount: 100
+  price_currency: USD
+  price_period: month
+  limits:
+    - 200 USD of AI credits per month
+    - Unlimited code completions
+  models:
+    - Claude
+    - GPT
+    - Gemini
+  status: active
+  notes: null
+  source: https://github.com/features/copilot/plans
+  last_verified: 2026-08-28
 
 - id: cursor-pro
   provider: Cursor
@@ -141,7 +161,8 @@
   price_currency: USD
   price_period: month
   limits:
-    - Monthly compute allowance, then usage-based billing
+    - Extended agent request limits
+    - On-demand billing past the included usage
   models:
     - Claude
     - GPT
@@ -150,7 +171,7 @@
   status: active
   notes: null
   source: https://cursor.com/pricing
-  last_verified: null
+  last_verified: 2026-08-28
 
 - id: cursor-ultra
   provider: Cursor
