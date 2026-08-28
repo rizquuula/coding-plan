@@ -1721,3 +1721,65 @@
     - label: plans
       url: https://commandcode.ai/pricing
   last_verified: 2026-08-28
+
+- id: byteplus-lite
+  provider: BytePlus
+  plan: Lite
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 10
+    - period: quarter
+      amount: 30
+  limits:
+    - Up to approximately 1900 requests per 5 hours
+    - Up to approximately 12000 requests per week
+    - Up to approximately 24000 requests per subscription month
+  models:
+    - Dola-Seed-2.0
+    - Seed-Code
+    - GLM
+    - DeepSeek
+    - Kimi
+    - GPT-OSS
+    - Skylark-Embedding-Vision
+  status: active
+  notes: The quota works only in supported AI coding tools, and never for API calls.
+  links:
+    - label: plans
+      url: https://www.byteplus.com/en/activity/codingplan
+    - label: docs
+      url: https://docs.byteplus.com/en/docs/ModelArk/1925114
+  last_verified: 2026-08-28
+
+- id: byteplus-pro
+  provider: BytePlus
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 50
+    - period: quarter
+      amount: 150
+  limits:
+    - Up to approximately 9500 requests per 5 hours
+    - Up to approximately 60000 requests per week
+    - Up to approximately 120000 requests per subscription month
+  models:
+    - Dola-Seed-2.0
+    - Seed-Code
+    - GLM
+    - DeepSeek
+    - Kimi
+    - GPT-OSS
+    - Skylark-Embedding-Vision
+  status: active
+  notes: ArkClaw is free for the length of the subscription, and the quota works only in supported AI coding tools.
+  links:
+    - label: plans
+      url: https://www.byteplus.com/en/activity/codingplan
+    - label: docs
+      url: https://docs.byteplus.com/en/docs/ModelArk/1925114
+  last_verified: 2026-08-28
