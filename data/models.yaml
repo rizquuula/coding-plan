@@ -848,3 +848,35 @@
     - label: docs
       url: https://docs.z.ai/guides/overview/overview
   last_verified: 2026-08-28
+
+- id: opencode-hy4-preview
+  name: Tencent Hy4 Preview
+  provider: OpenCode
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: OpenCode publishes no parameter count and no context window for this
+    model on its Go plan docs page.
+  links:
+    - label: docs
+      url: https://opencode.ai/docs/go.md
+  last_verified: 2026-08-29
+
+- id: commandcode-hy4-preview
+  name: Tencent Hy4 Preview
+  provider: CommandCode
+  total_params: null
+  active_params: null
+  context_window: 1.05M
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: The CommandCode model card states a 1.05M context window and lists the
+    model as available on Go and above.
+  links:
+    - label: model card
+      url: https://commandcode.ai/models/hy4-preview
+  last_verified: 2026-08-29

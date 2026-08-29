@@ -1520,6 +1520,7 @@
     - "DeepSeek V4 Flash: 7600 requests per 5 hours"
     - "DeepSeek V4 Flash Vision Exp: 3800 requests per 5 hours"
     - "Hy3: 4300 requests per 5 hours"
+    - "Hy4 preview: 1350 requests per 5 hours"
   models:
     - Grok
     - GPT
@@ -1532,6 +1533,7 @@
     - Qwen
     - DeepSeek
     - Hy3
+    - Hy4
   status: active
   notes: Top-up credit on the Zen balance can extend usage past these limits.
   links:
@@ -1559,6 +1561,7 @@
     - Grok 4.5
     - Qwen Max
     - Qwen Plus
+    - Tencent Hy4 Preview
   status: active
   notes: The page prices Go at 1 USD per month plus a processing fee it never states.
   links:

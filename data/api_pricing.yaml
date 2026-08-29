@@ -945,3 +945,37 @@
     - label: rate limit
       url: https://www.alibabacloud.com/help/en/model-studio/rate-limit
   last_verified: 2026-08-28
+
+- id: opencode-hy4-preview
+  provider: OpenCode
+  model: Tencent Hy4 Preview
+  model_id: hy4-preview
+  context_window: null
+  currency: USD
+  input: 0.834
+  cached_input: 0.042
+  cache_write: null
+  output: 2.501
+  notes: Rates from the OpenCode Go plan price table. The page states no context
+    window and no cache-write rate for this model.
+  links:
+    - label: pricing
+      url: https://opencode.ai/docs/go.md
+  last_verified: 2026-08-29
+
+- id: commandcode-hy4-preview
+  provider: CommandCode
+  model: Tencent Hy4 Preview
+  model_id: tencent/hy4-preview
+  context_window: 1.05M
+  currency: USD
+  input: 0.83
+  cached_input: 0.04
+  cache_write: null
+  output: 2.50
+  notes: Model card lists a 1.05M context window, a 0.04 cache-read rate, and an
+    agent-loop effective input rate of about 0.28. Available on Go and above.
+  links:
+    - label: model card
+      url: https://commandcode.ai/models/hy4-preview
+  last_verified: 2026-08-29
