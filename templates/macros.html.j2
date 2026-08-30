@@ -21,8 +21,8 @@
     <tbody>
       {% for row in rows %}
       <tr>
-        <td>{{ row.plan }}</td>
-        <td class="num">
+        <td class="cell-title">{{ row.plan }}</td>
+        <td class="num" data-label="Price">
           <ul class="price-list">
             {% for entry in row | price_view %}
             <li>
@@ -34,21 +34,21 @@
             {% endfor %}
           </ul>
         </td>
-        <td>
+        <td data-label="Limits">
           <ul class="cell-list">
             {% for limit in row.limits %}<li>{{ limit }}</li>{% endfor %}
           </ul>
         </td>
-        <td>
+        <td data-label="Models">
           <ul class="cell-list">
             {% for model in row.models %}<li>{{ model }}</li>{% endfor %}
           </ul>
         </td>
-        <td>{{ links_cell(row.links) }}</td>
+        <td data-label="Sources">{{ links_cell(row.links) }}</td>
       </tr>
       {% if row.notes %}
       <tr class="note-row">
-        <td colspan="5"><span class="note-label">Note</span> {{ row.notes }}</td>
+        <td colspan="5" data-label="Note"><span class="note-label">Note</span> {{ row.notes }}</td>
       </tr>
       {% endif %}
       {% endfor %}
@@ -79,22 +79,22 @@
     <tbody>
       {% for row in rows %}
       <tr>
-        <td>{{ row.model }}{% if row.model_id %}<br><code>{{ row.model_id }}</code>{% endif %}</td>
-        <td>{{ row.context_window or "—" }}</td>
-        <td>{{ row.max_output or "—" }}</td>
-        <td class="num">{{ row.input | money(row.currency) }}</td>
-        <td class="num">{{ row.cached_input | money(row.currency) }}</td>
-        <td class="num">{{ row.cache_write | money(row.currency) }}</td>
-        <td class="num">{{ row.output | money(row.currency) }}</td>
-        <td class="num">{{ row.total_params or "—" }}</td>
-        <td class="num">{{ row.active_params or "—" }}</td>
-        <td>{% if row.vision is none %}—{% else %}{{ "yes" if row.vision else "no" }}{% endif %}</td>
-        <td>{% if row.open_weights is none %}—{% else %}{{ "yes" if row.open_weights else "no" }}{% endif %}</td>
-        <td>{{ links_cell(row.links) }}</td>
+        <td class="cell-title">{{ row.model }}{% if row.model_id %}<br><code>{{ row.model_id }}</code>{% endif %}</td>
+        <td data-label="Context">{{ row.context_window or "—" }}</td>
+        <td data-label="Max output">{{ row.max_output or "—" }}</td>
+        <td class="num" data-label="Input">{{ row.input | money(row.currency) }}</td>
+        <td class="num" data-label="Cached input">{{ row.cached_input | money(row.currency) }}</td>
+        <td class="num" data-label="Cache write">{{ row.cache_write | money(row.currency) }}</td>
+        <td class="num" data-label="Output">{{ row.output | money(row.currency) }}</td>
+        <td class="num" data-label="Total params">{{ row.total_params or "—" }}</td>
+        <td class="num" data-label="Active params">{{ row.active_params or "—" }}</td>
+        <td data-label="Vision">{% if row.vision is none %}—{% else %}{{ "yes" if row.vision else "no" }}{% endif %}</td>
+        <td data-label="Open weights">{% if row.open_weights is none %}—{% else %}{{ "yes" if row.open_weights else "no" }}{% endif %}</td>
+        <td data-label="Sources">{{ links_cell(row.links) }}</td>
       </tr>
       {% if row.notes %}
       <tr class="note-row">
-        <td colspan="12"><span class="note-label">Note</span> {{ row.notes }}</td>
+        <td colspan="12" data-label="Note"><span class="note-label">Note</span> {{ row.notes }}</td>
       </tr>
       {% endif %}
       {% endfor %}
@@ -122,19 +122,19 @@
     <tbody>
       {% for row in rows %}
       <tr>
-        <td>{{ row.model }}</td>
-        <td>{{ row.tier }}</td>
-        <td class="num">{{ row.requests_per_minute | thousands }}</td>
-        <td class="num">{{ row.input_tokens_per_minute | thousands }}</td>
-        <td class="num">{{ row.output_tokens_per_minute | thousands }}</td>
-        <td class="num">{{ row.tokens_per_minute | thousands }}</td>
-        <td class="num">{{ row.requests_per_day | thousands }}</td>
-        <td class="num">{{ row.get("concurrent_requests") | thousands }}</td>
-        <td>{{ links_cell(row.links) }}</td>
+        <td class="cell-title">{{ row.model }}</td>
+        <td data-label="Tier">{{ row.tier }}</td>
+        <td class="num" data-label="RPM">{{ row.requests_per_minute | thousands }}</td>
+        <td class="num" data-label="Input TPM">{{ row.input_tokens_per_minute | thousands }}</td>
+        <td class="num" data-label="Output TPM">{{ row.output_tokens_per_minute | thousands }}</td>
+        <td class="num" data-label="Total TPM">{{ row.tokens_per_minute | thousands }}</td>
+        <td class="num" data-label="RPD">{{ row.requests_per_day | thousands }}</td>
+        <td class="num" data-label="Concurrent requests">{{ row.get("concurrent_requests") | thousands }}</td>
+        <td data-label="Sources">{{ links_cell(row.links) }}</td>
       </tr>
       {% if row.notes %}
       <tr class="note-row">
-        <td colspan="9"><span class="note-label">Note</span> {{ row.notes }}</td>
+        <td colspan="9" data-label="Note"><span class="note-label">Note</span> {{ row.notes }}</td>
       </tr>
       {% endif %}
       {% endfor %}

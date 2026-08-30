@@ -28,11 +28,11 @@
       <tbody>
         {% for row in changelog %}
         <tr>
-          <td>{{ row.date | date }}</td>
-          <td>{{ row.provider }}</td>
-          <td>{{ row.type }}</td>
-          <td>{{ row.summary }}</td>
-          <td>{% if row.links %}{{ links_cell(row.links) }}{% else %}—{% endif %}</td>
+          <td class="cell-title">{{ row.date | date }}</td>
+          <td data-label="Provider">{{ row.provider }}</td>
+          <td data-label="Type">{{ row.type }}</td>
+          <td data-label="Change">{{ row.summary }}</td>
+          <td data-label="Sources">{% if row.links %}{{ links_cell(row.links) }}{% else %}—{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>
