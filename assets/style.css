@@ -333,6 +333,17 @@ section { margin-bottom: 2.75rem; }
   background: var(--surface);
 }
 
+/* The header row below sets position: sticky, which needs a scroll container
+   with a height. Without one the wrap never scrolls and the header never
+   sticks. A tall table now scrolls inside its own box and keeps its header.
+   The card layout takes over under 720 px, so this applies above it only. */
+@media (min-width: 720px) {
+  .table-wrap {
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+  }
+}
+
 .data-table {
   width: 100%;
   border-collapse: collapse;
