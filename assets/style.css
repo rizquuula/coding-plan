@@ -541,6 +541,16 @@ code {
 
   .data-table tr.is-collapsed td[data-overflow] { display: none; }
 
+  /* The script gives the toggle its own cell, so the rule above cannot hide it.
+     The cell carries no data-label, and an empty attr() would still lay out a
+     grid column, so the label is switched off instead of left blank. */
+  .data-table td.card-more-cell {
+    display: block;
+    padding: 0;
+  }
+
+  .data-table td.card-more-cell::before { content: none; }
+
   .data-table .num {
     text-align: left;
     white-space: normal;
