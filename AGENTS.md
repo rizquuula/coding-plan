@@ -56,6 +56,7 @@ records render as two rows.
 | `templates/rate_limits.html.j2` | The rate limits page |
 | `templates/changelog.html.j2` | The changelog page |
 | `assets/` | CSS and JavaScript, copied into the site |
+| `assets/anime.umd.min.js` | anime.js 4.5.0, vendored. Do not edit it |
 | `.claude/skills/provider-*/` | How to source one provider's data |
 | `.github/workflows/deploy.yml` | Build and deploy workflow |
 
@@ -391,7 +392,31 @@ sidebar, and the theme switcher. `templates/macros.html.j2` holds every table
 macro. Each page template extends the base and fills its blocks.
 
 Each section renders one `.provider-block` per provider. When you add a column,
-update the `colspan` on that table's note row to match the new column count.
+do three things. Update the `colspan` on that table's note row. Add a
+`data-label` to the new cell. Copy the label text from the new `<th>` exactly.
+
+### The card layout
+
+Under 720 pixels every table becomes a list of cards. One row becomes one card.
+The stylesheet prints the column name from the cell's `data-label`, so a cell
+without one prints no label. The first cell of a row carries `class="cell-title"`
+and renders as the card title, so it needs no `data-label`.
+
+Above 720 pixels the tables render as tables. Nothing changes there.
+
+Three rules keep the card layout working:
+
+1. Never set `display` on an element that the filter hides. The filter sets the
+   `hidden` property. A `display` rule beats the browser's own `[hidden]` rule,
+   so the filter stops hiding rows. The stylesheet restores it with
+   `.data-table tr[hidden] { display: none !important; }`.
+2. Never hide a row in the base stylesheet. `assets/app.js` adds the
+   `motion-ready` class to `<html>` only after anime.js loads. Every start state
+   for an animation sits behind that class. A reader without JavaScript then
+   sees every row.
+3. `assets/app.js` loads anime.js only when the reader allows motion. Keep that
+   gate. The file weighs 115 KB, and a reader who sets
+   `prefers-reduced-motion: reduce` must never download it.
 
 `build.py` passes a `nav` value to every page. It carries the page links and one
 anchor per provider block on the current page. Add a section to a page and you

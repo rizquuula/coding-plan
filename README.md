@@ -23,6 +23,10 @@ page it came from.
   equivalent and the % saved against monthly — you just read the table.
 - **🔍 Sortable, themeable, fast.** Static HTML, zero backend, dark mode.
   Click a header, sort a column, done.
+- **📱 Reads on a phone.** Under 720px every table folds into cards — no
+  pinching, no sideways scrolling, even on the 12-column pricing table. Rows
+  animate in as you scroll, and if you've asked your OS for less motion, the
+  animation library is never even downloaded.
 - **🤖 Built to be maintained by agents.** Strict YAML schemas, a validating
   build, and per-provider sourcing skills mean updates are verifiable, not
   hand-wavy.
