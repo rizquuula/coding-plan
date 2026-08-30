@@ -356,7 +356,7 @@ the data as provenance for you, the agent. Two consequences:
 ## Task: check for drift
 
 1. Run `python .claude/skills/check-plan-drift/scripts/check_plan_drift.py`.
-2. Read the report. It flags every missing price and every changed page.
+2. Read the report. It marks every stored price MATCH, DRIFT, or CANNOT COMPARE.
 3. Open each flagged page yourself and read the value. The report is not a source.
 4. Update the record in `data/plans.yaml` and append a `data/changelog.yaml` entry.
 5. Run `python build.py --check`.
