@@ -4,15 +4,15 @@ Instructions for any agent that updates this repository.
 
 ## What this repository is
 
-A tracker for AI coding plans. It holds four datasets in YAML, a Python build
+A tracker for AI coding plans. It holds five datasets in YAML, a Python build
 script, and a set of Jinja templates. GitHub Actions renders the datasets into
 static HTML tables and deploys them to GitHub Pages on every push to `main`.
 
-The build script writes three pages. `index.html` holds the plans,
-`api-pricing.html` holds the API rates merged with the model specifications, and
-`rate-limits.html` holds the rate limits. Every page groups its dataset by
-provider. Each provider gets its own table under its own heading. No table has a
-provider column.
+The build script writes four pages. `index.html` holds the plans,
+`api-pricing.html` holds the API rates merged with the model specifications,
+`rate-limits.html` holds the rate limits, and `changelog.html` holds the notable
+dataset changes. Every data page groups its dataset by provider. Each provider
+gets its own table under its own heading. No table has a provider column.
 
 `api-pricing.html` left-joins `data/api_pricing.yaml` onto `data/models.yaml` on
 the provider and the model name. A model with no rate row still gets a row, and
@@ -33,9 +33,11 @@ records render as two rows.
 6. Set `last_verified` to the date you read the page. Use `YYYY-MM-DD`.
 7. Run `python build.py --check` before you finish. Fix every error it prints.
 8. Keep one record per plan tier. Do not merge two tiers into one row.
-9. Use the same provider spelling in all four data files. The build script
+9. Use the same provider spelling in all five data files. The build script
    groups rows by that exact string, so a typo splits one provider into two
    tables.
+10. Append a changelog record whenever you add or change a row in another
+    dataset. Newest entry first, one entry per change.
 
 ## Layout
 
@@ -45,12 +47,14 @@ records render as two rows.
 | `data/api_pricing.yaml` | Per-model API rates |
 | `data/rate_limits.yaml` | Published API rate limits |
 | `data/models.yaml` | Model specifications |
+| `data/changelog.yaml` | Notable dataset changes |
 | `build.py` | Validation and rendering |
 | `templates/base.html.j2` | Page skeleton: head, sidebar, main, footer |
 | `templates/macros.html.j2` | Shared table macros |
 | `templates/index.html.j2` | The plans page |
 | `templates/api_pricing.html.j2` | The API pricing and models page |
 | `templates/rate_limits.html.j2` | The rate limits page |
+| `templates/changelog.html.j2` | The changelog page |
 | `assets/` | CSS and JavaScript, copied into the site |
 | `.claude/skills/provider-*/` | How to source one provider's data |
 | `.github/workflows/deploy.yml` | Build and deploy workflow |
@@ -254,6 +258,22 @@ row. Use the form the provider publishes and leave the other form `null`.
 When the published limit is not a number, such as "contact sales", leave the
 numeric fields `null` and explain in `notes`.
 
+## Schema: `data/changelog.yaml`
+
+One record per notable dataset change. The page renders newest first, so keep
+the file newest first too. A change to several providers is one record per
+provider.
+
+| Field | Required | Type | Rule |
+|---|---|---|---|
+| `id` | no | string | Lower kebab-case. Optional; omit when the date and provider identify the entry. |
+| `date` | yes | date | The day the change landed in the repository. |
+| `provider` | yes | string | Company name. Match the spelling in the dataset the change touches. |
+| `type` | yes | enum | `new provider`, `new model`, `price update`, `rate limit change`, or `update`. |
+| `summary` | yes | string | One sentence describing the change. |
+| `links` | no | list | See the `links` schema above. Point at the page that states the change. |
+| `last_verified` | no | date | Date you read the page. |
+
 ## Schema: `data/models.yaml`
 
 One record per model.
@@ -330,6 +350,15 @@ the data as provenance for you, the agent. Two consequences:
 A provider that publishes no per-model limit gets no record. Zero rows is a
 correct result. Do not fill the gap with a number from a third party.
 
+## Task: log a dataset change
+
+1. After you add or change a row in another dataset, append one record to
+   `data/changelog.yaml`.
+2. Set `date` to today, `provider` to the provider spelling from the dataset,
+   and `type` to the change kind. Write a one-sentence `summary`.
+3. Keep the file newest first.
+4. Run `python build.py --check`.
+
 ## Task: change the page layout
 
 Edit the templates and `assets/style.css`. Run `python build.py` and open the
@@ -343,10 +372,11 @@ macro. Each page template extends the base and fills its blocks.
 Each section renders one `.provider-block` per provider. When you add a column,
 update the `colspan` on that table's note row to match the new column count.
 
-`build.py` passes a `nav` value to every page. It carries the three page links
-and one anchor per provider block on the current page. Add a section to a page
-and you must extend the `provider_anchors` call for that page, or the sidebar
-misses it.
+`build.py` passes a `nav` value to every page. It carries the page links and one
+anchor per provider block on the current page. Add a section to a page and you
+must extend the `provider_anchors` call for that page, or the sidebar misses it.
+The changelog page carries no provider anchors, so its `nav` passes an empty
+list.
 
 ## Style
 

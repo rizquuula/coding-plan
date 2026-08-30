@@ -97,11 +97,22 @@ RATE_LIMIT_SCHEMA = {
     "last_verified": (False, "date"),
 }
 
+CHANGELOG_SCHEMA = {
+    "id": (False, "str"),
+    "date": (True, "date"),
+    "provider": (True, "str"),
+    "type": (True, "enum:new provider|new model|price update|rate limit change|update"),
+    "summary": (True, "str"),
+    "links": (False, "links"),
+    "last_verified": (False, "date"),
+}
+
 DATASETS = [
     ("plans.yaml", PLAN_SCHEMA),
     ("api_pricing.yaml", API_SCHEMA),
     ("models.yaml", MODEL_SCHEMA),
     ("rate_limits.yaml", RATE_LIMIT_SCHEMA),
+    ("changelog.yaml", CHANGELOG_SCHEMA),
 ]
 
 # One entry per rendered page. `name` also names the page in the sidebar state.
@@ -123,6 +134,12 @@ PAGES = [
         "href": "rate-limits.html",
         "label": "Rate Limits",
         "template": "rate_limits.html.j2",
+    },
+    {
+        "name": "changelog",
+        "href": "changelog.html",
+        "label": "Changelog",
+        "template": "changelog.html.j2",
     },
 ]
 
@@ -506,6 +523,7 @@ def render(data: dict, today: dt.date) -> None:
     rate_limits = sorted(
         data["rate_limits"], key=lambda r: (r["provider"], r["model"], r["tier"])
     )
+    changelog = sorted(data["changelog"], key=lambda r: r["date"], reverse=True)
 
     plans_global = group_by_provider([r for r in plans if r["region"] == "global"])
     plans_china = group_by_provider([r for r in plans if r["region"] == "china"])
@@ -519,6 +537,7 @@ def render(data: dict, today: dt.date) -> None:
             "api_pricing": len(api_pricing),
             "models": len(models),
             "rate_limits": len(rate_limits),
+            "changelog": len(changelog),
         },
     }
 
@@ -544,6 +563,10 @@ def render(data: dict, today: dt.date) -> None:
             "nav": build_nav(
                 "rate-limits", provider_anchors([("rate-limits", rate_limit_groups)])
             ),
+        },
+        "changelog": {
+            "changelog": changelog,
+            "nav": build_nav("changelog", []),
         },
     }
 
