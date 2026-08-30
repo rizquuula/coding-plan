@@ -622,8 +622,6 @@
     if (row.getAttribute("data-collapsible") === "1") return;
     var cells = valueCells(row);
     if (cells.length <= VISIBLE_CELLS) return;
-    var last = row.cells[row.cells.length - 1];
-    if (!last) return;
 
     cells.slice(VISIBLE_CELLS).forEach(function (cell) {
       cell.setAttribute("data-overflow", "");
@@ -639,7 +637,13 @@
     button.addEventListener("click", function () {
       toggle(row, button);
     });
-    last.appendChild(button);
+
+    // The button gets its own cell. A cell past the sixth carries data-overflow,
+    // so a button inside one would disappear with the values it reveals.
+    var host = document.createElement("td");
+    host.className = "card-more-cell";
+    host.appendChild(button);
+    row.appendChild(host);
   }
 
   function teardown(row) {
@@ -651,8 +655,9 @@
     slice(row.querySelectorAll("[data-overflow]")).forEach(function (cell) {
       cell.removeAttribute("data-overflow");
     });
-    var button = row.querySelector(".card-more");
-    if (button && button.parentNode) button.parentNode.removeChild(button);
+    // The whole cell goes, so the wide layout keeps its original column count.
+    var host = row.querySelector(".card-more-cell");
+    if (host && host.parentNode) host.parentNode.removeChild(host);
   }
 
   function syncCardMode() {
