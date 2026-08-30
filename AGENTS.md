@@ -102,6 +102,15 @@ next agent more than a gap.
 Every provider in the data has a skill. When you add a new provider, add a
 skill for it and extend this table.
 
+### Cross-provider skills
+
+One skill works across every provider. It is not a provider skill, so it stays
+out of the table above.
+
+| Skill | Purpose |
+|---|---|
+| `check-plan-drift` | Sweep every plan price against the page that states it. |
+
 ## Sourcing tools
 
 Do not use Playwright, Puppeteer, Selenium, or a headless browser to source a
@@ -341,6 +350,14 @@ the data as provenance for you, the agent. Two consequences:
 3. Set `last_verified` to today, even when nothing changed.
 4. When a plan disappears, set `status: discontinued` and
    `discontinued_on` to today. Do not delete the record.
+5. Run `python build.py --check`.
+
+## Task: check for drift
+
+1. Run `python .claude/skills/check-plan-drift/scripts/check_plan_drift.py`.
+2. Read the report. It flags every missing price and every changed page.
+3. Open each flagged page yourself and read the value. The report is not a source.
+4. Update the record in `data/plans.yaml` and append a `data/changelog.yaml` entry.
 5. Run `python build.py --check`.
 
 ## Task: add a rate limit
