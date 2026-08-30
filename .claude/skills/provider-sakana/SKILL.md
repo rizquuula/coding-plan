@@ -8,7 +8,7 @@ description: How to source Sakana (Fugu) prices, quotas, and rate limits for the
 Read `AGENTS.md` first. Its sourcing rules bind you. This file records what is
 specific to Sakana, so you do not repeat work that already failed.
 
-Everything here was checked on 2026-08-28. Re-check a status before you trust it.
+Everything here was checked on 2026-08-30. Re-check a status before you trust it.
 
 **One page holds everything.** `https://sakana.ai/fugu/` states the plan prices,
 the token rates, and a FAQ. No other Sakana page carries a number this
@@ -16,9 +16,11 @@ repository needs. Start there and stop there.
 
 ## Constants
 
-Write the provider as `Sakana` in all four data files. The build script groups
-rows by that exact string, so any other spelling splits the provider into two
-tables.
+Write the provider as `Sakana (Fugu)` in all five data files, including
+`data/changelog.yaml`. This matches the provider table in `AGENTS.md` and the
+`Alibaba (Qwen)`, `Moonshot (Kimi)`, and `Zhipu (GLM)` convention. The build
+script groups rows by that exact string, so any other spelling splits the
+provider into two tables.
 
 `currency` is `USD` in `data/api_pricing.yaml`. `price_currency` is `USD` in
 `data/plans.yaml`. The page prints no JPY figure. See trap 3.
@@ -32,7 +34,7 @@ Sakana sells three variants: Fugu (balanced), Fugu Ultra (complex reasoning),
 and Fugu Cyber (cybersecurity, contact sales only).
 
 The page is server-rendered. `WebFetch` and `curl -sL -A "Mozilla/5.0"` both
-return the full page, 200 and about 164 KB. No bundle recipe and no script are
+return the full page, 200 and 164385 bytes on 2026-08-30. No bundle recipe and no script are
 needed. This skill ships no `scripts/` directory.
 
 ## Where each value lives
@@ -47,9 +49,11 @@ needed. This skill ships no `scripts/` directory.
 
 There is no docs host. `https://docs.sakana.ai/` does not resolve. There is no
 `.md` twin, no `llms.txt`, and no `sitemap.xml` on `sakana.ai`. Each returns a
-real 404. Details in `references/pages.md`.
+real 404. `https://console.sakana.ai/` redirects to `/login`, and
+`https://chat.sakana.ai/` serves a separate consumer chat product. Neither
+states a price or a quota. Details in `references/pages.md`.
 
-## Eight things that produce a wrong number
+## Nine things that produce a wrong number
 
 **1. Fugu base publishes no per-token rate.** The page says usage is billed "at
 a single rate based on the top tier model involved". It names no number. Add no
@@ -64,9 +68,11 @@ then state the above-272K rates in `notes`: input $10, output $45, cached input
 $1.00.
 
 **3. The page is bilingual, so every number appears at least twice.** Each
-sentence appears in English and again in Japanese. A count-based sanity check
-such as "the price appears once" fails on this page. The Japanese text repeats
-the same USD figures. It is not a JPY price list.
+sentence appears in English and again in Japanese. FAQ answer Q5 then restates
+every plan price and every token rate a second time, so most figures appear four
+times. A count-based sanity check such as "the price appears once" fails on this
+page. The Japanese text repeats the same USD figures. It is not a JPY price
+list.
 
 **4. Third-party listings look official and are not.**
 `models.dev/providers/sakana/`, `openrouter.ai/sakana/fugu-ultra`, and
@@ -82,15 +88,23 @@ rule 4 for the same reason. An `announcement` link must point at `sakana.ai`.
 tokens per minute, or a concurrency limit. Zero Sakana rows in
 `data/rate_limits.yaml` is the correct result. Do not fill the gap.
 
-**7. `fugu-ultra-20260615` is the former model id.** It still appears on the
-page as the previous name. Use `fugu-ultra-v1.1` and `fugu-ultra-v1.0`. The page
-misspells "previously" as "previouly". Search for the typo, not the correct
-spelling.
+**7. `fugu-ultra-20260615` is the former model id.** The pricing card names it
+as the previous name, and the page misspells "previously" as "previouly". Search
+for the typo, not the correct spelling. The page contradicts itself: FAQ answer
+Q5 still writes "Fugu Ultra (fugu-ultra-20260615) is priced per 1M tokens at $5
+input". Trust the pricing card, not the FAQ. Use `fugu-ultra-v1.1` and
+`fugu-ultra-v1.0`.
 
 **8. Fugu is not a model, so `data/models.yaml` has nothing to state.** No page
 states a parameter count, a context window, a max output, or a vision
 capability. A models row would be nulls in every field. Add none until a
 specification page appears.
+
+**9. The subscription tiers publish no absolute quota.** The page states
+"Baseline allowance" for Standard, "10x Standard usage" for Pro, and "20x
+Standard usage" for Max. Every allowance is relative to Standard, and Standard
+itself carries no number. Never multiply a token rate by a price to derive a
+quota. Write each `limits` item as the relative statement the page makes.
 
 ## Workflow
 
