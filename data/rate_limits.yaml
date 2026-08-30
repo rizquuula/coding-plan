@@ -1074,3 +1074,859 @@
     - label: rate limit
       url: https://developers.openai.com/api/docs/models/gpt-5.6-terra
   last_verified: 2026-08-28
+
+
+- id: novita-glm-5-t1
+  provider: Novita
+  model: GLM-5
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-glm-5-t2
+  provider: Novita
+  model: GLM-5
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 6000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-glm-5-t3
+  provider: Novita
+  model: GLM-5
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-glm-5-t4
+  provider: Novita
+  model: GLM-5
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-glm-5-t5
+  provider: Novita
+  model: GLM-5
+  tier: T5
+  requests_per_minute: 6000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5-t1
+  provider: Novita
+  model: Kimi K2.5
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5-t2
+  provider: Novita
+  model: Kimi K2.5
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 6000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5-t3
+  provider: Novita
+  model: Kimi K2.5
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5-t4
+  provider: Novita
+  model: Kimi K2.5
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5-t5
+  provider: Novita
+  model: Kimi K2.5
+  tier: T5
+  requests_per_minute: 6000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7-t1
+  provider: Novita
+  model: GLM-4.7
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7-t2
+  provider: Novita
+  model: GLM-4.7
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 6000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7-t3
+  provider: Novita
+  model: GLM-4.7
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7-t4
+  provider: Novita
+  model: GLM-4.7
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7-t5
+  provider: Novita
+  model: GLM-4.7
+  tier: T5
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1-t1
+  provider: Novita
+  model: Minimax M2.1
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1-t2
+  provider: Novita
+  model: Minimax M2.1
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 6000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1-t3
+  provider: Novita
+  model: Minimax M2.1
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1-t4
+  provider: Novita
+  model: Minimax M2.1
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1-t5
+  provider: Novita
+  model: Minimax M2.1
+  tier: T5
+  requests_per_minute: 5000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2-t1
+  provider: Novita
+  model: Deepseek V3.2
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 2000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2-t2
+  provider: Novita
+  model: Deepseek V3.2
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 6000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2-t3
+  provider: Novita
+  model: Deepseek V3.2
+  tier: T3
+  requests_per_minute: 300
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2-t4
+  provider: Novita
+  model: Deepseek V3.2
+  tier: T4
+  requests_per_minute: 500
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2-t5
+  provider: Novita
+  model: Deepseek V3.2
+  tier: T5
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5-t1
+  provider: Novita
+  model: MiniMax M2.5
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5-t2
+  provider: Novita
+  model: MiniMax M2.5
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5-t3
+  provider: Novita
+  model: MiniMax M2.5
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5-t4
+  provider: Novita
+  model: MiniMax M2.5
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5-t5
+  provider: Novita
+  model: MiniMax M2.5
+  tier: T5
+  requests_per_minute: 6000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b-t1
+  provider: Novita
+  model: Qwen3.5-397B-A17B
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b-t2
+  provider: Novita
+  model: Qwen3.5-397B-A17B
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b-t3
+  provider: Novita
+  model: Qwen3.5-397B-A17B
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b-t4
+  provider: Novita
+  model: Qwen3.5-397B-A17B
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b-t5
+  provider: Novita
+  model: Qwen3.5-397B-A17B
+  tier: T5
+  requests_per_minute: 6000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7-t1
+  provider: Novita
+  model: MiniMax M2.7
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7-t2
+  provider: Novita
+  model: MiniMax M2.7
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7-t3
+  provider: Novita
+  model: MiniMax M2.7
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7-t4
+  provider: Novita
+  model: MiniMax M2.7
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7-t5
+  provider: Novita
+  model: MiniMax M2.7
+  tier: T5
+  requests_per_minute: 6000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro-t1
+  provider: Novita
+  model: Deepseek V4 Pro
+  tier: T1
+  requests_per_minute: 30
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro-t2
+  provider: Novita
+  model: Deepseek V4 Pro
+  tier: T2
+  requests_per_minute: 100
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro-t3
+  provider: Novita
+  model: Deepseek V4 Pro
+  tier: T3
+  requests_per_minute: 1000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro-t4
+  provider: Novita
+  model: Deepseek V4 Pro
+  tier: T4
+  requests_per_minute: 3000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro-t5
+  provider: Novita
+  model: Deepseek V4 Pro
+  tier: T5
+  requests_per_minute: 6000
+  input_tokens_per_minute: null
+  output_tokens_per_minute: null
+  tokens_per_minute: 50000000
+  requests_per_day: null
+  concurrent_requests: null
+  notes: Novita sets the tier by the account's monthly top-up over the last three
+    calendar months, and counts TPM as input plus output tokens.
+  links:
+    - label: rate limit
+      url: https://novita.ai/docs/guides/llm-rate-limits
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30

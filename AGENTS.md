@@ -81,14 +81,18 @@ next agent more than a gap.
 | Alibaba (Qwen) | `provider-alibaba` |
 | Anthropic | `provider-anthropic` |
 | BytePlus (ModelArk) | `provider-byteplus` |
+| ClinePass | `provider-clinepass` |
 | CommandCode | `provider-commandcode` |
 | Cursor | `provider-cursor` |
 | DeepSeek | `provider-deepseek` |
+| Devin | `provider-devin` |
 | Factory | `provider-factory` |
 | GitHub | `provider-github` |
 | Google | `provider-google` |
+| Kiro | `provider-kiro` |
 | MiniMax | `provider-minimax` |
 | Moonshot (Kimi) | `provider-moonshot` |
+| Novita | `provider-novita` |
 | Ollama | `provider-ollama` |
 | OpenAI | `provider-openai` |
 | OpenCode (Go) | `provider-opencode` |
