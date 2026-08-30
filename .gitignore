@@ -1,6 +1,6 @@
 site/
 __pycache__/
 *.pyc
-.venv/
-venv/
+.venv
+venv
 .plan-drift/
