@@ -1,0 +1,42 @@
+{% extends "base.html.j2" %}
+{% from "macros.html.j2" import links_cell %}
+
+{% block title %}Changelog{% endblock %}
+{% block description %}Notable dataset changes to the coding-plan tracker, newest first.{% endblock %}
+{% block heading %}Changelog{% endblock %}
+{% block lede %}Notable dataset changes: new providers, new models, price updates, and rate-limit changes. Newest first.{% endblock %}
+
+{% block stats %}
+<li><strong>{{ counts.changelog }}</strong> entries</li>
+{% endblock %}
+
+{% block sections %}
+<section id="changelog">
+  <h2>Changes</h2>
+  <p class="section-note">One entry per notable change to the datasets. The date is the day the change was made to the repository.</p>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Provider</th>
+          <th>Type</th>
+          <th>Change</th>
+          <th>Sources</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in changelog %}
+        <tr>
+          <td>{{ row.date | date }}</td>
+          <td>{{ row.provider }}</td>
+          <td>{{ row.type }}</td>
+          <td>{{ row.summary }}</td>
+          <td>{% if row.links %}{{ links_cell(row.links) }}{% else %}—{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

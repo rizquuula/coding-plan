@@ -1,0 +1,99 @@
+# Notable dataset changes to the coding-plan tracker.
+# Append a record whenever a row in another dataset is added or changed.
+# Newest entry first. Schema: see AGENTS.md.
+
+- date: 2026-08-29
+  provider: OpenCode
+  type: new model
+  summary: Added Tencent Hy4 Preview to the OpenCode Go plan.
+  links:
+    - label: pricing
+      url: https://opencode.ai/docs/go.md
+
+- date: 2026-08-29
+  provider: CommandCode
+  type: new model
+  summary: Added Tencent Hy4 Preview with a 1.05M context window.
+  links:
+    - label: pricing
+      url: https://commandcode.ai/pricing
+
+- date: 2026-08-28
+  provider: MiniMax
+  type: price update
+  summary: Added the MiniMax yearly prices and the Ultra token capacity.
+  links:
+    - label: pricing
+      url: https://platform.minimax.io/docs/guides/pricing-token-plan
+
+- date: 2026-08-28
+  provider: MiniMax
+  type: new provider
+  summary: Added the MiniMax Token Plan tiers and a provider sourcing skill.
+  links:
+    - label: pricing
+      url: https://platform.minimax.io/docs/guides/pricing-token-plan
+
+- date: 2026-08-28
+  provider: BytePlus
+  type: new provider
+  summary: Added the BytePlus Lite and Pro plan rows.
+  links:
+    - label: plans
+      url: https://www.byteplus.com/en/activity/codingplan
+
+- date: 2026-08-28
+  provider: Ollama
+  type: new provider
+  summary: Added the Ollama provider with four plan rows and a sourcing skill.
+  links:
+    - label: plans
+      url: https://ollama.com/pricing
+
+- date: 2026-08-28
+  provider: Factory
+  type: new provider
+  summary: Added the Factory provider with three plan rows and a sourcing skill.
+  links:
+    - label: plans
+      url: https://docs.factory.ai/pricing/individuals
+
+- date: 2026-08-28
+  provider: OpenCode
+  type: new provider
+  summary: Added the OpenCode plan rows.
+  links:
+    - label: plans
+      url: https://opencode.ai/go
+
+- date: 2026-08-28
+  provider: CommandCode
+  type: new provider
+  summary: Added the CommandCode plan rows.
+  links:
+    - label: plans
+      url: https://commandcode.ai/pricing
+
+- date: 2026-08-28
+  provider: Alibaba (Qwen)
+  type: update
+  summary: Moved the Alibaba (Qwen) plans to the china region.
+  links:
+    - label: plans
+      url: https://www.alibabacloud.com/help/en/model-studio/coding-plan
+
+- date: 2026-08-28
+  provider: Moonshot (Kimi)
+  type: update
+  summary: Moved the Moonshot (Kimi) plans to the china region.
+  links:
+    - label: plans
+      url: https://www.kimi.com/membership/pricing
+
+- date: 2026-08-28
+  provider: Zhipu (GLM)
+  type: update
+  summary: Expanded the Zhipu datasets and allowed an unstated open_weights.
+  links:
+    - label: pricing
+      url: https://z.ai/subscribe
