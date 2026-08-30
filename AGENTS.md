@@ -115,7 +115,10 @@ out of the table above.
 ## Sourcing tools
 
 Do not use Playwright, Puppeteer, Selenium, or a headless browser to source a
-value. The maintainer's machine cannot run them.
+value. Rule 5 stands: read the page yourself. A scraped string is not a source.
+
+A browser is allowed for one job only. Use it to check the rendered site after
+you change a template or the stylesheet. Never use it to read a price.
 
 Try these in order:
 
