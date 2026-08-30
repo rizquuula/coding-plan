@@ -206,6 +206,18 @@ body {
   .sidebar[data-nav="js"] .nav-toggle { display: inline-flex; }
   .sidebar[data-nav="js"] .sidebar-panel { display: none; }
   .sidebar[data-nav="js"].is-open .sidebar-panel { display: flex; }
+
+  /* display cannot animate, so the motion path keeps the panel laid out and
+     collapses its height instead. The script animates that height. */
+  html.motion-ready .sidebar[data-nav="js"] .sidebar-panel {
+    display: flex;
+    overflow: hidden;
+    height: 0;
+  }
+
+  html.motion-ready .sidebar[data-nav="js"].is-open .sidebar-panel {
+    height: auto;
+  }
 }
 
 @media (min-width: 960px) {
@@ -432,4 +444,172 @@ code {
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+/* --- Mobile card controls ----------------------------------------------- */
+
+/* The script inserts .card-sort before each .table-wrap and .card-more inside
+   a collapsed card. Both stay hidden until the card layout takes over. */
+.card-sort { display: none; }
+
+.card-sort select,
+.card-sort button {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.card-sort select { flex: 1 1 auto; }
+
+.card-more {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* --- Card layout under 720 px ------------------------------------------- */
+
+@media (max-width: 719.98px) {
+  .content { padding: 1.25rem 1rem 3rem; }
+
+  /* Nothing overflows once a row is a card, so the scroller goes away. */
+  .table-wrap {
+    overflow-x: visible;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .data-table { display: block; }
+  .data-table thead { display: none; }
+  .data-table tbody { display: block; }
+
+  .data-table tr {
+    display: block;
+    margin-bottom: 0.6rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+
+  /* display:block on tr beats the browser's own [hidden] rule, which the
+     filter relies on. Restore it or filtering stops hiding rows. */
+  .data-table tr[hidden] { display: none !important; }
+
+  .data-table td {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 40%) 1fr;
+    gap: 0.6rem;
+    padding: 0.25rem 0;
+    border-bottom: none;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .data-table td.cell-title {
+    display: block;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.98rem;
+    font-weight: 600;
+  }
+
+  .data-table td.cell-title::before { content: none; }
+
+  /* An em-dash cell says nothing on a card, so drop it. */
+  .data-table td[data-empty] { display: none; }
+
+  .data-table tr.is-collapsed td[data-overflow] { display: none; }
+
+  .data-table .num {
+    text-align: left;
+    white-space: normal;
+  }
+
+  /* No hover on touch. */
+  .data-table tbody tr:hover { background: var(--surface); }
+
+  .link-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.75rem;
+    white-space: normal;
+  }
+
+  .note-row td { padding-top: 0.25rem; }
+
+  /* The ::before already prints the label, so drop the inline one. */
+  .note-row .note-label { display: none; }
+
+  /* A note is its own tr, so join the two cards into one block. */
+  .data-table tr:has(+ .note-row) {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .data-table tr.note-row {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* Tap targets. 16px on #filter stops iOS Safari zooming on focus. */
+  #filter {
+    flex: 1 1 100%;
+    max-width: none;
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .nav-list a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .theme-button { min-height: 44px; }
+
+  .card-more { min-height: 44px; }
+
+  .card-sort {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .card-sort select,
+  .card-sort button { min-height: 44px; }
+}
+
+/* --- Motion start states ------------------------------------------------ */
+
+/* Rows are visible by default. The script adds .motion-ready only after
+   anime.js loads, so a reader without JavaScript never sees a blank page. */
+html.motion-ready .data-table tbody tr[data-motion="pending"] { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .data-table tbody tr,
+  html.motion-ready .data-table tbody tr[data-motion="pending"] { opacity: 1; }
 }
