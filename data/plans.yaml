@@ -1886,3 +1886,485 @@
     - label: plans
       url: https://platform.minimax.io/subscribe/token-plan
   last_verified: 2026-08-28
+
+- id: sakana-fugu-standard
+  provider: Sakana (Fugu)
+  plan: Standard
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 20
+  limits:
+    - Baseline allowance, no token number published
+  models:
+    - Fugu
+    - Fugu Ultra
+  status: active
+  notes: Sakana publishes a monthly price only and states no absolute token
+    allowance.
+  links:
+    - label: plans
+      url: https://sakana.ai/fugu/
+  last_verified: 2026-08-30
+
+- id: sakana-fugu-pro
+  provider: Sakana (Fugu)
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 100
+  limits:
+    - 10x Standard usage
+    - No absolute token number published
+  models:
+    - Fugu
+    - Fugu Ultra
+  status: active
+  notes: Usage is 10 times Standard, which itself carries no published number.
+  links:
+    - label: plans
+      url: https://sakana.ai/fugu/
+  last_verified: 2026-08-30
+
+- id: sakana-fugu-max
+  provider: Sakana (Fugu)
+  plan: Max
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 200
+  limits:
+    - 20x Standard usage
+    - No absolute token number published
+  models:
+    - Fugu
+    - Fugu Ultra
+  status: active
+  notes: Usage is 20 times Standard, which itself carries no published number.
+  links:
+    - label: plans
+      url: https://sakana.ai/fugu/
+  last_verified: 2026-08-30
+
+- id: kiro-free
+  provider: Kiro
+  plan: Kiro Free
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 0
+  limits:
+    - 50 credits per month
+    - Access is subject to rate limits
+    - No add-on credits on the Free tier
+    - Credits reset monthly and do not roll over
+  models:
+    - Auto
+    - Claude Sonnet 4.5
+    - Claude Sonnet 4.0
+    - DeepSeek 3.2
+    - MiniMax M2.5
+    - MiniMax M2.1
+    - GLM-5
+    - Qwen3 Coder Next
+  status: active
+  notes: The Free tier is not available in AWS GovCloud (US) Regions.
+  links:
+    - label: pricing
+      url: https://kiro.dev/pricing/
+    - label: docs
+      url: https://kiro.dev/docs/models
+  last_verified: 2026-08-30
+
+- id: kiro-pro
+  provider: Kiro
+  plan: Kiro Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 20
+  limits:
+    - 1000 credits per month
+    - Add-on credits at 0.04 USD per credit
+    - Credits reset monthly and do not roll over
+  models:
+    - Auto
+    - GPT-5.6
+    - Claude Opus
+    - Claude Sonnet
+    - Claude Haiku
+    - DeepSeek
+    - MiniMax
+    - GLM
+    - Qwen3 Coder
+  status: active
+  notes: Credits meter to 0.01, and GovCloud pricing is about 20 percent higher.
+  links:
+    - label: pricing
+      url: https://kiro.dev/pricing/
+    - label: docs
+      url: https://kiro.dev/docs/billing
+  last_verified: 2026-08-30
+
+- id: kiro-pro-plus
+  provider: Kiro
+  plan: Kiro Pro+
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 40
+  limits:
+    - 2000 credits per month
+    - Add-on credits at 0.04 USD per credit
+    - Credits reset monthly and do not roll over
+  models:
+    - Auto
+    - GPT-5.6
+    - Claude Opus
+    - Claude Sonnet
+    - Claude Haiku
+    - DeepSeek
+    - MiniMax
+    - GLM
+    - Qwen3 Coder
+  status: active
+  notes: Every paid tier unlocks the same models, so only the credit count
+    differs.
+  links:
+    - label: pricing
+      url: https://kiro.dev/pricing/
+    - label: docs
+      url: https://kiro.dev/docs/billing
+  last_verified: 2026-08-30
+
+- id: kiro-pro-max
+  provider: Kiro
+  plan: Kiro Pro Max
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 100
+  limits:
+    - 5000 credits per month
+    - Add-on credits at 0.04 USD per credit
+    - Credits reset monthly and do not roll over
+  models:
+    - Auto
+    - GPT-5.6
+    - Claude Opus
+    - Claude Sonnet
+    - Claude Haiku
+    - DeepSeek
+    - MiniMax
+    - GLM
+    - Qwen3 Coder
+  status: active
+  notes: Add-on credit packs run from 5 USD to 100 USD and expire after 12
+    months.
+  links:
+    - label: pricing
+      url: https://kiro.dev/pricing/
+    - label: docs
+      url: https://kiro.dev/docs/billing/add-on-credits
+  last_verified: 2026-08-30
+
+- id: kiro-power
+  provider: Kiro
+  plan: Kiro Power
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 200
+  limits:
+    - 10000 credits per month
+    - Add-on credits at 0.04 USD per credit
+    - Credits reset monthly and do not roll over
+  models:
+    - Auto
+    - GPT-5.6
+    - Claude Opus
+    - Claude Sonnet
+    - Claude Haiku
+    - DeepSeek
+    - MiniMax
+    - GLM
+    - Qwen3 Coder
+  status: active
+  notes: Kiro publishes no yearly term and bills every tier per user per month.
+  links:
+    - label: pricing
+      url: https://kiro.dev/pricing/
+    - label: docs
+      url: https://kiro.dev/docs/billing
+  last_verified: 2026-08-30
+
+- id: clinepass-monthly
+  provider: ClinePass
+  plan: ClinePass
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 9.99
+  limits:
+    - 2-5x the usage of standard API rate limits
+    - Usage metered on a rolling 5-hour window
+    - Usage metered over the calendar week
+    - Usage metered over the calendar month
+    - Cline publishes no absolute request or token number
+  models:
+    - GLM
+    - Kimi
+    - DeepSeek
+    - MiMo
+    - MiniMax
+    - Qwen
+  status: active
+  notes: Cline sells one tier at 9.99 per month, prices the first month at 4.99
+    during a limited-time promotion, and warns that an additional processing fee
+    may apply.
+  links:
+    - label: plans
+      url: https://cline.bot/cline-pass
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+    - label: announcement
+      url: https://cline.bot/blog/clinepass-best-of-value-for-open-weight-models
+  last_verified: 2026-08-30
+
+- id: devin-free
+  provider: Devin
+  plan: Free
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 0
+  limits:
+    - Limited Devin usage, no published figure
+    - One member per account
+  models: []
+  status: active
+  notes: The Free plan includes Devin Review and DeepWiki, and Cognition
+    publishes no model list and no quota figure for it.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/admin/billing/self-serve
+    - label: announcement
+      url: https://cognition.com/blog/new-self-serve-plans-for-devin
+  last_verified: 2026-08-30
+
+- id: devin-pro
+  provider: Devin
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 20
+  limits:
+    - Daily and weekly usage quota
+    - Quota covers Devin sessions, CLI, and Desktop
+    - On-demand credits fund usage past quota
+    - One member per account
+  models:
+    - SWE-1.7
+    - SWE-1.6
+    - Adaptive
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - DeepSeek
+    - Kimi
+    - GLM
+  status: active
+  notes: Cognition states the quota shape but never its size, and the daily
+    allowance is more than one seventh of the weekly allowance.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/admin/billing/self-serve
+    - label: announcement
+      url: https://cognition.com/blog/new-self-serve-plans-for-devin
+  last_verified: 2026-08-30
+
+- id: devin-max
+  provider: Devin
+  plan: Max
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 200
+  limits:
+    - Weekly usage quota, no daily cap
+    - Larger weekly quota than Pro
+    - Quota covers Devin sessions, CLI, and Desktop
+    - On-demand credits fund usage past quota
+    - One member per account
+  models:
+    - SWE-1.7
+    - SWE-1.6
+    - Adaptive
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - DeepSeek
+    - Kimi
+    - GLM
+  status: active
+  notes: Max includes everything in Pro and drops the daily cap, and Cognition
+    publishes no quota size.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/admin/billing/self-serve
+    - label: announcement
+      url: https://cognition.com/blog/new-self-serve-plans-for-devin
+  last_verified: 2026-08-30
+
+- id: devin-teams
+  provider: Devin
+  plan: Teams
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 80
+  limits:
+    - Unlimited members per account
+    - Full seat carries the Pro daily and weekly quota
+    - Flex seats draw only on shared on-demand credits
+    - On-demand credits are shared across the team
+  models:
+    - SWE-1.7
+    - SWE-1.6
+    - Adaptive
+    - Claude
+    - GPT
+    - Gemini
+    - Grok
+    - DeepSeek
+    - Kimi
+    - GLM
+  status: active
+  notes: The 80 is a monthly minimum, not a seat price; a full seat costs 40 per
+    month, a flex seat is free, and any shortfall against the minimum is charged
+    as prepaid on-demand credits.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/admin/billing/self-serve
+    - label: announcement
+      url: https://cognition.com/blog/new-self-serve-plans-for-devin
+  last_verified: 2026-08-30
+
+
+- id: novita-coding-lite
+  provider: Novita
+  plan: Lite
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 19.9
+  limits:
+    - 50M base-rate equivalent tokens per month
+    - Up to 45 requests per minute
+    - Up to 50M tokens per minute
+  models:
+    - GLM-5
+    - Kimi K2.5
+    - GLM-4.7
+    - Minimax M2.1
+    - Deepseek V3.2
+    - MiniMax M2.5
+    - Qwen3.5-397B-A17B
+    - MiniMax M2.7
+    - Deepseek V4 Pro
+  status: active
+  notes: Quota counts base-rate equivalent tokens, priced against the DeepSeek V3.2
+    output rate of $0.4 per 1M tokens; the quota is shared across an API key and
+    usage falls back to pay-as-you-go when it runs out.
+  links:
+    - label: plans
+      url: https://novita.ai/coding-plan
+    - label: docs
+      url: https://novita.ai/docs/guides/LLM-FAQ
+  last_verified: 2026-08-30
+
+- id: novita-coding-pro
+  provider: Novita
+  plan: Pro
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 49.9
+  limits:
+    - 150M base-rate equivalent tokens per month
+    - Up to 150 requests per minute
+    - Up to 50M tokens per minute
+  models:
+    - GLM-5
+    - Kimi K2.5
+    - GLM-4.7
+    - Minimax M2.1
+    - Deepseek V3.2
+    - MiniMax M2.5
+    - Qwen3.5-397B-A17B
+    - MiniMax M2.7
+    - Deepseek V4 Pro
+  status: active
+  notes: Quota counts base-rate equivalent tokens, priced against the DeepSeek V3.2
+    output rate of $0.4 per 1M tokens; the quota is shared across an API key and
+    usage falls back to pay-as-you-go when it runs out.
+  links:
+    - label: plans
+      url: https://novita.ai/coding-plan
+    - label: docs
+      url: https://novita.ai/docs/guides/LLM-FAQ
+  last_verified: 2026-08-30
+
+- id: novita-coding-max
+  provider: Novita
+  plan: Max
+  region: global
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 199.9
+  limits:
+    - 750M base-rate equivalent tokens per month
+    - Up to 450 requests per minute
+    - Up to 50M tokens per minute
+  models:
+    - GLM-5
+    - Kimi K2.5
+    - GLM-4.7
+    - Minimax M2.1
+    - Deepseek V3.2
+    - MiniMax M2.5
+    - Qwen3.5-397B-A17B
+    - MiniMax M2.7
+    - Deepseek V4 Pro
+  status: active
+  notes: Quota counts base-rate equivalent tokens, priced against the DeepSeek V3.2
+    output rate of $0.4 per 1M tokens; the quota is shared across an API key and
+    usage falls back to pay-as-you-go when it runs out.
+  links:
+    - label: plans
+      url: https://novita.ai/coding-plan
+    - label: docs
+      url: https://novita.ai/docs/guides/LLM-FAQ
+  last_verified: 2026-08-30
+
+

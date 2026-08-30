@@ -2,6 +2,60 @@
 # Append a record whenever a row in another dataset is added or changed.
 # Newest entry first. Schema: see AGENTS.md.
 
+- date: 2026-08-30
+  provider: ClinePass
+  type: new provider
+  summary: Add the ClinePass subscription at 9.99 USD per month, covering 13
+    open-weight coding models from six labs.
+  links:
+    - label: plans
+      url: https://cline.bot/cline-pass
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- date: 2026-08-30
+  provider: Devin
+  type: new provider
+  summary: Add Devin with the Free, Pro, Max, and Teams self-serve plans and the
+    Cognition SWE, Adaptive, and Arena token rates.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/admin/billing/self-serve
+    - label: announcement
+      url: https://cognition.com/blog/new-self-serve-plans-for-devin
+  last_verified: 2026-08-30
+
+- date: 2026-08-30
+  provider: Kiro
+  type: new provider
+  summary: Add the five Kiro subscription tiers, from the free 50-credit tier to
+    Power at 200 USD per month for 10000 credits.
+  links:
+    - label: pricing
+      url: https://kiro.dev/pricing/
+  last_verified: 2026-08-30
+
+- date: 2026-08-30
+  provider: Novita
+  type: new provider
+  summary: Add the Novita Coding plan tiers, the nine covered models with their
+    API rates and specifications, and the T1 to T5 rate limits.
+  links:
+    - label: plans
+      url: https://novita.ai/coding-plan
+  last_verified: 2026-08-30
+
+- date: 2026-08-30
+  provider: Sakana (Fugu)
+  type: new provider
+  summary: Add the Sakana Fugu subscription tiers Standard, Pro, and Max, plus
+    the Fugu Ultra token rates.
+  links:
+    - label: pricing
+      url: https://sakana.ai/fugu/
+  last_verified: 2026-08-30
+
 - date: 2026-08-29
   provider: OpenCode
   type: new model

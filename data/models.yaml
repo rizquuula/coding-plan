@@ -880,3 +880,350 @@
     - label: model card
       url: https://commandcode.ai/models/hy4-preview
   last_verified: 2026-08-29
+
+
+- id: novita-glm-5
+  name: GLM-5
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 198K
+  max_output: 128K
+  vision: null
+  open_weights: true
+  notes: Novita calls GLM-5 an open-source foundation model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5
+  name: Kimi K2.5
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 256K
+  max_output: 256K
+  vision: true
+  open_weights: null
+  notes: Novita says the model has a native multimodal architecture supporting visual and text inputs.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7
+  name: GLM-4.7
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: null
+  open_weights: null
+  notes: Novita publishes no parameter count for this model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1
+  name: Minimax M2.1
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: null
+  open_weights: null
+  notes: Novita publishes no parameter count for this model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2
+  name: Deepseek V3.2
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 160K
+  max_output: 64K
+  vision: null
+  open_weights: null
+  notes: Novita publishes no parameter count for this model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5
+  name: MiniMax M2.5
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: null
+  open_weights: null
+  notes: Novita publishes no parameter count for this model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b
+  name: Qwen3.5-397B-A17B
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 256K
+  max_output: 64K
+  vision: true
+  open_weights: null
+  notes: Novita calls it a native vision-language model and names image and video understanding.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7
+  name: MiniMax M2.7
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 200K
+  max_output: 128K
+  vision: null
+  open_weights: true
+  notes: Novita calls MiniMax M2.7 an open-source large language model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro
+  name: Deepseek V4 Pro
+  provider: Novita
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: 384K
+  vision: null
+  open_weights: true
+  notes: Novita calls DeepSeek V4 Pro an open-source large language model.
+  links:
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30
+
+
+
+- id: clinepass-glm-5-2
+  name: GLM-5.2
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/glm-5-2
+  last_verified: 2026-08-30
+
+- id: clinepass-kimi-k3
+  name: Kimi K3
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/kimi-k3
+  last_verified: 2026-08-30
+
+- id: clinepass-kimi-k2-7-code
+  name: Kimi K2.7 Code
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/kimi-k2-7-code
+  last_verified: 2026-08-30
+
+- id: clinepass-kimi-k2-6
+  name: Kimi K2.6
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/kimi-k2-6
+  last_verified: 2026-08-30
+
+- id: clinepass-deepseek-v4-pro
+  name: DeepSeek V4 Pro
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/deepseek-v4-pro
+  last_verified: 2026-08-30
+
+- id: clinepass-deepseek-v4-flash
+  name: DeepSeek V4 Flash
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/deepseek-v4-flash
+  last_verified: 2026-08-30
+
+- id: clinepass-mimo-v2-5
+  name: MiMo-V2.5
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/mimo-v2-5
+  last_verified: 2026-08-30
+
+- id: clinepass-mimo-v2-5-pro
+  name: MiMo-V2.5-Pro
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/mimo-v2-5-pro
+  last_verified: 2026-08-30
+
+- id: clinepass-minimax-m3
+  name: MiniMax M3
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/minimax-m3
+  last_verified: 2026-08-30
+
+- id: clinepass-qwen3-7-max
+  name: Qwen3.7 Max
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/qwen3-7-max
+  last_verified: 2026-08-30
+
+- id: clinepass-qwen3-7-plus
+  name: Qwen3.7 Plus
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: The Cline model page states open-weight availability and no other
+    specification.
+  links:
+    - label: model card
+      url: https://cline.bot/models/qwen3-7-plus
+  last_verified: 2026-08-30
+
+- id: clinepass-glm-5-3
+  name: GLM-5.3
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: Cline lists this model in ClinePass and publishes no specification page
+    for it.
+  links:
+    - label: docs
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-qwen3-8-max
+  name: Qwen3.8 Max
+  provider: ClinePass
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: Cline lists this model in ClinePass and publishes no specification page
+    for it.
+  links:
+    - label: docs
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+

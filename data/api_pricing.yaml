@@ -979,3 +979,564 @@
     - label: model card
       url: https://commandcode.ai/models/hy4-preview
   last_verified: 2026-08-29
+
+- id: sakana-fugu-ultra
+  provider: Sakana (Fugu)
+  model: Fugu Ultra
+  model_id: fugu-ultra-v1.1
+  context_window: null
+  currency: USD
+  input: 5
+  cached_input: 0.5
+  cache_write: null
+  output: 30
+  notes: The same rates apply to fugu-ultra-v1.0, and above 272K context the
+    rates rise to 10.00 input, 45.00 output, and 1.00 cached input.
+  links:
+    - label: pricing
+      url: https://sakana.ai/fugu/
+  last_verified: 2026-08-30
+
+- id: devin-swe-1-7-max
+  provider: Devin
+  model: SWE-1.7 Max
+  model_id: swe-1-7
+  currency: USD
+  input: 0.5
+  cached_input: 0.2
+  cache_write: null
+  output: 2.5
+  notes: Cognition's in-house software engineering model at maximum reasoning
+    effort, billed as extra usage past a plan quota.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-swe-1-7-medium
+  provider: Devin
+  model: SWE-1.7 Medium
+  model_id: swe-1-7-medium
+  currency: USD
+  input: 0.5
+  cached_input: 0.2
+  cache_write: null
+  output: 2.5
+  notes: The medium reasoning-effort variant of SWE-1.7, priced the same as the
+    Max variant.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-swe-1-7-lightning-max
+  provider: Devin
+  model: SWE-1.7 Lightning Max
+  model_id: swe-1-7-lightning
+  currency: USD
+  input: 2.5
+  cached_input: 1
+  cache_write: null
+  output: 12.5
+  notes: Cognition serves SWE-1.7 Lightning on Cerebras for lower latency and
+    charges five times the SWE-1.7 rate.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-swe-1-7-lightning-medium
+  provider: Devin
+  model: SWE-1.7 Lightning Medium
+  model_id: swe-1-7-lightning-medium
+  currency: USD
+  input: 2.5
+  cached_input: 1
+  cache_write: null
+  output: 12.5
+  notes: The medium reasoning-effort Lightning variant, priced the same as the
+    Max variant.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-swe-1-6
+  provider: Devin
+  model: SWE-1.6
+  model_id: swe-1-6
+  currency: USD
+  input: 0.5
+  cached_input: 0.2
+  cache_write: null
+  output: 2.5
+  notes: Cognition's previous-generation software engineering model.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-swe-1-6-fast
+  provider: Devin
+  model: SWE-1.6 Fast
+  model_id: swe-1-6-fast
+  currency: USD
+  input: 0.5
+  cached_input: 0.2
+  cache_write: null
+  output: 2.5
+  notes: A faster SWE-1.6 that Cognition offers to paying users at the same rate.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-adaptive
+  provider: Devin
+  model: Adaptive
+  model_id: adaptive
+  currency: USD
+  input: 0.5
+  cached_input: 0.1
+  cache_write: 0.5
+  output: 2
+  notes: Cognition's model router, which picks a model per prompt; the page
+    source states the cache-write rate that its rendered table hides.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-arena-fast
+  provider: Devin
+  model: Fast Arena
+  model_id: arena-fast
+  currency: USD
+  input: 0.1
+  cached_input: null
+  cache_write: null
+  output: 0.5
+  notes: A Cognition router that spreads work across fast models.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-arena-mixed
+  provider: Devin
+  model: Hybrid Arena
+  model_id: arena-mixed
+  currency: USD
+  input: 1
+  cached_input: 0.1
+  cache_write: 1.25
+  output: 5
+  notes: A Cognition router that mixes fast and frontier models.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+- id: devin-arena-smart
+  provider: Devin
+  model: Frontier Arena
+  model_id: arena-smart
+  currency: USD
+  input: 3
+  cached_input: 0.3
+  cache_write: 3.75
+  output: 15
+  notes: A Cognition router that spreads work across frontier models.
+  links:
+    - label: pricing
+      url: https://docs.devin.ai/desktop/models
+  last_verified: 2026-08-30
+
+
+- id: novita-glm-5
+  provider: Novita
+  model: GLM-5
+  model_id: zai-org/glm-5
+  context_window: 198K
+  currency: USD
+  input: 1
+  cached_input: 0.2
+  cache_write: null
+  output: 3.2
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-5
+  last_verified: 2026-08-30
+
+- id: novita-kimi-k2-5
+  provider: Novita
+  model: Kimi K2.5
+  model_id: moonshotai/kimi-k2.5
+  context_window: 256K
+  currency: USD
+  input: 0.6
+  cached_input: 0.1
+  cache_write: null
+  output: 3
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/moonshotai-kimi-k2.5
+  last_verified: 2026-08-30
+
+- id: novita-glm-4-7
+  provider: Novita
+  model: GLM-4.7
+  model_id: zai-org/glm-4.7
+  context_window: 200K
+  currency: USD
+  input: 0.6
+  cached_input: 0.11
+  cache_write: null
+  output: 2.2
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/zai-org-glm-4.7
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-1
+  provider: Novita
+  model: Minimax M2.1
+  model_id: minimax/minimax-m2.1
+  context_window: 200K
+  currency: USD
+  input: 0.3
+  cached_input: 0.03
+  cache_write: null
+  output: 1.2
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.1
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v3-2
+  provider: Novita
+  model: Deepseek V3.2
+  model_id: deepseek/deepseek-v3.2
+  context_window: 160K
+  currency: USD
+  input: 0.269
+  cached_input: 0.1345
+  cache_write: null
+  output: 0.4
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v3.2
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-5
+  provider: Novita
+  model: MiniMax M2.5
+  model_id: minimax/minimax-m2.5
+  context_window: 200K
+  currency: USD
+  input: 0.3
+  cached_input: 0.03
+  cache_write: null
+  output: 1.2
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.5
+  last_verified: 2026-08-30
+
+- id: novita-qwen3-5-397b-a17b
+  provider: Novita
+  model: Qwen3.5-397B-A17B
+  model_id: qwen/qwen3.5-397b-a17b
+  context_window: 256K
+  currency: USD
+  input: 0.6
+  cached_input: null
+  cache_write: null
+  output: 3.6
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/qwen-qwen3.5-397b-a17b
+  last_verified: 2026-08-30
+
+- id: novita-minimax-m2-7
+  provider: Novita
+  model: MiniMax M2.7
+  model_id: minimax/minimax-m2.7
+  context_window: 200K
+  currency: USD
+  input: 0.3
+  cached_input: 0.06
+  cache_write: null
+  output: 1.2
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/minimax-minimax-m2.7
+  last_verified: 2026-08-30
+
+- id: novita-deepseek-v4-pro
+  provider: Novita
+  model: Deepseek V4 Pro
+  model_id: deepseek/deepseek-v4-pro
+  context_window: 1M
+  currency: USD
+  input: 1.6
+  cached_input: 0.135
+  cache_write: null
+  output: 3.2
+  notes: Novita resells this model and publishes no cache-write rate.
+  links:
+    - label: pricing
+      url: https://novita.ai/pricing
+    - label: model card
+      url: https://novita.ai/models/model-detail/deepseek-deepseek-v4-pro
+  last_verified: 2026-08-30
+
+
+
+- id: clinepass-glm-5-3
+  provider: ClinePass
+  model: GLM-5.3
+  model_id: cline-pass/glm-5.3
+  context_window: null
+  currency: USD
+  input: 1.40
+  cached_input: 0.26
+  cache_write: null
+  output: 4.40
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-glm-5-2
+  provider: ClinePass
+  model: GLM-5.2
+  model_id: cline-pass/glm-5.2
+  context_window: null
+  currency: USD
+  input: 1.40
+  cached_input: 0.26
+  cache_write: null
+  output: 4.40
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-kimi-k3
+  provider: ClinePass
+  model: Kimi K3
+  model_id: cline-pass/kimi-k3
+  context_window: null
+  currency: USD
+  input: 3.00
+  cached_input: 0.30
+  cache_write: null
+  output: 15.00
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-kimi-k2-7-code
+  provider: ClinePass
+  model: Kimi K2.7 Code
+  model_id: cline-pass/kimi-k2.7-code
+  context_window: null
+  currency: USD
+  input: 0.95
+  cached_input: 0.19
+  cache_write: null
+  output: 4.00
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-kimi-k2-6
+  provider: ClinePass
+  model: Kimi K2.6
+  model_id: cline-pass/kimi-k2.6
+  context_window: null
+  currency: USD
+  input: 0.95
+  cached_input: 0.16
+  cache_write: null
+  output: 4.00
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-deepseek-v4-pro
+  provider: ClinePass
+  model: DeepSeek V4 Pro
+  model_id: cline-pass/deepseek-v4-pro
+  context_window: null
+  currency: USD
+  input: 1.32
+  cached_input: 0.044
+  cache_write: null
+  output: 3.96
+  notes: Peak reference rate; the off-peak rate is 0.66 input, 1.98 output, and
+    0.022 cached input, and ClinePass charges neither because it bills a flat
+    monthly subscription.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-deepseek-v4-flash
+  provider: ClinePass
+  model: DeepSeek V4 Flash
+  model_id: cline-pass/deepseek-v4-flash
+  context_window: null
+  currency: USD
+  input: 0.44
+  cached_input: 0.014
+  cache_write: null
+  output: 1.32
+  notes: Peak reference rate; the off-peak rate is 0.22 input, 0.66 output, and
+    0.007 cached input, and ClinePass charges neither because it bills a flat
+    monthly subscription.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-mimo-v2-5
+  provider: ClinePass
+  model: MiMo-V2.5
+  model_id: cline-pass/mimo-v2.5
+  context_window: null
+  currency: USD
+  input: 0.14
+  cached_input: 0.0028
+  cache_write: null
+  output: 0.28
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-mimo-v2-5-pro
+  provider: ClinePass
+  model: MiMo-V2.5-Pro
+  model_id: cline-pass/mimo-v2.5-pro
+  context_window: null
+  currency: USD
+  input: 1.74
+  cached_input: 0.0145
+  cache_write: null
+  output: 3.48
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-minimax-m3
+  provider: ClinePass
+  model: MiniMax M3
+  model_id: cline-pass/minimax-m3
+  context_window: null
+  currency: USD
+  input: 0.30
+  cached_input: 0.06
+  cache_write: null
+  output: 1.20
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-qwen3-8-max
+  provider: ClinePass
+  model: Qwen3.8 Max
+  model_id: cline-pass/qwen3.8-max
+  context_window: null
+  currency: USD
+  input: 2.00
+  cached_input: 0.25
+  cache_write: 2.50
+  output: 6.00
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-qwen3-7-max
+  provider: ClinePass
+  model: Qwen3.7 Max
+  model_id: cline-pass/qwen3.7-max
+  context_window: null
+  currency: USD
+  input: 2.50
+  cached_input: 0.50
+  cache_write: 3.125
+  output: 7.50
+  notes: Reference rate only, because ClinePass bills a flat monthly
+    subscription and does not charge this rate.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
+
+- id: clinepass-qwen3-7-plus
+  provider: ClinePass
+  model: Qwen3.7 Plus
+  model_id: cline-pass/qwen3.7-plus
+  context_window: null
+  currency: USD
+  input: 0.40
+  cached_input: 0.04
+  cache_write: 0.50
+  output: 1.60
+  notes: Reference rate at or below 256K tokens; above 256K the rate is 1.20
+    input, 4.80 output, 0.12 cached input, and 1.50 cache write, and ClinePass
+    charges neither because it bills a flat monthly subscription.
+  links:
+    - label: pricing
+      url: https://docs.cline.bot/getting-started/clinepass
+  last_verified: 2026-08-30
