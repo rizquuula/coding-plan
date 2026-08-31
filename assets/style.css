@@ -365,8 +365,8 @@ section { margin-bottom: 2.75rem; }
    --brand and --brand-ink on the row, so the band keeps its own colours in
    both themes. */
 .data-table td.provider-cell {
-  width: 2.75rem;
-  min-width: 2.75rem;
+  width: 3.6rem;
+  min-width: 3.6rem;
   padding: 0.4rem 0;
   /* Top, not middle. The label is sticky, and sticky only holds an element that
      scrolls out of the top. A centred label on a tall band starts below the
@@ -390,9 +390,9 @@ section { margin-bottom: 2.75rem; }
      3rem clears the sticky header row. */
   position: sticky;
   top: 3rem;
-  font-size: 0.72rem;
+  font-size: 2.16rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
@@ -405,6 +405,10 @@ section { margin-bottom: 2.75rem; }
   writing-mode: horizontal-tb;
   transform: none;
   position: static;
+  /* Do not inherit the rotated size. A flat name has no break opportunity, so
+     one long word would hold the whole column open. */
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
   white-space: normal;
 }
 
@@ -452,7 +456,7 @@ section { margin-bottom: 2.75rem; }
 
   /* A preferred width, not a minimum. The column keeps the saving on one line
      while there is room, and still shrinks on a narrow screen. */
-  .table-wrap-flow .data-table th.num { width: 9.5rem; }
+  .table-wrap-flow .data-table th.num { width: 12.5rem; }
 }
 
 @media (min-width: 720px) and (max-width: 959.98px) {

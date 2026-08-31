@@ -223,8 +223,10 @@ Rules:
    monthly equivalent. Write `672` for a year billed at 56 per month.
 5. `amount` must not be negative. Use `0` for a free tier.
 
-The build script derives the monthly equivalent and the saving against the
-monthly price, then prints both. Do not write either into the data.
+Every price renders per month. The build script divides each term total by its
+months and prints that figure as the headline. When the term is not a month it
+also prints the term total and the saving, as `billed $200.00/year - save 17%`.
+Do not write the monthly figure or the saving into the data.
 
 Some providers print only a discounted monthly rate, not the term total. Copy
 the rate, multiply it by the term, and say so in `notes`. Z.ai is the worked

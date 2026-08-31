@@ -33,9 +33,9 @@
           <ul class="price-list">
             {% for entry in row | price_view %}
             <li>
-              {{ entry.amount | money(row.price_currency) }}<span class="unit">/{{ entry.period }}</span>
+              {{ entry.monthly | money(row.price_currency) }}<span class="unit">/month</span>
               {% if entry.period != "month" %}
-              <span class="price-equiv">{{ entry.monthly | money(row.price_currency) }}/mo{% if entry.discount %} · save {{ entry.discount }}%{% endif %}</span>
+              <span class="price-equiv">billed {{ entry.amount | money(row.price_currency) }}/{{ entry.period }}{% if entry.discount %} · save {{ entry.discount }}%{% endif %}</span>
               {% endif %}
             </li>
             {% endfor %}
