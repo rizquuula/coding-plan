@@ -2,6 +2,14 @@
 # Append a record whenever a row in another dataset is added or changed.
 # Newest entry first. Schema: see AGENTS.md.
 
+- date: 2026-08-30
+  provider: Mistral
+  type: new provider
+  summary: Added the Mistral Free, Pro, and Team plans and the API rates for Large 3, Medium 3.5, Small 4, and GLM 5.2.
+  links:
+    - label: pricing
+      url: https://mistral.ai/pricing/api/
+
 - date: 2026-08-31
   provider: Anthropic
   type: update
