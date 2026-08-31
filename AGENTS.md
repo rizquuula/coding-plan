@@ -393,6 +393,21 @@ Edit the templates and `assets/style.css`. Run `python build.py` and open the
 page you changed. Keep every wide table inside its `.table-wrap` container so
 the page never scrolls sideways.
 
+`.content` sets no width cap, so a table fills the window. Prose stays readable
+because `.lede` and `.section-note` cap themselves at 60ch.
+
+`.table-wrap` scrolls inside its own box above 720 pixels. The plans table adds
+`table-wrap-flow`, which drops that box. Three rules follow from it:
+
+1. The plans table must fit the content width. It carries no scroller, so an
+   overflow is clipped, not scrolled. Measure the table before you add a column.
+2. With no scroll container the header row sticks to the viewport. Under 960
+   pixels the sidebar is sticky too, so `--stick-top` pushes the header clear of
+   it. Change one and you must check the other.
+3. `.price-equiv` may wrap. `.num` sets `nowrap`, and that held the Price column
+   open past the content width. `th.num` carries a preferred width, not a
+   minimum, so the line only wraps on a narrow screen.
+
 The templates split three ways. `templates/base.html.j2` holds the skeleton, the
 sidebar, and the theme switcher. `templates/macros.html.j2` holds every table
 macro. Each page template extends the base and fills its blocks.

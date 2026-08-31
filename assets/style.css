@@ -70,9 +70,9 @@ body {
   top: 0.75rem;
 }
 
+/* No width cap. The tables use the whole window. Prose stays readable because
+   .lede and .section-note cap themselves at 60ch. */
 .content {
-  max-width: 78rem;
-  margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
 }
 
@@ -395,6 +395,35 @@ section { margin-bottom: 2.75rem; }
     max-height: calc(100vh - 5rem);
     overflow-y: auto;
   }
+}
+
+/* The plans table fits the content width, so it needs no box of its own. With
+   no scroll container the page scrolls as one, and the header row sticks to
+   the viewport instead of to the wrap. Every other page keeps the scroller,
+   because its table is wider than the content. */
+@media (min-width: 720px) {
+  .table-wrap-flow {
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* Under 960 px the sidebar is sticky at the top, so the header row must
+     clear it. Above 960 px the sidebar is fixed beside the content. */
+  .table-wrap-flow .data-table thead th { top: var(--stick-top, 0px); }
+  .table-wrap-flow .provider-label { top: calc(var(--stick-top, 0px) + 2.6rem); }
+
+  /* .num sets nowrap, so the monthly-equivalent line held the Price column
+     open and pushed the table past the content width. It is the only line in
+     that column that may wrap. */
+  .table-wrap-flow .price-equiv { white-space: normal; }
+
+  /* A preferred width, not a minimum. The column keeps the saving on one line
+     while there is room, and still shrinks on a narrow screen. */
+  .table-wrap-flow .data-table th.num { width: 9.5rem; }
+}
+
+@media (min-width: 720px) and (max-width: 959.98px) {
+  .table-wrap-flow { --stick-top: 5rem; }
 }
 
 .data-table {
