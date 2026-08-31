@@ -99,6 +99,25 @@ body {
   text-decoration: none;
 }
 
+/* Repo link. It sits in the sidebar bar by default, so a narrow screen keeps
+   it clear of the Menu button. The 960 px rule below lifts it out to float. */
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin-left: auto;
+  border-radius: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.repo-link:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
 .nav-toggle {
   display: none;
   min-height: 44px;
@@ -243,6 +262,20 @@ body {
   .sidebar-panel { flex: 1 1 auto; }
 
   .theme-block { margin-top: auto; }
+
+  /* The sidebar is fixed here, and nothing else claims the top right corner.
+     No ancestor sets a transform, so the fixed child anchors to the viewport.
+     z-index clears the sticky sidebar at 30 and the sticky table header at 1. */
+  .repo-link {
+    position: fixed;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 40;
+    margin-left: 0;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  }
 }
 
 h1 {
