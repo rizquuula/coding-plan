@@ -440,7 +440,10 @@ sorts the rows by provider first.
 5. `rebuildSpans(table)` in `assets/app.js` must run after any filter pass and
    after any sort. A sort interleaves providers, so every band changes. The
    function deletes every `.provider-cell` and builds the runs again.
-6. Under 720 pixels the band disappears. The card prints the provider as a tag
+6. A header click cycles three states: ascending, descending, then the default
+   order. `stampOrder` writes `data-order` on each row before any sort runs,
+   and `resetSort` reads it back. Never reorder the rows before `stampOrder`.
+7. Under 720 pixels the band disappears. The card prints the provider as a tag
    from the `data-provider` attribute instead.
 
 ### The card layout

@@ -232,11 +232,21 @@
       table: table,
       index: firstSortable(table),
       ascending: true,
+      // "asc", "desc", or null for the order the server rendered.
+      dir: null,
       control: null,
       select: null,
       button: null
     };
   });
+
+  // Stamp the rendered order so a third click can restore it.
+  function stampOrder(table) {
+    if (!table.tBodies.length) return;
+    rowGroups(table).forEach(function (group, index) {
+      group[0].setAttribute("data-order", String(index));
+    });
+  }
 
   function stateOf(table) {
     for (var i = 0; i < states.length; i += 1) {
@@ -531,9 +541,41 @@
     if (state) {
       state.index = index;
       state.ascending = ascending;
+      state.dir = ascending ? "asc" : "desc";
       syncControl(state);
     }
     // A sort interleaves providers, so the bands break into new runs.
+    rebuildSpans(table);
+    animateSort(table);
+  }
+
+  // Put the rows back in the order the server rendered, and drop every
+  // aria-sort. A third click on the same header lands here.
+  function resetSort(table) {
+    var state = stateOf(table);
+    headerCells(table).forEach(function (header) {
+      header.removeAttribute("aria-sort");
+    });
+
+    var groups = rowGroups(table);
+    groups.sort(function (a, b) {
+      return (parseInt(a[0].getAttribute("data-order"), 10) || 0) -
+        (parseInt(b[0].getAttribute("data-order"), 10) || 0);
+    });
+
+    var body = table.tBodies[0];
+    groups.forEach(function (group) {
+      group.forEach(function (row) {
+        body.appendChild(row);
+      });
+    });
+
+    if (state) {
+      state.index = firstSortable(table);
+      state.ascending = true;
+      state.dir = null;
+      syncControl(state);
+    }
     rebuildSpans(table);
     animateSort(table);
   }
@@ -544,7 +586,8 @@
 
   function syncControl(state) {
     if (!state.control) return;
-    state.select.value = String(state.index);
+    state.select.value = state.dir ? String(state.index) : "-1";
+    state.button.disabled = !state.dir;
     state.button.textContent = directionLabel(state.ascending);
     state.button.setAttribute("aria-pressed", state.ascending ? "false" : "true");
     state.button.setAttribute(
@@ -572,6 +615,11 @@
     var select = document.createElement("select");
     select.id = "card-sort-" + controlId;
     select.className = "card-sort-select";
+    var unsorted = document.createElement("option");
+    unsorted.value = "-1";
+    unsorted.textContent = "Default order";
+    select.appendChild(unsorted);
+
     headers.forEach(function (header, index) {
       // The provider column is not sortable. The default order groups by it.
       if (header.classList.contains("col-provider")) return;
@@ -586,7 +634,12 @@
     button.className = "card-sort-dir";
 
     select.addEventListener("change", function () {
-      sortTable(table, parseInt(select.value, 10) || firstSortable(table), state.ascending);
+      var picked = parseInt(select.value, 10);
+      if (isNaN(picked) || picked < 0) {
+        resetSort(table);
+        return;
+      }
+      sortTable(table, picked, state.ascending);
     });
     button.addEventListener("click", function () {
       sortTable(table, state.index, !state.ascending);
@@ -629,9 +682,19 @@
       if (header.classList.contains("col-provider")) return;
       header.setAttribute("role", "button");
       header.setAttribute("tabindex", "0");
+      // The third state is not visible, so name it.
+      header.setAttribute("title", "Sort ascending, then descending, then back to the default order");
 
+      // Three states: ascending, then descending, then back to the default.
       function run() {
-        sortTable(table, index, header.getAttribute("aria-sort") !== "ascending");
+        var state = stateOf(table);
+        if (state && state.index === index && state.dir === "asc") {
+          sortTable(table, index, false);
+        } else if (state && state.index === index && state.dir === "desc") {
+          resetSort(table);
+        } else {
+          sortTable(table, index, true);
+        }
       }
 
       header.addEventListener("click", run);
@@ -643,6 +706,8 @@
       });
     });
   });
+
+  tables.forEach(stampOrder);
 
   if (motion) motion.watch(motion.cardQuery, syncCardMode);
   syncCardMode();
