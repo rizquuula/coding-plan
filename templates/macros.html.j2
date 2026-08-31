@@ -2,7 +2,7 @@
 
 {% macro links_cell(links) -%}
 <ul class="link-list">
-  {% for link in links %}<li><a href="{{ link.url }}" rel="noopener">{{ link.label }}</a></li>{% endfor %}
+  {% for link in links %}<li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a></li>{% endfor %}
 </ul>
 {%- endmacro %}
 

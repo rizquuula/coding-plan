@@ -148,7 +148,8 @@ python -m http.server -d site 8000   # preview at http://localhost:8000
 
 Every record in every dataset carries a `links` list. The site renders one
 labelled link per entry, so a reader can go straight to the page that states a
-price or a quota.
+price or a quota. Every table link opens in a new tab. The `links_cell` macro
+in `templates/macros.html.j2` is the only place that renders one.
 
 ```yaml
   links:
