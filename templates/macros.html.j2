@@ -6,11 +6,12 @@
 </ul>
 {%- endmacro %}
 
-{% macro plan_table(rows) -%}
+{% macro plan_table_grouped(groups) -%}
 <div class="table-wrap">
   <table class="data-table">
     <thead>
       <tr>
+        <th class="col-provider">Provider</th>
         <th>Plan</th>
         <th class="num">Price</th>
         <th>Limits</th>
@@ -19,8 +20,14 @@
       </tr>
     </thead>
     <tbody>
-      {% for row in rows %}
-      <tr>
+      {% for group in groups %}
+      {# The band spans every tr the group emits, so a note row counts too. #}
+      {% set span = group.rows | length + (group.rows | selectattr("notes") | list | length) %}
+      {% for row in group.rows %}
+      <tr data-provider="{{ group.provider }}" style="--brand: {{ group.brand }}; --brand-ink: {{ group.ink }};">
+        {% if loop.first %}
+        <td class="provider-cell" rowspan="{{ span }}" id="plans-{{ group.slug }}"><span class="provider-label">{{ group.provider }}</span></td>
+        {% endif %}
         <td class="cell-title">{{ row.plan }}</td>
         <td class="num" data-label="Price">
           <ul class="price-list">
@@ -51,6 +58,7 @@
         <td colspan="5" data-label="Note"><span class="note-label">Note</span> {{ row.notes }}</td>
       </tr>
       {% endif %}
+      {% endfor %}
       {% endfor %}
     </tbody>
   </table>

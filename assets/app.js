@@ -221,8 +221,21 @@
   if (!tables.length) return;
 
   // One record per table. It survives the card-mode teardown, so the sort sticks.
+  // The provider column is not sortable, so the plans table starts on column 1.
+  function firstSortable(table) {
+    var lead = table.tHead ? table.tHead.rows[0].cells[0] : null;
+    return lead && lead.classList.contains("col-provider") ? 1 : 0;
+  }
+
   var states = tables.map(function (table) {
-    return { table: table, index: 0, ascending: true, control: null, select: null, button: null };
+    return {
+      table: table,
+      index: firstSortable(table),
+      ascending: true,
+      control: null,
+      select: null,
+      button: null
+    };
   });
 
   function stateOf(table) {
@@ -261,11 +274,81 @@
     return key === null ? row.textContent.toLowerCase() : rowText[key];
   }
 
-  // The provider name is a heading now, so read it from the enclosing block.
-  function providerName(table) {
-    var block = table.closest(".provider-block");
-    var heading = block && block.querySelector(".provider-name");
-    return heading ? heading.textContent.toLowerCase() : "";
+  // The plans table carries the provider on the row itself. A note row has no
+  // attribute, so read it from the data row above, which rowGroups pairs.
+  function providerOf(row) {
+    return (row.getAttribute("data-provider") || "").toLowerCase();
+  }
+
+  function slugify(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
+  // A run is hidden once the filter asks for it, even while it still fades out.
+  function rowIsOut(row) {
+    return row.hidden || row.getAttribute("data-filter-hidden") === "1";
+  }
+
+  // Rebuild every provider band from scratch. A global sort moves any row
+  // anywhere, so patching a rowspan is not enough.
+  function rebuildSpans(table) {
+    if (!table.tBodies.length) return;
+    var body = table.tBodies[0];
+    // The other three pages have no band, so the function does nothing there.
+    if (!body.querySelector("td.provider-cell") && !body.querySelector("tr[data-provider]")) {
+      return;
+    }
+
+    slice(body.querySelectorAll("td.provider-cell")).forEach(function (cell) {
+      if (cell.parentNode) cell.parentNode.removeChild(cell);
+    });
+
+    var runs = [];
+    var current = null;
+    slice(body.rows).forEach(function (row) {
+      if (rowIsOut(row)) return;
+      var provider = row.getAttribute("data-provider");
+      if (provider === null) {
+        if (current) current.rows.push(row);
+        return;
+      }
+      if (!current || provider !== current.provider) {
+        current = { provider: provider, rows: [] };
+        runs.push(current);
+      }
+      current.rows.push(row);
+    });
+
+    var seen = [];
+    runs.forEach(function (run) {
+      var cell = document.createElement("td");
+      cell.className = "provider-cell";
+      cell.rowSpan = run.rows.length;
+      // A rotated name does not fit a band under 3 rows tall.
+      if (run.rows.length < 3) cell.classList.add("is-short");
+
+      var slug = slugify(run.provider);
+      // The first run of a provider keeps the id the sidebar anchor targets.
+      if (seen.indexOf(slug) === -1) {
+        cell.id = "plans-" + slug;
+        seen.push(slug);
+      }
+
+      var label = document.createElement("span");
+      label.className = "provider-label";
+      label.textContent = run.provider;
+      cell.appendChild(label);
+
+      var first = run.rows[0];
+      first.insertBefore(cell, first.cells[0] || null);
+    });
+  }
+
+  // A leader row holds the extra provider cell, so its cells shift by one.
+  function cellAt(row, index) {
+    var lead = row.cells[0];
+    var offset = lead && lead.classList.contains("provider-cell") ? 0 : -1;
+    return row.cells[index + offset] || null;
   }
 
   // A row settles into the state the last filter pass asked for, whatever ran before it.
@@ -326,10 +409,9 @@
     var animated = !!anime();
 
     tables.forEach(function (table) {
-      var provider = providerName(table);
       var visible = 0;
       rowGroups(table).forEach(function (group) {
-        var haystack = textOf(group[0]) + " " + provider;
+        var haystack = textOf(group[0]) + " " + providerOf(group[0]);
         var match = !needle || haystack.indexOf(needle) !== -1;
         group.forEach(function (row) {
           row.setAttribute("data-filter-hidden", match ? "0" : "1");
@@ -344,6 +426,7 @@
         if (match) visible += 1;
       });
 
+      // The plans table sits in no provider block, so guard the lookup.
       var block = table.closest(".provider-block");
       if (block) block.hidden = visible === 0;
 
@@ -361,6 +444,9 @@
     });
 
     if (animated) moveRows(toShow, toHide);
+
+    // The bands follow the rows that survived the filter.
+    tables.forEach(rebuildSpans);
   }
 
   var input = document.getElementById("filter");
@@ -376,6 +462,7 @@
   }
 
   function sortKey(cell) {
+    if (!cell) return "";
     var text = cell.textContent.trim();
     var numeric = text.replace(/[^0-9.\-]/g, "");
     if (numeric && /[0-9]/.test(numeric)) {
@@ -418,6 +505,7 @@
     var state = stateOf(table);
     var headers = headerCells(table);
     if (index < 0 || index >= headers.length) return;
+    if (headers[index].classList.contains("col-provider")) return;
 
     headers.forEach(function (header) {
       header.removeAttribute("aria-sort");
@@ -426,8 +514,8 @@
 
     var groups = rowGroups(table);
     groups.sort(function (a, b) {
-      var left = sortKey(a[0].cells[index]);
-      var right = sortKey(b[0].cells[index]);
+      var left = sortKey(cellAt(a[0], index));
+      var right = sortKey(cellAt(b[0], index));
       if (left < right) return ascending ? -1 : 1;
       if (left > right) return ascending ? 1 : -1;
       return 0;
@@ -445,6 +533,8 @@
       state.ascending = ascending;
       syncControl(state);
     }
+    // A sort interleaves providers, so the bands break into new runs.
+    rebuildSpans(table);
     animateSort(table);
   }
 
@@ -483,6 +573,8 @@
     select.id = "card-sort-" + controlId;
     select.className = "card-sort-select";
     headers.forEach(function (header, index) {
+      // The provider column is not sortable. The default order groups by it.
+      if (header.classList.contains("col-provider")) return;
       var option = document.createElement("option");
       option.value = String(index);
       option.textContent = header.textContent.trim() || "Column " + (index + 1);
@@ -494,7 +586,7 @@
     button.className = "card-sort-dir";
 
     select.addEventListener("change", function () {
-      sortTable(table, parseInt(select.value, 10) || 0, state.ascending);
+      sortTable(table, parseInt(select.value, 10) || firstSortable(table), state.ascending);
     });
     button.addEventListener("click", function () {
       sortTable(table, state.index, !state.ascending);
@@ -533,6 +625,8 @@
   // The header row keeps its own click and keyboard sort on every viewport.
   tables.forEach(function (table) {
     headerCells(table).forEach(function (header, index) {
+      // The provider column is not sortable. The default order groups by it.
+      if (header.classList.contains("col-provider")) return;
       header.setAttribute("role", "button");
       header.setAttribute("tabindex", "0");
 
@@ -576,7 +670,11 @@
 
   function valueCells(row) {
     return slice(row.cells).filter(function (cell) {
-      return !cell.classList.contains("cell-title") && !cell.hasAttribute("data-empty");
+      return (
+        !cell.classList.contains("cell-title") &&
+        !cell.classList.contains("provider-cell") &&
+        !cell.hasAttribute("data-empty")
+      );
     });
   }
 

@@ -11,8 +11,12 @@ static HTML tables and deploys them to GitHub Pages on every push to `main`.
 The build script writes four pages. `index.html` holds the plans,
 `api-pricing.html` holds the API rates merged with the model specifications,
 `rate-limits.html` holds the rate limits, and `changelog.html` holds the notable
-dataset changes. Every data page groups its dataset by provider. Each provider
-gets its own table under its own heading. No table has a provider column.
+dataset changes. Every data page groups its dataset by provider.
+
+`index.html` holds one table for every plan. A provider column carries the
+provider name, and the rows of one provider sit together in one band. The other
+two data pages still split their dataset. Each provider gets its own table under
+its own heading, and neither table has a provider column.
 
 `api-pricing.html` left-joins `data/api_pricing.yaml` onto `data/models.yaml` on
 the provider and the model name. A model with no rate row still gets a row, and
@@ -183,7 +187,6 @@ One record per plan tier.
 | `id` | yes | string | Unique across the file. Lower kebab-case, `provider-plan`. |
 | `provider` | yes | string | Company name. Use the same spelling in every file. |
 | `plan` | yes | string | Tier name as the provider writes it. |
-| `region` | yes | enum | `global` or `china`. |
 | `price_currency` | yes | enum | `USD`, `CNY`, or `EUR`. |
 | `prices` | yes | list | One entry per billing term. See the `prices` schema below. |
 | `limits` | yes | list of strings | One quota statement per item. Keep each under 12 words. Name the model when the provider publishes a per-model quota. |
@@ -394,9 +397,34 @@ The templates split three ways. `templates/base.html.j2` holds the skeleton, the
 sidebar, and the theme switcher. `templates/macros.html.j2` holds every table
 macro. Each page template extends the base and fills its blocks.
 
-Each section renders one `.provider-block` per provider. When you add a column,
-do three things. Update the `colspan` on that table's note row. Add a
-`data-label` to the new cell. Copy the label text from the new `<th>` exactly.
+The API pricing page and the rate limits page render one `.provider-block` per
+provider. The plans page renders one table instead. When you add a column, do
+three things. Update the `colspan` on that table's note row. Add a `data-label`
+to the new cell. Copy the label text from the new `<th>` exactly.
+
+The plans note row keeps `colspan="5"`, not 6. The provider band already covers
+the first column of that row.
+
+### The plans table
+
+`templates/macros.html.j2` renders the plans page through
+`plan_table_grouped(groups)`. It writes one table with one `<tbody>`, and it
+sorts the rows by provider first.
+
+1. Every data row carries `data-provider` and an inline `--brand` and
+   `--brand-ink` pair. `build.py` reads both colours from `PROVIDER_BRAND`.
+2. The first row of a provider run carries an extra first cell,
+   `<td class="provider-cell" rowspan="N">`. `N` counts every `<tr>` the run
+   emits, so a note row counts too.
+3. The cell prints the provider name sideways through `.provider-label`.
+   A run under 3 rows tall gets the class `is-short`, which prints the name flat.
+4. The first run of a provider keeps `id="plans-<slug>"`. The sidebar anchor
+   points at that id.
+5. `rebuildSpans(table)` in `assets/app.js` must run after any filter pass and
+   after any sort. A sort interleaves providers, so every band changes. The
+   function deletes every `.provider-cell` and builds the runs again.
+6. Under 720 pixels the band disappears. The card prints the provider as a tag
+   from the `data-provider` attribute instead.
 
 ### The card layout
 

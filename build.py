@@ -34,7 +34,6 @@ PLAN_SCHEMA = {
     "id": (True, "str"),
     "provider": (True, "str"),
     "plan": (True, "str"),
-    "region": (True, "enum:global|china"),
     "price_currency": (True, "enum:USD|CNY|EUR"),
     "prices": (True, "prices"),
     "limits": (True, "list"),
@@ -106,6 +105,64 @@ CHANGELOG_SCHEMA = {
     "links": (False, "links"),
     "last_verified": (False, "date"),
 }
+
+# Provider -> brand colour. Every value comes from a page the provider owns:
+# a declared brand token, a logo SVG fill, or a theme colour. The trailing
+# comment names the token and the host it came from.
+PROVIDER_BRAND = {
+    "Alibaba (Qwen)": "#082dff",   # --btn-brandprimary-fill, g.alicdn.com
+    "Anthropic": "#d97757",        # --swatch--clay, anthropic.com
+    "BytePlus": "#1664ff",         # --color-primary, byteplus.com
+    "ClinePass": "#9f58fa",        # --brand-purple, cline.bot
+    "CommandCode": "#2e1b9c",      # --brand, commandcode.ai
+    "Cursor": "#14120b",           # dark theme-color, cursor.com/brand
+    "Devin": "#317cff",            # docs site config primary, devin.ai
+    "Factory": "#ef6f2e",          # --accent-100, factory.ai
+    "GitHub": "#0fbf3e",           # GitHub Green, brand.github.com
+    "Google": "#4285f4",           # wordmark G fill, Google brand hub
+    "Kiro": "#c6a0ff",             # app icon SVG fill, kiro.dev
+    "MiniMax": "#181e25",          # theme-color meta, minimax.io
+    "Moonshot (Kimi)": "#1783ff",  # --Colors-KMBlue, statics.moonshot.cn
+    "Novita": "#23d57c",           # --brand-0, novita.ai
+    "Ollama": "#000000",           # msapplication-TileColor, ollama.com
+    "OpenAI": "#0d0d0d",           # --gray-1000, developers.openai.com
+    "OpenCode": "#131010",         # favicon SVG plate, opencode.ai
+    "Sakana (Fugu)": "#e10600",    # --ac, sakana.ai/fugu
+    "Zhipu (GLM)": "#141618",      # --primary, docs.z.ai
+}
+
+# Fallback for a provider the map does not name.
+BRAND_FALLBACK = "#6b7280"
+
+
+def brand_for(provider: str) -> str:
+    """Return the brand colour for a provider, or a neutral grey."""
+    return PROVIDER_BRAND.get(provider, BRAND_FALLBACK)
+
+
+def brand_ink(hex_colour: str) -> str:
+    """Return the text colour that reads best on `hex_colour`."""
+    value = (hex_colour or "").lstrip("#")
+    if len(value) == 3:
+        value = "".join(char * 2 for char in value)
+    if len(value) != 6:
+        return "#111111"
+    try:
+        channels = [int(value[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+    except ValueError:
+        return "#111111"
+
+    def linear(channel: float) -> float:
+        if channel <= 0.03928:
+            return channel / 12.92
+        return ((channel + 0.055) / 1.055) ** 2.4
+
+    red, green, blue = (linear(c) for c in channels)
+    luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+    on_dark_ink = (1.0 + 0.05) / (luminance + 0.05)
+    on_light_ink = (luminance + 0.05) / (0.0 + 0.05)
+    return "#ffffff" if on_dark_ink >= on_light_ink else "#111111"
+
 
 DATASETS = [
     ("plans.yaml", PLAN_SCHEMA),
@@ -516,7 +573,7 @@ def render(data: dict, today: dt.date) -> None:
 
     plans = sorted(
         data["plans"],
-        key=lambda r: (r["region"], r["provider"], sort_price(r)),
+        key=lambda r: (r["provider"], sort_price(r)),
     )
     api_pricing = sorted(data["api_pricing"], key=lambda r: (r["provider"], r["model"]))
     models = sorted(data["models"], key=lambda r: (r["provider"], r["name"]))
@@ -525,8 +582,11 @@ def render(data: dict, today: dt.date) -> None:
     )
     changelog = sorted(data["changelog"], key=lambda r: r["date"], reverse=True)
 
-    plans_global = group_by_provider([r for r in plans if r["region"] == "global"])
-    plans_china = group_by_provider([r for r in plans if r["region"] == "china"])
+    plans_all = group_by_provider(plans)
+    # The other three pages share group_by_provider, so the brand keys land here.
+    for group in plans_all:
+        group["brand"] = brand_for(group["provider"])
+        group["ink"] = brand_ink(group["brand"])
     api_models = group_by_provider(merge_api_and_models(api_pricing, models))
     rate_limit_groups = group_by_provider(rate_limits)
 
@@ -543,14 +603,8 @@ def render(data: dict, today: dt.date) -> None:
 
     pages = {
         "index": {
-            "plans_global": plans_global,
-            "plans_china": plans_china,
-            "nav": build_nav(
-                "index",
-                provider_anchors(
-                    [("plans-global", plans_global), ("plans-china", plans_china)]
-                ),
-            ),
+            "plans_all": plans_all,
+            "nav": build_nav("index", provider_anchors([("plans", plans_all)])),
         },
         "api-pricing": {
             "api_models": api_models,

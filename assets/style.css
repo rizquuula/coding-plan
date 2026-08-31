@@ -326,6 +326,59 @@ section { margin-bottom: 2.75rem; }
   font-weight: 600;
 }
 
+/* --- The provider band on the plans table -------------------------------- */
+
+/* One cell spans a provider run and prints its name sideways. build.py sets
+   --brand and --brand-ink on the row, so the band keeps its own colours in
+   both themes. */
+.data-table td.provider-cell {
+  width: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.4rem 0;
+  /* Top, not middle. The label is sticky, and sticky only holds an element that
+     scrolls out of the top. A centred label on a tall band starts below the
+     fold, and sticky cannot pull it back up. */
+  vertical-align: top;
+  text-align: center;
+  background: var(--brand);
+  color: var(--brand-ink);
+  min-height: 7rem;
+  /* The sidebar anchors target this cell now. */
+  scroll-margin-top: 4rem;
+}
+
+/* vertical-rl plus a half turn reads bottom-to-top. Chrome has no
+   sideways-lr, so do not use it. */
+.provider-label {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  /* .table-wrap scrolls above 720 px, so the label follows a tall band.
+     3rem clears the sticky header row. */
+  position: sticky;
+  top: 3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* A rotated name does not fit a band under 3 rows tall, so print it flat.
+   assets/app.js adds .is-short. */
+/* A short band fits on screen, so centre it and drop the sticky offset. */
+.data-table td.provider-cell.is-short { vertical-align: middle; }
+
+.data-table td.provider-cell.is-short .provider-label {
+  writing-mode: horizontal-tb;
+  transform: none;
+  position: static;
+  white-space: normal;
+}
+
+/* The provider column is not sortable. */
+.col-provider { cursor: default; }
+
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--border);
@@ -379,7 +432,7 @@ section { margin-bottom: 2.75rem; }
 .data-table thead th[aria-sort="descending"]::after { content: "▼"; }
 
 .data-table tbody tr:last-child td { border-bottom: none; }
-.data-table tbody tr:hover { background: var(--surface-alt); }
+.data-table tbody tr:hover td:not(.provider-cell) { background: var(--surface-alt); }
 
 .data-table .num {
   text-align: right;
@@ -521,6 +574,23 @@ code {
      filter relies on. Restore it or filtering stops hiding rows. */
   .data-table tr[hidden] { display: none !important; }
 
+  /* The band cannot span cards, so print the provider as a tag instead.
+     Scope this to .data-table td. A bare .provider-cell loses to the
+     .data-table td { display: grid } rule above and the band stays visible. */
+  .data-table td.provider-cell { display: none; }
+
+  .data-table tr[data-provider]::before {
+    content: attr(data-provider);
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
   .data-table td {
     display: grid;
     grid-template-columns: minmax(6.5rem, 40%) 1fr;
@@ -568,7 +638,7 @@ code {
   }
 
   /* No hover on touch. */
-  .data-table tbody tr:hover { background: var(--surface); }
+  .data-table tbody tr:hover td:not(.provider-cell) { background: var(--surface); }
 
   .link-list {
     display: flex;

@@ -5,7 +5,6 @@
 - id: alibaba-coding-plan-pro
   provider: Alibaba (Qwen)
   plan: Coding Plan Pro
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -36,7 +35,6 @@
 - id: alibaba-token-plan-personal-lite
   provider: Alibaba (Qwen)
   plan: Token Plan Personal Lite
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -62,7 +60,6 @@
 - id: alibaba-token-plan-personal-standard
   provider: Alibaba (Qwen)
   plan: Token Plan Personal Standard
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -88,7 +85,6 @@
 - id: alibaba-token-plan-personal-pro
   provider: Alibaba (Qwen)
   plan: Token Plan Personal Pro
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -114,7 +110,6 @@
 - id: alibaba-token-plan-team-standard
   provider: Alibaba (Qwen)
   plan: Token Plan Team Standard
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -143,7 +138,6 @@
 - id: alibaba-token-plan-team-advanced
   provider: Alibaba (Qwen)
   plan: Token Plan Team Advanced
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -172,7 +166,6 @@
 - id: alibaba-token-plan-team-premium
   provider: Alibaba (Qwen)
   plan: Token Plan Team Premium
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -201,7 +194,6 @@
 - id: anthropic-claude-pro
   provider: Anthropic
   plan: Claude Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -227,7 +219,6 @@
 - id: anthropic-claude-max-5x
   provider: Anthropic
   plan: Claude Max 5x
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -256,7 +247,6 @@
 - id: anthropic-claude-max-20x
   provider: Anthropic
   plan: Claude Max 20x
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -286,7 +276,6 @@
 - id: anthropic-claude-team-standard
   provider: Anthropic
   plan: Claude Team Standard seat
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -315,7 +304,6 @@
 - id: anthropic-claude-team-premium
   provider: Anthropic
   plan: Claude Team Premium seat
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -344,7 +332,6 @@
 - id: anthropic-claude-enterprise
   provider: Anthropic
   plan: Claude Enterprise
-  region: global
   price_currency: USD
   prices:
     - period: year
@@ -370,7 +357,6 @@
 - id: openai-chatgpt-go
   provider: OpenAI
   plan: ChatGPT Go
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -391,7 +377,6 @@
 - id: openai-chatgpt-plus
   provider: OpenAI
   plan: ChatGPT Plus
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -414,7 +399,6 @@
 - id: openai-chatgpt-pro-5x
   provider: OpenAI
   plan: ChatGPT Pro 5x
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -437,7 +421,6 @@
 - id: openai-chatgpt-pro-20x
   provider: OpenAI
   plan: ChatGPT Pro 20x
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -461,7 +444,6 @@
 - id: openai-chatgpt-business
   provider: OpenAI
   plan: ChatGPT Business
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -488,7 +470,6 @@
 - id: github-copilot-pro
   provider: GitHub
   plan: Copilot Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -520,7 +501,6 @@
 - id: github-copilot-pro-plus
   provider: GitHub
   plan: Copilot Pro+
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -553,7 +533,6 @@
 - id: github-copilot-max
   provider: GitHub
   plan: Copilot Max
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -587,7 +566,6 @@
 - id: github-copilot-business
   provider: GitHub
   plan: Copilot Business
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -619,7 +597,6 @@
 - id: github-copilot-enterprise
   provider: GitHub
   plan: Copilot Enterprise
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -651,7 +628,6 @@
 - id: cursor-pro
   provider: Cursor
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -684,7 +660,6 @@
 - id: cursor-pro-plus
   provider: Cursor
   plan: Pro+
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -718,7 +693,6 @@
 - id: cursor-ultra
   provider: Cursor
   plan: Ultra
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -753,7 +727,6 @@
 - id: cursor-teams-standard
   provider: Cursor
   plan: Teams Standard
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -786,7 +759,6 @@
 - id: cursor-teams-premium
   provider: Cursor
   plan: Teams Premium
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -819,7 +791,6 @@
 - id: google-ai-plus
   provider: Google
   plan: Google AI Plus
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -841,7 +812,6 @@
 - id: google-ai-pro
   provider: Google
   plan: Google AI Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -867,7 +837,6 @@
 - id: google-ai-ultra-5x
   provider: Google
   plan: Google AI Ultra 5x
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -894,7 +863,6 @@
 - id: google-ai-ultra-20x
   provider: Google
   plan: Google AI Ultra 20x
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -921,7 +889,6 @@
 - id: google-code-assist-standard
   provider: Google
   plan: Gemini Code Assist Standard
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -948,7 +915,6 @@
 - id: google-code-assist-enterprise
   provider: Google
   plan: Gemini Code Assist Enterprise
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -976,7 +942,6 @@
 - id: moonshot-kimi-moderato
   provider: Moonshot (Kimi)
   plan: Moderato
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1009,7 +974,6 @@
 - id: moonshot-kimi-allegretto
   provider: Moonshot (Kimi)
   plan: Allegretto
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1042,7 +1006,6 @@
 - id: moonshot-kimi-allegro
   provider: Moonshot (Kimi)
   plan: Allegro
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1075,7 +1038,6 @@
 - id: moonshot-kimi-vivace
   provider: Moonshot (Kimi)
   plan: Vivace
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1108,7 +1070,6 @@
 - id: zhipu-glm-coding-lite
   provider: Zhipu (GLM)
   plan: GLM Coding Plan Lite
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1138,7 +1099,6 @@
 - id: zhipu-glm-coding-pro
   provider: Zhipu (GLM)
   plan: GLM Coding Plan Pro
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1168,7 +1128,6 @@
 - id: zhipu-glm-coding-max
   provider: Zhipu (GLM)
   plan: GLM Coding Plan Max
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1198,7 +1157,6 @@
 - id: zhipu-glm-coding-team-standard-seat
   provider: Zhipu (GLM)
   plan: Standard Seat
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1224,7 +1182,6 @@
 - id: zhipu-glm-coding-team-premium-seat
   provider: Zhipu (GLM)
   plan: Premium Seat
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1252,7 +1209,6 @@
 - id: factory-pro
   provider: Factory
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1279,7 +1235,6 @@
 - id: factory-plus
   provider: Factory
   plan: Plus
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1306,7 +1261,6 @@
 - id: factory-max
   provider: Factory
   plan: Max
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1333,7 +1287,6 @@
 - id: ollama-free
   provider: Ollama
   plan: Free
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1372,7 +1325,6 @@
 - id: ollama-pro
   provider: Ollama
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1413,7 +1365,6 @@
 - id: ollama-max
   provider: Ollama
   plan: Max
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1452,7 +1403,6 @@
 - id: ollama-team
   provider: Ollama
   plan: Team
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1490,7 +1440,6 @@
 - id: opencode-go
   provider: OpenCode
   plan: Go
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1546,7 +1495,6 @@
 - id: commandcode-go
   provider: CommandCode
   plan: Go
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1572,7 +1520,6 @@
 - id: commandcode-goat
   provider: CommandCode
   plan: GOAT
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1599,7 +1546,6 @@
 - id: commandcode-pro
   provider: CommandCode
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1627,7 +1573,6 @@
 - id: commandcode-max-10x
   provider: CommandCode
   plan: Max 10×
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1656,7 +1601,6 @@
 - id: commandcode-max-20x
   provider: CommandCode
   plan: Max 20×
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1685,7 +1629,6 @@
 - id: commandcode-teams
   provider: CommandCode
   plan: Teams
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1707,7 +1650,6 @@
 - id: commandcode-provider
   provider: CommandCode
   plan: Provider
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1728,7 +1670,6 @@
 - id: byteplus-lite
   provider: BytePlus
   plan: Lite
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1759,7 +1700,6 @@
 - id: byteplus-pro
   provider: BytePlus
   plan: Pro
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1790,7 +1730,6 @@
 - id: minimax-plus
   provider: MiniMax
   plan: Plus
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1823,7 +1762,6 @@
 - id: minimax-max
   provider: MiniMax
   plan: Max
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1856,7 +1794,6 @@
 - id: minimax-ultra
   provider: MiniMax
   plan: Ultra
-  region: china
   price_currency: USD
   prices:
     - period: month
@@ -1890,7 +1827,6 @@
 - id: sakana-fugu-standard
   provider: Sakana (Fugu)
   plan: Standard
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1911,7 +1847,6 @@
 - id: sakana-fugu-pro
   provider: Sakana (Fugu)
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1932,7 +1867,6 @@
 - id: sakana-fugu-max
   provider: Sakana (Fugu)
   plan: Max
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1953,7 +1887,6 @@
 - id: kiro-free
   provider: Kiro
   plan: Kiro Free
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -1984,7 +1917,6 @@
 - id: kiro-pro
   provider: Kiro
   plan: Kiro Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2015,7 +1947,6 @@
 - id: kiro-pro-plus
   provider: Kiro
   plan: Kiro Pro+
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2047,7 +1978,6 @@
 - id: kiro-pro-max
   provider: Kiro
   plan: Kiro Pro Max
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2079,7 +2009,6 @@
 - id: kiro-power
   provider: Kiro
   plan: Kiro Power
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2110,7 +2039,6 @@
 - id: clinepass-monthly
   provider: ClinePass
   plan: ClinePass
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2144,7 +2072,6 @@
 - id: devin-free
   provider: Devin
   plan: Free
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2166,7 +2093,6 @@
 - id: devin-pro
   provider: Devin
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2200,7 +2126,6 @@
 - id: devin-max
   provider: Devin
   plan: Max
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2235,7 +2160,6 @@
 - id: devin-teams
   provider: Devin
   plan: Teams
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2271,7 +2195,6 @@
 - id: novita-coding-lite
   provider: Novita
   plan: Lite
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2304,7 +2227,6 @@
 - id: novita-coding-pro
   provider: Novita
   plan: Pro
-  region: global
   price_currency: USD
   prices:
     - period: month
@@ -2337,7 +2259,6 @@
 - id: novita-coding-max
   provider: Novita
   plan: Max
-  region: global
   price_currency: USD
   prices:
     - period: month

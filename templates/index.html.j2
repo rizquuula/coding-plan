@@ -1,25 +1,19 @@
 {% extends "base.html.j2" %}
-{% from "macros.html.j2" import plan_table, provider_blocks %}
+{% from "macros.html.j2" import plan_table_grouped %}
 
 {% block title %}Coding Plans{% endblock %}
-{% block description %}Tables of AI coding subscription plans, one table per provider.{% endblock %}
+{% block description %}One table of AI coding subscription plans, grouped by provider.{% endblock %}
 {% block heading %}Coding Plans{% endblock %}
-{% block lede %}Subscription plans that include an AI coding tool. One table per provider.{% endblock %}
+{% block lede %}Subscription plans that include an AI coding tool. One table, grouped by provider.{% endblock %}
 
 {% block stats %}
 <li><strong>{{ counts.plans }}</strong> plans</li>
 {% endblock %}
 
 {% block sections %}
-<section id="plans-global">
-  <h2>Global coding plans</h2>
+<section id="plans">
+  <h2>Coding plans</h2>
   <p class="section-note">Subscription tiers that include an AI coding tool. Prices are the list price for one seat. A tier that discounts a longer billing term lists every term, with the monthly equivalent and the saving.</p>
-  {{ provider_blocks("plans-global", plans_global, plan_table) }}
-</section>
-
-<section id="plans-china">
-  <h2>China provider plans</h2>
-  <p class="section-note">Plans from Chinese model providers. Prices are the ones the provider lists on its international site.</p>
-  {{ provider_blocks("plans-china", plans_china, plan_table) }}
+  {{ plan_table_grouped(plans_all) }}
 </section>
 {% endblock %}

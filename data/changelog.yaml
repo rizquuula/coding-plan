@@ -2,6 +2,13 @@
 # Append a record whenever a row in another dataset is added or changed.
 # Newest entry first. Schema: see AGENTS.md.
 
+- date: 2026-08-31
+  provider: Anthropic
+  type: update
+  summary: Merge the plans page into one table and drop the global and China
+    split.
+  links: null
+
 - date: 2026-08-30
   provider: ClinePass
   type: new provider
