@@ -1540,3 +1540,66 @@
     - label: pricing
       url: https://docs.cline.bot/getting-started/clinepass
   last_verified: 2026-08-30
+- id: mistral-large-3
+  provider: Mistral
+  model: Mistral Large 3
+  model_id: mistral-large-latest
+  context_window: null
+  currency: USD
+  input: 0.50
+  cached_input: null
+  cache_write: null
+  output: 1.50
+  notes: Open-weight, general-purpose, flagship multimodal and multilingual model.
+  links:
+    - label: pricing
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
+
+- id: mistral-medium-35
+  provider: Mistral
+  model: Mistral Medium 3.5
+  model_id: mistral-medium-latest
+  context_window: null
+  currency: USD
+  input: 1.50
+  cached_input: null
+  cache_write: null
+  output: 7.50
+  notes: Performant model, designed for long-horizon tasks, synchronous tool-calling and agentic coding.
+  links:
+    - label: pricing
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
+
+- id: mistral-small-4
+  provider: Mistral
+  model: Mistral Small 4
+  model_id: mistral-small-latest
+  context_window: null
+  currency: USD
+  input: 0.15
+  cached_input: null
+  cache_write: null
+  output: 0.60
+  notes: null
+  links:
+    - label: pricing
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
+
+- id: mistral-glm-52
+  provider: Mistral
+  model: GLM 5.2
+  model_id: zai-glm-5-2
+  context_window: null
+  currency: USD
+  input: 1.40
+  cached_input: 0.14
+  cache_write: null
+  output: 4.40
+  notes: Third-party model specializing in long-context agentic workflows and coding.
+  links:
+    - label: pricing
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30

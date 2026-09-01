@@ -2289,3 +2289,72 @@
   last_verified: 2026-08-30
 
 
+- id: mistral-free
+  provider: Mistral
+  plan: Free
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 0
+  limits:
+    - Limited messages and web searches
+    - Limited coding sessions
+    - $10 per month in API credits
+    - 100+ connectors
+  models:
+    - Mistral Large 3
+    - Mistral Medium 3.5
+    - Mistral Small 4
+  status: active
+  notes: Free access to Vibe and Studio with limited usage.
+  links:
+    - label: plans
+      url: https://mistral.ai/pricing/
+  last_verified: 2026-08-30
+
+- id: mistral-pro
+  provider: Mistral
+  plan: Pro
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 14.99
+  limits:
+    - More messages and web searches
+    - All-day coding in CLI, IDE, or on web
+    - More image generations
+    - $30 per month in API credits
+    - Chat and email support
+  models:
+    - Mistral Large 3
+    - Mistral Medium 3.5
+    - Mistral Small 4
+  status: active
+  notes: Full access to Vibe for all-day coding and long-running tasks.
+  links:
+    - label: plans
+      url: https://mistral.ai/pricing/
+  last_verified: 2026-08-30
+
+- id: mistral-team
+  provider: Mistral
+  plan: Team
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 24.99
+  limits:
+    - Up to 30GB of storage per user
+    - Domain name verification
+    - Data export
+    - $50 per month in API credits
+  models:
+    - Mistral Large 3
+    - Mistral Medium 3.5
+    - Mistral Small 4
+  status: active
+  notes: Secure, collaborative workspace for teams building with AI.
+  links:
+    - label: plans
+      url: https://mistral.ai/pricing/
+  last_verified: 2026-08-30

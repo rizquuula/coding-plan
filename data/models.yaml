@@ -1227,3 +1227,62 @@
       url: https://docs.cline.bot/getting-started/clinepass
   last_verified: 2026-08-30
 
+- id: mistral-large-3
+  name: Mistral Large 3
+  provider: Mistral
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: true
+  open_weights: true
+  notes: Open-weight, general-purpose, flagship multimodal and multilingual model.
+  links:
+    - label: model card
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
+
+- id: mistral-medium-35
+  name: Mistral Medium 3.5
+  provider: Mistral
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: Designed for long-horizon tasks, synchronous tool-calling and agentic coding.
+  links:
+    - label: model card
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
+
+- id: mistral-small-4
+  name: Mistral Small 4
+  provider: Mistral
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: null
+  links:
+    - label: model card
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
+
+- id: mistral-glm-52
+  name: GLM 5.2
+  provider: Mistral
+  total_params: null
+  active_params: null
+  context_window: null
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: Third-party model specializing in long-context agentic workflows and coding.
+  links:
+    - label: model card
+      url: https://mistral.ai/pricing/api/
+  last_verified: 2026-08-30
