@@ -11,6 +11,7 @@ beats Cursor Ultra, or what GLM Coding Pro actually costs per year. This
 tracker puts **227 rows of plans, per-token rates, rate limits, and model
 specs** side by side — and every single value links straight to the provider
 page it came from.
+The site also includes a [changelog page](https://rizquuula.github.io/coding-plan/changelog.html) that tracks notable dataset changes over time.
 
 ## 🔥 Why it's different
 
