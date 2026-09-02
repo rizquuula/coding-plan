@@ -1286,3 +1286,213 @@
     - label: model card
       url: https://mistral.ai/pricing/api/
   last_verified: 2026-08-30
+
+- id: verboo-deepseek-v4-flash
+  name: deepseek-v4-flash
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-deepseek-v4-flash-0731
+  name: deepseek-v4-flash-0731
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-deepseek-v4-pro
+  name: deepseek-v4-pro
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-deepseek-v4-pro-0813
+  name: deepseek-v4-pro-0813
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-glm-5-2
+  name: glm-5.2
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-glm-5-3
+  name: glm-5.3
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: Verboo marks this model temporary on its plans page.
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-glm-5-3-flash
+  name: glm-5.3-flash
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-kimi-k2-7
+  name: kimi-k2.7
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-kimi-k3
+  name: Kimi K3
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: Verboo marks this model temporary on its plans page.
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-mimo-v2-5
+  name: mimo-v2.5
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-mimo-v2-5-pro
+  name: mimo-v2.5-pro
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-minimax-m3
+  name: minimax-m3
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-qwen3-6-27b
+  name: Qwen 3.6 27b
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 262K
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-qwen3-8-27b
+  name: qwen3.8-27b
+  provider: Verboo
+  total_params: null
+  active_params: null
+  context_window: 262K
+  max_output: null
+  vision: null
+  open_weights: true
+  notes: null
+  links:
+    - label: docs
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02

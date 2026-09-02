@@ -122,12 +122,14 @@ PROVIDER_BRAND = {
     "Google": "#4285f4",           # wordmark G fill, Google brand hub
     "Kiro": "#c6a0ff",             # app icon SVG fill, kiro.dev
     "MiniMax": "#181e25",          # theme-color meta, minimax.io
+    "Mistral": "#fa500f",          # logo SVG fill, mistral.ai
     "Moonshot (Kimi)": "#1783ff",  # --Colors-KMBlue, statics.moonshot.cn
     "Novita": "#23d57c",           # --brand-0, novita.ai
     "Ollama": "#000000",           # msapplication-TileColor, ollama.com
     "OpenAI": "#0d0d0d",           # --gray-1000, developers.openai.com
     "OpenCode": "#131010",         # favicon SVG plate, opencode.ai
     "Sakana (Fugu)": "#e10600",    # --ac, sakana.ai/fugu
+    "Verboo": "#ad34fe",           # --primary-h/s/l, verboo.ai
     "Zhipu (GLM)": "#141618",      # --primary, docs.z.ai
 }
 

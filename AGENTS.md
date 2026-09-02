@@ -103,6 +103,7 @@ next agent more than a gap.
 | OpenAI | `provider-openai` |
 | OpenCode (Go) | `provider-opencode` |
 | Sakana (Fugu) | `provider-sakana` |
+| Verboo | `provider-verboo` |
 | Zhipu (GLM) | `provider-zai` |
 
 Every provider in the data has a skill. When you add a new provider, add a

@@ -2,6 +2,17 @@
 # Append a record whenever a row in another dataset is added or changed.
 # Newest entry first. Schema: see AGENTS.md.
 
+- date: 2026-09-02
+  provider: Verboo
+  type: new provider
+  summary: Added the Verboo Junior, Pro, Max, and Ultra plans, the API rates for five models, and specifications for all 14 models on the platform.
+  links:
+    - label: plans
+      url: https://verboo.ai/en
+    - label: pricing
+      url: https://verboo.ai/en/api
+  last_verified: 2026-09-02
+
 - date: 2026-08-30
   provider: Mistral
   type: new provider

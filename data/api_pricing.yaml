@@ -1603,3 +1603,83 @@
     - label: pricing
       url: https://mistral.ai/pricing/api/
   last_verified: 2026-08-30
+
+- id: verboo-deepseek-v4-flash
+  provider: Verboo
+  model: deepseek-v4-flash
+  model_id: deepseek-v4-flash
+  context_window: 1M
+  currency: USD
+  input: 0.14
+  cached_input: 0.006
+  cache_write: null
+  output: 0.22
+  notes: Verboo lists this model as zero data retention.
+  links:
+    - label: pricing
+      url: https://verboo.ai/en/api
+  last_verified: 2026-09-02
+
+- id: verboo-deepseek-v4-flash-0731
+  provider: Verboo
+  model: deepseek-v4-flash-0731
+  model_id: deepseek-v4-flash-0731
+  context_window: 1M
+  currency: USD
+  input: 0.14
+  cached_input: 0.006
+  cache_write: null
+  output: 0.22
+  notes: Verboo lists this model as zero data retention.
+  links:
+    - label: pricing
+      url: https://verboo.ai/en/api
+  last_verified: 2026-09-02
+
+- id: verboo-qwen3-6-27b
+  provider: Verboo
+  model: Qwen 3.6 27b
+  model_id: qwen3.6-27b
+  context_window: 262K
+  currency: USD
+  input: 0.15
+  cached_input: 0.03
+  cache_write: null
+  output: 1.50
+  notes: Verboo lists this model as zero data retention.
+  links:
+    - label: pricing
+      url: https://verboo.ai/en/api
+  last_verified: 2026-09-02
+
+- id: verboo-glm-5-2
+  provider: Verboo
+  model: glm-5.2
+  model_id: glm-5.2
+  context_window: 1M
+  currency: USD
+  input: 0.70
+  cached_input: 0.15
+  cache_write: null
+  output: 2.20
+  notes: Verboo lists this model as zero data retention.
+  links:
+    - label: pricing
+      url: https://verboo.ai/en/api
+  last_verified: 2026-09-02
+
+- id: verboo-kimi-k3
+  provider: Verboo
+  model: Kimi K3
+  model_id: kimi-k3
+  context_window: 1M
+  currency: USD
+  input: 2.50
+  cached_input: 0.30
+  cache_write: null
+  output: 9.00
+  notes: Verboo lists this model as zero data retention.
+  links:
+    - label: pricing
+      url: https://verboo.ai/en/api
+  last_verified: 2026-09-02

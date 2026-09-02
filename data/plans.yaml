@@ -2358,3 +2358,125 @@
     - label: plans
       url: https://mistral.ai/pricing/
   last_verified: 2026-08-30
+
+- id: verboo-junior
+  provider: Verboo
+  plan: Junior
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 24
+    - period: year
+      amount: 240
+  limits:
+    - Unlimited tokens, no monthly cap
+    - 40 requests per minute
+    - 2 concurrent requests
+    - OpenAI-compatible API access included
+  models:
+    - qwen3.6-27b
+    - qwen3.8-27b
+  status: active
+  notes: Ideal for focused, less complex work; unlocks 2 of the 14 models.
+  links:
+    - label: plans
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-pro
+  provider: Verboo
+  plan: Pro
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 69
+    - period: year
+      amount: 690
+  limits:
+    - Unlimited tokens, no monthly cap
+    - 40 requests per minute
+    - 2 concurrent requests
+    - OpenAI-compatible API access included
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-flash-0731
+    - glm-5.2
+    - glm-5.3-flash
+    - mimo-v2.5
+    - qwen3.6-27b
+    - qwen3.8-27b
+  status: active
+  notes: Includes a 1-day trial and unlocks 7 of the 14 models.
+  links:
+    - label: plans
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-max
+  provider: Verboo
+  plan: Max
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 129
+    - period: year
+      amount: 1290
+  limits:
+    - Unlimited tokens, no monthly cap
+    - 40 requests per minute
+    - 2 concurrent requests
+    - OpenAI-compatible API access included
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-flash-0731
+    - deepseek-v4-pro
+    - deepseek-v4-pro-0813
+    - glm-5.2
+    - glm-5.3-flash
+    - mimo-v2.5
+    - mimo-v2.5-pro
+    - minimax-m3
+    - qwen3.6-27b
+    - qwen3.8-27b
+  status: active
+  notes: Unlocks 11 of the 14 models, including the DeepSeek V4 Pro family.
+  links:
+    - label: plans
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
+
+- id: verboo-ultra
+  provider: Verboo
+  plan: Ultra
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 269
+    - period: year
+      amount: 2690
+  limits:
+    - Unlimited tokens, no monthly cap
+    - 40 requests per minute
+    - 2 concurrent requests
+    - OpenAI-compatible API access included
+  models:
+    - deepseek-v4-flash
+    - deepseek-v4-flash-0731
+    - deepseek-v4-pro
+    - deepseek-v4-pro-0813
+    - glm-5.2
+    - glm-5.3
+    - glm-5.3-flash
+    - kimi-k2.7
+    - kimi-k3
+    - mimo-v2.5
+    - mimo-v2.5-pro
+    - minimax-m3
+    - qwen3.6-27b
+    - qwen3.8-27b
+  status: active
+  notes: Unlocks every model on the platform, including Kimi K3 and GLM 5.3.
+  links:
+    - label: plans
+      url: https://verboo.ai/en
+  last_verified: 2026-09-02
