@@ -1,0 +1,8 @@
+# Agent manifest for chara-by-lyra. See https://github.com/rizquuula/agent-github-apps
+maintainers: [rizquuula]
+zosma:
+  enabled: true
+  allowed_paths: ["data/**", "build.py", "templates/**", "assets/**", "README.md", "tests/**"]
+  max_files: 6
+  max_lines: 250
+  labels: []
