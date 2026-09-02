@@ -1,4 +1,4 @@
-# Agent manifest for chara-by-lyra. See https://github.com/rizquuula/agent-github-apps
+# Agent manifest for the lyra agents. See https://github.com/rizquuula/agent-github-apps
 maintainers: [rizquuula]
 zosma:
   enabled: true
@@ -6,3 +6,11 @@ zosma:
   max_files: 6
   max_lines: 250
   labels: []
+veritate:
+  test_command: ""
+  coverage_command: ""
+  lint_command: ""
+  visual:
+    build_command: "python3 build.py"
+    static_dir: "site"
+    urls: []
