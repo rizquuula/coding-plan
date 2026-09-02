@@ -80,6 +80,32 @@ Licensed under [MIT](LICENSE).
 
 Providers change prices without notice. Every row links to its source —
 confirm a figure there before you act on it.
+## 📋 Providers
+
+This site tracks plans and rates from the following providers:
+
+- Alibaba (Qwen)
+- Anthropic
+- BytePlus
+- ClinePass
+- CommandCode
+- Cursor
+- DeepSeek
+- Devin
+- Factory
+- GitHub
+- Google
+- Kiro
+- MiniMax
+- Mistral
+- Moonshot (Kimi)
+- Novita
+- Ollama
+- OpenAI
+- OpenCode
+- Sakana (Fugu)
+- Verboo
+- Zhipu (GLM)
 
 ---
 
