@@ -50,13 +50,14 @@ Jinja templates into static HTML, and GitHub Actions ships it to GitHub Pages
 on every push to `main`. No database, no server, no build farm.
 
 ```bash
+# Requires Python 3.8 or later.
 pip install -r requirements.txt
-python build.py --check   # validate the data only
-python build.py           # write site/
+python3 build.py           # renders site/
 python -m http.server -d site 8000
 ```
 
-Open <http://localhost:8000>. That's the whole stack.
+Output lands in `site/`. Open `site/index.html` in your browser or run the
+HTTP server above and visit http://localhost:8000.
 
 ## 🚀 Deploy your own
 
