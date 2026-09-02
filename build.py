@@ -659,6 +659,7 @@ def main() -> None:
         return
 
     render(data, dt.date.today())
+    print(f"Rendered {len(data['models'])} models and {len(data['plans'])} plans")
     print(f"ok: wrote {OUT_DIR.relative_to(ROOT)}/")
 
 
