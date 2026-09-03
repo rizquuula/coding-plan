@@ -36,8 +36,8 @@ bigger, code-heavy projects"; Power "Best for ambitious, coding workflows".
 ## API rates per 1M tokens, USD
 
 Source: the "Models and pricing" table on the same page, read on 2026-09-03.
-The page priced the 1.2 generation on that date (the 1.3 rows live on the model
-page with identical rates).
+The table prices both the 1.3 and the 1.2 generations at identical rates
+(standard 1.25/0.15/4.25, contributor 0.10/0.002/0.20 per 1M tokens).
 
 | Model on the page | model id | context | input | cached input | output | training use |
 |---|---|---|---|---|---|---|

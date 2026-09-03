@@ -97,7 +97,7 @@ next agent more than a gap.
 | Kiro | `provider-kiro` |
 | Meta | `provider-meta` |
 | MiniMax | `provider-minimax` |
-| Moonshot (Kimi) | `provider-moonshot` |
+| Mistral | `provider-mistral` |
 | Novita | `provider-novita` |
 | Ollama | `provider-ollama` |
 | OpenAI | `provider-openai` |

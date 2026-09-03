@@ -89,7 +89,8 @@ with a third-party number.
    ($5.00, $15.00, $50.00 per month) and the quota strings.
 2. From the same page, take the "Models and pricing" table: context window
    (1M), input, cached input, and output per 1M tokens, for both the standard
-   and the `-contributor` row of the generation the page prices.
+   and the `-contributor` row of each generation the page prices (1.3 and 1.2
+   at identical rates).
 3. Fetch the Muse Spark page. Take the model prose: agentic coding tuning,
    long-horizon workflows, native multimodal perception (video, images,
    documents) — the stated basis for `vision: true` on the 1.3 row.
