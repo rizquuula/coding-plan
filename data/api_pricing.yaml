@@ -1683,3 +1683,67 @@
     - label: pricing
       url: https://verboo.ai/en/api
   last_verified: 2026-09-02
+
+- id: meta-muse-spark-1-3
+  provider: Meta
+  model: muse-spark-1.3
+  model_id: muse-spark-1.3
+  context_window: 1M
+  currency: USD
+  input: 1.25
+  cached_input: 0.15
+  cache_write: null
+  output: 4.25
+  notes: null
+  links:
+    - label: pricing
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
+  last_verified: 2026-09-03
+
+- id: meta-muse-spark-1-3-contributor
+  provider: Meta
+  model: muse-spark-1.3-contributor
+  model_id: muse-spark-1.3-contributor
+  context_window: 1M
+  currency: USD
+  input: 0.10
+  cached_input: 0.002
+  cache_write: null
+  output: 0.20
+  notes: null
+  links:
+    - label: pricing
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
+  last_verified: 2026-09-03
+
+- id: meta-muse-spark-1-2
+  provider: Meta
+  model: muse-spark-1.2
+  model_id: muse-spark-1.2
+  context_window: 1M
+  currency: USD
+  input: 1.25
+  cached_input: 0.15
+  cache_write: null
+  output: 4.25
+  notes: Meta publishes the same rates for muse-spark-1.2 as for muse-spark-1.3.
+  links:
+    - label: pricing
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
+  last_verified: 2026-09-03
+
+- id: meta-muse-spark-1-2-contributor
+  provider: Meta
+  model: muse-spark-1.2-contributor
+  model_id: muse-spark-1.2-contributor
+  context_window: 1M
+  currency: USD
+  input: 0.10
+  cached_input: 0.002
+  cache_write: null
+  output: 0.20
+  notes: Meta publishes the same rates for muse-spark-1.2-contributor as for muse-spark-1.3-contributor.
+  links:
+    - label: pricing
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
+  last_verified: 2026-09-03

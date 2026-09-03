@@ -2480,3 +2480,57 @@
     - label: plans
       url: https://verboo.ai/en
   last_verified: 2026-09-02
+
+- id: meta-everyday-usage
+  provider: Meta
+  plan: Everyday Usage
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 5
+  limits:
+    - 10-50 requests every 5 hours including image and video uploads
+  models:
+    - Muse Spark 1.2
+  status: active
+  notes: Includes voice mode and web search.
+  links:
+    - label: plans
+      url: https://developer.meta.com/ai/products/muse-code/
+  last_verified: 2026-09-03
+
+- id: meta-high-usage
+  provider: Meta
+  plan: High Usage
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 15
+  limits:
+    - 3x more usage than the Everyday Usage plan
+  models:
+    - Muse Spark
+  status: active
+  notes: Unlocks the latest models.
+  links:
+    - label: plans
+      url: https://developer.meta.com/ai/products/muse-code/
+  last_verified: 2026-09-03
+
+- id: meta-power-usage
+  provider: Meta
+  plan: Power Usage
+  price_currency: USD
+  prices:
+    - period: month
+      amount: 50
+  limits:
+    - 10x more usage than the Everyday Usage plan
+  models:
+    - Muse Spark
+  status: active
+  notes: Early access to new features with higher file upload limits.
+  links:
+    - label: plans
+      url: https://developer.meta.com/ai/products/muse-code/
+  last_verified: 2026-09-03
