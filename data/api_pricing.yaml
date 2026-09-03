@@ -1683,3 +1683,35 @@
     - label: pricing
       url: https://verboo.ai/en/api
   last_verified: 2026-09-02
+
+- id: meta-muse-spark-1-2
+  provider: Meta
+  model: Muse Spark 1.2
+  model_id: muse-spark-1.2
+  context_window: 1M
+  currency: USD
+  input: 1.25
+  cached_input: 0.15
+  cache_write: null
+  output: 4.25
+  notes: Standard Muse Spark 1.2 API access, not used to improve products.
+  links:
+    - label: pricing
+      url: https://developer.meta.com/ai/products/muse-code/
+  last_verified: 2026-09-03
+
+- id: meta-muse-spark-1-2-contributor
+  provider: Meta
+  model: Muse Spark 1.2 Contributor
+  model_id: muse-spark-1.2-contributor
+  context_window: 1M
+  currency: USD
+  input: 0.10
+  cached_input: 0.002
+  cache_write: null
+  output: 0.20
+  notes: Contributor Muse Spark 1.2 usage is used to improve products.
+  links:
+    - label: pricing
+      url: https://developer.meta.com/ai/products/muse-code/
+  last_verified: 2026-09-03

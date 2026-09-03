@@ -95,8 +95,8 @@ next agent more than a gap.
 | GitHub | `provider-github` |
 | Google | `provider-google` |
 | Kiro | `provider-kiro` |
+| Meta | `provider-meta` |
 | MiniMax | `provider-minimax` |
-| Mistral | `provider-mistral` |
 | Moonshot (Kimi) | `provider-moonshot` |
 | Novita | `provider-novita` |
 | Ollama | `provider-ollama` |

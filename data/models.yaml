@@ -1496,3 +1496,33 @@
     - label: docs
       url: https://verboo.ai/en
   last_verified: 2026-09-02
+
+- id: meta-muse-spark-1-3
+  name: Muse Spark 1.3
+  provider: Meta
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: true
+  open_weights: null
+  notes: Native multimodal perception covers video, images, and documents.
+  links:
+    - label: model card
+      url: https://developer.meta.com/ai/models/muse-spark/
+  last_verified: 2026-09-03
+
+- id: meta-muse-spark-1-2
+  name: Muse Spark 1.2
+  provider: Meta
+  total_params: null
+  active_params: null
+  context_window: 1M
+  max_output: null
+  vision: null
+  open_weights: null
+  notes: The Muse Code page prices Muse Spark 1.2 API access.
+  links:
+    - label: pricing
+      url: https://developer.meta.com/ai/products/muse-code/
+  last_verified: 2026-09-03
