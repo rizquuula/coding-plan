@@ -18,6 +18,7 @@ DATA_DIR = ROOT / "data"
 TEMPLATE_DIR = ROOT / "templates"
 ASSET_DIR = ROOT / "assets"
 OUT_DIR = ROOT / "site"
+__version__ = "0.1.0"
 
 # Public base URL of the deployed site. Social meta tags need absolute URLs.
 SITE_URL = "https://rizquuula.github.io/coding-plan/"
@@ -645,6 +646,11 @@ def render(data: dict, today: dt.date) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+    )
     parser.add_argument(
         "--check",
         action="store_true",
