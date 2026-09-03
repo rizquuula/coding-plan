@@ -65,6 +65,10 @@ python -m http.server -d site 8000
 Output lands in `site/`. Open `site/index.html` in your browser or run the
 HTTP server above and visit http://localhost:8000.
 
+The build script prints what it did: `--check` reports
+`ok: N records passed validation`, and a full build reports the rendered
+model and plan counts plus `ok: wrote site/`.
+
 ## 🚀 Deploy your own
 
 Push to `main`. The workflow in `.github/workflows/deploy.yml` validates,
