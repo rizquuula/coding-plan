@@ -47,6 +47,7 @@ hidden.
 
 - Python 3.8 or later.
 - Install dependencies with `pip install -r requirements.txt` (see [requirements.txt](requirements.txt)).
+- Run `python3 build.py` to render the site into `site/`.
 
 ## ⚙️ How it works
 
