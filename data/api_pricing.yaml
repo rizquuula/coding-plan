@@ -1698,6 +1698,8 @@
   links:
     - label: pricing
       url: https://dev.meta.ai/docs/pricing-rate-limits.md
+    - label: rate limit
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
 
 - id: meta-muse-spark-1-3-contributor
@@ -1713,6 +1715,8 @@
   notes: null
   links:
     - label: pricing
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
+    - label: rate limit
       url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
 
@@ -1730,6 +1734,8 @@
   links:
     - label: pricing
       url: https://dev.meta.ai/docs/pricing-rate-limits.md
+    - label: rate limit
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
 
 - id: meta-muse-spark-1-2-contributor
@@ -1745,5 +1751,7 @@
   notes: Meta publishes the same rates for muse-spark-1.2-contributor as for muse-spark-1.3-contributor.
   links:
     - label: pricing
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
+    - label: rate limit
       url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
