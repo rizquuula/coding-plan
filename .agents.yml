@@ -2,9 +2,9 @@
 maintainers: [rizquuula]
 zosma:
   enabled: true
-  allowed_paths: ["data/**", "build.py", "templates/**", "assets/**", "README.md", "tests/**"]
-  max_files: 6
-  max_lines: 250
+  allowed_paths: ["data/**", "build.py", "templates/**", "assets/**", "README.md", "tests/**", ".claude/skills/**", "AGENTS.md"]
+  max_files: 10
+  max_lines: 400
   labels: []
 veritate:
   test_command: ""
