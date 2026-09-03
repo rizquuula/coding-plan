@@ -2497,6 +2497,8 @@
   links:
     - label: plans
       url: https://developer.meta.com/ai/products/muse-code/
+    - label: rate limit
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
 
 - id: meta-high-usage
@@ -2515,6 +2517,8 @@
   links:
     - label: plans
       url: https://developer.meta.com/ai/products/muse-code/
+    - label: rate limit
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
 
 - id: meta-power-usage
@@ -2533,4 +2537,6 @@
   links:
     - label: plans
       url: https://developer.meta.com/ai/products/muse-code/
+    - label: rate limit
+      url: https://dev.meta.ai/docs/pricing-rate-limits.md
   last_verified: 2026-09-03
