@@ -43,6 +43,11 @@ page it came from.
 Every row also carries a `last_verified` date, so staleness is tracked — not
 hidden.
 
+## 🧰 Requirements
+
+- Python 3.8 or later.
+- Install dependencies with `pip install -r requirements.txt` (see [requirements.txt](requirements.txt)).
+
 ## ⚙️ How it works
 
 YAML in, website out. A Python script validates the four datasets, renders
