@@ -2,6 +2,17 @@
 # Append a record whenever a row in another dataset is added or changed.
 # Newest entry first. Schema: see AGENTS.md.
 
+- date: 2026-09-04
+  provider: Meta
+  type: new provider
+  summary: Added the Meta provider with the Muse Spark 1.3 specification. No plan, API rate, or rate limit rows yet, because no provider-owned page states a readable price, rate, or quota.
+  links:
+    - label: model card
+      url: https://developer.meta.com/ai/products/muse-code/
+    - label: announcement
+      url: https://research.meta.ai/blog/introducing-muse-spark-1-3
+  last_verified: 2026-09-04
+
 - date: 2026-09-02
   provider: Verboo
   type: new provider
