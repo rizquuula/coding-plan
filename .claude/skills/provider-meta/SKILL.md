@@ -48,11 +48,13 @@ returns only meta tags. The copy loads client-side through an authenticated
 Relay/GraphQL layer (`/api/graphql/` returns nothing useful without credentials).
 Do not cite these pages for a value. They are link targets only.
 
-**2. `dev.meta.ai` needs a login.** `/`, `/docs`, and every `/docs/*` path tried
-return the Facebook "Sorry, something went wrong" error page to an anonymous
-fetcher. Only `/install.sh` is public, and it holds an installer, not prices.
-Treat any plan or rate figure attributed to `dev.meta.ai` docs as unverified
-until you read it yourself while logged in.
+**2. `dev.meta.ai` needs a login.** `/`, `/docs`, `/docs/pricing`, and every
+`/docs/*` path tried return either the Facebook "Sorry, something went wrong"
+error page or an empty shell to an anonymous fetcher (`/docs/pricing` is HTTP
+200 with zero readable text; `/pricing` is HTTP 404). Only `/install.sh` is
+public, and it holds an installer, not prices. Treat any plan or rate figure
+attributed to `dev.meta.ai` docs as unverified until you read it yourself while
+logged in.
 
 **3. `api.meta.ai` needs an API key.** Unauthenticated `GET` calls to `/v1/*`
 return `invalid_api_key`. The only public route found is
